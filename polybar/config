@@ -1,0 +1,209 @@
+;; ================================================
+;;	    ____        __      __              
+;;	   / __ \____  / /_  __/ /_  ____ ______
+;;	  / /_/ / __ \/ / / / / __ \/ __ `/ ___/
+;;	 / ____/ /_/ / / /_/ / /_/ / /_/ / /    
+;;	/_/    \____/_/\__, /_.___/\__,_/_/     
+;;	              /____/                    
+;; ================================================
+
+;; Global WM Settings
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[module/change_audio]
+type = custom/text
+click-left = ~/.config/polybar/scripts/change-audio.sh
+content = ""
+content-background = ${colors.background}
+content-foreground = ${colors.foreground}
+content-padding = 
+tail = false
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+;extra icons to choose from
+;http://fontawesome.io/cheatsheet/
+
+format = <label-state>
+label-monitor = %name%
+
+label-active = %name%
+label-active-foreground = ${colors.foreground}
+label-active-background = ${colors.background}
+label-active-underline= #794CB0
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-background = ${colors.background}
+label-occupied-underline = ${colors.alert}
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-underline = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[bar/main]
+monitor = ${env:0:}
+width = 100%
+height = 25
+radius = 0
+fixed-center = false
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = transparency
+
+padding-left = 0
+padding-right = 2
+
+margin = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-5 = "Font Awesome 5 Brands:style=Regular:pixelsize=8;1"
+
+tray-position = right
+tray-padding = 2
+; tray-background = #0063ff
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+modules-left = ewmh
+modules-center =
+modules-right = change_audio pulseaudio memory cpu eth date
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = " muted"
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/workspaces-xmonad]
+type = custom/script
+exec = tail -F /tmp/.xmonad-workspace-log
+exec-if = [ -p /tmp/.xmonad-workspace-log ]
+tail = true
+
+[module/title-xmonad]
+type = custom/script
+exec = tail -F /tmp/.xmonad-title-log
+exec-if = [ -p /tmp/.xmonad-title-log ]
+tail = true
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false

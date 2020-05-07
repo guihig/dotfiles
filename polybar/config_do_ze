@@ -1,0 +1,368 @@
+;; ================================================
+;;	    ____        __      __              
+;;	   / __ \____  / /_  __/ /_  ____ ______
+;;	  / /_/ / __ \/ / / / / __ \/ __ `/ ___/
+;;	 / ____/ /_/ / / /_/ / /_/ / /_/ / /    
+;;	/_/    \____/_/\__, /_.___/\__,_/_/     
+;;	              /____/                    
+;; ================================================
+;; Global WM Settings
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+;; ================================================
+;;
+;; Colors Settings
+;;
+;; ================================================
+[color]
+;; Active Colors
+bg = #171717
+fg = #272827
+fg-alt = #C4C7C5
+mf = #C4C7C5
+ac = #B4BC67
+;; Bars
+bn = #308634
+bm = #E57C46
+bd = #E24C49
+trans = #00000000
+white = #FFFFFF
+black = #000000
+;; Colors
+red = #EC7875
+pink = #EC6798
+purple = #BE78D1
+blue = #75A4CD
+cyan = #00C7DF
+teal = #00B19F
+green = #61C766
+lime = #B9C244
+yellow = #EBD369
+amber = #EDB83F
+orange = #E57C46
+brown = #AC8476
+grey = #8C8C8C
+indigo = #6C77BB
+blue-gray = #6D8895
+;; ================================================
+;;
+;; Modules Definitions
+;;
+;; ================================================
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label>
+format-background = ${color.mf}
+format-foreground = ${color.fg}
+format-padding = 1
+label = "%percentage:3%%"
+[module/cpu_i]
+type = internal/cpu
+interval = 1
+format = 
+format-background = ${color.teal}
+format-foreground = ${color.fg}
+format-padding = 1
+;; ================================================
+[module/date]
+type = internal/date
+interval = 1.0
+time = %H:%M
+time-alt = %Y-%m-%d%
+format = <label>
+format-background = ${color.mf} 
+format-foreground = ${color.fg}
+format-padding = 1
+label = %time%
+[module/date_i]
+type = internal/date
+interval = 1.0
+time = 
+time-alt = 
+format = <label>
+format-background = ${color.amber} 
+format-foreground = ${color.fg}
+format-padding = 1
+label = %time%
+;; ================================================
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+interval = 10
+fixed-values = true
+format-mounted = <label-mounted>
+format-mounted-background = ${color.mf} 
+format-mounted-foreground = ${color.fg}
+format-mounted-padding = 1
+format-unmounted = <label-unmounted>
+format-unmounted-background = ${color.mf} 
+format-unmounted-foreground = ${color.fg}
+format-unmounted-padding = 1
+label-mounted = "%free%"
+label-unmounted = %mountpoint%: not mounted
+[module/filesystem_i]
+type = internal/fs
+mount-0 = /
+interval = 10
+fixed-values = true
+format-mounted = 
+format-mounted-background = ${color.green} 
+format-mounted-foreground = ${color.fg}
+format-mounted-padding = 1
+format-unmounted = 
+format-unmounted-background = ${color.red} 
+format-unmounted-foreground = ${color.fg}
+format-unmounted-padding = 1
+;; ================================================
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = false
+format = <label-state> <label-mode>
+label-focused = %index%
+label-focused-foreground = ${color.fg}
+label-focused-background = ${color.ac}
+label-focused-underline = ${color.ac}
+label-focused-padding = 1
+label-unfocused = %index%
+label-unfocused-foreground = ${color.fg}
+label-unfocused-background = ${color.mf}
+label-unfocused-underline = ${color.mf}
+label-unfocused-padding = 1
+label-visible = %index%
+label-visible-foreground = ${color.fg}
+label-visible-background = ${color.mf}
+label-visible-underline = ${color.mf}
+label-visible-padding = 1
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${color.ac}
+label-urgent = %index%
+label-urgent-foreground = ${color.fg}
+label-urgent-background = ${color.red}
+label-urgent-padding = 1
+label-separator = |
+label-separator-padding = 0
+label-separator-foreground = ${color.bg}
+;; ================================================
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+format-background = ${color.mf} 
+format-foreground = ${color.fg}
+format-padding = 1
+label = "%mb_used%"
+[module/memory_i]
+type = internal/memory
+interval = 3
+format = 
+format-background = ${color.brown} 
+format-foreground = ${color.fg}
+format-padding = 1
+;; ================================================
+[module/network]
+type = internal/network
+interface = enp3s0
+interval = 1.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <label-connected>
+format-connected-background = ${color.mf}
+format-connected-foreground = ${color.fg}
+format-connected-padding = 1
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${color.mf}
+format-disconnected-foreground = ${color.fg}
+format-disconnected-padding = 1
+label-connected = %local_ip%
+label-disconnected = "No Internet :c"
+[module/network_i]
+type = internal/network
+interface = enp3s0
+interval = 1.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <ramp-signal>
+format-connected-background = ${color.purple}
+format-connected-foreground = ${color.fg}
+format-connected-padding = 1
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${color.purple}
+format-disconnected-foreground = ${color.fg}
+format-disconnected-padding = 1
+label-disconnected = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+;; ================================================
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = <label-volume>
+format-volume-background = ${color.mf}
+format-volume-foreground = ${color.fg}
+format-volume-padding = 1
+label-muted = Muted
+format-muted-background = ${color.mf}
+format-muted-foreground = ${color.red}
+format-muted-padding = 1
+[module/pulseaudio_i]
+type = internal/alsa
+format-volume = <ramp-volume>
+format-volume-background = ${color.blue}
+format-volume-foreground = ${color.fg}
+format-volume-padding = 1
+format-muted-background = ${color.blue}
+format-muted-foreground = ${color.red}
+format-muted-padding = 1
+label-muted = ""
+label-muted-foreground = ${color.fg}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+;; ================================================
+[module/title]
+type = internal/xwindow
+format = <label>
+format-foreground = ${color.fg-alt}
+label =  %title%
+label-maxlen = 100
+;; ================================================
+[module/separator]
+type = custom/text
+content = |
+content-background = ${color.bg}
+content-foreground = ${color.bg}
+content-padding = 0.5
+;; ================================================
+[module/style]
+type = custom/text
+content = Style
+content-background = ${color.mf}
+content-foreground = ${color.fg}
+content-padding = 1
+click-left = ~/.config/polybar/scripts/style-switch.sh &
+click-right = ~/.config/polybar/scripts/style-switch.sh &
+[module/style_i]
+type = custom/text
+content = 
+content-background = ${color.orange}
+content-foreground = ${color.fg}
+content-padding = 1
+click-left = ~/.config/polybar/scripts/style-switch.sh &
+click-right = ~/.config/polybar/scripts/style-switch.sh &
+;; ================================================
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/weather.sh
+format-padding = 1
+format-background = ${color.mf}
+format-foreground = ${color.fg}
+tail = false
+interval = 600
+[module/weather_i]
+type = custom/text
+content = °C
+content-background = ${color.teal}
+content-foreground = ${color.fg}
+content-padding = 1
+;; ================================================
+[module/change_audio_i]
+type = custom/text
+click-left = ~/.config/polybar/scripts/change-audio.sh
+content = 
+content-background = ${color.orange}
+content-foreground = ${color.fg}
+content-padding = 1
+tail = false
+;; ================================================
+;; Bar Settings
+[bar/main]
+monitor = ${env:MONITOR:}
+monitor-strict = false
+override-redirect = false
+fixed-center = true
+width = 100%
+height = 22
+offset-x = 0
+offset-y = 0
+background = ${color.bg}
+foreground = ${color.fg}
+radius-top = 0.0
+radius-bottom = 0.0
+overline-size = 2
+overline-color = ${color.ac}
+border-size = 4
+border-color = ${color.bg}
+padding = 1
+module-margin-left = 0
+module-margin-right = 0
+font-0 = "Iosevka:size=10;2"
+font-1 = "Material:size=12;2"
+font-2 = "xos4 Terminus:size=12;2"
+modules-left = i3 separator mpd_i mpd separator
+modules-center =  title
+modules-right = separator separator cpu_i cpu memory_i memory filesystem_i filesystem separator network_i network  separator weather_i weather separator pulseaudio_i pulseaudio change_audio_i separator date_i date
+dim-value = 1.0
+wm-name = 
+locale = 
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${color.bg}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+enable-ipc = true
+click-left = 
+click-middle = 
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+cursor-click = 
+cursor-scroll = 
+;; ================================================
+;;
+;; Application Settings
+;;
+;; ================================================
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+; Define fallback values used by all module formats
+format-foreground = 
+format-background = 
+format-underline =
+format-overline =
+format-spacing =
+format-padding =
+format-margin =
+format-offset =
+pseudo-transparency = false
