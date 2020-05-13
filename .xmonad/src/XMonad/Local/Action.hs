@@ -18,7 +18,6 @@ where
 
 --------------------------------------------------------------------------------
 import           Control.Monad                  ( when )
-import           Data.List
 import qualified Data.Map                      as M
 import           Data.Monoid
 import           XMonad                  hiding ( manageHook
@@ -51,24 +50,13 @@ import           XMonad.Util.NamedScratchpad    ( customFloating )
 manageHook :: ManageHook
 manageHook =
   composeOne
-      [ -- Windows to ignore:
-        isInProperty "_NET_WM_STATE" "_NET_WM_STATE_SKIP_TASKBAR" -?> doIgnore
-
-      -- Start by tagging new windows:
-      , className =? "Chromium-browser" `addTagAndContinue` "browser"
-      , title =* "[irc]" `addTagAndContinue` "irc"
-
-      -- Some application windows ask to be floating (I'm guessing) but
-      -- it's stupid to float them.
-      , title =? "HandBrake" -?> (ask >>= doF . W.sink)
-      , title =? "FocusProxy" -?> doCenterFloat
-
+      [
       -- Chrome debugging windows and application windows show up as
       -- pop-ups so we need to deal with that before floating pop-ups.
-      , (    className
-        =?   "Chromium-browser"
+        (className
+        =? "Chromium-browser"
         <&&> stringProperty "WM_WINDOW_ROLE"
-        =?   "pop-up"
+        =? "pop-up"
         )
         -?> normalTile
 
@@ -89,8 +77,8 @@ manageHook =
     <+> manageSpawn
  where
     -- | Sub-string match with a 'Query'.
-  (=*) :: Query String -> String -> Query Bool
-  (=*) q s = isInfixOf s <$> q
+  -- (=*) :: Query String -> String -> Query Bool
+  -- (=*) q s = isInfixOf s <$> q
 
   gtkFile           = "GtkFileChooserDialog"
   normalTile        = insertPosition Above Newer
@@ -101,8 +89,8 @@ manageHook =
 -- | If the given condition is 'True' then add the given tag name to
 -- the window being mapped.  Always returns 'Nothing' to continue
 -- processing other manage hooks.
-addTagAndContinue :: Query Bool -> String -> MaybeManageHook
-addTagAndContinue p tag = do
+_addTagAndContinue :: Query Bool -> String -> MaybeManageHook
+_addTagAndContinue p tag = do
   x <- p
   when x (liftX . addTag tag =<< ask)
   return Nothing
@@ -134,15 +122,16 @@ handleEventHook = mconcat
 
 --------------------------------------------------------------------------------
 floatDynamicPropEventHook :: Event -> X All
-floatDynamicPropEventHook = dynamicPropertyChange
-  "WM_CLASS"
-  (className =? "Spotify" --> floatOnRight)
+floatDynamicPropEventHook = dynamicPropertyChange "WM_CLASS"
+                                                  dynamicClassComposed
+
  where
   floatOnRight =
-    customFloating $ W.RationalRect (2 / 3) (1 / 10) (1 / 3) (8 / 10)
+    customFloating $ W.RationalRect (3 / 5) (1 / 10) (2 / 5) (8 / 10)
 
-  _floatOnLeft =
-    customFloating $ W.RationalRect 0 (1 / 10) (1 / 2) (8 / 10)
+  _floatOnLeft = customFloating $ W.RationalRect 0 (1 / 10) (1 / 2) (8 / 10)
+
+  dynamicClassComposed = composeAll [className =? "Spotify" --> floatOnRight]
 
 --------------------------------------------------------------------------------
 -- | Enables 'focusFollowsMouse' for tiled windows only.  For this to
