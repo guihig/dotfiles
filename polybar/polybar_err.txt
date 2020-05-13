@@ -1,2 +1,0 @@
-polybar|warn:  pulseaudio: using default sink alsa_output.pci-0000_0b_00.3.analog-stereo
-polybar|warn:  pulseaudio: using default sink alsa_output.pci-0000_0b_00.3.analog-stereo
