@@ -1,0 +1,31 @@
+name: xmonad-guihig
+version: 0.1.0
+synopsis: xmonad setting
+github: guihig/dotfiles
+author: guihig
+maintainer: guiih.ig@gmail.com
+copyright: © guihig
+license: MIT
+dependencies:
+- X11 == 1.9.1
+- base == 4.13.0.0
+- xmonad == 0.15
+- xmonad-contrib == 0.16
+- containers == 0.6.2.1
+- filepath == 1.4.2.1
+- directory == 1.3.6.0
+library:
+  source-dirs: src
+executables:
+  xmonad:
+    main: xmonad-guihig.hs
+    ghc-options:
+      - -Wall
+      - -fwarn-tabs
+      - -no-keep-hi-files
+      - -no-keep-o-files
+      - -threaded
+      - -O2
+      - -with-rtsopts=-N4
+    dependencies:
+    - xmonad-guihig
