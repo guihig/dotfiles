@@ -1,0 +1,27 @@
+- link:
+    .config/polybar/:
+      create: true
+      glob: true
+      path: ~/.config/polybar/*
+      relink: true
+    .config/xmobar/:
+      create: true
+      glob: true
+      path: ~/.config/xmobar/*
+      relink: true
+    .local/share/fonts/:
+      create: true
+      glob: true
+      path: ~/.local/share/fonts/*
+      relink: true
+    .xmonad/:
+      create: true
+      glob: true
+      path: ~/.xmonad/*
+      relink: true
+    .Xresources:
+      force: true
+      path: ~/.Xresources
+    .zshrc:
+      force: true
+      path: ~/.zshrc
