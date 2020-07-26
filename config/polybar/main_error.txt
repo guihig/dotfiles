@@ -1,0 +1,3 @@
+polybar|warn:  Dropping unmatched character 🎨 (U+1f3a8)
+polybar|warn:  Dropping unmatched character 🎨 (U+1f3a8)
+polybar|warn:  Dropping unmatched character 🎨 (U+1f3a8)

@@ -1,39 +1,36 @@
 #!/bin/sh
 
-B='#00000000'  # blank
-C='#ffffff22'  # clear ish
-D='#ff00ffcc'  # default
-T='#ee00eeee'  # text
-W='#880000bb'  # wrong
-V='#bb00bbbb'  # verifying
+source ~/.cache/wal/colors.sh
+
+WRONG="#880000bb"
 
 i3lock \
---insidevercolor=$C   \
---ringvercolor=$V     \
+--insidevercolor=${foreground}   \
+--ringvercolor=${foreground} \
 \
---insidewrongcolor=$C \
---ringwrongcolor=$W   \
+--insidewrongcolor=${color1} \
+--ringwrongcolor=${WRONG}    \
 \
---insidecolor=$B      \
---ringcolor=$D        \
---linecolor=$B        \
---separatorcolor=$D   \
+--insidecolor=${color1}      \
+--ringcolor=${foreground}    \
+--linecolor=${color1}        \
+--separatorcolor=${color1}   \
 \
---verifcolor=$T        \
---wrongcolor=$T        \
---timecolor=$T        \
---datecolor=$T        \
---layoutcolor=$T      \
---keyhlcolor=$W       \
---bshlcolor=$W        \
+--verifcolor=${color1}       \
+--wrongcolor=${WRONG}        \
+--timecolor=${foreground}    \
+--datecolor=${foreground}    \
+--layoutcolor=${foreground}  \
+--keyhlcolor=${WRONG}        \
+--bshlcolor=${WRONG}         \
 \
---screen 1            \
---blur 5              \
---clock               \
---indicator           \
---timestr="%H:%M:%S"  \
---datestr="%A, %m %Y" \
---keylayout 1         \
+--screen 1                   \
+--blur 5                     \
+--clock                      \
+--indicator                  \
+--timestr="%H:%M:%S"         \
+--datestr="%A, %m %Y"        \
+--keylayout 1                \
 
 # --veriftext="Drinking verification can..."
 # --wrongtext="Nope!"
