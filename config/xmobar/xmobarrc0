@@ -1,0 +1,27 @@
+Config { font    = "xft:Iosevka Nerd Font:style=Medium:size=11"
+       , additionalFonts = ["xft:Material Design Icons:style=Regular:size=11"]
+       , bgColor = "#292d3e"
+       , fgColor = "#f07178"
+       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 22 }
+       , lowerOnStart = False
+       , allDesktops = False
+       , persistent = False
+       , commands = [ 
+                      -- Time and date
+                      Run Date "<fn=1>󰃰</fn> %b %d %Y (%H:%M)" "date" 50
+                      -- Cpu usage in percent
+                    , Run Cpu ["-t", "<fn=1>󰻠</fn> <total>%","-H","50","--high","red"] 20
+                      -- Ram used number and percent
+                    , Run Memory ["-t", "<fn=1>󰍛</fn> <used>M (<usedratio>%)"] 20
+                      -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
+                    , Run Com "/home/ferreira/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 30
+                      -- Disk space free2
+                    , Run DiskU [("/", "<fn=1>󰋊</fn> <free> free")] [] 60
+                      -- Prints out the left side items such as workspaces, layout, etc.
+                      -- The workspaces are 'clickable' in my configs.
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ | <fc=#FFB86C>%cpu%</fc> | <fc=#FF5555>%memory%</fc> | <fc=#82AAFF>%disku%</fc> | <fc=#8BE9FD>%date%</fc> | %trayerpad%"
+       }

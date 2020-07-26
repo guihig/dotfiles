@@ -7,25 +7,30 @@
 - link:
     ~/.config/polybar/:
       glob: true
-      path: .config/polybar/*
-    #    ~/.config/xmobar/:
-    #      glob: true
-    #      path: .config/xmobar/*
+      path: config/polybar/*
+
     ~/.config/rofi/:
       glob: true
-      path: .config/rofi/*
+      path: config/rofi/*
+
     ~/.config/alacritty/:
       glob: true
-      path: .config/alacritty/*
+      path: config/alacritty/*
+
     ~/.local/share/fonts/:
       glob: true
-      path: .local/share/fonts/*
+      path: local/share/fonts/*
+
     ~/.xmonad/:
       glob: true
-      path: .xmonad/*
-    ~/.Xresources:
-      force: true
-      path: .Xresources
+      path: xmonad/*
+
+    ~/.config/wal/:
+      glob: true
+      path: config/wal/*
+
+    ~/.xmonad/src/Colors.hs:
+      path: ~/.cache/wal/Colors.hs
 
 - clean: ['~']
 

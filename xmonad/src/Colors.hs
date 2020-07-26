@@ -1,0 +1,1 @@
+/home/ferreira/.cache/wal/Colors.hs
