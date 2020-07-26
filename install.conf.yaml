@@ -1,24 +1,36 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
 - link:
     ~/.config/polybar/:
-      create: true
       glob: true
       path: .config/polybar/*
-      relink: true
-    ~/.config/xmobar/:
-      create: true
+    #    ~/.config/xmobar/:
+    #      glob: true
+    #      path: .config/xmobar/*
+    ~/.config/rofi/:
       glob: true
-      path: .config/xmobar/*
-      relink: true
+      path: .config/rofi/*
+    ~/.config/alacritty/:
+      glob: true
+      path: .config/alacritty/*
     ~/.local/share/fonts/:
-      create: true
       glob: true
       path: .local/share/fonts/*
-      relink: true
     ~/.xmonad/:
-      create: true
       glob: true
       path: .xmonad/*
-      relink: true
     ~/.Xresources:
       force: true
       path: .Xresources
+
+- clean: ['~']
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
