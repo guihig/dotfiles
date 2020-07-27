@@ -247,3 +247,9 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 
+!/config/polybar/main_error.txt
+!/config/polybar/secondary_error.txt
+!/xmonad/xmonad.o
+!/xmonad/xmonad.hi
+!/xmonad/xmonad.errors
+!/xmonad/prompt-history
