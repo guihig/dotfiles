@@ -35,6 +35,9 @@
     ~/.config/starship.toml:
       path: config/starship/starship.toml
 
+    ~/.config/fish/config.fish:
+      path: config/fish/config.fish
+
 - clean: ['~']
 
 - clean:
