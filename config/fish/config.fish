@@ -1,10 +1,10 @@
 set BROWSER "firefox"
 set -U EDITOR nvim
+set fish_greeting
 
 #########################
 ####### Functions #######
 #########################
-
 function awsid
     echo '051630741961'
 end
