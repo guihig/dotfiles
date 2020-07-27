@@ -32,10 +32,15 @@
     ~/.xmonad/src/Colors.hs:
       path: ~/.cache/wal/Colors.hs
 
+    ~/.config/starship.toml:
+      path: config/starship/starship.toml
+
 - clean: ['~']
 
 - clean:
     ~/:
       force: true
     ~/.config:
+      recursive: true
+    ~/.local:
       recursive: true
