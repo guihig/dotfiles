@@ -35,7 +35,11 @@
     ~/.config/starship.toml:
       path: config/starship/starship.toml
 
-    ~/.config/fish/config.fish:
+    ~/.config/fish/:
+      glob: true
+      path: config/fish/*
+
+    ~/.config/dunst/dunstrc:
       path: config/fish/config.fish
 
 - clean: ['~']
