@@ -253,3 +253,4 @@ cabal.project.local~
 !/xmonad/xmonad.hi
 !/xmonad/xmonad.errors
 !/xmonad/prompt-history
+!/xmonad/xmonad-x86_64-linux
