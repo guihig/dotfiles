@@ -40,7 +40,7 @@
       path: config/fish/*
 
     ~/.config/dunst/dunstrc:
-      path: config/fish/config.fish
+      path: config/dunst/dunstrc
 
 - clean: ['~']
 
