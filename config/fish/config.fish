@@ -30,9 +30,9 @@ alias vim 'nvim'
 #########################
 ######### Paths #########
 #########################
-set PATH $PATH:/home/ferreira/.local/bin
-set PATH $PATH:/home/ferreira/.yarn/bin
-set PATH $PATH:/home/ferreira/.local/share/Steam/steamapps/common/Terraria
+set PATH $PATH:$HOME/.local/bin
+set PATH $PATH:$HOME/.yarn/bin
+set PATH $PATH:$HOME/.local/share/Steam/steamapps/common/Terraria
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 set PATH "$PATH:$HOME/.rvm/bin"
 
