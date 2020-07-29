@@ -13,19 +13,36 @@ function mappa-server-ip-by-tag
     command aws ec2 describe-instances \
         --query='Reservations[0].Instances[].NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp' \
         --output=text \
-        --filters Name=tag:Type,Values=$1
+        --filters Name=tag:Type,Values=$argv[1]
 end
 
 #########################
 ######## Aliases ########
 #########################
-alias cowalert 'xcowsay comando: " (history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) " acabou '
-alias dc 'docker-compose '
-alias dpf 'docker ps --format "{{.Names}}"'
-alias ssh 'TERM=xterm-256color ssh'
-alias hossh 'ssh -o ServerAliveInterval=60 -i $HOME/.ssh/horus-platform-kp.pem '
-alias toclip 'xclip -selection c'
-alias vim 'nvim'
+
+function dc
+    command docker-compose $argv
+end
+
+function dpf
+    command docker ps --format "{{.Names}}"
+end
+
+function ssh
+    TERM=xterm-256color command ssh $argv
+end
+
+function hossh
+    TERM=xterm-256color command ssh -o ServerAliveInterval=60 -i $HOME/.ssh/horus-platform-kp.pem $argv
+end
+
+function toclip
+    command xclip -selection c
+end
+
+function vim
+    command nvim $argv
+end
 
 #########################
 ######### Paths #########
