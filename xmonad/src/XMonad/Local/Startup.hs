@@ -1,3 +1,4 @@
+
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
 
 module XMonad.Local.Startup
@@ -11,7 +12,6 @@ import Data.Maybe
 import Data.Monoid
 import XMonad hiding (startupHook)
 import XMonad.Util.Cursor (setDefaultCursor)
-import XMonad.Util.SpawnOnce (spawnOnce)
 
 startupHook :: X ()
 startupHook = mconcat [spawnsHook, setFullscreenSupported]
@@ -19,7 +19,8 @@ startupHook = mconcat [spawnsHook, setFullscreenSupported]
 spawnsHook :: X ()
 spawnsHook = do
   spawn "$HOME/.xmonad/scripts/init-wallpaper.sh"
-  spawnOnce "wal -R"
+  spawn "nm-applet --no-agent"
+  spawn "wal -R"
   setDefaultCursor xC_left_ptr
 
 setFullscreenSupported :: X ()
