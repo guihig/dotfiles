@@ -59,3 +59,5 @@ set PATH "$PATH:$HOME/.rvm/bin"
 starship init fish | source
 
 eval (keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
+
+cat ~/.cache/wal/sequences &

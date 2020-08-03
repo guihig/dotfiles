@@ -18,6 +18,7 @@ startupHook = mconcat [spawnsHook, setFullscreenSupported]
 
 spawnsHook :: X ()
 spawnsHook = do
+  spawn "xss-lock -l -- $HOME/.xmonad/scripts/lock.sh"
   spawn "$HOME/.xmonad/scripts/init-wallpaper.sh"
   spawn "nm-applet --no-agent"
   spawn "wal -R"
