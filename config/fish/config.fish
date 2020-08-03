@@ -1,3 +1,4 @@
+set TERM "alacritty"
 set BROWSER "firefox"
 set -U EDITOR nvim
 set fish_greeting
@@ -17,7 +18,7 @@ function mappa-server-ip-by-tag
 end
 
 #########################
-######## Aliases ########
+######## Aliases ########f
 #########################
 
 function dc
