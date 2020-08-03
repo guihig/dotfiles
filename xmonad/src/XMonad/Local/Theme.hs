@@ -19,7 +19,7 @@ xmonadColors :: XConfig a -> XConfig a
 xmonadColors x =
   x
     { normalBorderColor = C.background,
-      focusedBorderColor = C.color6,
+      focusedBorderColor = C.background,
       borderWidth = 1
     }
 

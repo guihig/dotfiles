@@ -70,10 +70,11 @@ import XMonad.Util.ExtensibleState as XState
 
 layoutHook =
   renamed [CutWordsLeft 2] $
-    minimize $
-      fullscreenFloat $
-        fullScreenToggle $
-          toggleLayouts full allLays
+    noBorders $
+      minimize $
+        fullscreenFloat $
+          fullScreenToggle $
+            toggleLayouts full allLays
   where
     uniformBorder n = Border n n n n
     spacing = spacingRaw False (uniformBorder 0) True (uniformBorder 5) True
