@@ -19,18 +19,18 @@ xmonadColors :: XConfig a -> XConfig a
 xmonadColors x =
   x
     { normalBorderColor = C.background,
-      focusedBorderColor = C.background,
+      focusedBorderColor = C.color1,
       borderWidth = 1
     }
 
-tabConfig :: Theme
-tabConfig =
+barTheme :: Theme
+barTheme =
   def
-    { activeColor = C.background,
-      inactiveColor = C.backgroundAlpha,
+    { activeColor = C.color1,
+      inactiveColor = C.background,
       urgentColor = C.color6,
-      activeBorderColor = C.background,
-      inactiveBorderColor = C.backgroundAlpha,
+      activeBorderColor = C.color1,
+      inactiveBorderColor = C.background,
       urgentBorderColor = C.color6,
       activeTextColor = C.foreground,
       inactiveTextColor = C.foreground,
@@ -39,21 +39,11 @@ tabConfig =
       decoHeight = 22
     }
 
+tabConfig :: Theme
+tabConfig = barTheme
+
 topBarConfig :: Theme
-topBarConfig =
-  def
-    { activeColor = C.background,
-      inactiveColor = C.backgroundAlpha,
-      urgentColor = C.color6,
-      activeBorderColor = C.background,
-      inactiveBorderColor = C.backgroundAlpha,
-      urgentBorderColor = C.color6,
-      activeTextColor = C.foreground,
-      inactiveTextColor = C.foreground,
-      urgentTextColor = C.foreground,
-      fontName = "xft:Iosevka Nerd Font:style=Regular:size=11",
-      decoHeight = 22
-    }
+topBarConfig = barTheme
 
 promptConfig :: XPConfig
 promptConfig =

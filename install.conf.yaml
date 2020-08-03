@@ -42,6 +42,9 @@
     ~/.config/dunst/dunstrc:
       path: config/dunst/dunstrc
 
+    ~/.config/picom.conf:
+      path: config/picom/picom.conf
+
 - clean: ['~']
 
 - clean:
