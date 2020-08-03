@@ -33,6 +33,7 @@ import XMonad hiding
   )
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Layout.Accordion (Accordion (..))
+import XMonad.Layout.BorderResize (borderResize)
 import XMonad.Layout.Fullscreen (fullscreenFloat)
 import XMonad.Layout.Grid (Grid (Grid))
 import XMonad.Layout.LayoutCombinators
@@ -48,6 +49,7 @@ import XMonad.Layout.Renamed
   ( Rename (..),
     renamed,
   )
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Simplest (Simplest (..))
 import XMonad.Layout.Spacing
   ( Border (..),
@@ -70,11 +72,12 @@ import XMonad.Util.ExtensibleState as XState
 
 layoutHook =
   renamed [CutWordsLeft 2] $
-    noBorders $
-      minimize $
-        fullscreenFloat $
-          fullScreenToggle $
-            toggleLayouts full allLays
+    borderResize $
+      noBorders $
+        minimize $
+          fullscreenFloat $
+            fullScreenToggle $
+              toggleLayouts full allLays
   where
     uniformBorder n = Border n n n n
     spacing = spacingRaw False (uniformBorder 0) True (uniformBorder 5) True
@@ -88,10 +91,12 @@ layoutHook =
             addTabs' $
               addSubLayout' $
                 spacing $
-                  Tall
+                  ResizableTall
                     1
                     (3 / 100)
-                    (1 / 2)
+                    (2 / 3)
+                    []
+
     grid =
       avoidStruts $ windowNavigation $ addTopBar $ addTabs' $ addSubLayout' $ spacing Grid
 

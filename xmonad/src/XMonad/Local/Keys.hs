@@ -1,3 +1,4 @@
+{-# LANGUAGE BlockArguments #-}
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
 
 module XMonad.Local.Keys
@@ -21,6 +22,10 @@ import XMonad hiding (keys)
 -- Package: xmonad-contrib.
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.DynamicProjects (switchProjectPrompt)
+--------------------------------------------------------------------------------
+-- Local modules.
+
+import XMonad.Actions.FloatKeys (keysResizeWindow)
 import XMonad.Actions.Minimize
 import XMonad.Actions.Navigation2D
 import XMonad.Actions.PhysicalScreens
@@ -55,9 +60,6 @@ import XMonad.Layout.ZoomRow
     zoomOut,
     zoomReset,
   )
---------------------------------------------------------------------------------
--- Local modules.
-
 import XMonad.Local.Applications as Applications
 import XMonad.Local.Layout
   ( selectLayoutByName,
@@ -76,7 +78,6 @@ import XMonad.Prompt.Window
   )
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (mkKeymap)
-import qualified XMonad.Util.ExtensibleState as XState
 import XMonad.Util.NamedScratchpad (namedScratchpadAction)
 
 --------------------------------------------------------------------------------
@@ -150,6 +151,40 @@ directions2D = [D, U, L, R]
 arrowKeys :: [String]
 arrowKeys = ["<D>", "<U>", "<L>", "<R>"]
 
+data ResizeModes = RShrink | RExpand | RMirrorShrink | RMirrorExpand deriving (Show, Eq)
+
+resizeHorizontal :: ResizeModes -> X ()
+resizeHorizontal mode =
+  withFocused
+    ( \w -> do
+        floats <- gets (W.floating . windowset)
+        if M.member w floats
+          then
+            if mode == RShrink
+              then keysResizeWindow (-10, 0) (0, 0) w
+              else keysResizeWindow (10, 0) (0, 0) w
+          else
+            if mode == RShrink
+              then sendMessage Shrink
+              else sendMessage Expand
+    )
+
+resizeVertical :: ResizeModes -> X ()
+resizeVertical mode =
+  withFocused
+    ( \w -> do
+        floats <- gets (W.floating . windowset)
+        if M.member w floats
+          then
+            if mode == RMirrorShrink
+              then keysResizeWindow (0, 10) (0, 0) w
+              else keysResizeWindow (0, -10) (0, 0) w
+          else
+            if mode == RMirrorShrink
+              then sendMessage MirrorShrink
+              else sendMessage MirrorExpand
+    )
+
 windowKeys :: XConfig Layout -> [(String, X ())]
 windowKeys _ =
   -- Focusing Windows:
@@ -160,10 +195,10 @@ windowKeys _ =
     ("M-u", focusUrgent),
     ("M-o", windowPromptGoto),
     ("M-C-m", windows W.focusMaster),
-    ("M-[", sendMessage Shrink),
-    ("M-]", sendMessage Expand),
-    ("M-S-[", sendMessage MirrorShrink),
-    ("M-S-]", sendMessage MirrorExpand),
+    ("M-[", resizeHorizontal RShrink),
+    ("M-]", resizeHorizontal RExpand),
+    ("M-S-[", resizeVertical RMirrorExpand),
+    ("M-S-]", resizeVertical RMirrorShrink),
     ("M-<Delete>", kill1),
     ("M-<KP_Subtract>", withFocused minimizeWindow >> windows W.focusDown),
     ("M-<KP_Add>", withLastMinimized maximizeWindowAndFocus)
