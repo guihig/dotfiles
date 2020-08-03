@@ -26,10 +26,10 @@ xmonadColors x =
 tabConfig :: Theme
 tabConfig =
   def
-    { activeColor = C.background,
+    { activeColor = C.color1,
       inactiveColor = C.backgroundAlpha,
       urgentColor = C.color6,
-      activeBorderColor = C.background,
+      activeBorderColor = C.color1,
       inactiveBorderColor = C.backgroundAlpha,
       urgentBorderColor = C.color6,
       activeTextColor = C.foreground,
