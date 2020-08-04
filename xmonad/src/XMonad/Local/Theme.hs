@@ -3,7 +3,6 @@
 module XMonad.Local.Theme
   ( xmonadColors,
     tabConfig,
-    topBarConfig,
     promptConfig,
   )
 where
@@ -19,17 +18,17 @@ xmonadColors :: XConfig a -> XConfig a
 xmonadColors x =
   x
     { normalBorderColor = C.background,
-      focusedBorderColor = C.color1,
+      focusedBorderColor = C.color8,
       borderWidth = 1
     }
 
 barTheme :: Theme
 barTheme =
   def
-    { activeColor = C.color1,
+    { activeColor = C.color8,
       inactiveColor = C.background,
       urgentColor = C.color6,
-      activeBorderColor = C.color1,
+      activeBorderColor = C.color8,
       inactiveBorderColor = C.background,
       urgentBorderColor = C.color6,
       activeTextColor = C.foreground,
@@ -41,9 +40,6 @@ barTheme =
 
 tabConfig :: Theme
 tabConfig = barTheme
-
-topBarConfig :: Theme
-topBarConfig = barTheme
 
 promptConfig :: XPConfig
 promptConfig =

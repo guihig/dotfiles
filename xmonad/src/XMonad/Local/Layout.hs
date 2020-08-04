@@ -44,7 +44,6 @@ import XMonad.Layout.MultiToggle
   )
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders (noBorders)
-import XMonad.Layout.NoFrillsDecoration (noFrillsDeco)
 import XMonad.Layout.Renamed
   ( Rename (..),
     renamed,
@@ -57,13 +56,13 @@ import XMonad.Layout.Spacing
   )
 import XMonad.Layout.SubLayouts (subLayout)
 import XMonad.Layout.Tabbed
-  ( addTabs,
+  ( addTabsAlways,
     shrinkText,
   )
 import XMonad.Layout.ToggleLayouts (toggleLayouts)
 import XMonad.Layout.WindowNavigation (windowNavigation)
 import XMonad.Local.Prompt (aListCompFunc)
-import XMonad.Local.Theme (tabConfig, topBarConfig)
+import XMonad.Local.Theme (tabConfig)
 import XMonad.Prompt
 import qualified XMonad.StackSet as Stack
 import XMonad.Util.ExtensibleState as XState
@@ -86,22 +85,20 @@ layoutHook =
     tall =
       avoidStruts $
         windowNavigation $
-          addTopBar $
-            addTabs' $
-              addSubLayout' $
-                spacing $
-                  ResizableTall
-                    1
-                    (3 / 100)
-                    (2 / 3)
-                    []
+          addTabs' $
+            addSubLayout' $
+              spacing $
+                ResizableTall
+                  1
+                  (3 / 100)
+                  (2 / 3)
+                  []
 
     grid =
-      avoidStruts $ windowNavigation $ addTopBar $ addTabs' $ addSubLayout' $ spacing Grid
+      avoidStruts $ windowNavigation $ addTabs' $ addSubLayout' $ spacing Grid
 
-    addTabs' l = addTabs shrinkText tabConfig l
+    addTabs' l = addTabsAlways shrinkText tabConfig l
     addSubLayout' = subLayout [] (Simplest ||| Accordion ||| Mirror Accordion)
-    addTopBar l = noFrillsDeco shrinkText topBarConfig l
     fullScreenToggle = mkToggle (single FULL)
 
     allLays =
