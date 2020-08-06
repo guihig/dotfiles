@@ -268,7 +268,8 @@ appKeys _c =
     ("M-<Space>", spawn Applications.launcher),
     ("M-s", namedScratchpadAction scratchPads "spotify"),
     ("M-a", namedScratchpadAction scratchPads "slack"),
-    ("M-d", namedScratchpadAction scratchPads "joplin")
+    ("M-d", namedScratchpadAction scratchPads "joplin"),
+    ("M-r", namedScratchpadAction scratchPads "rocket.chat")
   ]
 
 --------------------------------------------------------------------------------

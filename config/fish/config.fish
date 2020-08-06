@@ -53,6 +53,7 @@ set PATH $PATH:$HOME/.yarn/bin
 set PATH $PATH:$HOME/.local/share/Steam/steamapps/common/Terraria
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 set PATH "$PATH:$HOME/.rvm/bin"
+set PATH "$PATH:/var/lib/snapd/snap/bin"
 
 #########################
 ######### Inits #########

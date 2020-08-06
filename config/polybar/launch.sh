@@ -21,7 +21,7 @@ if [ ${IS_LAPTOP} -eq 0 ]; then
 else
   # We are in the Laptop land, use the default bars
   MONITOR=${PRIMARY_MONITOR} NET_IF=wlo1 polybar -c ~/.config/polybar/config.ini --reload main_notebook &
-  [ -n "${SECONDARY_MONITOR}" ] && MONITOR=${SECONDARY_MONITOR} NET_IF=wlo1 polybar -c ~/.config/polybar/config.ini --reload secondary_notebook &
+  [ -n "${SECONDARY_MONITOR}" ] && MONITOR=${SECONDARY_MONITOR} NET_IF=wlo1 polybar -c ~/.config/polybar/config.ini --reload secondary &
 fi
 
 echo "Bars launched..."
