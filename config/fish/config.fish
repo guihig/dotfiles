@@ -1,4 +1,3 @@
-set TERM "alacritty"
 set BROWSER "firefox"
 set -U EDITOR nvim
 set fish_greeting
