@@ -140,7 +140,7 @@ floatDynamicPropEventHook =
     _floatOnLeft = customFloating $ W.RationalRect 0 (1 / 10) (1 / 2) (8 / 10)
 
     dynamicClassComposed = composeAll [className =? "Spotify" --> floatOnRight]
-    dynamicNameComposed = composeAll [title =? "Android Emulator*" --> floatOnRight]
+    dynamicNameComposed = composeAll [title =? "Android Emulator*" --> forceCenterFloat]
 
 --------------------------------------------------------------------------------
 

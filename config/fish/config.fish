@@ -54,6 +54,22 @@ set PATH $PATH:$HOME/.local/share/Steam/steamapps/common/Terraria
 set PATH "$PATH:$HOME/.rvm/bin"
 set PATH "$PATH:/var/lib/snapd/snap/bin"
 
+set JAVA_HOME /usr/lib/jvm/default
+set ANDROID_HOME "$HOME/Android/Sdk"
+
+set PATH "$PATH:$JAVA_HOME/bin"
+
+set PATH "$ANDROID_HOME/tools:$PATH"
+set PATH "$ANDROID_HOME/platform-tools:$PATH"
+set PATH "$ANDROID_HOME/tools/bin:$PATH"
+set PATH "$ANDROID_HOME/emulator:$PATH"
+
+set GOROOT (go env GOROOT)
+set GOPATH "~/golib"
+set PATH "$PATH:$GOPATH/bin"
+
+set GOPATH "$GOPATH:~/go"
+
 #########################
 ######### Inits #########
 #########################
