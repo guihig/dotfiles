@@ -53,25 +53,25 @@ scratchPads =
   [ NS
       { name = "spotify",
         cmd = "spotify",
-        query = (className =? "Spotify"),
+        query = className =? "Spotify",
         hook = floatOnRight
       },
     NS
       { name = "slack",
         cmd = "slack",
-        query = (className =? "Slack"),
+        query = className =? "Slack",
         hook = floatOnLeft
       },
     NS
       { name = "joplin",
         cmd = "joplin-desktop",
-        query = (className =? "Joplin"),
+        query = className =? "Joplin",
         hook = floatOnLeft
       },
     NS
       { name = "rocket.chat",
         cmd = "rocketchat-desktop",
-        query = (className =? "Rocket.Chat"),
+        query = className =? "Rocket.Chat",
         hook = floatOnLeft
       }
   ]

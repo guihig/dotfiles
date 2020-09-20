@@ -149,7 +149,7 @@ directions2D :: [Direction2D]
 directions2D = [D, U, L, R]
 
 arrowKeys :: [String]
-arrowKeys = ["<D>", "<U>", "<L>", "<R>"]
+arrowKeys = ["j", "k", "h", "l"]
 
 data ResizeModes = RShrink | RExpand | RMirrorShrink | RMirrorExpand deriving (Show, Eq)
 
@@ -188,10 +188,10 @@ resizeVertical mode =
 windowKeys :: XConfig Layout -> [(String, X ())]
 windowKeys _ =
   -- Focusing Windows:
-  [ ("M-k", windows W.focusUp),
-    ("M-l", windows W.focusDown),
-    ("M-S-k", windows W.swapUp),
-    ("M-S-l", windows W.swapDown),
+  [ ("M-,", windows W.focusUp),
+    ("M-.", windows W.focusDown),
+    ("M-S-,", windows W.swapUp),
+    ("M-S-.", windows W.swapDown),
     ("M-u", focusUrgent),
     ("M-o", windowPromptGoto),
     ("M-C-m", windows W.focusMaster),
@@ -199,13 +199,13 @@ windowKeys _ =
     ("M-]", resizeHorizontal RExpand),
     ("M-S-[", resizeVertical RMirrorExpand),
     ("M-S-]", resizeVertical RMirrorShrink),
-    ("M-<Delete>", kill1),
-    ("M-<KP_Subtract>", withFocused minimizeWindow >> windows W.focusDown),
-    ("M-<KP_Add>", withLastMinimized maximizeWindowAndFocus)
+    ("M-w", kill1),
+    ("M--", withFocused minimizeWindow >> windows W.focusDown),
+    ("M-S-=", withLastMinimized maximizeWindowAndFocus)
   ]
     ++
     -- Navigation Windows
-    [("M-" ++ k, windowGo d False) | (k, d) <- zip arrowKeys directions2D]
+    [("M-" ++ k, windowGo d True) | (k, d) <- zip arrowKeys directions2D]
     ++
     -- Navigation Windows Move
     [ ("M-C-" ++ k, windowSwap d False)
@@ -233,7 +233,7 @@ layoutKeys c =
       sequence_ [withFocused $ windows . W.sink, sendMessage ToggleLayout]
     ),
     ("M-\\", toggleLayout "Tall"),
-    ("M-w s", sendMessage ToggleStruts),
+    ("M-t s", sendMessage ToggleStruts),
     ("M-y", withFocused toggleFloat),
     ("M-S-y", sinkAll),
     ("M-<Tab>", sendMessage NextLayout),
