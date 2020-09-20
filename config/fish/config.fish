@@ -65,10 +65,8 @@ set PATH "$ANDROID_HOME/tools/bin:$PATH"
 set PATH "$ANDROID_HOME/emulator:$PATH"
 
 set GOROOT (go env GOROOT)
-set GOPATH "~/golib"
+set GOPATH (go env GOPATH)
 set PATH "$PATH:$GOPATH/bin"
-
-set GOPATH "$GOPATH:~/go"
 
 #########################
 ######### Inits #########
