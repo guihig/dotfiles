@@ -1,0 +1,39 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/preservim/nerdtree'
+
+call plug#end()
+
+" GruvBox
+set background=dark
+colorscheme gruvbox
+
+" LightLine
+set laststatus=2
+set noshowmode
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+
+" NerdTREE
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+map <C-n> :NERDTreeToggle<CR>
+
+" Fzf
+map <C-c> :Commands<CR>
+
+" Keybinds
+set pastetoggle=<F3>
+noremap <Leader>y "*y<CR>
+noremap <Leader>Y "+y<CR>

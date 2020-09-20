@@ -45,6 +45,9 @@
     ~/.config/picom.conf:
       path: config/picom/picom.conf
 
+    ~/.vimrc:
+      path: config/vimrc/vimrc
+
 - clean: ['~']
 
 - clean:
