@@ -6,3 +6,6 @@ disabled = true
 
 [python]
 symbol = "󱔎 "
+
+[golang]
+symbol = "󰟓 "

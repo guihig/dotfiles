@@ -1,5 +1,5 @@
 set BROWSER "firefox"
-set -U EDITOR nvim
+set -U EDITOR vim
 set fish_greeting
 
 #########################
@@ -38,10 +38,6 @@ end
 
 function toclip
     command xclip -selection c
-end
-
-function vim
-    command nvim $argv
 end
 
 #########################
