@@ -131,7 +131,7 @@ systemKeys :: XConfig Layout -> [(String, X ())]
 systemKeys _ =
   [ ("S-<Print>", spawn "sleep 0.2 && gnome-screenshot -a"),
     ("M-v", spawn "polybar-msg cmd toggle"),
-    ("M-C-l", spawn "$HOME/.xmonad/scripts/lock.sh")
+    ("M-=", spawn "$HOME/.xmonad/scripts/lock.sh")
   ]
 
 --------------------------------------------------------------------------------
@@ -201,7 +201,7 @@ windowKeys _ =
     ("M-S-]", resizeVertical RMirrorShrink),
     ("M-w", kill1),
     ("M--", withFocused minimizeWindow >> windows W.focusDown),
-    ("M-S-=", withLastMinimized maximizeWindowAndFocus)
+    ("M-S--", withLastMinimized maximizeWindowAndFocus)
   ]
     ++
     -- Navigation Windows
@@ -253,7 +253,7 @@ screenKeys :: XConfig Layout -> [(String, X ())]
 screenKeys _ =
   [ ("M-;", onNextNeighbour def W.view),
     ("M-S-;", onPrevNeighbour def W.view),
-    ("M-=", screenSwap L True)
+    ("M-C-;", screenSwap L True)
   ]
     ++ [ ("M-S-" ++ k, windowToScreen d False)
          | (k, d) <- zip arrowKeys directions2D
