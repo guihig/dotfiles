@@ -40,6 +40,9 @@ function toclip
     command xclip -selection c
 end
 
+function vim
+    command nvim
+end
 #########################
 ######### Paths #########
 #########################

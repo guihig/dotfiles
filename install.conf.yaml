@@ -48,7 +48,10 @@
     ~/.vimrc:
       path: config/vimrc/vimrc
 
-- clean: ['~']
+    ~/.config/nvim/init.vim:
+      path: config/nvim/init.vim
+
+- clean: [ '~' ]
 
 - clean:
     ~/:
