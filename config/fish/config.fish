@@ -1,6 +1,7 @@
 set BROWSER "firefox"
 set -U EDITOR vim
 set fish_greeting
+set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden -g "!{node_modules,.git}"' 
 
 #########################
 ####### Functions #######
@@ -74,4 +75,4 @@ starship init fish | source
 
 eval (keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
-cat ~/.cache/wal/sequences &
+#cat ~/.cache/wal/sequences &
