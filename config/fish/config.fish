@@ -41,9 +41,9 @@ function toclip
     command xclip -selection c
 end
 
-function vim
-    command nvim
-end
+alias vim nvim
+
+alias peixe fish
 #########################
 ######### Paths #########
 #########################
@@ -63,6 +63,8 @@ set PATH "$ANDROID_HOME/tools:$PATH"
 set PATH "$ANDROID_HOME/platform-tools:$PATH"
 set PATH "$ANDROID_HOME/tools/bin:$PATH"
 set PATH "$ANDROID_HOME/emulator:$PATH"
+
+set ANDROID_SDK_ROOT "$ANDROID_HOME"
 
 set GOROOT (go env GOROOT)
 set GOPATH (go env GOPATH)
