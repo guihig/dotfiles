@@ -28,7 +28,7 @@ import XMonad.Local.Applications
 import qualified XMonad.StackSet as StackSet
 import XMonad.Util.NamedScratchpad
 
-worspaceNumbers = [show k | k <- [0 .. 4]]
+workspaceNumbers = [show k | k <- [0 .. 4]]
 
 --------------------------------------------------------------------------------
 projects :: [Project]
@@ -38,14 +38,14 @@ projects =
         projectDirectory = "~/",
         projectStartHook = Nothing
       }
-    | k <- worspaceNumbers
+    | k <- workspaceNumbers
   ]
 
 --------------------------------------------------------------------------------
 
 -- | Names of my workspaces.
 names :: [WorkspaceId]
-names = withScreens 2 worspaceNumbers
+names = withScreens 2 workspaceNumbers
 
 --------------------------------------------------------------------------------
 scratchPads :: NamedScratchpads
