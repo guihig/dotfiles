@@ -2,16 +2,17 @@
 
 source ~/.cache/wal/colors.sh
 
-WRONG="#880000bb"
+WRONG="#880000FF"
+TRANSPARENT="#33333333"
 
 i3lock \
---insidevercolor=${foreground}   \
+--insidevercolor=${TRANSPARENT}   \
 --ringvercolor=${foreground} \
 \
---insidewrongcolor=${color1} \
+--insidewrongcolor=${TRANSPARENT} \
 --ringwrongcolor=${WRONG}    \
 \
---insidecolor=${color1}      \
+--insidecolor=${TRANSPARENT} \
 --ringcolor=${foreground}    \
 --linecolor=${color1}        \
 --separatorcolor=${color1}   \
@@ -21,8 +22,8 @@ i3lock \
 --timecolor=${foreground}    \
 --datecolor=${foreground}    \
 --layoutcolor=${foreground}  \
---keyhlcolor=${WRONG}        \
---bshlcolor=${WRONG}         \
+--keyhlcolor=${color2}       \
+--bshlcolor=${background}         \
 \
 --screen 1                   \
 --blur 5                     \
