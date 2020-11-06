@@ -73,7 +73,7 @@ manageHook =
       -- Force dialog windows and pop-ups to be floating.
       stringProperty "WM_WINDOW_ROLE" =? "pop-up" -?> doCenterFloat,
       stringProperty "WM_WINDOW_ROLE" =? gtkFile -?> forceCenterFloat,
-      className =? "Spotify" -?> forceCenterFloat,
+      className =? "Spotify" -?> forceBiggerCenterFloat,
       className =? "Slack" -?> forceCenterFloat,
       className =? "Rocket.Chat" -?> forceCenterFloat,
       className =? "Joplin" -?> forceCenterFloat,
@@ -115,6 +115,18 @@ forceCenterFloat = doFloatDep move
     x = (1 - w) / 2
     y = (1 - h) / 2
 
+forceBiggerCenterFloat :: ManageHook
+forceBiggerCenterFloat = doFloatDep move
+  where
+    move :: W.RationalRect -> W.RationalRect
+    move _ = W.RationalRect x y w h
+
+    w, h, x, y :: Rational
+    w = 3 / 4
+    h = 3 / 4
+    x = (1 - w) / 2
+    y = (1 - h) / 2
+
 --------------------------------------------------------------------------------
 handleEventHook :: Event -> X All
 handleEventHook =
@@ -134,12 +146,12 @@ floatDynamicPropEventHook =
     dynamicClassComposed
     <+> dynamicPropertyChange "WM_NAME" dynamicNameComposed
   where
-    floatOnRight =
+    _floatOnRight =
       customFloating $ W.RationalRect (3 / 5) (1 / 10) (2 / 5) (8 / 10)
 
     _floatOnLeft = customFloating $ W.RationalRect 0 (1 / 10) (1 / 2) (8 / 10)
 
-    dynamicClassComposed = composeAll [className =? "Spotify" --> floatOnRight]
+    dynamicClassComposed = composeAll [className =? "Spotify" --> forceBiggerCenterFloat]
     dynamicNameComposed = composeAll [title =? "Android Emulator*" --> forceCenterFloat]
 
 --------------------------------------------------------------------------------
