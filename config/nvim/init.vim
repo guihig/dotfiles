@@ -47,7 +47,6 @@ Plug 'https://github.com/ThePrimeagen/vim-be-good' | Plug 'https://github.com/Xu
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/vim-vdebug/vdebug'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/alvan/vim-closetag'
 
