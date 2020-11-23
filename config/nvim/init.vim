@@ -29,12 +29,12 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set cmdheight=2
 set updatetime=50
+set foldmethod=syntax
 
 " Vim Plug
 call plug#begin('~/.vim/plugged')
 
 " Colorshemes
-Plug 'https://github.com/blueshirts/darcula'
 Plug 'https://github.com/morhetz/gruvbox'
 
 " Utils
@@ -42,45 +42,63 @@ Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/preservim/nerdtree'
-Plug 'https://github.com/ThePrimeagen/vim-be-good' | Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/elixir-editors/vim-elixir'
 Plug 'https://github.com/jiangmiao/auto-pairs'
-Plug 'https://github.com/alvan/vim-closetag'
+Plug 'https://github.com/BjRo/vim-extest'
 
 call plug#end()
 
-" Code
-"let g:deoplete#enable_at_startup = 1
+" --- vim-extest settings
+map <leader>T :ExTestRunFile<CR>
+map <leader>t :ExTestRunTest<CR>
+map <leader>lt :ExTestRunLast<CR>
 
-" --- vim go (polyglot) settings.
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_auto_sameids = 1
+let g:extest_exunit_run_file_cmd = "mix test '%f'"
+let g:extest_exunit_run_test_cmd = "mix test '%f'"
+let g:extest_amrita_run_file_cmd = "mix amrita '%f'"
+let g:extest_amrita_run_test_cmd = "mix amrita '%f:%l'"
 
 " Colorschemes
 set background=dark
 colorscheme gruvbox
-"  colorscheme darcula
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 let g:gruvbox_invert_selection='0'
+
+" FZF Settings
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+ 
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+ 
+  let height = float2nr(10)
+  let width = float2nr(80)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+ 
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+ 
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 
 " LightLine
 set laststatus=2
@@ -252,45 +270,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Coc Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" HTML Auto Close Tags
-" filenames like *.xml, *.html, *.xhtml, ...
-" These are the file extensions where this plugin is enabled.
-"
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
-
-" filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-"
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.vue'
-
-" filetypes like xml, html, xhtml, ...
-" These are the file types where this plugin is enabled.
-"
-let g:closetag_filetypes = 'html,xhtml,phtml'
-
-" filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-"
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,vue'
-
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
-"
-let g:closetag_emptyTags_caseSensitive = 1
-
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-"
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
-
-" Shortcut for closing tags, default is '>'
-"
-let g:closetag_shortcut = '>'
-
-" Add > at current position without closing the current tag, default is ''
-"
-let g:closetag_close_shortcut = '<leader>>'
