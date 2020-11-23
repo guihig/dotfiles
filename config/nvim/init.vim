@@ -3,6 +3,7 @@ syntax on
 " Remapping leader key
 let mapleader = " "
 
+set encoding=UTF-8
 set pastetoggle=<F3>
 set hidden
 set timeoutlen=1000 ttimeoutlen=0
@@ -40,16 +41,58 @@ Plug 'https://github.com/morhetz/gruvbox'
 " Utils
 Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim'
-Plug 'https://github.com/itchyny/lightline.vim'
-Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/preservim/nerdtree' |
+    \ Plug 'https://github.com/xuyuanp/nerdtree-git-plugin' |
+    \ Plug 'https://github.com/ryanoasis/vim-devicons'
+Plug 'https://github.com/nathanaelkane/vim-indent-guides'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/mhinz/vim-startify'
+
+" Code utils
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/preservim/nerdcommenter'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/elixir-editors/vim-elixir'
-Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/BjRo/vim-extest'
+Plug 'https://github.com/raimondi/delimitmate'
 
 call plug#end()
+
+" --- nerdcommenter settings
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" --- vim-ident-guides settings
+let g:indent_guides_enable_on_vim_startup = 1 "Enable ident guides on startup"
 
 " --- vim-extest settings
 map <leader>T :ExTestRunFile<CR>
@@ -62,8 +105,8 @@ let g:extest_amrita_run_file_cmd = "mix amrita '%f'"
 let g:extest_amrita_run_test_cmd = "mix amrita '%f:%l'"
 
 " Colorschemes
-set background=dark
 colorscheme gruvbox
+set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -72,11 +115,11 @@ endif
 let g:gruvbox_invert_selection='0'
 
 " FZF Settings
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+" set wildmode=list:longest,list:full
+" set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+"let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
  
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
@@ -100,20 +143,32 @@ function! FloatingFZF()
 endfunction
 
 
-" LightLine
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+" Airline settings
+let g:airline_theme='gruvbox'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
-" NerdTREE
+
+" NerdTREE settings
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" NerdTREE Git
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+let g:NERDTreeGitStatusShowIgnored = 1
 
 " Keybinds
 map <C-n> :NERDTreeToggle<CR>
