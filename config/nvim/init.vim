@@ -58,119 +58,13 @@ Plug 'https://github.com/preservim/nerdcommenter'
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/elixir-editors/vim-elixir'
-Plug 'https://github.com/BjRo/vim-extest'
+Plug 'https://github.com/vim-test/vim-test'
 Plug 'https://github.com/raimondi/delimitmate'
 
 call plug#end()
 
-" --- nerdcommenter settings
-" Create default mappings
-let g:NERDCreateDefaultMappings = 1
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
-" --- vim-ident-guides settings
-let g:indent_guides_enable_on_vim_startup = 1 "Enable ident guides on startup"
-
-" --- vim-extest settings
-map <leader>T :ExTestRunFile<CR>
-map <leader>t :ExTestRunTest<CR>
-map <leader>lt :ExTestRunLast<CR>
-
-let g:extest_exunit_run_file_cmd = "mix test '%f'"
-let g:extest_exunit_run_test_cmd = "mix test '%f'"
-let g:extest_amrita_run_file_cmd = "mix amrita '%f'"
-let g:extest_amrita_run_test_cmd = "mix amrita '%f:%l'"
-
-" Colorschemes
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-let g:gruvbox_invert_selection='0'
-
-" FZF Settings
-" set wildmode=list:longest,list:full
-" set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-
-"let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
-"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
- 
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
- 
-  let height = float2nr(10)
-  let width = float2nr(80)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 1
- 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
- 
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-
-
-" Airline settings
-let g:airline_theme='gruvbox'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-
-" NerdTREE settings
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" NerdTREE Git
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
-let g:NERDTreeGitStatusShowIgnored = 1
-
-" Keybinds
+" --------------------------
+" --- keybindings
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>y "+y
@@ -186,6 +80,100 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+" --------------------------
+" --- colorschemes
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+set background=dark
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection='0'
+
+" --------------------------
+" --- startify settings
+" 'Most Recent Files' number
+let g:startify_files_number           = 18
+" Update session automatically as you exit vim
+let g:startify_session_persistence    = 1
+" Simplify the startify list to just recent files and sessions
+let g:startify_lists = [
+  \ { 'type': 'sessions',  'header': ['   Saved sessions'] },
+  \ { 'type': 'dir',       'header': ['   Recent files'] },
+  \ ]
+let g:startify_custom_header = [
+  \ "  ",
+  \ '_______________/\\\___________________________________________________       ', 
+  \ ' ______________\/\\\___________________________________________________      ', 
+  \ '  __/\\\________\/\\\___/\\\___________________/\\\_____________________     ', 
+  \ '   _\///_________\/\\\__\///______/\\\\\_____/\\\\\\\\\\\__/\\\\\\\\\____    ', 
+  \ '    __/\\\___/\\\\\\\\\___/\\\___/\\\///\\\__\////\\\////__\////////\\\___   ', 
+  \ '     _\/\\\__/\\\////\\\__\/\\\__/\\\__\//\\\____\/\\\________/\\\\\\\\\\__  ', 
+  \ '      _\/\\\_\/\\\__\/\\\__\/\\\_\//\\\__/\\\_____\/\\\_/\\___/\\\/////\\\__ ', 
+  \ '       _\/\\\_\//\\\\\\\/\\_\/\\\__\///\\\\\/______\//\\\\\___\//\\\\\\\\/\\_', 
+  \ '        _\///___\///////\//__\///_____\/////_________\/////_____\////////\//_'
+  \ ]
+
+" --------------------------
+" --- NerdTREE settings
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+
+"let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+let g:NERDTreeGitStatusShowIgnored = 1
+
+" --------------------------
+" --- vim-ident-guides settings
+let g:indent_guides_enable_on_vim_startup = 1 "Enable ident guides on startup"
+
+" --------------------------
+" --- vim-test settings
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" --------------------------
+" --- fzf settings
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!{node_modules,.git}"'
+
+
+" --------------------------
+" --- airline settings
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_theme='gruvbox'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" --------------------------
+" --- coc settings
 " Coc Bindings
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
