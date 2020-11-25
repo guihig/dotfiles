@@ -143,7 +143,7 @@ let g:NERDTreeGitStatusShowIgnored = 1
 
 " --------------------------
 " --- vim-ident-guides settings
-let g:indent_guides_enable_on_vim_startup = 1 "Enable ident guides on startup"
+let g:indent_guides_enable_on_vim_startup = 0 "Enable ident guides on startup"
 
 " --------------------------
 " --- vim-test settings
