@@ -17,6 +17,10 @@
       glob: true
       path: config/alacritty/*
 
+    ~/.config/kitty/:
+      glob: true
+      path: config/kitty/*
+
     ~/.local/share/fonts/:
       glob: true
       path: local/share/fonts/*
