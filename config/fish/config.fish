@@ -47,28 +47,28 @@ alias peixe fish
 #########################
 ######### Paths #########
 #########################
-set PATH $PATH:$HOME/.local/bin
-set PATH $PATH:$HOME/.yarn/bin
-set PATH $PATH:$HOME/.local/share/Steam/steamapps/common/Terraria
+set PATH $HOME/.local/bin $PATH
+set PATH $HOME/.yarn/bin $PATH
+set PATH $HOME/.local/share/Steam/steamapps/common/Terraria $PATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-set PATH "$PATH:$HOME/.rvm/bin"
-set PATH "$PATH:/var/lib/snapd/snap/bin"
+set PATH "$HOME/.rvm/bin" $PATH
+set PATH "/var/lib/snapd/snap/bin" $PATH
 
 set JAVA_HOME /usr/lib/jvm/default
 set ANDROID_HOME "$HOME/Android/Sdk"
 
-set PATH "$PATH:$JAVA_HOME/bin"
+set PATH "$JAVA_HOME/bin" $PATH
 
-set PATH "$ANDROID_HOME/tools:$PATH"
-set PATH "$ANDROID_HOME/platform-tools:$PATH"
-set PATH "$ANDROID_HOME/tools/bin:$PATH"
-set PATH "$ANDROID_HOME/emulator:$PATH"
+set PATH "$ANDROID_HOME/tools" $PATH
+set PATH "$ANDROID_HOME/platform-tools" $PATH
+set PATH "$ANDROID_HOME/tools/bin" $PATH
+set PATH "$ANDROID_HOME/emulator" $PATH
 
 set ANDROID_SDK_ROOT "$ANDROID_HOME"
 
 set GOROOT (go env GOROOT)
 set GOPATH (go env GOPATH)
-set PATH "$PATH:$GOPATH/bin"
+set PATH "$GOPATH/bin" $PATH
 
 #########################
 ######### Inits #########
