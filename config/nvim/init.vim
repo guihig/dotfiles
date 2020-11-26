@@ -34,6 +34,7 @@ set shortmess+=c
 set cmdheight=2
 set updatetime=50
 set foldmethod=syntax
+set foldlevel=99
 
 " Vim Plug
 call plug#begin('~/.vim/plugged')
@@ -53,10 +54,14 @@ Plug 'https://github.com/nathanaelkane/vim-indent-guides'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/mhinz/vim-startify'
+Plug 'https://github.com/simeji/winresizer'
 
 " Code utils
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/preservim/nerdcommenter'
+Plug 'https://github.com/tpope/vim-dotenv'
+Plug 'https://github.com/posva/vim-vue'
+Plug 'https://github.com/907th/vim-auto-save'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -91,6 +96,10 @@ function! TermToggle(height)
         let g:term_win = win_getid()
     endif
 endfunction
+
+" --------------------------
+" --- vim-auto-save settings
+let g:auto_save = 1 
 
 " --------------------------
 " --- keybindings
@@ -270,8 +279,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+nmap <silent> <leader>f  :call CocAction('format')<CR> 
 
 augroup mygroup
   autocmd!
