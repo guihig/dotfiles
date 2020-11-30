@@ -25,10 +25,12 @@ Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/tpope/vim-dotenv'
 Plug 'https://github.com/posva/vim-vue'
 Plug 'https://github.com/907th/vim-auto-save'
+Plug 'https://github.com/elixir-editors/vim-elixir'
+Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/easymotion/vim-easymotion'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/elixir-editors/vim-elixir'
 Plug 'https://github.com/vim-test/vim-test'
 " Plug 'https://github.com/raimondi/delimitmate'
 

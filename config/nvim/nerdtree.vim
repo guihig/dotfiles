@@ -22,4 +22,4 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 "let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
-let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusShowIgnored = 0

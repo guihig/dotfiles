@@ -9,3 +9,5 @@ source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/startify.vim
 source $HOME/.config/nvim/vim-auto-save.vim
 source $HOME/.config/nvim/vim-test.vim
+source $HOME/.config/nvim/vim-polyglot.vim
+source $HOME/.config/nvim/vim-easy-motion.vim
