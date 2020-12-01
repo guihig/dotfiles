@@ -31,6 +31,7 @@ Plug 'https://github.com/easymotion/vim-easymotion'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/antoinemadec/coc-fzf'
 Plug 'https://github.com/vim-test/vim-test'
 Plug 'https://github.com/raimondi/delimitmate'
 

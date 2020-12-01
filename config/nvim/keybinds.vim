@@ -33,6 +33,7 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>h :tabprevious<CR>
 nnoremap <Leader>l :tabnext<CR>
 nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Rg<CR>
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
