@@ -26,7 +26,6 @@ endfunction
 
 " --------------------------
 " --- keybindings
-map <C-n> :NERDTreeToggle<CR>
 nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>y "+y
 nnoremap <Leader>+ :vertical resize +5<CR>

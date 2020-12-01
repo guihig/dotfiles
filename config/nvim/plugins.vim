@@ -9,9 +9,9 @@ Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
-Plug 'https://github.com/preservim/nerdtree' |
-    \ Plug 'https://github.com/xuyuanp/nerdtree-git-plugin' |
-    \ Plug 'https://github.com/ryanoasis/vim-devicons'
+"Plug 'https://github.com/preservim/nerdtree' |
+"    \ Plug 'https://github.com/xuyuanp/nerdtree-git-plugin' |
+Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
 

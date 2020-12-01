@@ -5,7 +5,7 @@ source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/defaults.vim
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/keybinds.vim
-source $HOME/.config/nvim/nerdtree.vim
+"source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/startify.vim
 source $HOME/.config/nvim/vim-auto-save.vim
 source $HOME/.config/nvim/vim-test.vim
