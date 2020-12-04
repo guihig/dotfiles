@@ -6,6 +6,7 @@ let mapleader = " "
 " open terminal below all splits
 cabbrev bterm bo term
 
+set termguicolors
 set encoding=UTF-8
 set pastetoggle=<F3>
 set hidden
@@ -33,6 +34,6 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set cmdheight=2
 set updatetime=50
-set foldmethod=syntax
-set foldlevel=99
+" set foldmethod=syntax
+" set foldlevel=99
 set nocompatible

@@ -25,15 +25,15 @@ function! TermToggle(height)
 endfunction
 
 " --------------------------
-" --- keybindings
+" --- source vim file
 nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
+
+" --------------------------
+" --- copy to clipboard
 nnoremap <Leader>y "+y
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <Leader>h :tabprevious<CR>
-nnoremap <Leader>l :tabnext<CR>
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-f> :Rg<CR>
+
+" --------------------------
+" --- move line
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -45,7 +45,3 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <A-t> :call TermToggle(12)<CR>
 inoremap <A-t> <Esc>:call TermToggle(12)<CR>
 tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
-
-" Terminal go back to normal mode
-tnoremap <Esc> <C-\><C-n>
-tnoremap :q! <C-\><C-n>:q!<CR>

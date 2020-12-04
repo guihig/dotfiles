@@ -72,13 +72,9 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>F  <Plug>(coc-format-selected)
 nmap <leader>F  <Plug>(coc-format-selected)
 nmap <silent> <leader>f  :call CocAction('format')<CR>
+nmap <silent> <leader>o  :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 autocmd Filetype typescript,javascript,css,scss,sass setlocal tabstop=2
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -118,15 +114,15 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 set mouse=a
 
 " mappings
-nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <space>a       :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <space>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <space>l       :<C-u>CocFzfList location<CR>
-nnoremap <silent> <space>o       :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>
+nnoremap <silent> <leader><space> :<C-u>CocFzfList<CR>
+nnoremap <silent> <leader>a       :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader>c       :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader>e       :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader>l       :<C-u>CocFzfList location<CR>
+nnoremap <silent> <leader>o       :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader>s       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>p       :<C-u>CocFzfListResume<CR>
 
 " Coc Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
