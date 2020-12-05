@@ -1,7 +1,17 @@
-set BROWSER "firefox"
+set -g fish_greeting
 set -U EDITOR vim
-set fish_greeting
-set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden -g "!{node_modules,.git}"' 
+set BROWSER "firefox"
+
+# Get terminal emulator
+set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
+
+# Term
+switch "$TERM_EMULATOR"
+case '*kitty*'
+	export TERM='xterm-kitty'
+case '*'
+	export TERM='xterm-256color'
+end
 
 #########################
 ####### Functions #######

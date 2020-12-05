@@ -1,10 +1,11 @@
-syntax on
-
 " Remapping leader key
 let mapleader = " "
 
 " open terminal below all splits
 cabbrev bterm bo term
+
+syntax on
+filetype plugin indent on
 
 set termguicolors
 set encoding=UTF-8
@@ -34,6 +35,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set cmdheight=2
 set updatetime=50
+" set colorcolumn=88
 " set foldmethod=syntax
 " set foldlevel=99
 set nocompatible
