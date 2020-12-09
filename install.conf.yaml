@@ -53,6 +53,10 @@
       glob: true
       path: config/nvim/*
 
+    ~/.config/ranger/:
+      glob: true
+      path: config/ranger/*
+
 - clean: [ '~' ]
 
 - clean:

@@ -16,6 +16,7 @@ Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
+Plug 'https://github.com/kevinhwang91/rnvimr'
 
 " Git
 Plug 'https://github.com/tpope/vim-fugitive'
