@@ -32,7 +32,7 @@ tnoremap <silent> <C-n> <C-\><C-n>:RnvimrToggle<CR>
 tnoremap <silent> <Esc> <C-\><C-n>:RnvimrToggle<CR>
 
 " Resize floating window by all preset layouts
-" tnoremap <silent> <C-i> <C-\><C-n>:RnvimrResize<CR>
+tnoremap <silent> <leader>i <C-\><C-n>:RnvimrResize<CR>
 
 " Resize floating window by special preset layouts
 " tnoremap <silent> <C-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
