@@ -1,10 +1,7 @@
+syntax on
+
 " Remapping leader key
 let mapleader = " "
-
-" open terminal below all splits
-cabbrev bterm bo term
-
-syntax on
 
 set encoding=UTF-8
 set pastetoggle=<F3>

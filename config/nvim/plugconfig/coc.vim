@@ -67,8 +67,6 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> <leader>f  :call CocAction('format')<CR>
 nmap <silent> <leader>o  :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
-autocmd Filetype typescript,javascript,css,scss,sass setlocal tabstop=2
-
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
