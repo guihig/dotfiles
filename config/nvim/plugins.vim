@@ -23,6 +23,8 @@ Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/easymotion/vim-easymotion'
+Plug 'https://github.com/907th/vim-auto-save'
+Plug 'https://github.com/tpope/vim-dispatch'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}

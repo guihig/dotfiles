@@ -64,8 +64,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-nmap <silent> <leader>f  :call CocAction('format')<CR>
-nmap <silent> <leader>o  :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <leader>f :call CocAction('format')<CR>
+nmap <C-A-o> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
