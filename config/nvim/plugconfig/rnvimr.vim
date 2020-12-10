@@ -1,5 +1,3 @@
-Plug 'kevinhwang91/rnvimr'
-
 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_enable_ex = 1
 
@@ -29,7 +27,6 @@ highlight link RnvimrNormal CursorLine
 
 nnoremap <silent> <C-n> :RnvimrToggle<CR>
 tnoremap <silent> <C-n> <C-\><C-n>:RnvimrToggle<CR>
-tnoremap <silent> <Esc> <C-\><C-n>:RnvimrToggle<CR>
 
 " Resize floating window by all preset layouts
 tnoremap <silent> <leader>i <C-\><C-n>:RnvimrResize<CR>

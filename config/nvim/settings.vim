@@ -5,20 +5,15 @@ let mapleader = " "
 cabbrev bterm bo term
 
 syntax on
-filetype plugin indent on
 
-set termguicolors
 set encoding=UTF-8
 set pastetoggle=<F3>
 set hidden
 set timeoutlen=1000 ttimeoutlen=0
-set guicursor=
 set relativenumber
-set nohlsearch
-set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 set nu
@@ -35,7 +30,3 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set cmdheight=2
 set updatetime=50
-" set colorcolumn=88
-" set foldmethod=syntax
-" set foldlevel=99
-set nocompatible

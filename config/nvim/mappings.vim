@@ -8,11 +8,13 @@ function! TermToggle(height)
     if win_gotoid(g:term_win)
         hide
     else
-        botright new
-        exec "resize " . a:height
         try
-            exec "buffer " . g:term_buf
+            exec "botright sbuffer " . g:term_buf
+            exec "resize " . a:height
         catch
+            botright new
+            exec "resize " . a:height
+
             call termopen($SHELL, {"detach": 0})
             let g:term_buf = bufnr("")
             set nonumber
@@ -23,6 +25,12 @@ function! TermToggle(height)
         let g:term_win = win_getid()
     endif
 endfunction
+
+" --------------------------
+" --- source vim file
+nnoremap <silent> <S-A-l> :bnext<CR>
+nnoremap <silent> <S-A-h> :bprev<CR>
+nnoremap <silent> <A-w> :bdelete<CR>
 
 " --------------------------
 " --- source vim file
@@ -45,3 +53,6 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <A-t> :call TermToggle(12)<CR>
 inoremap <A-t> <Esc>:call TermToggle(12)<CR>
 tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
+
+nnoremap <Leader><CR> :noh<cr>
+noremap <C-e> :WinResizerStartFocus<CR>
