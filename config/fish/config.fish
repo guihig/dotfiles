@@ -9,6 +9,8 @@ set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print 
 switch "$TERM_EMULATOR"
 case '*kitty*'
 	export TERM='xterm-kitty'
+case '*alacritty*'
+    export TERM='alacritty'
 case '*'
 	export TERM='xterm-256color'
 end
