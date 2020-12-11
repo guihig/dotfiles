@@ -2,7 +2,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Colorshemes
-Plug 'https://github.com/ayu-theme/ayu-vim'
 Plug 'https://github.com/sainnhe/sonokai'
 
 " Utils
