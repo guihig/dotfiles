@@ -1,7 +1,7 @@
 syntax on
 
 " Remapping leader key
-let mapleader = " "
+let mapleader = "\<Space>"
 
 set encoding=UTF-8
 set pastetoggle=<F3>

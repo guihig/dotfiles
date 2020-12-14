@@ -17,7 +17,7 @@ nnoremap <silent> <C-n> :RnvimrToggle<CR>
 tnoremap <silent> <C-n> <C-\><C-n>:RnvimrToggle<CR>
 
 " Resize floating window by all preset layouts
-tnoremap <silent> <leader>i <C-\><C-n>:RnvimrResize<CR>
+tnoremap <silent> <A-S-i> <C-\><C-n>:RnvimrResize<CR>
 
 " Map Rnvimr action
 let g:rnvimr_action = {
