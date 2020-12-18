@@ -13,7 +13,7 @@ let g:test#custom_transformations = {"dispatch": function("DispatchEnv")}
 let g:test#transformation = 'dispatch'
 let g:test#preserve_screen = 1
 
-let test#strategy = "dispatch"
+let test#strategy = "neovim"
 
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
