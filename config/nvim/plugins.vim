@@ -15,7 +15,6 @@ Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
 Plug 'https://github.com/kevinhwang91/rnvimr'
-Plug 'https://github.com/TaDaa/vimade'
 
 " Git
 Plug 'https://github.com/airblade/vim-gitgutter'
@@ -27,10 +26,10 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/tpope/vim-dispatch'
+Plug 'https://github.com/raimondi/delimitmate'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/vim-test/vim-test'
-Plug 'https://github.com/raimondi/delimitmate'
 
 call plug#end()
