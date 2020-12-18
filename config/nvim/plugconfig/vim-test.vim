@@ -11,9 +11,9 @@ endfunction
 
 let g:test#custom_transformations = {"dispatch": function("DispatchEnv")}
 let g:test#transformation = 'dispatch'
-let g:test#preserve_screen = 1
+let g:test#preserve_screen = 0
 
-let test#strategy = "neovim"
+let test#strategy = "dispatch"
 
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>

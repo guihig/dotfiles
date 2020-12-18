@@ -6,7 +6,9 @@ source $HOME/.config/nvim/plugconfig/airline.vim
 source $HOME/.config/nvim/plugconfig/autosave.vim
 source $HOME/.config/nvim/plugconfig/coc.vim
 source $HOME/.config/nvim/plugconfig/rnvimr.vim
-source $HOME/.config/nvim/plugconfig/fzf.vim
+"source $HOME/.config/nvim/plugconfig/fzf.vim
+source $HOME/.config/nvim/plugconfig/telescope.vim
+source $HOME/.config/nvim/plugconfig/nerdcommenter.vim
 source $HOME/.config/nvim/plugconfig/startify.vim
 source $HOME/.config/nvim/plugconfig/vim-easy-motion.vim
 source $HOME/.config/nvim/plugconfig/vim-test.vim

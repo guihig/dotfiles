@@ -34,7 +34,7 @@ endfunction
 " --- source vim file
 nnoremap <silent> <S-A-l> :bnext<CR>
 nnoremap <silent> <S-A-h> :bprev<CR>
-nnoremap <silent> <A-w> :bdelete<CR>
+nnoremap <silent> <A-w> :bprev\|bdelete #<CR>
 
 " --------------------------
 " --- source vim file
