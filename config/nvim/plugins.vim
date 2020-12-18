@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 " Colorshemes
 Plug 'https://github.com/sainnhe/sonokai'
+Plug 'https://github.com/joshdick/onedark.vim'
+Plug 'https://github.com/rakr/vim-one'
 
 " Utils
 Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -13,6 +15,7 @@ Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
 Plug 'https://github.com/kevinhwang91/rnvimr'
+Plug 'https://github.com/TaDaa/vimade'
 
 " Git
 Plug 'https://github.com/airblade/vim-gitgutter'

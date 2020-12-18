@@ -26,5 +26,5 @@ set noshowmode
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set cmdheight=2
-set updatetime=50
+set updatetime=1000
 set nofoldenable

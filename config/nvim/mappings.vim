@@ -26,10 +26,9 @@ function! TermToggle(height)
     endif
 endfunction
 
-au TermOpen * setlocal listchars= nonumber norelativenumber
-au TermOpen * startinsert
-au BufEnter,BufWinEnter,WinEnter term://* startinsert
-au BufLeave term://* stopinsert
+"au TermOpen * startinsert
+"au BufEnter,BufWinEnter,WinEnter term://* startinsert
+"au BufLeave term://* stopinsert
 
 " --------------------------
 " --- source vim file
