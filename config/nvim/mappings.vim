@@ -61,3 +61,5 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
 nnoremap <Leader><CR> :noh<cr>
 noremap <C-e> :WinResizerStartFocus<CR>
 tnoremap <C-o> <C-\><C-n>
+
+nnoremap <S-w> :update<CR>
