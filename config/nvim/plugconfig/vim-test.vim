@@ -11,6 +11,7 @@ endfunction
 
 let g:test#custom_transformations = {"dispatch": function("DispatchEnv")}
 let g:test#transformation = 'dispatch'
+let g:test#preserve_screen = 1
 
 let test#strategy = "dispatch"
 
