@@ -81,7 +81,7 @@ set ANDROID_SDK_ROOT "$ANDROID_HOME"
 set GOROOT (go env GOROOT)
 set GOPATH (go env GOPATH)
 set PATH "$GOPATH/bin" $PATH
-set PATH "$HOME/squashfs-root/usr/bin" $PATH
+# set PATH "$HOME/squashfs-root/usr/bin" $PATH
 
 #########################
 ######### Inits #########
