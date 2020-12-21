@@ -63,3 +63,5 @@ noremap <C-e> :WinResizerStartFocus<CR>
 tnoremap <C-o> <C-\><C-n>
 
 nnoremap <S-w> :update<CR>
+
+nnoremap <silent> <leader>v :vsplit<CR>
