@@ -111,3 +111,5 @@ set mouse=a
 
 " Coc Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+nnoremap <leader>qq :CocSearch <C-R>=expand("<cword>")<CR><CR>
