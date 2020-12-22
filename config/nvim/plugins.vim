@@ -30,6 +30,8 @@ Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/tpope/vim-dispatch'
 Plug 'https://github.com/raimondi/delimitmate'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
