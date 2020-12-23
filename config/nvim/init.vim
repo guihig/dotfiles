@@ -12,3 +12,5 @@ source $HOME/.config/nvim/plugconfig/nerdcommenter.vim
 source $HOME/.config/nvim/plugconfig/startify.vim
 source $HOME/.config/nvim/plugconfig/vim-easy-motion.vim
 source $HOME/.config/nvim/plugconfig/vim-test.vim
+luafile $HOME/.config/nvim/plugconfig/treesitter.lua
+source $HOME/.config/nvim/plugconfig/harpoon.vim

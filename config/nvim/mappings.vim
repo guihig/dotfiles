@@ -32,8 +32,22 @@ endfunction
 
 " --------------------------
 " --- source vim file
-nnoremap <silent> <S-A-l> :bnext<CR>
-nnoremap <silent> <S-A-h> :bprev<CR>
+function! BnSkipTerm()
+  let start_buffer = bufnr('%')
+  bn
+  while &buftype ==# 'terminal' && bufnr('%') != start_buffer
+    bn
+  endwhile
+endfunction
+function! BpSkipTerm()
+  let start_buffer = bufnr('%')
+  bp
+  while &buftype ==# 'terminal' && bufnr('%') != start_buffer
+    bp
+  endwhile
+endfunction
+nnoremap <silent> <S-A-l> :call BnSkipTerm()<CR>
+nnoremap <silent> <S-A-h> :call BpSkipTerm()<CR>
 nnoremap <silent> <A-w> :bprev\|bdelete #<CR>
 
 " --------------------------

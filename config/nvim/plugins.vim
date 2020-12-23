@@ -25,13 +25,15 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 " Code utils
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/preservim/nerdcommenter'
-Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/tpope/vim-dispatch'
 Plug 'https://github.com/raimondi/delimitmate'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'elixir-editors/vim-elixir'
+Plug 'https://github.com/ThePrimeagen/harpoon'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
