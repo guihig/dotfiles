@@ -48,7 +48,7 @@ function! BpSkipTerm()
 endfunction
 nnoremap <silent> <S-A-l> :call BnSkipTerm()<CR>
 nnoremap <silent> <S-A-h> :call BpSkipTerm()<CR>
-nnoremap <silent> <A-w> :call BpSkipTerm()\|bdelete #<CR>
+nnoremap <silent> <A-w> :bp\|bdelete #<CR>
 
 " --------------------------
 " --- source vim file
