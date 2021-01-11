@@ -7,6 +7,9 @@ let g:rnvimr_enable_picker = 1
 " Disable a border for floating window
 let g:rnvimr_draw_border = 0
 
+" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+let g:rnvimr_enable_bw = 1
+
 " Draw border with both
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
 

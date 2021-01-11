@@ -31,23 +31,9 @@ endfunction
 "au BufLeave term://* stopinsert
 
 " --------------------------
-" --- source vim file
-function! BnSkipTerm()
-  let start_buffer = bufnr('%')
-  bn
-  while &buftype ==# 'terminal' && bufnr('%') != start_buffer
-    bn
-  endwhile
-endfunction
-function! BpSkipTerm()
-  let start_buffer = bufnr('%')
-  bp
-  while &buftype ==# 'terminal' && bufnr('%') != start_buffer
-    bp
-  endwhile
-endfunction
-nnoremap <silent> <S-A-l> :call BnSkipTerm()<CR>
-nnoremap <silent> <S-A-h> :call BpSkipTerm()<CR>
+" --- buffer navigation
+nnoremap <silent> <S-A-l> :bn<CR>
+nnoremap <silent> <S-A-h> :bp<CR>
 nnoremap <silent> <A-w> :bp\|bdelete #<CR>
 
 " --------------------------
@@ -57,6 +43,7 @@ nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
 " --------------------------
 " --- copy to clipboard
 nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
 
 " --------------------------
 " --- move line

@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/sainnhe/sonokai'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/rakr/vim-one'
+Plug 'https://github.com/gruvbox-community/gruvbox'
 
 " Utils
 " Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -26,7 +27,6 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/easymotion/vim-easymotion'
-Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/tpope/vim-dispatch'
 Plug 'https://github.com/raimondi/delimitmate'
 Plug 'tpope/vim-dadbod'
