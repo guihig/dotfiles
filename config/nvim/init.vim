@@ -8,7 +8,7 @@ source $HOME/.config/nvim/plugconfig/coc.vim
 source $HOME/.config/nvim/plugconfig/rnvimr.vim
 "source $HOME/.config/nvim/plugconfig/fzf.vim
 source $HOME/.config/nvim/plugconfig/telescope.vim
-source $HOME/.config/nvim/plugconfig/nerdcommenter.vim
+" source $HOME/.config/nvim/plugconfig/nerdcommenter.vim
 source $HOME/.config/nvim/plugconfig/startify.vim
 source $HOME/.config/nvim/plugconfig/vim-easy-motion.vim
 source $HOME/.config/nvim/plugconfig/vim-test.vim
@@ -16,3 +16,6 @@ luafile $HOME/.config/nvim/plugconfig/treesitter.lua
 " luafile $HOME/.config/nvim/plugconfig/lspconfig.lua
 " luafile $HOME/.config/nvim/plugconfig/completion.lua
 source $HOME/.config/nvim/plugconfig/harpoon.vim
+source $HOME/.config/nvim/plugconfig/viminspector.vim
+source $HOME/.config/nvim/plugconfig/ultisnips.vim
+source $HOME/.config/nvim/plugconfig/vim-polyglot.vim

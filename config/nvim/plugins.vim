@@ -8,14 +8,16 @@ Plug 'https://github.com/rakr/vim-one'
 Plug 'https://github.com/gruvbox-community/gruvbox'
 
 " Utils
-" Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
 Plug 'https://github.com/kevinhwang91/rnvimr'
+Plug 'https://github.com/ThePrimeagen/harpoon'
+Plug 'https://github.com/easymotion/vim-easymotion'
+
+" Telescope requirements
 Plug 'https://github.com/nvim-lua/popup.nvim'
 Plug 'https://github.com/nvim-lua/plenary.nvim'
 Plug 'https://github.com/nvim-telescope/telescope.nvim'
@@ -24,19 +26,26 @@ Plug 'https://github.com/nvim-telescope/telescope.nvim'
 Plug 'https://github.com/airblade/vim-gitgutter'
 
 " Code utils
-Plug 'https://github.com/tpope/vim-surround'
-Plug 'https://github.com/preservim/nerdcommenter'
-Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/tpope/vim-dispatch'
+Plug 'https://github.com/tpope/vim-surround'
+" Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/raimondi/delimitmate'
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/honza/vim-snippets'
+Plug 'https://github.com/SirVer/ultisnips'
+
+" DB
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Shl
 Plug 'elixir-editors/vim-elixir'
-Plug 'https://github.com/ThePrimeagen/harpoon'
+Plug 'posva/vim-vue'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/vim-test/vim-test'
+Plug 'puremourning/vimspector'
 
 call plug#end()

@@ -22,12 +22,4 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
--- Custom Parsers
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.vue = {
-  install_info = {
-    url = "~/dev/treesitter/tree-sitter-vue", -- local path or git repo
-    files = {"src/parser.c"}
-  },
-}
