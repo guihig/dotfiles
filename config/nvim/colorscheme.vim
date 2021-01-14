@@ -9,7 +9,6 @@ endif
 " let ayucolor="dark"   " for dark version of theme
 " colorscheme ayu
 
-
 " --------------------------
 " --- sonokai
 " The configuration options should be placed before `colorscheme sonokai`.
@@ -20,10 +19,10 @@ endif
 
 " --------------------------
 " --- one dark
-let g:onedark_hide_endofbuffer = 0
-let g:onedark_termcolors = 256
-let g:onedark_terminal_italics = 0
-colorscheme onedark
+" let g:onedark_hide_endofbuffer = 0
+" let g:onedark_termcolors = 256
+" let g:onedark_terminal_italics = 0
+" colorscheme onedark
 
 " --------------------------
 " --- one
@@ -31,3 +30,11 @@ colorscheme onedark
 " colorscheme one
 " set background=dark
 
+" --------------------------
+" --- gruvbox
+let g:gruvbox_material_background = 'medium'
+colorscheme gruvbox-material
+
+" --------------------------
+" --- jellybeans
+" colorscheme jellybeans

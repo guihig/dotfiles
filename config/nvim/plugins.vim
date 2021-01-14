@@ -5,7 +5,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/sainnhe/sonokai'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/rakr/vim-one'
-Plug 'https://github.com/gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'https://github.com/nanotech/jellybeans.vim'
+Plug 'https://github.com/ayu-theme/ayu-vim'
 
 " Utils
 Plug 'https://github.com/vim-airline/vim-airline'

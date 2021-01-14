@@ -44,6 +44,7 @@ nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
 " --- copy to clipboard
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
+nnoremap <Leader>Y gg"+yG
 
 " --------------------------
 " --- move line
@@ -59,10 +60,18 @@ nnoremap <A-t> :call TermToggle(12)<CR>
 inoremap <A-t> <Esc>:call TermToggle(12)<CR>
 tnoremap <A-t> <C-\><C-n>:call TermToggle(12)<CR>
 
+" --------------------------
+" --- set no highlight
 nnoremap <Leader><CR> :noh<cr>
-noremap <C-e> :WinResizerStartFocus<CR>
+
+" --------------------------
+" --- exit terminal mode
 tnoremap <C-o> <C-\><C-n>
 
+" --------------------------
+" --- save file
 nnoremap <S-w> :update<CR>
 
+" --------------------------
+" --- split buffer verticaly
 nnoremap <silent> <leader>v :vsplit<CR>
