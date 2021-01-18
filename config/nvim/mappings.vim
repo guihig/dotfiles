@@ -42,3 +42,7 @@ nnoremap <S-w> :update<CR>
 " --------------------------
 " --- split buffer verticaly
 nnoremap <silent> <leader>v :vsplit<CR>
+
+" --------------------------
+" --- paste laste copy
+vnoremap <leader>p "_dP
