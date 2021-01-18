@@ -28,6 +28,7 @@ set shortmess+=c
 set cmdheight=2
 set updatetime=50
 set nofoldenable
+set scrolloff=8
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
