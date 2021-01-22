@@ -37,7 +37,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " --------------------------
 " --- save file
-nnoremap <S-w> :update<CR>
+nnoremap W :update<CR>
 
 " --------------------------
 " --- split buffer verticaly

@@ -1,8 +1,5 @@
 syntax on
 
-" Remapping leader key
-let mapleader = " "
-
 set encoding=UTF-8
 set pastetoggle=<F3>
 set hidden
@@ -30,5 +27,5 @@ set updatetime=50
 set nofoldenable
 set scrolloff=8
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
