@@ -1,6 +1,7 @@
 set -g fish_greeting
-set -U EDITOR vim
 set BROWSER "firefox"
+
+export EDITOR='vim'
 
 # Get terminal emulator
 set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')

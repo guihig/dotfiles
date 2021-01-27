@@ -57,7 +57,10 @@
       glob: true
       path: config/ranger/*
 
-- clean: [ '~' ]
+    ~/.tmux.conf:
+      path: config/tmux/tmux.conf
+
+- clean: ["~"]
 
 - clean:
     ~/:

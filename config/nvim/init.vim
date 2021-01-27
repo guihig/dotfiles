@@ -18,6 +18,7 @@ Plug 'https://github.com/simeji/winresizer'
 Plug 'https://github.com/kevinhwang91/rnvimr'
 Plug 'https://github.com/ThePrimeagen/harpoon'
 Plug 'https://github.com/easymotion/vim-easymotion'
+Plug 'edkolev/tmuxline.vim'
 
 " Telescope requirements
 Plug 'https://github.com/nvim-lua/popup.nvim'
