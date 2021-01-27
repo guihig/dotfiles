@@ -6,6 +6,7 @@ Plug 'https://github.com/sainnhe/sonokai'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/rakr/vim-one'
 Plug 'sainnhe/gruvbox-material'
+Plug 'gruvbox-community/gruvbox'
 Plug 'https://github.com/nanotech/jellybeans.vim'
 Plug 'https://github.com/ayu-theme/ayu-vim'
 
@@ -35,10 +36,6 @@ Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/raimondi/delimitmate'
 Plug 'https://github.com/honza/vim-snippets'
 Plug 'https://github.com/SirVer/ultisnips'
-
-" DB
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
 
 " Shl
 Plug 'elixir-editors/vim-elixir'

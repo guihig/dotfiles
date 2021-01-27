@@ -31,9 +31,14 @@ endif
 " set background=dark
 
 " --------------------------
-" --- gruvbox
+" --- gruvbox material
 let g:gruvbox_material_background = 'medium'
 colorscheme gruvbox-material
+
+" --------------------------
+" --- gruvbox 
+" set background=dark
+" colorscheme gruvbox
 
 " --------------------------
 " --- jellybeans

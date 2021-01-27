@@ -84,6 +84,8 @@ set GOPATH (go env GOPATH)
 set PATH "$GOPATH/bin" $PATH
 # set PATH "$HOME/squashfs-root/usr/bin" $PATH
 
+set PATH "$HOME/.npm-global/bin" $PATH
+
 #########################
 ######### Inits #########
 #########################
