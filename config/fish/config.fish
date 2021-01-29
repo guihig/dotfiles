@@ -19,19 +19,9 @@ end
 #########################
 ####### Functions #######
 #########################
-function awsid
-    echo '051630741961'
-end
-
-function mappa-server-ip-by-tag
-    command aws ec2 describe-instances \
-        --query='Reservations[0].Instances[].NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp' \
-        --output=text \
-        --filters Name=tag:Type,Values=$argv[1]
-end
 
 #########################
-######## Aliases ########f
+######## Aliases ########
 #########################
 
 function dc
@@ -57,6 +47,8 @@ end
 alias vim nvim
 
 alias peixe fish
+
+alias tmx tmuxinator
 #########################
 ######### Paths #########
 #########################
