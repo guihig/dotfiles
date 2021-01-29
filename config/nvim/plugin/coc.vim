@@ -113,6 +113,7 @@ set mouse=a
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 nnoremap <leader>qq :CocSearch <C-R>=expand("<cword>")<CR><CR>
+vnoremap <leader>qq :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 autocmd FileType scss setl iskeyword+=@-@
 
