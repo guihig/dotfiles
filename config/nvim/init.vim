@@ -16,10 +16,10 @@ Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/simeji/winresizer'
-Plug 'https://github.com/kevinhwang91/rnvimr'
 Plug 'https://github.com/ThePrimeagen/harpoon'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
+Plug 'kevinhwang91/rnvimr'
 
 " Telescope requirements
 Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -41,6 +41,7 @@ Plug 'https://github.com/SirVer/ultisnips'
 Plug 'elixir-editors/vim-elixir'
 Plug 'posva/vim-vue'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'https://github.com/dag/vim-fish'
 
 " Code Config
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -58,3 +59,6 @@ let mapleader = " "
 
 " Necessary sources
 luafile $HOME/.config/nvim/lua/treesitter.lua
+
+let g:loaded_python_provider = 0
+let g:loaded_perl_provider = 0

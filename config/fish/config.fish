@@ -1,7 +1,7 @@
 set -g fish_greeting
-set BROWSER "firefox"
 
-export EDITOR='vim'
+set BROWSER "firefox"
+set EDITOR 'nvim'
 
 # Get terminal emulator
 set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
@@ -60,7 +60,6 @@ set PATH $HOME/.local/share/Steam/steamapps/common/Terraria $PATH
 set PATH "$HOME/.rvm/bin" $PATH
 
 set JAVA_HOME /usr/lib/jvm/default
-set ANDROID_HOME "$HOME/Android/Sdk"
 
 set PATH "$JAVA_HOME/bin" $PATH
 
@@ -69,6 +68,8 @@ set GOPATH (go env GOPATH)
 set PATH "$GOPATH/bin" $PATH
 
 set PATH "$HOME/.npm-global/bin" $PATH
+set GEM_HOME (ruby -e 'puts Gem.user_dir')
+set PATH "$PATH:$GEM_HOME/bin"
 
 #########################
 ######### Inits #########

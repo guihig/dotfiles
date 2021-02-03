@@ -1,38 +1,24 @@
-" Make Ranger replace Netrw and be the file explorer
-let g:rnvimr_enable_ex = 1
-
-" Make Ranger to be hidden after picking a file
-let g:rnvimr_enable_picker = 1
-
-" Disable a border for floating window
-let g:rnvimr_draw_border = 0
-
-" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-let g:rnvimr_enable_bw = 1
-
-" Draw border with both
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-
-" Link CursorLine into RnvimrNormal highlight in the Floating window
-highlight link RnvimrNormal CursorLine
-
+tnoremap <silent> <A-i> <C-\><C-n>:RnvimrResize<CR>
 nnoremap <silent> <C-n> :RnvimrToggle<CR>
 tnoremap <silent> <C-n> <C-\><C-n>:RnvimrToggle<CR>
 
-" Resize floating window by all preset layouts
-tnoremap <silent> <A-S-i> <C-\><C-n>:RnvimrResize<CR>
+let g:rnvimr_enable_ex = 0
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_hide_gitignore = 1
+let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+let g:rnvimr_enable_bw = 1
+let g:rnvimr_shadow_winblend = 70
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+highlight link RnvimrNormal CursorLine
 
-" Map Rnvimr action
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-s>': 'NvimEdit split',
+            \ '<C-x>': 'NvimEdit split',
             \ '<C-v>': 'NvimEdit vsplit',
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
 
-" Customize multiple preset layouts
-" '{}' represents the initial layout
 let g:rnvimr_presets = [
             \ {'width': 0.600, 'height': 0.600},
             \ {},
