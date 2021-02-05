@@ -22,6 +22,7 @@ spawnsHook = do
   spawn "$HOME/.xmonad/scripts/init-wallpaper.sh"
   spawn "nm-applet --no-agent"
   spawn "wal -R"
+  spawn "xmodmap -e 'add mod4 = Menu'"
   setDefaultCursor xC_left_ptr
 
 setFullscreenSupported :: X ()

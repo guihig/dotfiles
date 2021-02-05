@@ -75,6 +75,7 @@ set PATH "$PATH:$HOME/.cargo/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 set PATH "$HOME/.rvm/bin" $PATH
 
+set PATH "$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 #########################
 ######### Inits #########
 #########################
