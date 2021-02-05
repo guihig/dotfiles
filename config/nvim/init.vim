@@ -31,7 +31,6 @@ Plug 'airblade/vim-gitgutter'
 " Code utils
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
 Plug 'preservim/nerdcommenter'
 
 " Snippets
