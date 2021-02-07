@@ -32,6 +32,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+Plug 'Raimondi/delimitMate'
 
 " Snippets
 Plug 'honza/vim-snippets'
