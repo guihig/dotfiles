@@ -1,5 +1,5 @@
 * {{
-    font: "Iosevka 10.5";
+    font: "Iosevka Nerd Font Regular 10.5";
 
     active-background: {color2};
     active-foreground: @foreground;
@@ -74,6 +74,8 @@
     border: 0;
     padding: 1px;
 }}
+
+#element-icon {{ size: 13.5px; }}
 
 #element.normal.normal {{
     background-color: @normal-background;

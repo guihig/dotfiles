@@ -26,14 +26,14 @@ endif
 
 " --------------------------
 " --- one
-" let g:one_allow_italics = 0
-" colorscheme one
-" set background=dark
+let g:one_allow_italics = 0
+colorscheme one
+set background=dark
 
 " --------------------------
 " --- gruvbox material
-let g:gruvbox_material_background = 'medium'
-colorscheme gruvbox-material
+" let g:gruvbox_material_background = 'medium'
+" colorscheme gruvbox-material
 
 " --------------------------
 " --- gruvbox 
