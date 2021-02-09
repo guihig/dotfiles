@@ -8,6 +8,8 @@ Plug 'rakr/vim-one'
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'ayu-theme/ayu-vim'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'Th3Whit3Wolf/onebuddy'
 
 " Utils
 Plug 'vim-airline/vim-airline'

@@ -26,9 +26,9 @@ endif
 
 " --------------------------
 " --- one
-let g:one_allow_italics = 0
-colorscheme one
-set background=dark
+" let g:one_allow_italics = 0
+" colorscheme one
+" set background=dark
 
 " --------------------------
 " --- gruvbox material
@@ -41,5 +41,5 @@ set background=dark
 " colorscheme gruvbox
 
 " --------------------------
-" --- jellybeans
-" colorscheme jellybeans
+" --- one buddy
+colorscheme onebuddy
