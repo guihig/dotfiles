@@ -3,13 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 " Colorshemes
 Plug 'sainnhe/sonokai'
-Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
-Plug 'sainnhe/gruvbox-material'
-Plug 'gruvbox-community/gruvbox'
-Plug 'ayu-theme/ayu-vim'
 Plug 'tjdevries/colorbuddy.vim'
-Plug 'Th3Whit3Wolf/onebuddy'
+Plug 'tjdevries/gruvbuddy.nvim'
 
 " Utils
 Plug 'vim-airline/vim-airline'

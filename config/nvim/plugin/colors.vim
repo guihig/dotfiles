@@ -3,15 +3,7 @@ if has('termguicolors')
 endif
 
 " --------------------------
-" --- ayu
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-
-" --------------------------
 " --- sonokai
-" The configuration options should be placed before `colorscheme sonokai`.
 " let g:sonokai_style = 'shusia'
 " let g:sonokai_enable_italic = 1
 " let g:sonokai_disable_italic_comment = 1
@@ -36,10 +28,5 @@ endif
 " colorscheme gruvbox-material
 
 " --------------------------
-" --- gruvbox 
-" set background=dark
-" colorscheme gruvbox
-
-" --------------------------
-" --- one buddy
-colorscheme onebuddy
+" --- gruvbuddy
+lua require('colorbuddy').colorscheme('gruvbuddy')
