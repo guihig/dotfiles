@@ -73,6 +73,12 @@ scratchPads =
         cmd = "rocketchat-desktop",
         query = className =? "Rocket.Chat",
         hook = floatOnLeft
+      },
+    NS
+      { name = "discord",
+        cmd = "discord",
+        query = className =? "discord",
+        hook = floatOnLeft
       }
   ]
   where

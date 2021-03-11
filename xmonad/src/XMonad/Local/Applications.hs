@@ -1,14 +1,13 @@
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
 
-module XMonad.Local.Applications
-    (statusBar, terminal, browser, launcher, spotify, files)
-where
+module XMonad.Local.Applications (statusBar, terminal, browser, launcher, spotify, files) where
 
 statusBar :: String
 statusBar = "$HOME/.config/polybar/launch.sh"
 
 terminal :: String
 terminal = "alacritty"
+
 -- terminal = "kitty"
 
 browser :: String
@@ -19,6 +18,9 @@ launcher = "rofi -modi drun,run,ssh -show drun -matching fuzzy -show-icons -drun
 
 spotify :: String
 spotify = "spotify"
+
+discord :: String
+discord = "discord"
 
 files :: String
 files = "xdg-open ~"

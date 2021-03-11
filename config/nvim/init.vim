@@ -1,3 +1,6 @@
+" Remapping leader key
+let mapleader = " "
+
 " Vim Plug
 call plug#begin('~/.vim/plugged')
 
@@ -30,7 +33,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'Raimondi/delimitMate'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -49,10 +53,7 @@ Plug 'puremourning/vimspector'
 
 call plug#end()
 
-" Remapping leader key
-let mapleader = " "
-
-" Necessary sources
-luafile $HOME/.config/nvim/lua/treesitter.lua
+" Sources
+luafile $HOME/.config/nvim/lua/init.lua
 
 

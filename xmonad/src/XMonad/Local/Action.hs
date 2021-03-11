@@ -76,6 +76,7 @@ manageHook =
       className =? "Spotify" -?> forceBiggerCenterFloat,
       className =? "Slack" -?> forceCenterFloat,
       className =? "Rocket.Chat" -?> forceCenterFloat,
+      className =? "discord" -?> forceCenterFloat,
       className =? "Joplin" -?> forceCenterFloat,
       className =? "Gnome-calculator" -?> doFloat,
       className =? "Gnome-calendar" -?> forceCenterFloat,
