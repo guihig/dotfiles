@@ -267,8 +267,8 @@ appKeys _c =
     ("M-<Esc>", shellPrompt Local.promptConfig),
     ("M-<Space>", spawn Applications.launcher),
     ("M-s", namedScratchpadAction scratchPads "spotify"),
-    ("M-a", namedScratchpadAction scratchPads "slack"),
-    ("M-d", namedScratchpadAction scratchPads "discord"),
+    -- ("M-d", namedScratchpadAction scratchPads "slack"),
+    ("M-a", namedScratchpadAction scratchPads "discord"),
     ("M-j", namedScratchpadAction scratchPads "joplin"),
     ("M-r", namedScratchpadAction scratchPads "rocket.chat"),
     ("M-e", spawn Applications.files)
