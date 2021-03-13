@@ -8,8 +8,6 @@ statusBar = "$HOME/.config/polybar/launch.sh"
 terminal :: String
 terminal = "alacritty"
 
--- terminal = "kitty"
-
 browser :: String
 browser = "firefox"
 
