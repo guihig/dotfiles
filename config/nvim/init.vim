@@ -20,6 +20,8 @@ Plug 'simeji/winresizer'
 Plug 'ThePrimeagen/harpoon'
 Plug 'easymotion/vim-easymotion'
 Plug 'kevinhwang91/rnvimr'
+Plug 'psliwka/vim-smoothie'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Telescope requirements
 Plug 'nvim-lua/popup.nvim'
