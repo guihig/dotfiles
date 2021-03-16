@@ -5,7 +5,7 @@ Keybind.g({
     -- Buffer Nav
     {'n', '<S-A-l>', ':bn<CR>', silent_opts},
     {'n', '<S-A-h>', ':bp<CR>', silent_opts},
-    {'n', '<A-w>', ':bp\\|bdelete #<CR>', opts},
+    {'n', '<A-w>', ':lclose<bar>b#<bar>bd #<CR>', silent_opts},
 
     -- Source NVIM Config
     {'n', '<F12>', '<cmd>lua Editor.reload_nvim()<CR>', opts},
@@ -35,7 +35,6 @@ Keybind.g({
     {'v', '<leader>p', '"_dP', opts},
 
     -- Move Lines
-    -- TODO
     {'n', '<A-j>', ':m .+1<CR>==', opts},
     {'n', '<A-k>', ':m .-2<CR>==', opts},
     {'i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts},

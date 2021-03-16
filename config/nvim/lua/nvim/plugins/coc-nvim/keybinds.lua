@@ -1,8 +1,12 @@
 local opt = { noremap = true, expr = true, silent = true, nowait = true }
-local silent_opt = { silent = true }
+local silent_opt = { silent = true, noremap=true }
 local none = {}
 
 Keybind.g({
+	{ 'i', '<Tab>', '<cmd>lua Coc.go_to_next_completion_item(\'<Tab>\')<CR>', silent_opt },
+	{ 'i', '<S-Tab>', '<cmd>lua Coc.go_to_previous_completion_item(\'<C-H>\')<CR>', silent_opt },
+	{ 'i', '<CR>', [[pumvisible() ? "\<C-Y>" : "\<CR>"]], opt},
+
 	-- code jumps
 	{ 'n', 'gd', '<Plug>(coc-definition)', silent_opt },
 	{ 'n', 'gi', '<Plug>(coc-implementation)', silent_opt },
@@ -18,7 +22,7 @@ Keybind.g({
 	{ 'n', '<leader>rn', '<Plug>(coc-rename)', silent_opt},
 	{ 'n', '<leader>a', '<Plug>(coc-codeaction)', silent_opt},
 	{ 'n', '<leader>s', '<Plug>(coc-codeaction-selected)', silent_opt},
-	{ 'n', '<leader>f', '<Plug>(coc-format-selected)', none},
+	{ 'n', '<leader>f', '<cmd>lua Coc.format_code()<CR> :update<CR>', none},
 	{ 'v', '<leader>f', '<Plug>(coc-format-selected)', none},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
 

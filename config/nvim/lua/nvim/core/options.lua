@@ -1,4 +1,7 @@
+local USER = vim.fn.expand("$USER")
+
 Option.g({
+    mouse="a",
     encoding = "UTF-8",
     pastetoggle = "<F3>",
     hidden = true,
@@ -17,7 +20,7 @@ Option.g({
     swapfile = false,
     backup = false,
     writebackup = false,
-    undodir = "~/.vim/undodir",
+    undodir = "/home/" .. USER .. "/.vim/undodir",
     undofile = true,
     incsearch = true,
     showmode = false,

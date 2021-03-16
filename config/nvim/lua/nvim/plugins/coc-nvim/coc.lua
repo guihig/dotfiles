@@ -19,13 +19,13 @@ Coc.is_rpc_ready = function() return e('coc#rpc#ready()') > 0 end
 Coc.go_to_next_completion_item = function(org_input)
     -- go to next item if completion menu visible
     if Coc.is_pum_visible() then
-        a.nvim_input('<c-n>')
+        a.nvim_input('<C-n>')
 
-        -- if current charactor is white space, input the original user input
+    -- if current charactor is white space, input the original user input
     elseif Editor.is_curr_char_space() then
         a.nvim_input(org_input)
 
-        -- refresh the coc completion menu
+    -- refresh the coc completion menu
     else
         e('coc#refresh()')
     end
@@ -33,7 +33,7 @@ end
 
 Coc.go_to_previous_completion_item = function(org_input)
     if Coc.is_pum_visible() then
-        a.nvim_input('<c-p>')
+        a.nvim_input('<C-p>')
     else
         a.nvim_input(org_input)
     end
