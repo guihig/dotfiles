@@ -1,10 +1,11 @@
 local opt = { noremap = true, expr = true, silent = true, nowait = true }
-local silent_opt = { silent = true, noremap=true }
+local silent_opt = { silent = true }
+local nrsilent_opt = { silent = true, noremap = true }
 local none = {}
 
 Keybind.g({
-	{ 'i', '<Tab>', '<cmd>lua Coc.go_to_next_completion_item(\'<Tab>\')<CR>', silent_opt },
-	{ 'i', '<S-Tab>', '<cmd>lua Coc.go_to_previous_completion_item(\'<C-H>\')<CR>', silent_opt },
+    { 'i', '<Tab>', [[ pumvisible() ? "\<C-n>" : "\<TAB>" ]], opt },
+	{ 'i', '<S-Tab>', '<cmd>lua Coc.go_to_previous_completion_item("<c-h>")<CR>', nrsilent_opt },
 	{ 'i', '<CR>', [[pumvisible() ? "\<C-Y>" : "\<CR>"]], opt},
 
 	-- code jumps

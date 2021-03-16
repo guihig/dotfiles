@@ -1,5 +1,6 @@
 require('nvim.plugins.galaxyline')
 require('nvim.plugins.bufferline')
+require('nvim.plugins.tmuxline')
 require('nvim.plugins.nvim-treesitter')
 require('nvim.plugins.rnvimr')
 require('nvim.plugins.easymotion')
