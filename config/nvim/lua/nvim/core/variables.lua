@@ -1,0 +1,1 @@
+Variable.g({mapleader = " "})

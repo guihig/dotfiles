@@ -1,0 +1,5 @@
+require('nvim.core.options')
+require('nvim.core.keybinds')
+require('nvim.core.variables')
+require('nvim.core.commands')
+require('nvim.core.colorschemes')

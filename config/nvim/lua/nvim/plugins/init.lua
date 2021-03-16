@@ -1,0 +1,12 @@
+require('nvim.plugins.galaxyline')
+require('nvim.plugins.bufferline')
+require('nvim.plugins.nvim-treesitter')
+require('nvim.plugins.rnvimr')
+require('nvim.plugins.easymotion')
+require('nvim.plugins.telescope')
+require('nvim.plugins.ultisnips')
+require('nvim.plugins.nerdcommenter')
+require('nvim.plugins.startify')
+require('nvim.plugins.vim-test')
+require('nvim.plugins.coc-nvim')
+

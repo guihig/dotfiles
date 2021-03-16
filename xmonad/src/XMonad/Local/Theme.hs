@@ -34,7 +34,7 @@ barTheme =
       activeTextColor = C.foreground,
       inactiveTextColor = C.foreground,
       urgentTextColor = C.foreground,
-      fontName = "xft:Iosevka Nerd Font:style=Regular:size=11",
+      fontName = "xft:JetBrainsMono Nerd Font:style=Regular:size=9",
       decoHeight = 22
     }
 
@@ -46,7 +46,7 @@ promptConfig =
   def
     { position = CenteredAt (1 / 3) (1 / 2),
       height = 50,
-      font = "xft:Iosevka Nerd Font:style=Medium:size=12",
+      font = "xft:JetBrainsMono Nerd Font:style=Medium:size=10",
       bgColor = C.background,
       fgColor = C.foreground,
       fgHLight = C.color0,

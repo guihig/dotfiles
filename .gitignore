@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Created by .ignore support vim_plugins (hsz.mobi)
 ### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -191,7 +191,7 @@ gen
 # CMake
 cmake-build-*/
 
-# Mongo Explorer plugin
+# Mongo Explorer vim_plugins
 .idea/**/mongoSettings.xml
 
 # File-based project format
@@ -200,16 +200,16 @@ cmake-build-*/
 # IntelliJ
 out/
 
-# mpeltonen/sbt-idea plugin
+# mpeltonen/sbt-idea vim_plugins
 .idea_modules/
 
-# JIRA plugin
+# JIRA vim_plugins
 atlassian-ide-plugin.xml
 
-# Cursive Clojure plugin
+# Cursive Clojure vim_plugins
 .idea/replstate.xml
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
+# Crashlytics vim_plugins (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
