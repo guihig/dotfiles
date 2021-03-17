@@ -18,7 +18,8 @@ local languages = {
     javascript = {eslint},
     typescriptreact = {eslint},
     javascriptreact = {eslint},
-    vue = {eslint}
+    vue = {eslint},
+    elixir = {credo}
 }
 
 require"lspconfig".efm.setup {
@@ -27,13 +28,5 @@ require"lspconfig".efm.setup {
                                                     ".git"),
     init_options = {documentFormatting = true, codeAction = true},
     filetypes = vim.tbl_keys(languages),
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            javascript = {eslint},
-            typescript = {eslint},
-            vue = {eslint},
-            elixir = {credo}
-        }
-    }
+    settings = {rootMarkers = {".git/"}, languages = languages}
 }
