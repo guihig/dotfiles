@@ -11,5 +11,6 @@ require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
 require('nvim.plugins.lsp')
 require('nvim.plugins.lspsaga')
+require('nvim.plugins.polyglot')
 -- require('nvim.plugins.coc-nvim')
 

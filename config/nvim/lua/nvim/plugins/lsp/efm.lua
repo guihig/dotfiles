@@ -13,9 +13,20 @@ local credo = {
     rootMarkers = {"mix.exs", "mix.lock"}
 }
 
+local languages = {
+    typescript = {eslint},
+    javascript = {eslint},
+    typescriptreact = {eslint},
+    javascriptreact = {eslint},
+    vue = {eslint}
+}
+
 require"lspconfig".efm.setup {
     on_attach = require'completion'.on_attach,
-    init_options = {documentFormatting = true},
+    root_dir = require"lspconfig".util.root_pattern("yarn.lock", "lerna.json",
+                                                    ".git"),
+    init_options = {documentFormatting = true, codeAction = true},
+    filetypes = vim.tbl_keys(languages),
     settings = {
         rootMarkers = {".git/"},
         languages = {

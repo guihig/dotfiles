@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
     -- Colorschemes
     use {'tjdevries/colorbuddy.vim'}
     use {'tjdevries/gruvbuddy.nvim'}
+    use {'sainnhe/sonokai'}
 
     -- Utils
     use {'kyazdani42/nvim-web-devicons'}

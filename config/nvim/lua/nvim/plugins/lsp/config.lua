@@ -6,7 +6,15 @@ local opts = { noremap=true, silent=true }
 
 Variable.g({
   completion_confirm_key = '',
-  completion_enable_snippet = 'UltiSnips'
+  completion_enable_snippet = 'UltiSnips',
+  completion_trigger_character = {'.', '::'},
+  completion_auto_change_source = 1,
+  completion_chain_complete_list = {
+    {['complete_items'] = {'lsp'}},
+    {['complete_items'] = {'snippet'}},
+    {['mode'] = '<c-p>'},
+    {['mode'] = '<c-n>'},
+  }
 })
 
 Keybind.g({
