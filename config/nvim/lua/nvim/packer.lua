@@ -40,8 +40,18 @@ return require('packer').startup(function(use)
     use {'elixir-editors/vim-elixir'}
     use {'posva/vim-vue'}
     use {'dag/vim-fish'}
+    use {'HerringtonDarkholme/yats.vim'}
 
     -- Code Config
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- use {'neoclide/coc.nvim', branch = 'release'}
+    use {'neovim/nvim-lspconfig'}
+    use {'nvim-lua/completion-nvim'}
+    use {
+        "mhartington/formatter.nvim",
+        opt = true,
+        config = function() require("nvim.plugins.formatter").setup() end,
+        cmd = {"Format"}
+    }
+    use {'glepnir/lspsaga.nvim'}
     use {'vim-test/vim-test'}
 end)

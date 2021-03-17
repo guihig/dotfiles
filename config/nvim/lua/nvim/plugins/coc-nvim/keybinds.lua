@@ -26,6 +26,7 @@ Keybind.g({
 	{ 'n', '<leader>f', '<cmd>lua Coc.format_code()<CR> :update<CR>', none},
 	{ 'v', '<leader>f', '<Plug>(coc-format-selected)', none},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
+	{ 'n', '<C-A-o>', '<cmd>lua Coc.organize_import()<CR> :update<CR>', silent_opt},
 
 	-- text objects
 	{ 'x', 'if', '<Plug>(coc-funcobj-i)', silent_opt },

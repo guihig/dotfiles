@@ -1,0 +1,7 @@
+Lsp = require("nvim.plugins.lsp.utils")
+require("nvim.plugins.lsp.config")
+require("nvim.plugins.lsp.tsserver")
+require("nvim.plugins.lsp.vuels")
+require("nvim.plugins.lsp.sumneko_lua")
+require("nvim.plugins.lsp.elixirls")
+require("nvim.plugins.lsp.efm")

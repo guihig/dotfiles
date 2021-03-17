@@ -9,5 +9,7 @@ require('nvim.plugins.ultisnips')
 require('nvim.plugins.nerdcommenter')
 require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
-require('nvim.plugins.coc-nvim')
+require('nvim.plugins.lsp')
+require('nvim.plugins.lspsaga')
+-- require('nvim.plugins.coc-nvim')
 

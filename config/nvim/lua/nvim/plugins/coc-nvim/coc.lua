@@ -64,5 +64,6 @@ Coc.show_documentation = function()
 end
 
 Coc.format_code = function() e('CocAction("format")') end
+Coc.organize_import = function() e('CocAction("runCommand", "editor.action.organizeImport")') end
 
 return Coc

@@ -17,7 +17,7 @@ end
 
 Editor.reload_nvim = function()
     print("Restarting NVim Config...")
-    require('nvim')
+    vim.cmd("luafile $MYVIMRC")
     print("Done")
 end
 

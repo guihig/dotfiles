@@ -5,7 +5,7 @@ Keybind.g({
     -- Buffer Nav
     {'n', '<S-A-l>', ':bn<CR>', silent_opts},
     {'n', '<S-A-h>', ':bp<CR>', silent_opts},
-    {'n', '<A-w>', ':lclose<bar>b#<bar>bd #<CR>', silent_opts},
+    {'n', '<A-w>', ':bd<CR>', silent_opts},
 
     -- Source NVIM Config
     {'n', '<F12>', '<cmd>lua Editor.reload_nvim()<CR>', opts},
@@ -16,7 +16,7 @@ Keybind.g({
     {'n', '<leader>Y', 'gg"+yG', opts},
 
     -- Set NoHL
-    {'n', '<leader><CR>', ':noh<CR>', opts},
+    {'n', '<leader><cr>', ':noh<CR>', opts},
 
     -- Exit Term Mode
     {'t', '<C-o>', '<C-\\><C-n>', opts},
