@@ -30,12 +30,14 @@ Keybind.g({
   {'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts},
   {'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts},
   {'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
-  {'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts},
+  -- {'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts},
+  {'n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>', opts},
   {'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts},
   {'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts},
   {'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts},
   {'n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts},
   {'n', '<leader>rn', '<cmd>Lspsaga rename<CR>', opts},
+  {'n', '<leader>qq', '<cmd>Lspsaga lsp_finder<CR>', opts},
   {'n', '<leader>f', '<cmd>Format<CR>:update<CR>', opts},
 
   -- Completion Bindings
