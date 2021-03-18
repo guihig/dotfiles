@@ -6,7 +6,4 @@ Keybind.g({
     {'n', 't<C-g>', ':TestVisit<CR>', {silent = true}}
 })
 
-Variable.g({
-    ["test#strategy"] = "dispatch",
-    ["test#preserve_screen"] = 0
-})
+Variable.g({["test#strategy"] = "dispatch", ["test#preserve_screen"] = 1})
