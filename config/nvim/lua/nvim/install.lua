@@ -1,4 +1,4 @@
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+vim.cmd([[packadd packer.nvim]])
 
 return require('packer').startup(function(use)
     -- Colorschemes

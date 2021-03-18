@@ -8,10 +8,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
                 install_path)
     execute 'packadd packer.nvim'
 end
-
 vim.g.mapleader = " "
 
 require('nvim.utils')
-require('nvim.packer')
+require('nvim.install')
 require('nvim.core')
 require('nvim.plugins')
