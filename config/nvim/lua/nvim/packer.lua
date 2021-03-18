@@ -39,9 +39,9 @@ return require('packer').startup(function(use)
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'elixir-editors/vim-elixir'}
-    use {'posva/vim-vue'}
+    -- use {'posva/vim-vue'}
     use {'dag/vim-fish'}
-    use {'HerringtonDarkholme/yats.vim'}
+    -- use {'HerringtonDarkholme/yats.vim'}
 
     -- Code Config
     -- use {'neoclide/coc.nvim', branch = 'release'}
