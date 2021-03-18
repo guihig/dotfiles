@@ -15,10 +15,6 @@ Editor.is_buffer_not_empty = function()
     return vim.fn.empty(vim.fn.expand("%:t")) == 1
 end
 
-Editor.reload_nvim = function()
-    print("Restarting NVim Config...")
-    vim.cmd("luafile $MYVIMRC")
-    print("Done")
-end
+Editor.reload_nvim = function() print("Cant restart, sory :,c") end
 
 return Editor
