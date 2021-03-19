@@ -270,7 +270,7 @@ appKeys _c =
     -- ("M-d", namedScratchpadAction scratchPads "slack"),
     ("M-a", namedScratchpadAction scratchPads "discord"),
     ("M-j", namedScratchpadAction scratchPads "joplin"),
-    ("M-r", namedScratchpadAction scratchPads "rocket.chat"),
+    ("M-r", namedScratchpadAction scratchPads "mailspring"),
     ("M-e", spawn Applications.files)
   ]
 

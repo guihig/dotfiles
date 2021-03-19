@@ -18,6 +18,8 @@ local function luaformat()
     return {exe = "lua-format", args = {"-i"}, stdin = true}
 end
 
+local function hindent() return {exe = "hindent", stdin = true} end
+
 function M.setup()
     require("formatter").setup({
         logging = true,
@@ -34,7 +36,8 @@ function M.setup()
             scss = {prettier},
             sass = {prettier},
             python = {black},
-            elixir = {mix_format}
+            elixir = {mix_format},
+            haskell = {hindent}
         }
     })
 end
