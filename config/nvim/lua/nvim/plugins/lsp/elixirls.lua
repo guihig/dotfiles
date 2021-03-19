@@ -3,22 +3,24 @@ USER = vim.fn.expand('$USER')
 local lspconfig = require 'lspconfig'
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
-
 local server_name = "elixirls"
 
 local elixirls_binary = ""
 
 elixirls_binary = "/home/" .. USER .. "/.lsp/elixir-ls/language_server.sh"
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     default_config = {
-        on_attach = require'completion'.on_attach,
+        -- on_attach = require'completion'.on_attach,
         cmd = {elixirls_binary},
         filetypes = {"elixir", "eelixir"},
         root_dir = function(fname)
             return util.root_pattern("mix.exs", ".git")(fname) or
                        vim.loop.os_homedir()
-        end
+        end,
+        capabilities = capabilities
     },
     docs = {
         package_json = "https://raw.githubusercontent.com/JakeBecker/vscode-elixir-ls/master/package.json",

@@ -4,10 +4,14 @@ local sumneko_root_path = ""
 local sumneko_binary = ""
 
 sumneko_root_path = "/home/" .. USER .. "/.lsp/lua-language-server"
-sumneko_binary = "/home/" .. USER .. "/.lsp/lua-language-server/bin/Linux/lua-language-server"
+sumneko_binary = "/home/" .. USER ..
+                     "/.lsp/lua-language-server/bin/Linux/lua-language-server"
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 require'lspconfig'.sumneko_lua.setup {
-    on_attach = require'completion'.on_attach,
+    -- on_attach = require'completion'.on_attach,
+    capabilities = capabilities,
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
@@ -23,7 +27,10 @@ require'lspconfig'.sumneko_lua.setup {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                }
             }
         }
     }

@@ -5,10 +5,13 @@ local util = require 'lspconfig/util'
 local server_name = "vuels"
 local bin_name = "vls"
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     filetypes = {"vue"},
     default_config = {
-        on_attach = require'completion'.on_attach,
+        -- on_attach = require'completion'.on_attach,
+        capabilities = capabilities,
         cmd = {bin_name},
         filetypes = {"vue"},
         root_dir = util.root_pattern("package.json", "vue.config.js"),

@@ -30,5 +30,6 @@ Option.g({
     updatetime = 50,
     foldenable = false,
     scrolloff = 8,
-    termguicolors = true
+    termguicolors = true,
+    signcolumn="yes:1"
 })

@@ -1,21 +1,21 @@
-Option.g({
-  omnifunc = 'v:lua.vim.lsp.omnifunc'
-})
+-- Option.g({
+--   omnifunc = 'v:lua.vim.lsp.omnifunc'
+-- })
 
 local opts = { noremap=true, silent=true }
 
-Variable.g({
-  completion_confirm_key = '',
-  completion_enable_snippet = 'UltiSnips',
-  completion_trigger_character = {'.', '::'},
-  completion_auto_change_source = 1,
-  completion_chain_complete_list = {
-    {['complete_items'] = {'lsp'}},
-    {['complete_items'] = {'snippet'}},
-    {['mode'] = '<c-p>'},
-    {['mode'] = '<c-n>'},
-  }
-})
+-- Variable.g({
+--   completion_confirm_key = '',
+--   completion_enable_snippet = 'UltiSnips',
+--   completion_trigger_character = {'.', '::'},
+--   completion_auto_change_source = 1,
+--   completion_chain_complete_list = {
+--     {['complete_items'] = {'lsp'}},
+--     {['complete_items'] = {'snippet'}},
+--     {['mode'] = '<c-p>'},
+--     {['mode'] = '<c-n>'},
+--   }
+-- })
 
 Keybind.g({
   {'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts},
@@ -41,16 +41,16 @@ Keybind.g({
   {'n', '<leader>f', '<cmd>Format<CR>:update<CR>', opts},
 
   -- Completion Bindings
-  {'i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], {noremap=true,expr=true}},
-  {'i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], {noremap=true,expr=true}},
-  {'i', '<CR>', [[pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]], {expr=true}},
-  {'i', '<C-space>', '<Plug>(completion_trigger)', {silent=true}}
+  -- {'i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], {noremap=true,expr=true}},
+  -- {'i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], {noremap=true,expr=true}},
+  -- {'i', '<CR>', [[pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]], {expr=true}},
+  -- {'i', '<C-space>', '<Plug>(completion_trigger)', {silent=true}}
 })
 
-vim.api.nvim_exec([[
-  augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  augroup END
-]], false)
+-- vim.api.nvim_exec([[
+--   augroup lsp_document_highlight
+--     autocmd! * <buffer>
+--     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+--     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+--   augroup END
+-- ]], false)

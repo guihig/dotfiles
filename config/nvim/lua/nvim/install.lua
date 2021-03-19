@@ -24,7 +24,6 @@ return require('packer').startup(function(use)
 
     -- Git
     use {'tpope/vim-fugitive'}
-    use {'airblade/vim-gitgutter'}
 
     -- Code Utils
     use {'tpope/vim-dispatch'}
@@ -33,8 +32,10 @@ return require('packer').startup(function(use)
     use {'jiangmiao/auto-pairs'}
 
     -- Snippets
-    use {'honza/vim-snippets'}
+    -- use {'honza/vim-snippets'}
     use {'SirVer/ultisnips'}
+    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip-integ'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -46,7 +47,9 @@ return require('packer').startup(function(use)
     -- Code Config
     -- use {'neoclide/coc.nvim', branch = 'release'}
     use {'neovim/nvim-lspconfig'}
-    use {'nvim-lua/completion-nvim'}
+    -- Using nvim-compe in favor of https://github.com/neovim/neovim/pull/13979
+    use {'hrsh7th/nvim-compe'}
+    -- use {'nvim-lua/completion-nvim'}
     use {
         "mhartington/formatter.nvim",
         opt = true,

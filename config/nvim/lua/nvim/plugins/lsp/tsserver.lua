@@ -6,13 +6,16 @@ local server_name = "tsserver"
 local bin_name = "typescript-language-server"
 if vim.fn.has('win32') == 1 then bin_name = bin_name .. ".cmd" end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     filetypes = {
         "javascript", "javascriptreact", "javascript.jsx", "typescript",
         "typescriptreact", "typescript.tsx"
     },
     default_config = {
-        on_attach = require'completion'.on_attach,
+        -- on_attach = require'completion'.on_attach,
+        capabilities = capabilities,
         cmd = {bin_name, "--stdio"},
         filetypes = {
             "javascript", "javascriptreact", "javascript.jsx", "typescript",
