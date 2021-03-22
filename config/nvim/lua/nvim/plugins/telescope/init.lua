@@ -1,6 +1,7 @@
 Keybind.g({
     {'n', '<C-p>', '<cmd>Telescope find_files<CR>', {noremap = true}},
-    {'n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true}}
+    {'n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true}},
+    {'n', '<C-b>', '<cmd>Telescope buffers<CR>', {noremap = true}}
 })
 
 require('telescope').setup {

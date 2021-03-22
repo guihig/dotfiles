@@ -22,6 +22,9 @@ return require('packer').startup(function(use)
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
 
+    -- Git
+    use {'tpope/vim-fugitive'}
+
     -- Code Utils
     use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
