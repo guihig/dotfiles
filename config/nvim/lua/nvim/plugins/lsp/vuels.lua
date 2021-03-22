@@ -18,7 +18,7 @@ configs[server_name] = {
         init_options = {
             config = {
                 vetur = {
-                    useWorkspaceDependencies = true,
+                    useWorkspaceDependencies = false,
                     validation = {template = true, style = true, script = true},
                     completion = {
                         autoImport = true,
@@ -56,14 +56,14 @@ npm install -g vls
             init_options = {
                 config = {
                     vetur = {
-                        useWorkspaceDependencies = false,
+                        useWorkspaceDependencies = true,
                         validation = {
                             template = true,
                             style = true,
                             script = true
                         },
                         completion = {
-                            autoImport = false,
+                            autoImport = true,
                             useScaffoldSnippets = false,
                             tagCasing = "kebab"
                         },

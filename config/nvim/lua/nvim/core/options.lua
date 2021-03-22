@@ -1,7 +1,6 @@
 local USER = vim.fn.expand("$USER")
 
 Option.g({
-    syntax = "OFF",
     mouse = "a",
     encoding = "UTF-8",
     pastetoggle = "<F3>",
