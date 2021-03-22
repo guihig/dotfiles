@@ -72,7 +72,7 @@ gls.left[6] = {
         provider = "DiffAdd",
         condition = condition.hide_in_width,
         icon = "   ",
-        highlight = {colors.greenYel, colors.line_bg}
+        highlight = {colors.greenYel}
     }
 }
 
@@ -81,7 +81,7 @@ gls.left[7] = {
         provider = "DiffModified",
         condition = condition.hide_in_width,
         icon = " ",
-        highlight = {colors.orange, colors.line_bg}
+        highlight = {colors.orange}
     }
 }
 
@@ -90,7 +90,7 @@ gls.left[8] = {
         provider = "DiffRemove",
         condition = condition.hide_in_width,
         icon = " ",
-        highlight = {colors.red, colors.line_bg}
+        highlight = {colors.red}
     }
 }
 
@@ -98,8 +98,8 @@ gls.left[9] = {
     LeftEnd = {
         provider = function() return " " end,
         separator = " ",
-        separator_highlight = {colors.line_bg, colors.line_bg},
-        highlight = {colors.line_bg, colors.line_bg}
+        separator_highlight = {colors.line_bg},
+        highlight = {colors.line_bg}
     }
 }
 
@@ -107,22 +107,19 @@ gls.left[10] = {
     DiagnosticError = {
         provider = "DiagnosticError",
         icon = "  ",
-        highlight = {colors.red, colors.bg}
+        highlight = {colors.red}
     }
 }
 
 gls.left[11] = {
-    Space = {
-        provider = function() return " " end,
-        highlight = {colors.line_bg, colors.line_bg}
-    }
+    Space = {provider = function() return " " end, highlight = {colors.line_bg}}
 }
 
 gls.left[12] = {
     DiagnosticWarn = {
         provider = "DiagnosticWarn",
         icon = "  ",
-        highlight = {colors.blue, colors.bg}
+        highlight = {colors.blue}
     }
 }
 
@@ -131,7 +128,7 @@ gls.right[1] = {
     GitIcon = {
         provider = function() return "   " end,
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.green}
     }
 }
 
@@ -139,7 +136,7 @@ gls.right[2] = {
     GitBranch = {
         provider = "GitBranch",
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.green}
     }
 }
 
@@ -147,8 +144,8 @@ gls.right[3] = {
     right_LeftRounded = {
         provider = function() return "" end,
         separator = " ",
-        separator_highlight = {colors.bg, colors.bg},
-        highlight = {colors.red, colors.bg}
+        separator_highlight = {colors.bg},
+        highlight = {colors.red}
     }
 }
 
@@ -182,6 +179,6 @@ gls.right[5] = {
 gls.right[6] = {
     rightRounded = {
         provider = function() return "" end,
-        highlight = {colors.fg, colors.bg}
+        highlight = {colors.fg}
     }
 }
