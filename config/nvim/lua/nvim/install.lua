@@ -29,13 +29,13 @@ return require('packer').startup(function(use)
     use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
     use {'preservim/nerdcommenter'}
-    use {'windwp/nvim-autopairs'}
+    use {'jiangmiao/auto-pairs'}
 
     -- Snippets
-    -- use {'honza/vim-snippets'}
-    -- use {'SirVer/ultisnips'}
-    use {'hrsh7th/vim-vsnip'}
-    use {'hrsh7th/vim-vsnip-integ'}
+    use {'honza/vim-snippets'}
+    use {'SirVer/ultisnips'}
+    -- use {'hrsh7th/vim-vsnip'}
+    -- use {'hrsh7th/vim-vsnip-integ'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

@@ -14,11 +14,16 @@ require'compe'.setup {
 
     source = {
         path = true,
-        buffer = true,
-        calc = true,
+        calc = false,
         nvim_lsp = true,
         nvim_lua = true,
-        vsnip = true
+        ultisnips = true,
+        treesitter = false,
+        tags = false,
+        vsnip = false,
+        spell = false,
+        buffer = true,
+        snippets_nvim = false
     }
 }
 
@@ -66,7 +71,7 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 Keybind.g({
     {'i', '<C-Space>', [[compe#complete()]], {silent = true, expr = true}},
-    {'i', '<CR>', [[compe#confirm('<CR>')]], {silent = true, expr = true}},
+    {'i', '<CR>', [[compe#confirm('<CR>')]], {silent = true, expr = true}}
     -- {'i', '<Esc>', [[compe#close('<Esc>')]], {silent = true, expr = true}}
 })
 
