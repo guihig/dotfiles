@@ -22,41 +22,32 @@ return require('packer').startup(function(use)
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
 
-    -- Git
-    use {'tpope/vim-fugitive'}
-
     -- Code Utils
     use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
     use {'preservim/nerdcommenter'}
-    use {'jiangmiao/auto-pairs'}
+    use {'windwp/nvim-autopairs'}
 
     -- Snippets
     -- use {'honza/vim-snippets'}
-    use {'SirVer/ultisnips'}
+    -- use {'SirVer/ultisnips'}
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'elixir-editors/vim-elixir'}
-    -- use {'posva/vim-vue'}
-    use {'dag/vim-fish'}
-    -- use {'HerringtonDarkholme/yats.vim'}
 
     -- Code Config
-    -- use {'neoclide/coc.nvim', branch = 'release'}
     use {'neovim/nvim-lspconfig'}
     -- Using nvim-compe in favor of https://github.com/neovim/neovim/pull/13979
     use {'hrsh7th/nvim-compe'}
-    -- use {'nvim-lua/completion-nvim'}
     use {
         "mhartington/formatter.nvim",
         opt = true,
         config = function() require("nvim.plugins.formatter").setup() end,
         cmd = {"Format"}
     }
-    use {'onsails/lspkind-nvim'}
     use {'glepnir/lspsaga.nvim'}
     use {'vim-test/vim-test'}
 end)

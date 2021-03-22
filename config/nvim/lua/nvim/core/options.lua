@@ -1,7 +1,8 @@
 local USER = vim.fn.expand("$USER")
 
 Option.g({
-    mouse="a",
+    syntax = "OFF",
+    mouse = "a",
     encoding = "UTF-8",
     pastetoggle = "<F3>",
     hidden = true,
@@ -31,5 +32,5 @@ Option.g({
     foldenable = false,
     scrolloff = 8,
     termguicolors = true,
-    signcolumn="yes:1"
+    signcolumn = "yes:1"
 })
