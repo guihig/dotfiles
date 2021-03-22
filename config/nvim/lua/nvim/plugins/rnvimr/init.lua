@@ -10,14 +10,15 @@ Keybind.g({
 })
 
 Variable.g({
-    loaded_netrwPlugin = 1,
+    -- loaded_netrwPlugin = 1,
     rnvimr_enable_ex = 1,
     rnvimr_enable_picker = 1,
     rnvimr_hide_gitignore = 1,
+    rnvimr_draw_border = "both",
     rnvimr_border_attr = {fg = 14, bg = -1},
     rnvimr_enable_bw = 1,
-    rnvimr_shadow_winblend = 70,
-    rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"',
+    rnvimr_shadow_winblend = 100,
+    -- rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"',
     rnvimr_action = {
         ['<C-t>'] = 'NvimEdit tabedit',
         ['<C-x>'] = 'NvimEdit split',
