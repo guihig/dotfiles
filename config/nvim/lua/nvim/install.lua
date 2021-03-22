@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
         config = function() require("nvim.plugins.formatter").setup() end,
         cmd = {"Format"}
     }
+    use {'onsails/lspkind-nvim'}
     use {'glepnir/lspsaga.nvim'}
     use {'vim-test/vim-test'}
 end)

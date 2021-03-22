@@ -14,4 +14,3 @@ require('nvim.plugins.lspsaga')
 require('nvim.plugins.polyglot')
 require('nvim.plugins.nvim-compe')
 -- require('nvim.plugins.coc-nvim')
-

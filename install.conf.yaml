@@ -43,8 +43,12 @@
       glob: true
       path: config/fish/*
 
-    ~/.config/dunst/dunstrc:
-      path: config/dunst/dunstrc
+    # ~/.config/dunst/dunstrc:
+    #   path: config/dunst/dunstrc
+
+    ~/.config/deadd/:
+      glob: true
+      path: config/deadd/*
 
     ~/.config/picom.conf:
       path: config/picom/picom.conf
