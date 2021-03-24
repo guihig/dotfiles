@@ -3,7 +3,7 @@ require'compe'.setup {
     autocomplete = true,
     debug = false,
     min_length = 1,
-    preselect = 'enable',
+    preselect = 'disable',
     throttle_time = 80,
     source_timeout = 200,
     incomplete_delay = 400,
@@ -18,6 +18,7 @@ require'compe'.setup {
         nvim_lsp = true,
         nvim_lua = true,
         ultisnips = true,
+        nvim_treesitter = false,
         treesitter = false,
         tags = false,
         vsnip = false,
@@ -46,8 +47,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-n>"
-    -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    --     return t "<Plug>(vsnip-expand-or-jump)"
+        -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
+        --     return t "<Plug>(vsnip-expand-or-jump)"
     elseif check_back_space() then
         return t "<Tab>"
     else
@@ -57,8 +58,8 @@ end
 _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-p>"
-    -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    --     return t "<Plug>(vsnip-jump-prev)"
+        -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+        --     return t "<Plug>(vsnip-jump-prev)"
     else
         return t "<S-Tab>"
     end
@@ -70,13 +71,12 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 Keybind.g({
-    {'i', '<C-Space>', [[compe#complete()]], {silent = true, expr = true}},
-    {'i', '<CR>', [[compe#confirm('<CR>')]], {silent = true, expr = true}}
-    -- {'i', '<Esc>', [[compe#close('<Esc>')]], {silent = true, expr = true}}
+    {
+        'i', '<C-Space>', [[compe#complete()]],
+        {silent = true, expr = true, noremap = true}
+    }, {
+        'i', '<CR>',
+        [[compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })]],
+        {silent = true, expr = true, noremap = true}
+    }
 })
-
--- inoremap <silent><expr> <C-Space> compe#complete()
--- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
--- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
--- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
--- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })

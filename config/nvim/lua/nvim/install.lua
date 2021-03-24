@@ -2,8 +2,6 @@ vim.cmd([[packadd packer.nvim]])
 
 return require('packer').startup(function(use)
     -- Colorschemes
-    use {'tjdevries/colorbuddy.vim'}
-    use {'tjdevries/gruvbuddy.nvim'}
     use {'sainnhe/sonokai'}
 
     -- Utils
@@ -29,7 +27,7 @@ return require('packer').startup(function(use)
     use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
     use {'preservim/nerdcommenter'}
-    use {'jiangmiao/auto-pairs'}
+    use {'Raimondi/delimitMate'}
 
     -- Snippets
     use {'honza/vim-snippets'}
@@ -40,6 +38,7 @@ return require('packer').startup(function(use)
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'elixir-editors/vim-elixir'}
+    use {'posva/vim-vue'}
 
     -- Code Config
     use {'neovim/nvim-lspconfig'}

@@ -24,7 +24,7 @@ Option.g({
     undofile = true,
     incsearch = true,
     showmode = false,
-    completeopt = "menuone,noinsert,noselect",
+    completeopt = "menuone,noselect",
     shortmess = vim.o.shortmess .. 'c',
     cmdheight = 2,
     updatetime = 50,
