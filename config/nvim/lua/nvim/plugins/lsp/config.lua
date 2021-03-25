@@ -39,6 +39,7 @@ Keybind.g({
   {'n', '<leader>rn', '<cmd>Lspsaga rename<CR>', opts},
   {'n', '<leader>qq', '<cmd>Lspsaga lsp_finder<CR>', opts},
   {'n', '<leader>f', '<cmd>Format<CR>:update<CR>', opts},
+  {'n', '<C-A-o>', '<cmd>OrganizeImports<CR>:update<CR>', opts},
 
   -- Completion Bindings
   -- {'i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], {noremap=true,expr=true}},
