@@ -32,7 +32,7 @@ Keybind.g({
   {'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
   -- {'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts},
   {'n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>', opts},
-  {'n', '[g', '<cmd>Lspsaga diagnostic_jump_pre<CR>', opts},
+  {'n', '[g', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts},
   {'n', ']g', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts},
   {'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts},
   {'n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts},

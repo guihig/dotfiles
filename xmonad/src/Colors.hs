@@ -1,1 +1,1 @@
-/home/ferira/.cache/wal/Colors.hs
+/home/ferreira/.cache/wal/Colors.hs
