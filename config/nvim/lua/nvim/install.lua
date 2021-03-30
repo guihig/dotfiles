@@ -6,7 +6,8 @@ return require('packer').startup(function(use)
 
     -- Utils
     use {'kyazdani42/nvim-web-devicons'}
-    use {'akinsho/nvim-bufferline.lua'}
+    use {'dstein64/vim-startuptime'}
+    -- use {'akinsho/nvim-bufferline.lua'}
     use {"glepnir/galaxyline.nvim"}
     use {'mhinz/vim-startify'}
     use {'simeji/winresizer'}
@@ -19,9 +20,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
-
-    -- Git
-    use {'tpope/vim-fugitive'}
 
     -- Code Utils
     use {'tpope/vim-dispatch'}

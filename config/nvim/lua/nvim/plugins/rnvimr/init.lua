@@ -10,8 +10,8 @@ Keybind.g({
 })
 
 Variable.g({
-    -- loaded_netrwPlugin = 1,
-    rnvimr_enable_ex = 1,
+    loaded_netrwPlugin = 1,
+    rnvimr_enable_ex = 0,
     rnvimr_enable_picker = 1,
     rnvimr_hide_gitignore = 1,
     rnvimr_draw_border = "both",
