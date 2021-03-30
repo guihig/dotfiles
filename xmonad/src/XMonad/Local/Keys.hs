@@ -235,9 +235,8 @@ appKeys _c =
   , ("M-<Esc>", shellPrompt Local.promptConfig)
   , ("M-<Space>", spawn Applications.launcher)
   , ("M-s", namedScratchpadAction scratchPads "spotify")
-    -- ("M-d", namedScratchpadAction scratchPads "slack"),
   , ("M-a", namedScratchpadAction scratchPads "discord")
-  , ("M-j", namedScratchpadAction scratchPads "joplin")
+  , ("M-d", namedScratchpadAction scratchPads "joplin")
   , ("M-r", namedScratchpadAction scratchPads "mailspring")
   , ("M-e", spawn Applications.files)
   ]
