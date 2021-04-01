@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
     -- Utils
     use {'kyazdani42/nvim-web-devicons'}
     use {'dstein64/vim-startuptime'}
+    use {'romgrk/barbar.nvim'}
     -- use {'akinsho/nvim-bufferline.lua'}
     use {"glepnir/galaxyline.nvim"}
     use {'mhinz/vim-startify'}

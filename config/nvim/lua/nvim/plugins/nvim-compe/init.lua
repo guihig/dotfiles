@@ -3,7 +3,7 @@ require'compe'.setup {
     autocomplete = true,
     debug = false,
     min_length = 1,
-    preselect = 'disable',
+    preselect = 'enable',
     throttle_time = 80,
     source_timeout = 200,
     incomplete_delay = 400,
@@ -13,17 +13,16 @@ require'compe'.setup {
     documentation = true,
 
     source = {
-        path = true,
+        nvim_lsp = {priority = 1000},
+        nvim_lua = {priority = 900},
+        ultisnips = {priority = 800},
+        path = {priority = 700},
+        buffer = {priority = 600},
         calc = false,
-        nvim_lsp = true,
-        nvim_lua = true,
-        ultisnips = true,
         treesitter = false,
-        nvim_treesitter = false,
         tags = false,
         vsnip = false,
         spell = false,
-        buffer = true,
         snippets_nvim = false
     }
 }

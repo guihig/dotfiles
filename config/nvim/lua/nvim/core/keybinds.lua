@@ -3,9 +3,9 @@ local silent_opts = {silent = true, noremap = true}
 
 Keybind.g({
     -- Buffer Nav
-    {'n', '<S-A-l>', ':bn<CR>', silent_opts},
-    {'n', '<S-A-h>', ':bp<CR>', silent_opts},
-    {'n', '<A-w>', ':bd<CR>', silent_opts},
+    {'n', '<S-A-h>', '<cmd>BufferPrevious<CR>', silent_opts},
+    {'n', '<S-A-l>', '<cmd>BufferNext<CR>', silent_opts},
+    {'n', '<A-w>', '<cmd>BufferClose<CR>', silent_opts},
 
     -- Source NVIM Config
     {'n', '<F12>', '<cmd>lua Editor.reload_nvim()<CR>', opts},
