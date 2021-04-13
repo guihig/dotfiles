@@ -1,6 +1,7 @@
 {-# LANGUAGE BlockArguments #-}
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
 
+{-# OPTIONS_GHC -Wno-overflowed-literals #-}
 module XMonad.Local.Keys
   ( keys
   , rawKeys

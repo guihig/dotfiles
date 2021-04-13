@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'elixir-editors/vim-elixir'}
-    use {'posva/vim-vue'}
+    -- use {'posva/vim-vue'}
 
     -- Code Config
     use {'neovim/nvim-lspconfig'}

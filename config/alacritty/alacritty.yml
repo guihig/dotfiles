@@ -15,7 +15,7 @@ env:
 window:
   padding:
     x: 0
-    y: 5
+    y: 0
 
   # Window class (Linux/BSD only):
   class:
@@ -30,7 +30,7 @@ font:
     style: Regular
 
   # Point size of the font
-  size: 10.5
+  size: 11.5
 
 colors:
   # Default colors

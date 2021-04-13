@@ -3,8 +3,6 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = {enable = true},
     indent = {enable = true},
     ensure_installed = {
-        'haskell', 'lua', 'json', 'css', 'html'
-        -- 'vue',
-        -- 'typescript',
+        'haskell', 'lua', 'json', 'css', 'html', 'vue', 'typescript'
     }
 }
