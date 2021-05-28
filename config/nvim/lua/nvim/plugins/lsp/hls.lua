@@ -6,6 +6,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs.hls = {
     default_config = {
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {"haskell-language-server-wrapper", "--lsp"},
         capabilities = capabilities,
         filetypes = {"haskell", "lhaskell"},

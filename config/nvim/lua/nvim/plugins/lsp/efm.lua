@@ -1,5 +1,5 @@
 local eslint = {
-    lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
+    lintCommand = "yarn eslint -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {"%f:%l:%c: %m"}

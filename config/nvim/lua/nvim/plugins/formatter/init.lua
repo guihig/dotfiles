@@ -11,7 +11,7 @@ end
 local function black() return {exe = "black", args = {"-q", "-"}} end
 
 local function mix_format()
-    return {exe = "mix", args = {"format", "mix.exs", "-"}}
+    return {exe = "mix", args = {"format", "mix.exs", "-"}, stdin = true}
 end
 
 local function luaformat()

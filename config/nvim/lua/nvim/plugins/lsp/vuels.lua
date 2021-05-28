@@ -11,6 +11,7 @@ configs[server_name] = {
     filetypes = {"vue"},
     default_config = {
         -- on_attach = require'completion'.on_attach,
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         capabilities = capabilities,
         cmd = {bin_name},
         filetypes = {"vue"},

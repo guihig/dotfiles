@@ -14,6 +14,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     default_config = {
         -- on_attach = require'completion'.on_attach,
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {elixirls_binary},
         filetypes = {"elixir", "eelixir"},
         root_dir = function(fname)

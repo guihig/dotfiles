@@ -20,15 +20,16 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     filetypes = {
         "javascript", "javascriptreact", "javascript.jsx", "typescript",
-        "typescriptreact", "typescript.tsx"
+        "typescriptreact", "typescript.tsx", "vue"
     },
     default_config = {
         -- on_attach = require'completion'.on_attach,
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         capabilities = capabilities,
         cmd = {bin_name, "--stdio"},
         filetypes = {
             "javascript", "javascriptreact", "javascript.jsx", "typescript",
-            "typescriptreact", "typescript.tsx"
+            "typescriptreact", "typescript.tsx", "vue"
         },
         root_dir = function(fname)
             return util.root_pattern("tsconfig.json")(fname) or

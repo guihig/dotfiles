@@ -15,14 +15,13 @@ require'compe'.setup {
     source = {
         nvim_lsp = {priority = 1000},
         nvim_lua = {priority = 900},
-        ultisnips = {priority = 800},
+        vsnip = {priority = 800},
         path = {priority = 700},
-        -- buffer = {priority = 600},
-        buffer = false,
+        buffer = {priority = 600},
+        ultisnips = false,
         calc = false,
         treesitter = false,
         tags = false,
-        vsnip = false,
         spell = false,
         snippets_nvim = false
     }
@@ -47,8 +46,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-n>"
-        -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        --     return t "<Plug>(vsnip-expand-or-jump)"
+    elseif vim.fn.call("vsnip#available", {1}) == 1 then
+        return t "<Plug>(vsnip-expand-or-jump)"
     elseif check_back_space() then
         return t "<Tab>"
     else
@@ -58,8 +57,8 @@ end
 _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-p>"
-        -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        --     return t "<Plug>(vsnip-jump-prev)"
+    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+        return t "<Plug>(vsnip-jump-prev)"
     else
         return t "<S-Tab>"
     end

@@ -11,6 +11,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require'lspconfig'.sumneko_lua.setup {
     -- on_attach = require'completion'.on_attach,
+    on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities,
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {

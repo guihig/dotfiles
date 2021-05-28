@@ -11,6 +11,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 configs[server_name] = {
     default_config = {
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {bin_name, "--stdio"},
         capabilities = capabilities,
         filetypes = {"css", "scss", "less"},

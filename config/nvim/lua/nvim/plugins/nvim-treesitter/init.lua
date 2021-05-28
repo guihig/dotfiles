@@ -6,3 +6,6 @@ require'nvim-treesitter.configs'.setup {
         'haskell', 'lua', 'json', 'css', 'html', 'vue', 'typescript'
     }
 }
+
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
