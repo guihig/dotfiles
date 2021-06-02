@@ -8,11 +8,9 @@ return require('packer').startup(function(use)
     use {'kyazdani42/nvim-web-devicons'}
     use {'dstein64/vim-startuptime'}
     use {'romgrk/barbar.nvim'}
-    -- use {'akinsho/nvim-bufferline.lua'}
     use {"glepnir/galaxyline.nvim"}
     use {'mhinz/vim-startify'}
     use {'simeji/winresizer'}
-    use {'easymotion/vim-easymotion'}
     use {'kevinhwang91/rnvimr'}
     use {'psliwka/vim-smoothie'}
     use {'edkolev/tmuxline.vim'}
@@ -30,20 +28,15 @@ return require('packer').startup(function(use)
     use {'mattn/emmet-vim'}
 
     -- Snippets
-    -- use {'honza/vim-snippets'}
-    -- use {'SirVer/ultisnips'}
     use {'hrsh7th/vim-vsnip'}
-    use {'hrsh7th/vim-vsnip-integ'}
     use {'rafamadriz/friendly-snippets'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'elixir-editors/vim-elixir'}
-    -- use {'posva/vim-vue'}
 
     -- Code Config
     use {'neovim/nvim-lspconfig'}
-    -- use {'neoclide/coc.nvim', branch = "release"}
     -- Using nvim-compe in favor of https://github.com/neovim/neovim/pull/13979
     use {'hrsh7th/nvim-compe'}
     use {
@@ -53,16 +46,16 @@ return require('packer').startup(function(use)
         cmd = {"Format"}
     }
     use {'glepnir/lspsaga.nvim'}
-    use {'vim-test/vim-test'}
-    use {
-        "folke/lsp-trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    }
+    -- use {'vim-test/vim-test'}
+    -- use {
+    --     "folke/lsp-trouble.nvim",
+    --     requires = "kyazdani42/nvim-web-devicons",
+    --     config = function()
+    --         require("trouble").setup {
+    --             -- your configuration comes here
+    --             -- or leave it empty to use the default settings
+    --             -- refer to the configuration section below
+    --         }
+    --     end
+    -- }
 end)

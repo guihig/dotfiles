@@ -6,31 +6,31 @@ WRONG="#880000FF"
 TRANSPARENT="#33333333"
 
 i3lock \
---insidevercolor=${TRANSPARENT}   \
---ringvercolor=${foreground} \
+--insidever-color=${TRANSPARENT}   \
+--ringver-color=${foreground} \
 \
---insidewrongcolor=${TRANSPARENT} \
---ringwrongcolor=${WRONG}    \
+--insidewrong-color=${TRANSPARENT} \
+--ringwrong-color=${WRONG}    \
 \
---insidecolor=${TRANSPARENT} \
---ringcolor=${foreground}    \
---linecolor=${color1}        \
---separatorcolor=${color1}   \
+--inside-color=${TRANSPARENT} \
+--ring-color=${foreground}    \
+--line-color=${color1}        \
+--separator-color=${color1}   \
 \
---verifcolor=${color1}       \
---wrongcolor=${WRONG}        \
---timecolor=${foreground}    \
---datecolor=${foreground}    \
---layoutcolor=${foreground}  \
---keyhlcolor=${color2}       \
---bshlcolor=${background}         \
+--verif-color=${color1}       \
+--wrong-color=${WRONG}        \
+--time-color=${foreground}    \
+--date-color=${foreground}    \
+--layout-color=${foreground}  \
+--keyhl-color=${color2}       \
+--bshl-color=${background}         \
 \
 --screen 1                   \
 --blur 5                     \
 --clock                      \
 --indicator                  \
---timestr="%H:%M:%S"         \
---datestr="%A, %m %Y"        \
+--time-str="%H:%M:%S"         \
+--date-str="%A, %m %Y"        \
 --keylayout 1                \
 
 # --veriftext="Drinking verification can..."

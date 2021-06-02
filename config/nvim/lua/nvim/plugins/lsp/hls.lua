@@ -4,6 +4,8 @@ local util = require 'lspconfig/util'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport =
+    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs.hls = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
@@ -20,17 +22,6 @@ configs.hls = {
             end
             return ""
         end
-    },
-
-    docs = {
-        description = [[
-https://github.com/haskell/haskell-language-server
-Haskell Language Server
-        ]],
-
-        default_config = {
-            root_dir = [[root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml")]]
-        }
     }
 };
 

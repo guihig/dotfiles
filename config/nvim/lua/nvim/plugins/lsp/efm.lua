@@ -23,7 +23,7 @@ local languages = {
 }
 
 require"lspconfig".efm.setup {
-    -- on_attach = require'completion'.on_attach,
+    on_attach = require'nvim.plugins.lsp.config'.on_attach,
     root_dir = require"lspconfig".util.root_pattern("yarn.lock", "lerna.json",
                                                     ".git"),
     init_options = {documentFormatting = true, codeAction = true},

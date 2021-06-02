@@ -9,6 +9,8 @@ local root_pattern = util.root_pattern("package.json")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport =
+    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
@@ -23,16 +25,6 @@ configs[server_name] = {
             scss = {validate = true},
             less = {validate = true}
         }
-    },
-    docs = {
-        description = [[
-https://github.com/vscode-langservers/vscode-css-languageserver-bin
-`css-languageserver` can be installed via `npm`:
-```sh
-npm install -g vscode-css-languageserver-bin
-```
-]],
-        default_config = {root_dir = [[root_pattern("package.json")]]}
     }
 }
 

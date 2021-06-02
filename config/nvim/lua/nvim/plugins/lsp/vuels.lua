@@ -7,27 +7,27 @@ local bin_name = "vls"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport =
+    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
-    filetypes = {"vue"},
     default_config = {
-        -- on_attach = require'completion'.on_attach,
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         capabilities = capabilities,
         cmd = {bin_name},
         filetypes = {"vue"},
-        root_dir = util.root_pattern("package.json", "vue.config.js"),
+        root_dir = util.root_pattern("package.json"),
         init_options = {
             config = {
                 vetur = {
-                    useWorkspaceDependencies = false,
+                    useWorkspaceDependencies = true,
                     validation = {template = true, style = true, script = true},
                     completion = {
                         autoImport = true,
-                        useScaffoldSnippets = false,
+                        useScaffoldSnippets = true,
                         tagCasing = "kebab"
                     },
                     format = {
-                        defaultFormatter = {js = "none", ts = "none"},
+                        defaultFormatter = {js = "prettier", ts = "prettier"},
                         defaultFormatterOptions = {},
                         scriptInitialIndent = false,
                         styleInitialIndent = false
@@ -39,49 +39,6 @@ configs[server_name] = {
                 typescript = {format = {}},
                 emmet = {},
                 stylusSupremacy = {}
-            }
-        }
-    },
-    docs = {
-        package_json = "https://raw.githubusercontent.com/vuejs/vetur/master/package.json",
-        description = [[
-https://github.com/vuejs/vetur/tree/master/server
-Vue language server(vls)
-`vue-language-server` can be installed via `npm`:
-```sh
-npm install -g vls
-```
-]],
-        default_config = {
-            root_dir = [[root_pattern("package.json", "vue.config.js")]],
-            init_options = {
-                config = {
-                    vetur = {
-                        useWorkspaceDependencies = true,
-                        validation = {
-                            template = true,
-                            style = true,
-                            script = true
-                        },
-                        completion = {
-                            autoImport = true,
-                            useScaffoldSnippets = false,
-                            tagCasing = "kebab"
-                        },
-                        format = {
-                            defaultFormatter = {js = "none", ts = "none"},
-                            defaultFormatterOptions = {},
-                            scriptInitialIndent = false,
-                            styleInitialIndent = false
-                        }
-                    },
-                    css = {},
-                    html = {suggest = {}},
-                    javascript = {format = {}},
-                    typescript = {format = {}},
-                    emmet = {},
-                    stylusSupremacy = {}
-                }
             }
         }
     }
