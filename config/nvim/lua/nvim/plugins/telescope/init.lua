@@ -1,3 +1,6 @@
+local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
+
 Keybind.g({
     {'n', '<C-p>', '<cmd>Telescope find_files<CR>', {noremap = true}},
     {'n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true}},
@@ -6,8 +9,40 @@ Keybind.g({
 
 require('telescope').setup {
     defaults = {
-        file_previewer = require'telescope.previewers'.cat.new,
-        grep_previewer = require'telescope.previewers'.cat.new,
-        qflist_previewer = require'telescope.previewers'.cat.new
+        -- file_previewer = require'telescope.previewers'.cat.new,
+        -- grep_previewer = require'telescope.previewers'.cat.new,
+        -- qflist_previewer = require'telescope.previewers'.cat.new,
+        mappings = {
+            i = {
+                ["<S-Tab>"] = actions.toggle_selection +
+                    actions.move_selection_worse,
+                ["<Tab>"] = actions.toggle_selection +
+                    actions.move_selection_better,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous, -- otherwise, just set the mapping to the function that you want it to be.
+                ["<C-q>"] = actions.send_selected_to_qflist +
+                    actions.open_qflist
+            },
+            n = {
+                ["<S-Tab>"] = actions.toggle_selection +
+                    actions.move_selection_worse,
+                ["<Tab>"] = actions.toggle_selection +
+                    actions.move_selection_better,
+                ["<C-q>"] = actions.send_selected_to_qflist +
+                    actions.open_qflist
+            }
+        }
     }
 }
+
+vim.api.nvim_exec([[
+  function! MaybeTelescope()
+    if argc() == 1 && isdirectory(argv()[0])
+          " Uncomment this to remove the Netrw buffer (optional)
+          execute "bdelete"
+          execute "Telescope find_files"
+      endif
+  endfunction
+
+  autocmd VimEnter * :call MaybeTelescope()
+]], true)

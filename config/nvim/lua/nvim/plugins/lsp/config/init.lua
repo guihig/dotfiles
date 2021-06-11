@@ -17,7 +17,7 @@ M.on_attach = function(_, bufnr)
         {bufnr, 'n', '<leader>a', '<cmd>Lspsaga code_action<CR>', opts},
         {bufnr, 'n', '<leader>rn', '<cmd>Lspsaga rename<CR>', opts},
         {bufnr, 'n', '<leader>qq', '<cmd>Lspsaga lsp_finder<CR>', opts},
-        {bufnr, 'n', '<leader>vd', '<cmd>Lspsaga preview_definition<CR>', opts},
+        {bufnr, 'n', '<leader>k', '<cmd>Lspsaga preview_definition<CR>', opts},
         {bufnr, 'n', ']g', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts},
         {bufnr, 'n', '[g', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts},
         {

@@ -10,6 +10,8 @@ Keybind.g({
 })
 
 Variable.g({
+    loaded_netrw = 1,
+    netrw_loaded_netrwPlugin = 1,
     loaded_netrwPlugin = 1,
     rnvimr_enable_ex = 0,
     rnvimr_enable_picker = 1,

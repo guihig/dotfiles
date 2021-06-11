@@ -6,7 +6,7 @@ local eslint = {
 }
 
 local credo = {
-    lintCommand = "mix credo suggest --format=flycheck --read-from-stdin ${INPUT}",
+    lintCommand = "mix credo suggest --strict --format=flycheck --read-from-stdin ${INPUT}",
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {"%f:%l:%c: %m"},

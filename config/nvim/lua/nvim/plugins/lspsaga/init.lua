@@ -12,3 +12,13 @@ LspSaga.init_lsp_saga {
         scroll_up = '<S-Tab>' -- quit can be a table
     }
 }
+
+Keybind.g({
+    {
+        'n', '<A-d>', ':Lspsaga open_floaterm<CR>',
+        {noremap = true, silent = true}
+    }, {
+        't', '<A-d>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>',
+        {noremap = true, silent = true}
+    }
+})

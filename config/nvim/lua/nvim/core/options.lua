@@ -28,8 +28,8 @@ Option.g({
     shortmess = vim.o.shortmess .. 'c',
     cmdheight = 2,
     updatetime = 50,
-    foldenable = false,
     scrolloff = 8,
     termguicolors = true,
-    signcolumn = "yes:1"
+    signcolumn = "yes:1",
+    foldlevelstart = 20
 })
