@@ -1,7 +1,6 @@
 local opt = { noremap = true, expr = true, silent = true, nowait = true }
 local silent_opt = { silent = true }
 local nrsilent_opt = { silent = true, noremap = true }
-local none = {}
 
 Keybind.g({
     { 'i', '<Tab>', [[ pumvisible() ? "\<C-n>" : "\<TAB>" ]], opt },
@@ -16,28 +15,15 @@ Keybind.g({
 	{ 'n', 'K', '<cmd>lua Coc.show_documentation()<cr>', silent_opt },
 
 	-- error jumps
-	{ 'n', '<leader>j', '<Plug>(coc-diagnostic-next)', silent_opt },
-	{ 'n', '<leader>k', '<Plug>(coc-diagnostic-prev)', silent_opt },
+	{ 'n', ']g', '<Plug>(coc-diagnostic-next)', silent_opt },
+	{ 'n', '[g', '<Plug>(coc-diagnostic-prev)', silent_opt },
 
 	-- actions
 	{ 'n', '<leader>rn', '<Plug>(coc-rename)', silent_opt},
 	{ 'n', '<leader>a', '<Plug>(coc-codeaction)', silent_opt},
 	{ 'n', '<leader>s', '<Plug>(coc-codeaction-selected)', silent_opt},
-	{ 'n', '<leader>f', '<cmd>lua Coc.format_code()<CR> :update<CR>', none},
-	{ 'v', '<leader>f', '<Plug>(coc-format-selected)', none},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
 	{ 'n', '<C-A-o>', '<cmd>lua Coc.organize_import()<CR> :update<CR>', silent_opt},
-
-	-- text objects
-	{ 'x', 'if', '<Plug>(coc-funcobj-i)', silent_opt },
-	{ 'o', 'if', '<Plug>(coc-funcobj-i)', silent_opt },
-	{ 'x', 'af', '<Plug>(coc-funcobj-a)', silent_opt },
-	{ 'o', 'af', '<Plug>(coc-funcobj-a)', silent_opt },
-
-	{ 'x', 'ic', '<Plug>(coc-classobj-i)', silent_opt },
-	{ 'o', 'ic', '<Plug>(coc-classobj-i)', silent_opt },
-	{ 'x', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
-	{ 'o', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
 
 	-- @TODO there is an error when <c-j> keymap is registered
 	-- need to check this

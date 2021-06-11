@@ -21,7 +21,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport =
     {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
     default_config = {
-        -- on_attach = require'completion'.on_attach,
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         capabilities = capabilities,
         cmd = {bin_name, "--stdio"},

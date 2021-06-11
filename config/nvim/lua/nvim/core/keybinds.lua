@@ -2,6 +2,8 @@ local opts = {noremap = true}
 local silent_opts = {silent = true, noremap = true}
 
 Keybind.g({
+    -- Format code
+    {'n', '<leader>f', '<cmd>Format<CR>:update<CR>', opts},
     -- Buffer Nav
     {'n', '<S-A-h>', '<cmd>BufferPrevious<CR>', silent_opts},
     {'n', '<S-A-l>', '<cmd>BufferNext<CR>', silent_opts},

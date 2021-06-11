@@ -28,8 +28,8 @@ return require('packer').startup(function(use)
     use {'mattn/emmet-vim'}
 
     -- Snippets
-    use {'hrsh7th/vim-vsnip'}
-    use {'rafamadriz/friendly-snippets'}
+    -- use {'hrsh7th/vim-vsnip'}
+    -- use {'rafamadriz/friendly-snippets'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
         cmd = {"Format"}
     }
     use {'glepnir/lspsaga.nvim'}
-    -- use {'vim-test/vim-test'}
+    use {'vim-test/vim-test'}
     -- use {
     --     "folke/lsp-trouble.nvim",
     --     requires = "kyazdani42/nvim-web-devicons",

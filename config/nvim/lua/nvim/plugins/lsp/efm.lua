@@ -22,8 +22,13 @@ local languages = {
     elixir = {credo}
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport =
+    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 require"lspconfig".efm.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    capabilities = capabilities,
     root_dir = require"lspconfig".util.root_pattern("yarn.lock", "lerna.json",
                                                     ".git"),
     init_options = {documentFormatting = true, codeAction = true},

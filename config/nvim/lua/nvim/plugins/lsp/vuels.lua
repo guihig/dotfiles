@@ -22,12 +22,12 @@ configs[server_name] = {
                     useWorkspaceDependencies = true,
                     validation = {template = true, style = true, script = true},
                     completion = {
-                        autoImport = true,
-                        useScaffoldSnippets = true,
+                        autoImport = false,
+                        useScaffoldSnippets = false,
                         tagCasing = "kebab"
                     },
                     format = {
-                        defaultFormatter = {js = "prettier", ts = "prettier"},
+                        defaultFormatter = {js = "none", ts = "none"},
                         defaultFormatterOptions = {},
                         scriptInitialIndent = false,
                         styleInitialIndent = false
