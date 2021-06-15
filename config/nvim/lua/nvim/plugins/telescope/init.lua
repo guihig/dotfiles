@@ -1,5 +1,4 @@
 local actions = require('telescope.actions')
-local builtin = require('telescope.builtin')
 
 Keybind.g({
     {'n', '<C-p>', '<cmd>Telescope find_files<CR>', {noremap = true}},
@@ -12,6 +11,9 @@ require('telescope').setup {
         -- file_previewer = require'telescope.previewers'.cat.new,
         -- grep_previewer = require'telescope.previewers'.cat.new,
         -- qflist_previewer = require'telescope.previewers'.cat.new,
+        vimgrep_arguments = {
+            'rg', '-i', '--files', '--hidden', '-g', '"!{node_modules,.git}"'
+        },
         mappings = {
             i = {
                 ["<S-Tab>"] = actions.toggle_selection +
