@@ -23,13 +23,14 @@ return require('packer').startup(function(use)
     -- Code Utils
     use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
-    use {'preservim/nerdcommenter'}
+    use {'JoosepAlviste/nvim-ts-context-commentstring'}
+    use {'b3nj5m1n/kommentary'}
     use {'Raimondi/delimitMate'}
     use {'mattn/emmet-vim'}
 
     -- Snippets
-    -- use {'hrsh7th/vim-vsnip'}
-    -- use {'rafamadriz/friendly-snippets'}
+    use {'hrsh7th/vim-vsnip'}
+    use {'rafamadriz/friendly-snippets'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

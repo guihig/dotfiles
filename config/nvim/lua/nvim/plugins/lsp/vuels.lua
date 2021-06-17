@@ -22,8 +22,8 @@ configs[server_name] = {
                     useWorkspaceDependencies = true,
                     validation = {template = true, style = true, script = true},
                     completion = {
-                        autoImport = false,
-                        useScaffoldSnippets = false,
+                        autoImport = true,
+                        useScaffoldSnippets = true,
                         tagCasing = "kebab"
                     },
                     format = {
