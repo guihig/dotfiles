@@ -10,4 +10,5 @@ require("nvim.plugins.lsp.efm")
 require("nvim.plugins.lsp.hls")
 require("nvim.plugins.lsp.cssls")
 require("nvim.plugins.lsp.jsonls")
+require("nvim.plugins.lsp.hdl_checker")
 

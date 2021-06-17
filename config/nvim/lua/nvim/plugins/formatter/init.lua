@@ -18,6 +18,14 @@ local function luaformat()
     return {exe = "lua-format", args = {"-i"}, stdin = true}
 end
 
+local function vhdlFormatter()
+    return {
+        exe = "vhdlformatter.sh",
+        args = {"--write", vim.api.nvim_buf_get_name(0)},
+        stdin = false
+    }
+end
+
 local function hindent() return {exe = "hindent", stdin = true} end
 
 function M.setup()
@@ -37,7 +45,8 @@ function M.setup()
             sass = {prettier},
             python = {black},
             elixir = {mix_format},
-            haskell = {hindent}
+            haskell = {hindent},
+            vhdl = {vhdlFormatter}
         }
     })
 end

@@ -12,7 +12,11 @@ require('telescope').setup {
         -- grep_previewer = require'telescope.previewers'.cat.new,
         -- qflist_previewer = require'telescope.previewers'.cat.new,
         vimgrep_arguments = {
-            'rg', '-i', '--files', '--hidden', '-g', '"!{node_modules,.git}"'
+            'rg', '--hidden', '--color=never', '--no-heading',
+            '--with-filename', '--line-number', '--column', '--smart-case'
+        },
+        file_ignore_patterns = {
+            "node_modules", ".git", "_build", ".idea", ".elixis_ls"
         },
         mappings = {
             i = {
