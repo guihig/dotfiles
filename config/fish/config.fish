@@ -30,6 +30,8 @@ alias vim nvim
 
 alias tmx tmuxinator
 
+alias pong "ping 8.8.8.8"
+
 #########################
 ######### Paths #########
 #########################
