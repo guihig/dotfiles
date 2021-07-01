@@ -39,7 +39,9 @@ configs[server_name] = {
                 description = "Organize Imports"
             }
         }
-    }
+    },
+    flags = {debounce_text_changes = 150}
+
 }
 
 lspconfig.tsserver.setup {}

@@ -40,7 +40,9 @@ configs[server_name] = {
                 emmet = {},
                 stylusSupremacy = {}
             }
-        }
+        },
+        flags = {debounce_text_changes = 150}
+
     }
 }
 

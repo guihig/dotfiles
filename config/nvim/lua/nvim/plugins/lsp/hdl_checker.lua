@@ -15,7 +15,9 @@ if not lspconfig.hdl_checker then
             filetypes = {'vhdl', 'verilog', 'systemverilog'},
             root_dir = util.root_pattern("*.qpf", ".hdl_checker.config"),
             settings = {},
-            capabilities = capabilities
+            capabilities = capabilities,
+            flags = {debounce_text_changes = 150}
+
         }
     }
 end

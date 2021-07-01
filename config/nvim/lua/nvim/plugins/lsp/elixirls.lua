@@ -23,7 +23,9 @@ configs[server_name] = {
             return util.root_pattern("mix.exs", ".git")(fname) or
                        vim.loop.os_homedir()
         end,
-        capabilities = capabilities
+        capabilities = capabilities,
+        flags = {debounce_text_changes = 150}
+
     }
 }
 

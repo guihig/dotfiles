@@ -21,7 +21,9 @@ configs.hls = {
                 return "logfile: " .. cfg.settings.languageServerHaskell.logFile
             end
             return ""
-        end
+        end,
+        flags = {debounce_text_changes = 150}
+
     }
 };
 

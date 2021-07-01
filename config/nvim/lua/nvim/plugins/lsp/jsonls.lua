@@ -16,7 +16,9 @@ configs[server_name] = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         filetypes = {"json"},
         init_options = {provideFormatter = true},
-        root_dir = util.root_pattern(".git", vim.fn.getcwd())
+        root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+        flags = {debounce_text_changes = 150}
+
     }
 }
 

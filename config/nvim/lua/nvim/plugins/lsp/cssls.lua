@@ -24,7 +24,9 @@ configs[server_name] = {
             css = {validate = true},
             scss = {validate = true},
             less = {validate = true}
-        }
+        },
+        flags = {debounce_text_changes = 150}
+
     }
 }
 
