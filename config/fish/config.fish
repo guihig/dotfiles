@@ -37,7 +37,7 @@ alias pong "ping 8.8.8.8"
 #########################
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.yarn/bin $PATH
-set PATH $HOME/local/nvim/bin $PATH
+# set PATH $HOME/local/nvim/bin $PATH
 set PATH $HOME/local/elixir/bin $PATH
 
 set GOROOT (go env GOROOT)
@@ -46,8 +46,8 @@ set PATH "$GOPATH/bin" $PATH
 
 set GEM_HOME (ruby -e 'puts Gem.user_dir')
 
-set PATH "$PATH:$GEM_HOME/bin"
-set PATH "$PATH:$HOME/.cargo/bin"
+set PATH "$GEM_HOME/bin" $PATH
+set PATH "$HOME/.cargo/bin" $PATH
 set PATH "$HOME/.luarocks/bin" $PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
