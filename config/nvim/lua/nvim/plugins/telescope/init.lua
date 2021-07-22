@@ -8,32 +8,33 @@ Keybind.g({
 
 require('telescope').setup {
     defaults = {
-        -- file_previewer = require'telescope.previewers'.cat.new,
-        -- grep_previewer = require'telescope.previewers'.cat.new,
-        -- qflist_previewer = require'telescope.previewers'.cat.new,
+        --[[ file_previewer = require'telescope.previewers'.cat.new,
+        grep_previewer = require'telescope.previewers'.cat.new,
+        qflist_previewer = require'telescope.previewers'.cat.new, ]]
         vimgrep_arguments = {
             'rg', '--hidden', '--color=never', '--no-heading',
             '--with-filename', '--line-number', '--column', '--smart-case'
         },
         file_ignore_patterns = {
-            "node_modules", ".git", "_build", ".idea", ".elixis_ls"
+            "node_modules", ".git", ".idea", ".elixis_ls"
+            -- "_build",
         },
         mappings = {
             i = {
-                ["<S-Tab>"] = actions.toggle_selection +
+                --[[ ["<S-Tab>"] = actions.toggle_selection +
                     actions.move_selection_worse,
                 ["<Tab>"] = actions.toggle_selection +
-                    actions.move_selection_better,
+                    actions.move_selection_better, ]]
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous, -- otherwise, just set the mapping to the function that you want it to be.
                 ["<C-q>"] = actions.send_selected_to_qflist +
                     actions.open_qflist
             },
             n = {
-                ["<S-Tab>"] = actions.toggle_selection +
+                --[[ ["<S-Tab>"] = actions.toggle_selection +
                     actions.move_selection_worse,
                 ["<Tab>"] = actions.toggle_selection +
-                    actions.move_selection_better,
+                    actions.move_selection_better, ]]
                 ["<C-q>"] = actions.send_selected_to_qflist +
                     actions.open_qflist
             }

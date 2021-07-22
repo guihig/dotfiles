@@ -17,7 +17,11 @@ return require('packer').startup(function(use)
     use {'mg979/vim-visual-multi', branch = 'master'}
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        branch = 'async_v2',
+        requires = {
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim', branch = 'async_jobs_v2'}
+        }
     }
 
     -- Code Utils
@@ -26,11 +30,10 @@ return require('packer').startup(function(use)
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
     use {'Raimondi/delimitMate'}
-    use {'mattn/emmet-vim'}
 
     -- Snippets
-    use {'hrsh7th/vim-vsnip'}
-    use {'rafamadriz/friendly-snippets'}
+    --[[ use {'hrsh7th/vim-vsnip'}
+    use {'rafamadriz/friendly-snippets'} ]]
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
