@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
     use {'dstein64/vim-startuptime'}
     use {'romgrk/barbar.nvim'}
     use {"glepnir/galaxyline.nvim"}
+    use {"easymotion/vim-easymotion"}
     use {'mhinz/vim-startify'}
     use {'simeji/winresizer'}
     use {'kevinhwang91/rnvimr'}
