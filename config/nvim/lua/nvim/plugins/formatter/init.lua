@@ -28,6 +28,14 @@ end
 
 local function hindent() return {exe = "hindent", stdin = true} end
 
+local function latexindent()
+    return {
+        exe = "latexindent",
+        args = {"-d", vim.api.nvim_buf_get_name(0)},
+        stdin = true
+    }
+end
+
 function M.setup()
     require("formatter").setup({
         logging = true,
@@ -46,7 +54,8 @@ function M.setup()
             python = {black},
             elixir = {mix_format},
             haskell = {hindent},
-            vhdl = {vhdlFormatter}
+            vhdl = {vhdlFormatter},
+            tex = {latexindent}
         }
     })
 end

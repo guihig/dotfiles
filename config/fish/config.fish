@@ -37,7 +37,7 @@ alias pong "ping 8.8.8.8"
 #########################
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.yarn/bin $PATH
-# set PATH $HOME/local/nvim/bin $PATH
+set PATH $HOME/local/nvim/bin $PATH
 set PATH $HOME/local/elixir/bin $PATH
 
 set GOROOT (go env GOROOT)

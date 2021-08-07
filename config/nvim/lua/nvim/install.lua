@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
     use {'kevinhwang91/rnvimr'}
     use {'psliwka/vim-smoothie'}
     use {'edkolev/tmuxline.vim'}
+    use {'lervag/vimtex'}
     use {'mg979/vim-visual-multi', branch = 'master'}
     use {
         'nvim-telescope/telescope.nvim',

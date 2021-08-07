@@ -40,7 +40,7 @@ configs[server_name] = {
             }
         }
     },
-    flags = {debounce_text_changes = 150}
+    flags = {debounce_text_changes = 350}
 
 }
 

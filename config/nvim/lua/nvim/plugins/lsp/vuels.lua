@@ -41,7 +41,7 @@ configs[server_name] = {
                 stylusSupremacy = {}
             }
         },
-        flags = {debounce_text_changes = 150}
+        flags = {debounce_text_changes = 350}
 
     }
 }
