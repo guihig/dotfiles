@@ -29,8 +29,9 @@ Keybind.g({
     -- Save buffer
     {'n', 'W', ':update<CR>', opts},
 
-    -- Split buffer Vertically
+    -- Split buffer
     {'n', '<leader>v', ':vsplit<CR>', silent_opts},
+    {'n', '<leader>x', ':split<CR>', silent_opts},
 
     -- Paste last Copy
     {'n', '<leader>p', '"_dP', opts},
@@ -43,5 +44,4 @@ Keybind.g({
     {'i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts},
     {'v', '<A-j>', ':m \'>+1<CR>gv==gv', opts},
     {'v', '<A-k>', ':m \'<-2<CR>gv==gv', opts},
-
 })
