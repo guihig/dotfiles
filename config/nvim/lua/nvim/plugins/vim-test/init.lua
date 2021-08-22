@@ -7,7 +7,7 @@ Keybind.g({
 })
 
 vim.api.nvim_exec([[
-  let g:nicemux_elixir_tmux_session = 'inova-elixir-test'
+  let g:nicemux_elixir_tmux_session = 'elixir-test'
   function! NiceMux(cmd) abort
     call system('tmux send-keys -t ' . g:nicemux_elixir_tmux_session . ':1.1 "clear; ' . a:cmd . '" ENTER')
   endfunction

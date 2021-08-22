@@ -15,15 +15,10 @@ return require('packer').startup(function(use)
     use {'kevinhwang91/rnvimr'}
     use {'psliwka/vim-smoothie'}
     use {'edkolev/tmuxline.vim'}
-    use {'lervag/vimtex'}
     use {'mg979/vim-visual-multi', branch = 'master'}
     use {
         'nvim-telescope/telescope.nvim',
-        branch = 'async_v2',
-        requires = {
-            {'nvim-lua/popup.nvim'},
-            {'nvim-lua/plenary.nvim', branch = 'async_jobs_v2'}
-        }
+        requires = {{'nvim-lua/plenary.nvim'}}
     }
 
     -- Code Utils
@@ -34,12 +29,12 @@ return require('packer').startup(function(use)
     use {'Raimondi/delimitMate'}
 
     -- Snippets
-    --[[ use {'hrsh7th/vim-vsnip'}
-    use {'rafamadriz/friendly-snippets'} ]]
+    -- use {'hrsh7th/vim-vsnip'}
+    -- use {'rafamadriz/friendly-snippets'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    use {'elixir-editors/vim-elixir'}
+    -- use {'elixir-editors/vim-elixir'}
 
     -- Code Config
     use {'neovim/nvim-lspconfig'}

@@ -21,7 +21,7 @@ Keybind.g({
 	-- actions
 	{ 'n', '<leader>rn', '<Plug>(coc-rename)', silent_opt},
 	{ 'n', '<leader>a', '<Plug>(coc-codeaction)', silent_opt},
-	{ 'n', '<leader>s', '<Plug>(coc-codeaction-selected)', silent_opt},
+	-- { 'n', '<leader>s', '<Plug>(coc-codeaction-selected)', silent_opt},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
 	{ 'n', '<C-A-o>', '<cmd>lua Coc.organize_import()<CR> :update<CR>', silent_opt},
 

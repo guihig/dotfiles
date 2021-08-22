@@ -4,7 +4,8 @@ require'nvim-treesitter.configs'.setup {
     indent = {enable = true},
     context_commentstring = {enable = true},
     ensure_installed = {
-        'haskell', 'lua', 'json', 'css', 'html', 'vue', 'typescript', 'latex'
+        'haskell', 'lua', 'json', 'css', 'html', 'vue', 'typescript', 'latex',
+        'elixir'
     }
 }
 
