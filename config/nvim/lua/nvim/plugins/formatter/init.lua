@@ -1,5 +1,3 @@
-local M = {}
-
 local function prettier()
     return {
         exe = "prettier",
@@ -21,8 +19,8 @@ end
 local function vhdlFormatter()
     return {
         exe = "vhdlformatter.sh",
-        args = {"--write", vim.api.nvim_buf_get_name(0)},
-        stdin = false
+        args = {vim.api.nvim_buf_get_name(0)},
+        stdin = true
     }
 end
 
@@ -36,28 +34,24 @@ local function latexindent()
     }
 end
 
-function M.setup()
-    require("formatter").setup({
-        logging = true,
-        filetype = {
-            lua = {luaformat},
-            javascript = {prettier},
-            javascriptreact = {prettier},
-            typescript = {prettier},
-            typescriptreact = {prettier},
-            vue = {prettier},
-            html = {prettier},
-            json = {prettier},
-            css = {prettier},
-            scss = {prettier},
-            sass = {prettier},
-            python = {black},
-            elixir = {mix_format},
-            haskell = {hindent},
-            vhdl = {vhdlFormatter},
-            tex = {latexindent}
-        }
-    })
-end
-
-return M
+require("formatter").setup({
+    logging = true,
+    filetype = {
+        lua = {luaformat},
+        javascript = {prettier},
+        javascriptreact = {prettier},
+        typescript = {prettier},
+        typescriptreact = {prettier},
+        vue = {prettier},
+        html = {prettier},
+        json = {prettier},
+        css = {prettier},
+        scss = {prettier},
+        sass = {prettier},
+        python = {black},
+        elixir = {mix_format},
+        haskell = {hindent},
+        vhdl = {vhdlFormatter},
+        tex = {latexindent}
+    }
+})

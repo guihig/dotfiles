@@ -1,11 +1,5 @@
 {
-  "vetur.useWorkspaceDependencies": true,
-  "vetur.validation.templateProps": true,
-  "Lua.workspace.library": {
-    "/usr/share/nvim/runtime/lua": true,
-    "/usr/share/nvim/runtime/lua/vim/lsp": true
-  },
-  "Lua.diagnostics.globals": ["vim"],
+  // LSPs
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
@@ -25,9 +19,41 @@
           "completionSnippetsOn": true
         }
       }
+    },
+    "hdlChecker": {
+      "command": "hdl_checker",
+      "args": ["--lsp"],
+      "filetypes": ["vhdl", "verilog", "systemverilog"]
     }
   },
-  "cSpell.userWords": [
-    "Popconfirm"
-  ]
+
+  // General config
+  "codeLens.enable": false,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Diagnostic Config
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.enableSign": true,
+  "diagnostic.errorSign": "E",
+  "diagnostic.warningSign": "W",
+  "diagnostic.infoSign": "I",
+  "diagnostic.hintSign": "H",
+  "diagnostic.enableMessage": "never",
+
+  // Volar Config
+  "volar.tagNameCase": "both",
+  "volar.autoClosingTags": true,
+  "volar.useWorkspaceTsdk": true,
+  "volar.codeLens.scriptSetupTools": true,
+  "volar.autoCompleteRefs": true,
+
+  // Lua Config
+  "Lua.workspace.library": {
+    "/usr/share/nvim/runtime/lua": true,
+    "/usr/share/nvim/runtime/lua/vim/lsp": true
+  },
+  "Lua.diagnostics.globals": ["vim"]
 }

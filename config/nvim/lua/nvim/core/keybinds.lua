@@ -3,14 +3,12 @@ local silent_opts = {silent = true, noremap = true}
 
 Keybind.g({
     -- Format code
-    {'n', '<leader>f', '<cmd>Format<CR>:update<CR>', opts},
+    {'n', '<leader>f', '<cmd>FormatWrite<CR>', opts},
+
     -- Buffer Nav
     {'n', '<S-A-h>', '<cmd>BufferPrevious<CR>', silent_opts},
     {'n', '<S-A-l>', '<cmd>BufferNext<CR>', silent_opts},
     {'n', '<A-w>', '<cmd>BufferClose<CR>', silent_opts},
-
-    -- Source NVIM Config
-    {'n', '<F12>', '<cmd>lua Editor.reload_nvim()<CR>', opts},
 
     -- Copy to Clipboard
     {'n', '<leader>y', '"+y', opts},
