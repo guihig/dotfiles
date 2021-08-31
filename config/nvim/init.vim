@@ -37,6 +37,32 @@ call plug#end()
 
 let mapleader = " "
 
+" Remaps 
 nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
+
+" Copy 'til the end of line
+nnoremap Y yg_
+
+" Better search jump
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Maintain the cursor on BIG J
+nnoremap J mzJ`z
+
+" Undo break points BIG COCONUT OIL
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap : :<c-g>u
+inoremap ; ;<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" Maintain visual mode after ident
+vnoremap < <gv
+vnoremap > >gv
+
+" Visual select to search
+vnoremap // y/\\V<C-R>=escape(@",\'/\\\')<CR><CR>
 
 lua require("nvim")

@@ -108,6 +108,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <leader>qq :CocSearch <C-R>=expand("<cword>")<CR><CR>
 vnoremap <leader>qq :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
+nnoremap <C-A-o> :OR<CR>
+
 nmap <silent> <Esc> :call coc#float#close_all()<CR>
 
 nnoremap <silent> <leader>e :DiagnosticInfo<CR>
