@@ -10,8 +10,9 @@
 * {{
   al:  {background}00;
   bg: {background}ff;
+  bga: {foreground}ff;
   fg: #FFFFFFff;
-  ac:  {foreground}ff;
+  ac:  {color8}ff;
 }}
 
 window {{
@@ -49,7 +50,7 @@ entry {{
 
 inputbar {{
 	children: 						[ prompt, entry ];
-    background-color:               @ac;
+    background-color:               @bga;
     text-color:                     @bg;
     expand:                         false;
 	border:							0;

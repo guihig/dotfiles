@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Colorschemes
 Plug 'sainnhe/sonokai'
 
+" Utils
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'dstein64/vim-startuptime'
 Plug 'romgrk/barbar.nvim'
@@ -13,7 +14,6 @@ Plug 'simeji/winresizer'
 Plug 'kevinhwang91/rnvimr'
 Plug 'psliwka/vim-smoothie'
 Plug 'edkolev/tmuxline.vim'
-Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 
 " Telescope requirements
 Plug 'nvim-lua/plenary.nvim'
