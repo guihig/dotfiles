@@ -31,6 +31,24 @@ Keybind.g({
     {'n', '<leader>v', ':vsplit<CR>', silent_opts},
     {'n', '<leader>x', ':split<CR>', silent_opts},
 
+    -- Must Have Remaps
+    {'n', 'Y', 'yg_', opts},
+
+    {'n', 'n', 'nzzzv', opts},
+    {'n', 'N', 'Nzzzv', opts},
+
+    {'v', '<', '<gv', opts},
+    {'v', '>', '>gv', opts},
+
+    {'n', 'J', 'mzJ`z', opts},
+
+    {'i', ',', ',<c-g>u', opts},
+    {'i', '.', '.<c-g>u', opts},
+    {'i', ':', ':<c-g>u', opts},
+    {'i', ';', ';<c-g>u', opts},
+    {'i', '!', '!<c-g>u', opts},
+    {'i', '?', '?<c-g>u', opts},
+
     -- Paste last Copy
     {'n', '<leader>p', '"_dP', opts},
     {'v', '<leader>p', '"_dP', opts},
