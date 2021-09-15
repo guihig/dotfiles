@@ -55,10 +55,11 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- Code Config
-    use {'neovim/nvim-lspconfig'}
+    -- use {'neovim/nvim-lspconfig'}
     -- Using nvim-compe in favor of https://github.com/neovim/neovim/pull/13979
-    use {'hrsh7th/nvim-compe'}
+    -- use {'hrsh7th/nvim-compe'}
+    use {'neoclide/coc.nvim', branch = "release"}
     use {'mhartington/formatter.nvim'}
-    use {'glepnir/lspsaga.nvim'}
+    -- use {'glepnir/lspsaga.nvim'}
     use {'vim-test/vim-test'}
 end)

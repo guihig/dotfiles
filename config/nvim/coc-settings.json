@@ -81,7 +81,7 @@
 
   // Volar Config
   "volar.tagNameCase": "both",
-  "volar.autoClosingTags": true,
+  "volar.autoClosingTags": false,
   "volar.useWorkspaceTsdk": true,
   "volar.codeLens.scriptSetupTools": true,
   "volar.autoCompleteRefs": true,
