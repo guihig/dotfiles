@@ -48,15 +48,11 @@ local volar_init_options = {
     }
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
     default_config = {
+        on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {bin_name, '--stdio'},
         filetypes = {'vue'},
-        capabilities = capabilities,
         root_dir = util.root_pattern 'package.json',
         init_options = volar_init_options,
         on_new_config = function(new_config, new_root_dir)
@@ -65,8 +61,7 @@ configs[server_name] = {
                 new_config.init_options.typescript.serverPath =
                     get_typescript_server_path(new_root_dir)
             end
-        end,
-        flags = {debounce_text_changes = 350}
+        end
     }
 }
 

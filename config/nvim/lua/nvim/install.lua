@@ -34,7 +34,6 @@ return require('packer').startup(function(use)
     use {'simeji/winresizer'}
     use {'kevinhwang91/rnvimr'}
     use {'psliwka/vim-smoothie'}
-    use {'edkolev/tmuxline.vim'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}}
@@ -54,12 +53,16 @@ return require('packer').startup(function(use)
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-    -- Code Config
-    -- use {'neovim/nvim-lspconfig'}
-    -- Using nvim-compe in favor of https://github.com/neovim/neovim/pull/13979
-    -- use {'hrsh7th/nvim-compe'}
+    -- LSP
     use {'neoclide/coc.nvim', branch = "release"}
+    -- use {'neovim/nvim-lspconfig'}
+    -- use {'ms-jpq/coq_nvim', branch = 'coq'}
+    -- use {'ms-jpq/coq.thirdparty', branch = '3p'}
+    -- use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+
+    -- Formatter
     use {'mhartington/formatter.nvim'}
-    -- use {'glepnir/lspsaga.nvim'}
+
+    -- Test
     use {'vim-test/vim-test'}
 end)

@@ -33,8 +33,10 @@ require"lspconfig".efm.setup {
                                                     ".git"),
     init_options = {documentFormatting = true, codeAction = true},
     filetypes = vim.tbl_keys(languages),
-    settings = {rootMarkers = {".git/"}, languages = languages, lintDebounce = 1000000000},
-    flags = {
-      debounce_text_changes = 150,
-    }
+    settings = {
+        rootMarkers = {".git/"},
+        languages = languages,
+        lintDebounce = 1000000000
+    },
+    flags = {debounce_text_changes = 150}
 }

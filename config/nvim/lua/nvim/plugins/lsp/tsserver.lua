@@ -15,14 +15,9 @@ local function organize_imports()
     vim.lsp.buf.execute_command(params)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
-        capabilities = capabilities,
         cmd = {bin_name, "--stdio"},
         filetypes = {
             "javascript", "javascriptreact", "javascript.jsx", "typescript",
@@ -39,9 +34,7 @@ configs[server_name] = {
                 description = "Organize Imports"
             }
         }
-    },
-    flags = {debounce_text_changes = 350}
-
+    }
 }
 
 lspconfig.tsserver.setup {}

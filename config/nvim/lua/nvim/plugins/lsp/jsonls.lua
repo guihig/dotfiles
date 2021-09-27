@@ -17,8 +17,7 @@ configs[server_name] = {
         filetypes = {"json"},
         init_options = {provideFormatter = true},
         root_dir = util.root_pattern(".git", vim.fn.getcwd()),
-        flags = {debounce_text_changes = 150}
-
+        flags = {debounce_text_changes = 500}
     }
 }
 

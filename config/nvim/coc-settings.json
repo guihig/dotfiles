@@ -81,10 +81,13 @@
 
   // Volar Config
   "volar.tagNameCase": "both",
-  "volar.autoClosingTags": false,
+  "volar.autoClosingTags": true,
   "volar.useWorkspaceTsdk": true,
-  "volar.codeLens.scriptSetupTools": true,
-  "volar.autoCompleteRefs": true,
+  "volar.codeLens.scriptSetupTools": false,
+  "volar.autoCompleteRefs": false,
+  "volar-document.trace.server": "off",
+  "volar-api.trace.server": "off",
+  "volar-html.trace.server": "off",
 
   // Lua Config
   "Lua.workspace.library": {
@@ -94,5 +97,10 @@
   "Lua.diagnostics.globals": ["vim"],
 
   // TSServer Config
-  "tsserver.enableJavascript": true
+  "tsserver.enableJavascript": true,
+
+  // Eslint
+  "eslint.options": {
+    "cache": true
+  }
 }

@@ -49,6 +49,7 @@ set GEM_HOME (ruby -e 'puts Gem.user_dir')
 set PATH "$GEM_HOME/bin" $PATH
 set PATH "$HOME/.cargo/bin" $PATH
 set PATH "$HOME/.luarocks/bin" $PATH
+set PATH "$HOME/.deno/bin" $PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 set PATH "$HOME/.rvm/bin" $PATH

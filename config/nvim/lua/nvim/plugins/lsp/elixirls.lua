@@ -15,7 +15,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport =
     {properties = {'documentation', 'detail', 'additionalTextEdits'}}
 configs[server_name] = {
     default_config = {
-        -- on_attach = require'completion'.on_attach,
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {elixirls_binary},
         filetypes = {"elixir", "eelixir"},
@@ -24,8 +23,7 @@ configs[server_name] = {
                        vim.loop.os_homedir()
         end,
         capabilities = capabilities,
-        flags = {debounce_text_changes = 150}
-
+        flags = {debounce_text_changes = 500}
     }
 }
 
