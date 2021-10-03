@@ -85,6 +85,7 @@
   "volar.useWorkspaceTsdk": true,
   "volar.codeLens.scriptSetupTools": false,
   "volar.autoCompleteRefs": false,
+  "volar.formatting.enable": false,
   "volar-document.trace.server": "off",
   "volar-api.trace.server": "off",
   "volar-html.trace.server": "off",

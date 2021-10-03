@@ -70,3 +70,5 @@ done
 
 # Set the chosen sink to the default
 pacmd set-default-sink ${CHOSEN_SINK_NAME}
+
+polybar-msg cmd restart

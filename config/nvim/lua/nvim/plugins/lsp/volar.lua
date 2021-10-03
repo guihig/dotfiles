@@ -48,12 +48,15 @@ local volar_init_options = {
     }
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {bin_name, '--stdio'},
         filetypes = {'vue'},
         root_dir = util.root_pattern 'package.json',
+        capabilities = capabilities,
         init_options = volar_init_options,
         on_new_config = function(new_config, new_root_dir)
             if new_config.init_options and new_config.init_options.typescript and

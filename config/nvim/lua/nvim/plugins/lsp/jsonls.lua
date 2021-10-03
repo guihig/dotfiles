@@ -6,9 +6,7 @@ local server_name = "jsonls"
 local bin_name = "vscode-json-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 configs[server_name] = {
     default_config = {
         cmd = {bin_name, "--stdio"},

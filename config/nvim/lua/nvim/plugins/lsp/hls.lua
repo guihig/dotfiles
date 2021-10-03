@@ -3,9 +3,7 @@ local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 configs.hls = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,

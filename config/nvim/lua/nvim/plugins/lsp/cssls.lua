@@ -6,6 +6,9 @@ local server_name = "cssls"
 local bin_name = "vscode-css-language-server"
 
 local root_pattern = util.root_pattern("package.json")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
@@ -19,8 +22,8 @@ configs[server_name] = {
             scss = {validate = true},
             less = {validate = true}
         },
+        capabilities = capabilities,
         flags = {debounce_text_changes = 500}
-
     }
 }
 

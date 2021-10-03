@@ -13,7 +13,7 @@ M.on_attach = function(_, bufnr)
             '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts
         },
         {bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts},
-        -- {bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts},
+        {bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts},
         {
             bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
             opts
@@ -42,7 +42,7 @@ M.on_tsserver_attach = function(client, bufnr)
             '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts
         },
         {bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts},
-        {bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts},
+        {bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts},
         {
             bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
             opts

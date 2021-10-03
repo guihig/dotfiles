@@ -54,11 +54,19 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- LSP
-    use {'neoclide/coc.nvim', branch = "release"}
-    -- use {'neovim/nvim-lspconfig'}
+    -- use {'neoclide/coc.nvim', branch = "release"}
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-path'},
+            {'hrsh7th/cmp-nvim-lua'}
+            -- {'hrsh7th/cmp-buffer'}
+        }
+    }
+    use {'neovim/nvim-lspconfig'}
     -- use {'ms-jpq/coq_nvim', branch = 'coq'}
     -- use {'ms-jpq/coq.thirdparty', branch = '3p'}
-    -- use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+    use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
 
     -- Formatter
     use {'mhartington/formatter.nvim'}

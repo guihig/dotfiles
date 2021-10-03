@@ -73,9 +73,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/barbar.nvim"
   },
-  ["coc.nvim"] = {
+  ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-path"
   },
   delimitMate = {
     loaded = true,
@@ -92,6 +100,18 @@ _G.packer_plugins = {
   kommentary = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lsputils"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-lsputils"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -112,6 +132,10 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  popfix = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/popfix"
   },
   rnvimr = {
     loaded = true,

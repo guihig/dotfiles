@@ -4,9 +4,7 @@ local util = require 'lspconfig/util'
 
 -- Check if it's already defined for when reloading this file.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 if not lspconfig.hdl_checker then
     configs.hdl_checker = {
         default_config = {

@@ -15,10 +15,13 @@ local function organize_imports()
     vim.lsp.buf.execute_command(params)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
         cmd = {bin_name, "--stdio"},
+        capabilities = capabilities,
         filetypes = {
             "javascript", "javascriptreact", "javascript.jsx", "typescript",
             "typescriptreact", "typescript.tsx"

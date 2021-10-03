@@ -12,6 +12,7 @@ require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
 
 -- LSP Plugins
--- require('nvim.plugins.lsp')
+require('nvim.plugins.lsp')
+require('nvim.plugins.nvim-cmp')
+require('nvim.plugins.nvim-lsputils')
 -- require('nvim.plugins.coq_nvim')
--- require('nvim.plugins.nvim-lsputils')
