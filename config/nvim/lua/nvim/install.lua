@@ -49,6 +49,8 @@ return require('packer').startup(function(use)
     -- Snippets
     -- use {'hrsh7th/vim-vsnip'}
     -- use {'rafamadriz/friendly-snippets'}
+    use {'hrsh7th/cmp-vsnip'}
+    use {'hrsh7th/vim-vsnip'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

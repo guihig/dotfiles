@@ -85,6 +85,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-path"
   },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
+  },
   delimitMate = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/delimitMate"
@@ -176,6 +180,10 @@ _G.packer_plugins = {
   ["vim-test"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-test"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
   winresizer = {
     loaded = true,

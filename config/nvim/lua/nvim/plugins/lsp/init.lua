@@ -1,5 +1,4 @@
-vim.lsp.set_log_level("debug")
-
+-- vim.lsp.set_log_level("debug")
 Lsp = require("nvim.plugins.lsp.utils")
 require("nvim.plugins.lsp.tsserver")
 require("nvim.plugins.lsp.volar")

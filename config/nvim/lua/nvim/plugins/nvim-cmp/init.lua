@@ -11,27 +11,34 @@ local has_words_before = function()
                    :match("%s") == nil
 end
 
+local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true),
+                          mode, true)
+end
+
 cmp.setup({
+    snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
     completion = {completeopt = 'menu,menuone,noinsert'},
     mapping = {
-        ['<Tab>'] = function(fallback)
-            if not cmp.select_next_item() then
-                if vim.bo.buftype ~= 'prompt' and has_words_before() then
-                    cmp.complete()
-                else
-                    fallback()
-                end
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if vim.fn.pumvisible() == 1 then
+                feedkey("<C-n>", "n")
+            elseif vim.fn["vsnip#available"]() == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
             end
-        end,
-        ['<S-Tab>'] = function(fallback)
-            if not cmp.select_prev_item() then
-                if vim.bo.buftype ~= 'prompt' and has_words_before() then
-                    cmp.complete()
-                else
-                    fallback()
-                end
+        end, {"i", "s"}),
+
+        ["<S-Tab>"] = cmp.mapping(function()
+            if vim.fn.pumvisible() == 1 then
+                feedkey("<C-p>", "n")
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
             end
-        end,
+        end, {"i", "s"}),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -39,7 +46,8 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({select = true})
     },
     sources = {
-        {name = 'nvim_lsp'}, {name = 'nvim_lua'}, {name = 'path'}
+        {name = 'vsnip'}, {name = 'nvim_lsp'}, {name = 'nvim_lua'},
+        {name = 'path'}
         -- {name = 'buffer'}
     }
 })
