@@ -1,5 +1,6 @@
 -- GUI Plugins
-require('nvim.plugins.galaxyline')
+-- require('nvim.plugins.galaxyline')
+require('nvim.plugins.lualine')
 require('nvim.plugins.barbar')
 
 -- Misc

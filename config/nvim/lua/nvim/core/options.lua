@@ -31,5 +31,6 @@ Option.g({
     scrolloff = 8,
     termguicolors = true,
     signcolumn = "yes:1",
-    foldlevelstart = 20
+    foldlevelstart = 20,
+    background = "dark"
 })

@@ -22,13 +22,18 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Colorschemes
-    use {'sainnhe/sonokai'}
+    -- use {'sainnhe/sonokai'}
+    use {'sainnhe/gruvbox-material'}
 
     -- Utils
     use {'kyazdani42/nvim-web-devicons'}
     use {'dstein64/vim-startuptime'}
     use {'romgrk/barbar.nvim'}
-    use {"glepnir/galaxyline.nvim"}
+    -- use {"glepnir/galaxyline.nvim"}
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
     use {"easymotion/vim-easymotion"}
     use {'mhinz/vim-startify'}
     use {'simeji/winresizer'}
@@ -40,7 +45,6 @@ return require('packer').startup(function(use)
     }
 
     -- Code Utils
-    use {'tpope/vim-dispatch'}
     use {'tpope/vim-surround'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}

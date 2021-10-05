@@ -97,13 +97,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/formatter.nvim"
   },
-  ["galaxyline.nvim"] = {
+  ["gruvbox-material"] = {
     loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/gruvbox-material"
   },
   kommentary = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -145,17 +149,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/rnvimr"
   },
-  sonokai = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/sonokai"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ["vim-dispatch"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-dispatch"
   },
   ["vim-easymotion"] = {
     loaded = true,
