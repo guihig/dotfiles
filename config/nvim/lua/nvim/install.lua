@@ -48,7 +48,8 @@ return require('packer').startup(function(use)
     use {'tpope/vim-surround'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
-    use {'Raimondi/delimitMate'}
+    -- use {'Raimondi/delimitMate'}
+    use {'windwp/nvim-autopairs'}
 
     -- Snippets
     -- use {'hrsh7th/vim-vsnip'}

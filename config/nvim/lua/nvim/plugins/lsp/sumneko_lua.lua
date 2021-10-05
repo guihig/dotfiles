@@ -1,3 +1,6 @@
+local lspconfig = require 'lspconfig'
+local util = require 'lspconfig/util'
+
 USER = vim.fn.expand('$USER')
 
 local sumneko_root_path = ""
@@ -13,6 +16,10 @@ require'lspconfig'.sumneko_lua.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities,
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    filetypes = {'lua'},
+    root_dir = function(fname)
+        return util.find_git_ancestor(fname) or util.path.dirname(fname)
+    end,
     settings = {
         Lua = {
             runtime = {
@@ -31,7 +38,9 @@ require'lspconfig'.sumneko_lua.setup {
                     [vim.fn.expand('$VIMRUNTIME/lua')] = true,
                     [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
                 }
-            }
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {enable = false}
         }
     },
     flags = {debounce_text_changes = 150}

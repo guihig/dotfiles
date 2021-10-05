@@ -18,7 +18,7 @@ spotify :: String
 spotify = "spotify"
 
 discord :: String
-discord = "discord"
+discord = "discord-canary"
 
 files :: String
 files = "xdg-open ~"

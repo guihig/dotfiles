@@ -11,6 +11,7 @@ require('nvim.plugins.kommentary')
 require('nvim.plugins.formatter')
 require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
+require('nvim.plugins.nvim-autopairs')
 
 -- LSP Plugins
 require('nvim.plugins.lsp')

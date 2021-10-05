@@ -69,7 +69,9 @@
 - clean:
     ~/:
       force: true
+
     ~/.config:
       recursive: true
-    ~/.local:
-      recursive: true
+
+    # ~/.local:
+    #   recursive: true
