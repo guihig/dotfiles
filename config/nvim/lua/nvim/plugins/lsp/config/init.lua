@@ -24,7 +24,7 @@ M.on_attach = function(_, bufnr)
         {
             bufnr, 'n', '<leader>e',
             '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts
-        }
+        }, {bufnr, 'n', '<C-A-o>', '<cmd>OrganizeImports<CR>:update<CR>', opts}
     })
 
 end
