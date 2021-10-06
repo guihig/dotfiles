@@ -16,5 +16,6 @@ require('nvim.plugins.nvim-autopairs')
 -- LSP Plugins
 require('nvim.plugins.lsp')
 require('nvim.plugins.nvim-cmp')
-require('nvim.plugins.nvim-lsputils')
+require('nvim.plugins.lspsaga')
+-- require('nvim.plugins.nvim-lsputils')
 -- require('nvim.plugins.coq_nvim')

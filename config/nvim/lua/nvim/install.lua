@@ -73,7 +73,8 @@ return require('packer').startup(function(use)
     use {'neovim/nvim-lspconfig'}
     -- use {'ms-jpq/coq_nvim', branch = 'coq'}
     -- use {'ms-jpq/coq.thirdparty', branch = '3p'}
-    use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+    -- use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+    use {'tami5/lspsaga.nvim'}
 
     -- Formatter
     use {'mhartington/formatter.nvim'}
