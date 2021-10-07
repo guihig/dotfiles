@@ -15,6 +15,15 @@ Editor.is_buffer_not_empty = function()
     return vim.fn.empty(vim.fn.expand("%:t")) == 1
 end
 
-Editor.reload_nvim = function() print("Cant restart, sory :,c") end
+Editor.reload_nvim = function()
+    local plugin_name = "lspsaga.diagnostic"
+    for k in pairs(package.loaded) do
+        if k:match(plugin_name) then
+            package.loaded[k] = nil
+            require(plugin_name)
+            print("maaaahh man")
+        end
+    end
+end
 
 return Editor

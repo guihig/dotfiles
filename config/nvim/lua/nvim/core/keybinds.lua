@@ -15,6 +15,9 @@ Keybind.g({
     {'v', '<leader>y', '"+y', opts},
     {'n', '<leader>Y', 'gg"+yG', opts},
 
+    {'n', '<F11>', ':luafile %<CR>', opts},
+    {'n', '<F12>', '<cmd>lua Editor.reload_nvim()<CR>', opts},
+
     -- Set NoHL
     {'n', '<leader><cr>', ':noh<CR>', opts},
 

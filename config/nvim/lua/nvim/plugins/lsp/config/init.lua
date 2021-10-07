@@ -1,3 +1,4 @@
+local action, hover = require("lspsaga.action"), require("lspsaga.hover")
 local M = {}
 
 -- M.on_attach = function(_, bufnr)
@@ -67,14 +68,38 @@ local M = {}
 --         }
 -- end
 
+local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function _G.LspSagaSmartScrollDown()
+    if hover.has_saga_hover() then
+        return action.smart_scroll_with_saga(1)
+    else
+        return t "<Tab>"
+    end
+end
+
+function _G.LspSagaSmartScrollUp()
+    if hover.has_saga_hover() then
+        return action.smart_scroll_with_saga(-1)
+    else
+        return t "<S-Tab>"
+    end
+end
+
 M.on_attach = function(_, bufnr)
     local opts = {noremap = true, silent = true}
+    local expr_opts = {noremap = true, silent = true, expr = true}
     Option.b(bufnr, {omnifunc = 'v:lua.vim.lsp.omnifunc'})
     Keybind.b({
         {bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts},
         {bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts},
         {bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts},
         {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
+        {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
+        {bufnr, 'n', '<Tab>', 'v:lua.LspSagaSmartScrollDown()', expr_opts},
+        {bufnr, 'n', '<S-Tab>', 'v:lua.LspSagaSmartScrollUp()', expr_opts},
         {
             bufnr, 'n', '<leader>D',
             '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts
