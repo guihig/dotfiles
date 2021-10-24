@@ -1,5 +1,4 @@
 -- GUI Plugins
--- require('nvim.plugins.galaxyline')
 require('nvim.plugins.lualine')
 require('nvim.plugins.barbar')
 
@@ -17,5 +16,3 @@ require('nvim.plugins.nvim-autopairs')
 require('nvim.plugins.lsp')
 require('nvim.plugins.nvim-cmp')
 require('nvim.plugins.lspsaga')
--- require('nvim.plugins.nvim-lsputils')
--- require('nvim.plugins.coq_nvim')

@@ -22,11 +22,11 @@ local languages = {
     elixir = {credo}
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 require"lspconfig".efm.setup {
-    on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities,
+    -- on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    -- capabilities = capabilities,
     root_dir = require"lspconfig".util.root_pattern("yarn.lock", "lerna.json",
                                                     ".git"),
     init_options = {documentFormatting = true, codeAction = true},

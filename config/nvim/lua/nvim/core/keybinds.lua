@@ -53,8 +53,12 @@ Keybind.g({
     {'i', '?', '?<c-g>u', opts},
 
     -- Paste last Copy
-    {'n', '<leader>p', '"_dP', opts},
-    {'v', '<leader>p', '"_dP', opts},
+    -- {'n', '<leader>p', '"_dP', opts},
+    -- {'v', '<leader>p', '"_dP', opts},
+    {'n', '<C-j>', '<C-w><C-j>', opts},
+    {'n', '<C-k>', '<C-w><C-k>', opts},
+    {'n', '<C-h>', '<C-w><C-h>', opts},
+    {'n', '<C-l>', '<C-w><C-l>', opts},
 
     -- Move Lines
     {'n', '<A-j>', ':m .+1<CR>==', opts},

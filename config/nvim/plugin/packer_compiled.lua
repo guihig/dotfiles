@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/LuaSnip"
+  },
   ["barbar.nvim"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/barbar.nvim"
@@ -85,9 +89,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-path"
   },
-  ["cmp-vsnip"] = {
+  cmp_luasnip = {
     loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp_luasnip"
   },
   ["formatter.nvim"] = {
     loaded = true,
@@ -153,6 +157,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-easymotion"
   },
+  ["vim-elixir"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-elixir"
+  },
   ["vim-smoothie"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-smoothie"
@@ -172,10 +180,6 @@ _G.packer_plugins = {
   ["vim-test"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-test"
-  },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
   winresizer = {
     loaded = true,

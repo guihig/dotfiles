@@ -27,7 +27,7 @@ Option.g({
     completeopt = "menuone,noselect",
     shortmess = vim.o.shortmess .. 'c',
     cmdheight = 2,
-    updatetime = 50,
+    updatetime = 250,
     scrolloff = 8,
     termguicolors = true,
     signcolumn = "yes:1",

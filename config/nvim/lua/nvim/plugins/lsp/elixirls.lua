@@ -21,7 +21,7 @@ configs[server_name] = {
                        vim.loop.os_homedir()
         end,
         capabilities = capabilities,
-        flags = {debounce_text_changes = 500}
+        flags = {debounce_text_changes = 150}
     }
 }
 

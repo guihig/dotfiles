@@ -34,14 +34,14 @@ local volar_init_options = {
         schemaRequestService = true,
         documentHighlight = true,
         documentLink = true,
-        codeLens = true,
+        codeLens = false,
         diagnostics = true
     },
     documentFeatures = {
         -- not supported - https://github.com/neovim/neovim/pull/13654
         documentColor = false,
         selectionRange = true,
-        foldingRange = true,
+        foldingRange = false,
         linkedEditingRange = true,
         documentSymbol = true,
         documentFormatting = {defaultPrintWidth = 100}
@@ -64,7 +64,8 @@ configs[server_name] = {
                 new_config.init_options.typescript.serverPath =
                     get_typescript_server_path(new_root_dir)
             end
-        end
+        end,
+        flags = {debounce_text_changes = 150}
     }
 }
 

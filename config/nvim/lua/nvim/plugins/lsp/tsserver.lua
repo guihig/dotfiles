@@ -17,6 +17,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 configs[server_name] = {
     default_config = {
         on_attach = require'nvim.plugins.lsp.config'.on_attach,
@@ -36,7 +37,8 @@ configs[server_name] = {
                 organize_imports,
                 description = "Organize Imports"
             }
-        }
+        },
+        flags = {debounce_text_changes = 150}
     }
 }
 

@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 
 Keybind.g({
-    {'n', '<C-p>', '<cmd>Telescope find_files<CR>', {noremap = true}},
+    {'n', '<leader>p', '<cmd>Telescope find_files<CR>', {noremap = true}},
     {'n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true}},
     {'n', '<C-b>', '<cmd>Telescope buffers<CR>', {noremap = true}}
 })
@@ -16,8 +16,7 @@ require('telescope').setup {
             '--with-filename', '--line-number', '--column', '--smart-case'
         },
         file_ignore_patterns = {
-            "node_modules", ".git", ".idea", ".elixis_ls",
-            "_build/",
+            "node_modules", ".git", ".idea", ".elixis_ls", "_build/"
         },
         mappings = {
             i = {

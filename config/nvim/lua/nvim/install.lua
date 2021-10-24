@@ -48,14 +48,12 @@ return require('packer').startup(function(use)
     use {'tpope/vim-surround'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
-    -- use {'Raimondi/delimitMate'}
     use {'windwp/nvim-autopairs'}
+    use {'elixir-editors/vim-elixir'}
 
     -- Snippets
-    -- use {'hrsh7th/vim-vsnip'}
     -- use {'rafamadriz/friendly-snippets'}
-    use {'hrsh7th/cmp-vsnip'}
-    use {'hrsh7th/vim-vsnip'}
+    use {'L3MON4D3/LuaSnip'}
 
     -- Shl
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -66,16 +64,13 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         requires = {
             {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-nvim-lua'}
+            {'hrsh7th/cmp-nvim-lua'}, {'saadparwaiz1/cmp_luasnip'}
             -- {'hrsh7th/cmp-buffer'}
         }
     }
     use {'neovim/nvim-lspconfig'}
-    -- use {'ms-jpq/coq_nvim', branch = 'coq'}
-    -- use {'ms-jpq/coq.thirdparty', branch = '3p'}
-    -- use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
-    -- use {'tami5/lspsaga.nvim'}
-    use {'~/dev/builds/lspsaga.nvim'}
+    use {'tami5/lspsaga.nvim'}
+    -- use {'~/dev/neovim-plugins/lspsaga.nvim'}
 
     -- Formatter
     use {'mhartington/formatter.nvim'}
