@@ -16,14 +16,8 @@ Editor.is_buffer_not_empty = function()
 end
 
 Editor.reload_nvim = function()
-    local plugin_name = "lspsaga.diagnostic"
-    for k in pairs(package.loaded) do
-        if k:match(plugin_name) then
-            package.loaded[k] = nil
-            require(plugin_name)
-            print("maaaahh man")
-        end
-    end
+    vim.notify("Reloading", vim.log.levels.INFO)
+    vim.cmd([[source "~/.config/nvim/init.lua"]], true)
 end
 
 return Editor
