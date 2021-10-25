@@ -69,8 +69,8 @@ return require('packer').startup(function(use)
         }
     }
     use {'neovim/nvim-lspconfig'}
-    use {'tami5/lspsaga.nvim'}
-    -- use {'~/dev/neovim-plugins/lspsaga.nvim'}
+    -- use {'tami5/lspsaga.nvim'}
+    use {'~/dev/neovim-plugins/lspsaga.nvim', branch = "main"}
 
     -- Formatter
     use {'mhartington/formatter.nvim'}

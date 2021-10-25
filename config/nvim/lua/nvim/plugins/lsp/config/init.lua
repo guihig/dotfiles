@@ -60,7 +60,6 @@ end
 
 M.on_attach = function(_, bufnr)
     local opts = {noremap = true, silent = true}
-    local expr_opts = {noremap = true, silent = true, expr = true}
     Option.b(bufnr, {omnifunc = 'v:lua.vim.lsp.omnifunc'})
     Keybind.b({
         {bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts},
@@ -68,9 +67,9 @@ M.on_attach = function(_, bufnr)
         {bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts},
         {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
         {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
-        {bufnr, 'n', '<Tab>', 'v:lua.LspSagaSmartScrollDown()', expr_opts},
-        {bufnr, 'n', '<S-Tab>', 'v:lua.LspSagaSmartScrollUp()', expr_opts},
-        {bufnr, 'n', '<Esc>', 'v:lua.LspSagaCloseHover()', expr_opts},
+        {bufnr, 'n', '<Tab>', '<cmd>lua LspSagaSmartScrollDown()<CR>', opts},
+        {bufnr, 'n', '<S-Tab>', '<cmd>lua LspSagaSmartScrollUp()<CR>', opts},
+        {bufnr, 'n', '<Esc>', '<cmd>lua LspSagaCloseHover()<CR>', opts},
         {
             bufnr, 'n', '<leader>D',
             '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts
