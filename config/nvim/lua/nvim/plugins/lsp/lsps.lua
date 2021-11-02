@@ -246,3 +246,9 @@ lspconfig.volar_html.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities
 }
+
+-- Pyright
+lspconfig.pyright.setup {
+    on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    capabilities = capabilities
+}

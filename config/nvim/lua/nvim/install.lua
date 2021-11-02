@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
     use {'b3nj5m1n/kommentary'}
     use {'windwp/nvim-autopairs'}
     use {'elixir-editors/vim-elixir'}
+    use {'bfredl/nvim-ipy'}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
@@ -69,8 +70,8 @@ return require('packer').startup(function(use)
         }
     }
     use {'neovim/nvim-lspconfig'}
-    -- use {'tami5/lspsaga.nvim'}
-    use {'~/dev/neovim-plugins/lspsaga.nvim', branch = "main"}
+    use {'tami5/lspsaga.nvim'}
+    -- use {'~/dev/neovim-plugins/lspsaga.nvim', branch = "main"}
 
     -- Formatter
     use {'mhartington/formatter.nvim'}

@@ -6,7 +6,7 @@ local function prettier()
     }
 end
 
-local function black() return {exe = "black", args = {"-q", "-"}} end
+local function black() return {exe = "black", args = {"-q", "-"}, stdin = true} end
 
 local function mix_format()
     return {exe = "mix", args = {"format", "mix.exs", "-"}, stdin = true}

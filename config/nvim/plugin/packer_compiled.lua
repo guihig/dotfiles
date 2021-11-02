@@ -121,6 +121,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-cmp"
   },
+  ["nvim-ipy"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-ipy"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
