@@ -12,6 +12,7 @@ require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
 require('nvim.plugins.nvim-autopairs')
 require('nvim.plugins.nvim-ipy')
+require('nvim.plugins.lightspeed')
 
 -- LSP Plugins
 require('nvim.plugins.lsp')

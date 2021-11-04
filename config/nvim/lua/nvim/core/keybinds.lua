@@ -8,7 +8,7 @@ Keybind.g({
     -- Buffer Nav
     {'n', '<S-A-h>', '<cmd>BufferPrevious<CR>', silent_opts},
     {'n', '<S-A-l>', '<cmd>BufferNext<CR>', silent_opts},
-    {'n', '<A-w>', '<cmd>BufferClose<CR>', silent_opts},
+    {'n', '<A-w>', '<cmd>lua require("bufdelete").bufdelete(0)<CR>', silent_opts},
 
     -- Copy to Clipboard
     {'n', '<leader>y', '"+y', opts},

@@ -28,13 +28,13 @@ return require('packer').startup(function(use)
     -- Utils
     use {'kyazdani42/nvim-web-devicons'}
     use {'dstein64/vim-startuptime'}
+    use {'famiu/bufdelete.nvim'}
     use {'romgrk/barbar.nvim'}
-    -- use {"glepnir/galaxyline.nvim"}
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-    use {"easymotion/vim-easymotion"}
+    use {'ggandor/lightspeed.nvim', requires = {'tpope/vim-repeat', opt = true}}
     use {'mhinz/vim-startify'}
     use {'simeji/winresizer'}
     use {'kevinhwang91/rnvimr'}
@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
     use {'windwp/nvim-autopairs'}
     use {'elixir-editors/vim-elixir'}
     use {'bfredl/nvim-ipy'}
+    use {
+        "beauwilliams/focus.nvim",
+        config = function() require("focus").setup() end
+    }
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}

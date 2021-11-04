@@ -1,7 +1,11 @@
-vim.api.nvim_exec([[
-  let bufferline = get(g:, 'bufferline', {})
-  let bufferline.animation = v:false
-  let bufferline.tabpages = v:false
-  let bufferline.closable = v:false
-]], true)
-
+vim.g.bufferline = {
+    animation = false,
+    tabpages = false,
+    closable = false,
+    clickable = true,
+    icons = true,
+    icon_custom_colors = true,
+    insert_at_end = true,
+    maximum_padding = 1,
+    maximum_length = 20,
+}

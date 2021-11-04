@@ -2,6 +2,7 @@ local actions = require('telescope.actions')
 
 Keybind.g({
     {'n', '<leader>p', '<cmd>Telescope find_files<CR>', {noremap = true}},
+    {'n', '<leader>h', '<cmd>Telescope help_tags<CR>', {noremap = true}},
     {'n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true}},
     {'n', '<C-b>', '<cmd>Telescope buffers<CR>', {noremap = true}}
 })
