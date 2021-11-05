@@ -195,11 +195,6 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-elixir"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-elixir",
-    url = "https://github.com/elixir-editors/vim-elixir"
-  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-repeat",

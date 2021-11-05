@@ -49,7 +49,6 @@ return require('packer').startup(function(use)
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
     use {'windwp/nvim-autopairs'}
-    use {'elixir-editors/vim-elixir'}
     use {'bfredl/nvim-ipy'}
     use {
         "beauwilliams/focus.nvim",
