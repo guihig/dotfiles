@@ -16,9 +16,7 @@ local cmp = require 'cmp'
 -- https://www.youtube.com/watch?v=_DnmphIwnjo&t=1514s
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua
 cmp.setup({
-    snippet = {
-        expand = function(args) require("luasnip").lsp_expand(args.body) end
-    },
+    snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
     -- completion = {completeopt = 'menu,menuone,noinsert'},
     mapping = {
         -- ["<Tab>"] = cmp.mapping(function(fallback)
@@ -46,12 +44,12 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
-            select = true
+            select = false
         })
     },
     sources = {
         {name = 'nvim_lua'}, {name = 'nvim_lsp', max_item_count = 10},
-        {name = 'path'}, {name = 'luasnip'}
+        {name = 'path'}, {name = 'vsnip'}
         -- {name = 'buffer'}
     },
     experimental = {native_menu = false, ghost_text = true}
