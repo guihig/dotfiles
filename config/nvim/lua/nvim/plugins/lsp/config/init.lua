@@ -38,7 +38,7 @@ function _G.LspSagaSmartScrollDown()
     if hover.has_saga_hover() then
         return action.smart_scroll_with_saga(1)
     else
-        return t "<Tab>"
+        return t "<C-n>"
     end
 end
 
@@ -46,7 +46,7 @@ function _G.LspSagaSmartScrollUp()
     if hover.has_saga_hover() then
         return action.smart_scroll_with_saga(-1)
     else
-        return t "<S-Tab>"
+        return t "<C-p>"
     end
 end
 
@@ -58,6 +58,20 @@ function _G.LspSagaCloseHover()
     end
 end
 
+-- function _G.lsp_organize_imports()
+--     local context = {source = {organizeImports = true}}
+--     vim.validate {context = {context, "table", true}}
+
+--     local params = vim.lsp.util.make_range_params()
+--     params.context = context
+
+--     local method = "textDocument/codeAction"
+--     local timeout = 1000 -- ms
+
+--     local resp = vim.lsp.buf_request_sync(0, method, params, timeout)
+--     if not resp then return end
+-- end
+
 M.on_attach = function(_, bufnr)
     local opts = {noremap = true, silent = true}
     Option.b(bufnr, {omnifunc = 'v:lua.vim.lsp.omnifunc'})
@@ -67,8 +81,8 @@ M.on_attach = function(_, bufnr)
         {bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts},
         {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
         {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
-        {bufnr, 'n', '<Tab>', '<cmd>lua LspSagaSmartScrollDown()<CR>', opts},
-        {bufnr, 'n', '<S-Tab>', '<cmd>lua LspSagaSmartScrollUp()<CR>', opts},
+        {bufnr, 'n', '<C-n>', '<cmd>lua LspSagaSmartScrollDown()<CR>', opts},
+        {bufnr, 'n', '<C-p>', '<cmd>lua LspSagaSmartScrollUp()<CR>', opts},
         {bufnr, 'n', '<Esc>', '<cmd>lua LspSagaCloseHover()<CR>', opts},
         {
             bufnr, 'n', '<leader>D',
@@ -86,7 +100,11 @@ M.on_attach = function(_, bufnr)
             bufnr, 'n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>',
             opts
         }, -- Custom
-        {bufnr, 'n', '<C-A-o>', '<cmd>OrganizeImports<CR>:update<CR>', opts}
+        {
+            bufnr, 'n', '<C-A-o>',
+            '<cmd>lua vim.lsp.buf.code_action({source = {organizeImports = true}})<CR>',
+            opts
+        }
     })
 end
 
