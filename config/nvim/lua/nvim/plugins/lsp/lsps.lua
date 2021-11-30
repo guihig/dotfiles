@@ -1,5 +1,5 @@
 local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig/configs'
+-- local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -7,21 +7,21 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 USER = vim.fn.expand('$USER')
 
 -- HDL Checker
-if not lspconfig.hdl_checker then
-    configs.hdl_checker = {
-        default_config = {
-            on_attach = require'nvim.plugins.lsp.config'.on_attach,
-            cmd = {'hdl_checker', '--lsp'},
-            filetypes = {'vhdl', 'verilog', 'systemverilog'},
-            root_dir = util.root_pattern("*.qpf", ".hdl_checker.config"),
-            settings = {},
-            capabilities = capabilities,
-            flags = {debounce_text_changes = 150}
+-- if not lspconfig.hdl_checker then
+--     configs.hdl_checker = {
+--         default_config = {
+--             on_attach = require'nvim.plugins.lsp.config'.on_attach,
+--             cmd = {'hdl_checker', '--lsp'},
+--             filetypes = {'vhdl', 'verilog', 'systemverilog'},
+--             root_dir = util.root_pattern("*.qpf", ".hdl_checker.config"),
+--             settings = {},
+--             capabilities = capabilities,
+--             flags = {debounce_text_changes = 150}
 
-        }
-    }
-end
-lspconfig.hdl_checker.setup {}
+--         }
+--     }
+-- end
+-- lspconfig.hdl_checker.setup {}
 
 -- ElixirLS
 local elixirls_binary = ""
@@ -137,115 +137,34 @@ lspconfig.texlab.setup {
 }
 
 -- Volar
-local function on_new_config(new_config, new_root_dir)
-    local function get_typescript_server_path(root_dir)
-        local project_root = util.find_node_modules_ancestor(root_dir)
-        return project_root and
-                   (util.path.join(project_root, 'node_modules', 'typescript',
-                                   'lib', 'tsserverlibrary.js')) or ''
-    end
+-- local function on_new_config(new_config, new_root_dir)
+--     local function get_typescript_server_path(root_dir)
+--         local project_root = util.find_node_modules_ancestor(root_dir)
+--         return project_root and
+--                    (util.path.join(project_root, 'node_modules', 'typescript',
+--                                    'lib', 'tsserverlibrary.js')) or ''
+--     end
 
-    if new_config.init_options and new_config.init_options.typescript and
-        new_config.init_options.typescript.serverPath == '' then
-        new_config.init_options.typescript.serverPath =
-            get_typescript_server_path(new_root_dir)
-    end
-end
+--     if new_config.init_options and new_config.init_options.typescript and
+--         new_config.init_options.typescript.serverPath == '' then
+--         new_config.init_options.typescript.serverPath =
+--             get_typescript_server_path(new_root_dir)
+--     end
+-- end
 
-local volar_cmd = {'volar-server', '--stdio'}
-local volar_root_dir = util.root_pattern 'package.json'
-
-configs.volar_api = {
-    default_config = {
-        cmd = volar_cmd,
-        root_dir = volar_root_dir,
-        on_new_config = on_new_config,
-        filetypes = {'vue'},
-        -- If you want to use Volar's Take Over Mode (if you know, you know)
-        -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-        init_options = {
-            typescript = {serverPath = ''},
-            languageFeatures = {
-                references = true,
-                definition = true,
-                typeDefinition = true,
-                callHierarchy = true,
-                hover = true,
-                rename = true,
-                renameFileRefactoring = true,
-                signatureHelp = true,
-                codeAction = true,
-                workspaceSymbol = true,
-                completion = {
-                    defaultTagNameCase = 'both',
-                    defaultAttrNameCase = 'kebabCase',
-                    getDocumentNameCasesRequest = false,
-                    getDocumentSelectionRequest = false
-                }
-            }
-        }
-    }
-}
-lspconfig.volar_api.setup {
+lspconfig.volar.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    filetypes = {'vue'}
+    -- on_new_config = on_new_config
 }
 
-configs.volar_doc = {
-    default_config = {
-        cmd = volar_cmd,
-        root_dir = volar_root_dir,
-        on_new_config = on_new_config,
-
-        filetypes = {'vue'},
-        -- If you want to use Volar's Take Over Mode (if you know, you know):
-        -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-        init_options = {
-            typescript = {serverPath = ''},
-            languageFeatures = {
-                documentHighlight = true,
-                documentLink = true,
-                codeLens = {showReferencesNotification = true},
-                -- not supported - https://github.com/neovim/neovim/pull/14122
-                semanticTokens = false,
-                diagnostics = true,
-                schemaRequestService = true
-            }
-        }
-    }
-}
-lspconfig.volar_doc.setup {
-    on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities
-}
-
-configs.volar_html = {
-    default_config = {
-        cmd = volar_cmd,
-        root_dir = volar_root_dir,
-        on_new_config = on_new_config,
-
-        filetypes = {'vue'},
-        -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
-        -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-        init_options = {
-            typescript = {serverPath = ''},
-            documentFeatures = {
-                selectionRange = true,
-                foldingRange = true,
-                linkedEditingRange = true,
-                documentSymbol = true,
-                -- not supported - https://github.com/neovim/neovim/pull/13654
-                documentColor = false,
-                documentFormatting = {defaultPrintWidth = 100}
-            }
-        }
-    }
-}
-lspconfig.volar_html.setup {
-    on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities
-}
+-- Vetur
+-- lspconfig.vuels.setup {
+--     on_attach = require'nvim.plugins.lsp.config'.on_attach,
+--     capabilities = capabilities,
+--     filetypes = {'vue'}
+-- }
 
 -- Pyright
 lspconfig.pyright.setup {

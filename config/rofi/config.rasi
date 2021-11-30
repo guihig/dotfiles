@@ -1,5 +1,4 @@
 configuration {
-    theme: "~/.cache/wal/colors-rofi-dark.rasi";
     font:                           "JetBrainsMono Nerd Font Regular 10.5";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
@@ -10,3 +9,5 @@ configuration {
 	hide-scrollbar: 				true;
 	sidebar-mode: 					false;
 }
+
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
