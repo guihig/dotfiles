@@ -58,19 +58,10 @@ function _G.LspSagaCloseHover()
     end
 end
 
--- function _G.lsp_organize_imports()
---     local context = {source = {organizeImports = true}}
---     vim.validate {context = {context, "table", true}}
-
---     local params = vim.lsp.util.make_range_params()
---     params.context = context
-
---     local method = "textDocument/codeAction"
---     local timeout = 1000 -- ms
-
---     local resp = vim.lsp.buf_request_sync(0, method, params, timeout)
---     if not resp then return end
--- end
+function _G.lsp_organize_imports()
+    local context = {only = {"source.organizeImports"}}
+    vim.lsp.buf.code_action(context)
+end
 
 M.on_attach = function(_, bufnr)
     local opts = {noremap = true, silent = true}
@@ -100,11 +91,7 @@ M.on_attach = function(_, bufnr)
             bufnr, 'n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>',
             opts
         }, -- Custom
-        {
-            bufnr, 'n', '<C-A-o>',
-            '<cmd>lua vim.lsp.buf.code_action({source = {organizeImports = true}})<CR>',
-            opts
-        }
+        {bufnr, 'n', '<C-A-o>', '<cmd>lua lsp_organize_imports()<CR>', opts}
     })
 end
 
