@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
         "beauwilliams/focus.nvim",
         config = function() require("focus").setup() end
     }
+    use {'elixir-editors/vim-elixir'}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}

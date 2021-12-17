@@ -34,6 +34,10 @@ local function latexindent()
     }
 end
 
+local function asmfmt()
+    return {exe = "asmfmt", args = {vim.api.nvim_buf_get_name(0)}, stdin = true}
+end
+
 require("formatter").setup({
     logging = true,
     filetype = {
@@ -52,6 +56,7 @@ require("formatter").setup({
         elixir = {mix_format},
         haskell = {hindent},
         vhdl = {vhdlFormatter},
-        tex = {latexindent}
+        tex = {latexindent},
+        asm = {asmfmt}
     }
 })
