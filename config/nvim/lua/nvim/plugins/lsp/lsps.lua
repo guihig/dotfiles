@@ -100,7 +100,8 @@ lspconfig.tsserver.setup {
     capabilities = capabilities,
     commands = {
         OrganizeImports = {organize_imports, description = "Organize Imports"}
-    }
+    },
+    flags = {debounce_text_changes = 150}
 }
 
 -- texlab
@@ -155,16 +156,10 @@ lspconfig.texlab.setup {
 lspconfig.volar.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities,
-    filetypes = {'vue'}
-    -- on_new_config = on_new_config
+    filetypes = {'vue'},
+    flags = {debounce_text_changes = 150},
+    init_options = {typescript = {suggest = {autoImports = false}}}
 }
-
--- Vetur
--- lspconfig.vuels.setup {
---     on_attach = require'nvim.plugins.lsp.config'.on_attach,
---     capabilities = capabilities,
---     filetypes = {'vue'}
--- }
 
 -- Pyright
 lspconfig.pyright.setup {

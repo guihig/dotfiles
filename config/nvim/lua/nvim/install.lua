@@ -55,6 +55,9 @@ return require('packer').startup(function(use)
         config = function() require("focus").setup() end
     }
     use {'elixir-editors/vim-elixir'}
+    use {'onsails/lspkind-nvim'}
+    use {'tpope/vim-fugitive'}
+    use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
@@ -70,8 +73,8 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         requires = {
             {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-nvim-lua'}, {'hrsh7th/cmp-vsnip'}
-            -- {'hrsh7th/cmp-buffer'}
+            {'hrsh7th/cmp-nvim-lua'}, {'hrsh7th/cmp-vsnip'},
+            {'hrsh7th/cmp-buffer'}, {'hrsh7th/cmp-emoji'}
         }
     }
     use {'neovim/nvim-lspconfig'}

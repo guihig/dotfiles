@@ -79,6 +79,21 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
     url = "https://github.com/famiu/bufdelete.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-emoji"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-emoji",
+    url = "https://github.com/hrsh7th/cmp-emoji"
+  },
+  ["cmp-git"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-git",
+    url = "https://github.com/petertriho/cmp-git"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -124,6 +139,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
@@ -194,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-elixir",
     url = "https://github.com/elixir-editors/vim-elixir"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-repeat"] = {
     loaded = true,
