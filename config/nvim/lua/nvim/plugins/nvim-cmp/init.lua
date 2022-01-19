@@ -3,6 +3,8 @@ local lspkind = require('lspkind')
 
 require("cmp_git").setup {}
 
+local get_all_buffers = function() return vim.api.nvim_list_bufs() end
+
 -- https://www.youtube.com/watch?v=_DnmphIwnjo&t=1514s
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua
 cmp.setup({
@@ -23,23 +25,34 @@ cmp.setup({
         }) -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
     sources = cmp.config.sources({
-        {name = 'nvim_lua'}, {
-            name = 'nvim_lsp'
-            -- , max_item_count = 15
-        }, {name = 'vsnip'}, {name = "cmp_git"}
-    }, {{name = "path"}, {name = 'emoji'}, {name = "buffer"}}),
+        {name = 'nvim_lsp', keyword_length = 0, priority = 80},
+        {name = 'nvim_lua', priority = 70}, {name = 'vsnip', priority = 60},
+        {name = "cmp_git", priority = 50}, {name = "path", priority = 40},
+        {name = 'emoji', priority = 30}, {
+            name = "buffer",
+            option = {
+                get_bufnrs = get_all_buffers,
+                keyword_pattern = [[\k\+]] -- Include special characters in word match.
+            },
+            priority = 20
+        }
+    }),
     formatting = {
         format = lspkind.cmp_format({
             with_text = true,
             menu = ({
                 buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
+                -- luasnip = "[LuaSnip]",
+                vsnip = "[VSnip]",
                 nvim_lua = "[Lua]",
+                emoji = "[Emoji]",
+                path = "[Path]",
+                cmp_git = "[Git]",
                 latex_symbols = "[Latex]"
             })
         })
     },
-    completion = {keyword_length = 3},
+    completion = {keyword_length = 2},
     experimental = {native_menu = false, ghost_text = true}
 })

@@ -1,6 +1,6 @@
 local lspconfig = require 'lspconfig'
 -- local configs = require 'lspconfig/configs'
-local util = require 'lspconfig/util'
+-- local util = require 'lspconfig/util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -47,6 +47,7 @@ lspconfig.hls.setup {
 -- JsonLS
 lspconfig.jsonls.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    filetypes = {'json'},
     capabilities = capabilities
 }
 
@@ -101,7 +102,7 @@ lspconfig.tsserver.setup {
     commands = {
         OrganizeImports = {organize_imports, description = "Organize Imports"}
     },
-    flags = {debounce_text_changes = 150}
+    -- flags = {debounce_text_changes = 150}
 }
 
 -- texlab
@@ -157,7 +158,7 @@ lspconfig.volar.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities,
     filetypes = {'vue'},
-    flags = {debounce_text_changes = 150},
+    -- flags = {debounce_text_changes = 150},
     init_options = {typescript = {suggest = {autoImports = false}}}
 }
 
