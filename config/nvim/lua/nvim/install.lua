@@ -65,7 +65,11 @@ return require('packer').startup(function(use)
     use {'hrsh7th/vim-vsnip'}
 
     -- Shl
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        requires = "p00f/nvim-ts-rainbow"
+    }
 
     -- LSP
     -- use {'neoclide/coc.nvim', branch = "release"}

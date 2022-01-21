@@ -1,6 +1,6 @@
 local lspconfig = require 'lspconfig'
--- local configs = require 'lspconfig/configs'
--- local util = require 'lspconfig/util'
+local configs = require 'lspconfig.configs'
+local util = require 'lspconfig/util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -102,7 +102,7 @@ lspconfig.tsserver.setup {
     commands = {
         OrganizeImports = {organize_imports, description = "Organize Imports"}
     },
-    -- flags = {debounce_text_changes = 150}
+    flags = {debounce_text_changes = 50}
 }
 
 -- texlab
@@ -154,16 +154,160 @@ lspconfig.texlab.setup {
 --     end
 -- end
 
-lspconfig.volar.setup {
-    on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities,
-    filetypes = {'vue'},
-    -- flags = {debounce_text_changes = 150},
-    init_options = {typescript = {suggest = {autoImports = false}}}
-}
+-- lspconfig.volar.setup {
+--     on_attach = require'nvim.plugins.lsp.config'.on_attach,
+--     capabilities = capabilities,
+--     filetypes = {'vue'},
+--     flags = {debounce_text_changes = 150},
+--     init_options = {
+--         documentFeatures = {
+--             documentColor = false,
+--             documentFormatting = {defaultPrintWidth = 100},
+--             documentSymbol = true,
+--             foldingRange = true,
+--             linkedEditingRange = true,
+--             selectionRange = true
+--         },
+--         languageFeatures = {
+--             callHierarchy = true,
+--             codeAction = true,
+--             codeLens = false,
+--             completion = {
+--                 defaultAttrNameCase = "kebabCase",
+--                 defaultTagNameCase = "both"
+--             },
+--             definition = true,
+--             diagnostics = true,
+--             documentHighlight = true,
+--             documentLink = true,
+--             hover = true,
+--             references = true,
+--             rename = true,
+--             renameFileRefactoring = true,
+--             schemaRequestService = true,
+--             semanticTokens = false,
+--             signatureHelp = true,
+--             typeDefinition = true
+--         },
+--         typescript = {serverPath = ""}
+--     }
+-- }
 
 -- Pyright
 lspconfig.pyright.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
     capabilities = capabilities
 }
+
+-- Volar
+local function on_new_config(new_config, new_root_dir)
+    local function get_typescript_server_path(root_dir)
+        local project_root = util.find_node_modules_ancestor(root_dir)
+        return project_root and
+                   (util.path.join(project_root, 'node_modules', 'typescript',
+                                   'lib', 'tsserverlibrary.js')) or ''
+    end
+
+    if new_config.init_options and new_config.init_options.typescript and
+        new_config.init_options.typescript.serverPath == '' then
+        new_config.init_options.typescript.serverPath =
+            get_typescript_server_path(new_root_dir)
+    end
+end
+
+local volar_cmd = {'volar-server', '--stdio'}
+local volar_root_dir = util.root_pattern 'package.json'
+
+if not configs.volar_api then
+    configs.volar_api = {
+        default_config = {
+            cmd = volar_cmd,
+            root_dir = volar_root_dir,
+            on_new_config = on_new_config,
+            on_attach = require'nvim.plugins.lsp.config'.on_attach,
+            capabilities = capabilities,
+            filetypes = {'vue'},
+            -- If you want to use Volar's Take Over Mode (if you know, you know)
+            -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+            init_options = {
+                typescript = {serverPath = ''},
+                languageFeatures = {
+                    references = true,
+                    definition = true,
+                    typeDefinition = true,
+                    callHierarchy = true,
+                    hover = true,
+                    rename = true,
+                    renameFileRefactoring = true,
+                    signatureHelp = true,
+                    codeAction = true,
+                    workspaceSymbol = true,
+                    completion = {
+                        defaultTagNameCase = 'both',
+                        defaultAttrNameCase = 'kebabCase',
+                        getDocumentNameCasesRequest = false,
+                        getDocumentSelectionRequest = false
+                    }
+                }
+            }
+        }
+    }
+end
+lspconfig.volar_api.setup {}
+
+if not configs.volar_doc then
+    configs.volar_doc = {
+        default_config = {
+            cmd = volar_cmd,
+            root_dir = volar_root_dir,
+            on_new_config = on_new_config,
+            on_attach = require'nvim.plugins.lsp.config'.on_attach,
+            capabilities = capabilities,
+            filetypes = {'vue'},
+            -- If you want to use Volar's Take Over Mode (if you know, you know):
+            -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+            init_options = {
+                typescript = {serverPath = ''},
+                languageFeatures = {
+                    documentHighlight = true,
+                    documentLink = true,
+                    codeLens = false,
+                    -- not supported - https://github.com/neovim/neovim/pull/14122
+                    semanticTokens = false,
+                    diagnostics = true,
+                    schemaRequestService = true
+                }
+            }
+        }
+    }
+end
+lspconfig.volar_doc.setup {}
+
+if not configs.volar_html then
+    configs.volar_html = {
+        default_config = {
+            cmd = volar_cmd,
+            root_dir = volar_root_dir,
+            on_new_config = on_new_config,
+
+            on_attach = require'nvim.plugins.lsp.config'.on_attach,
+            capabilities = capabilities,
+            filetypes = {'vue'},
+            -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
+            -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            init_options = {
+                typescript = {serverPath = ''},
+                documentFeatures = {
+                    selectionRange = true,
+                    foldingRange = true,
+                    linkedEditingRange = true,
+                    documentSymbol = true,
+                    -- not supported - https://github.com/neovim/neovim/pull/13654
+                    documentColor = false,
+                    documentFormatting = {defaultPrintWidth = 100}
+                }
+            }
+        }
+    }
+end
+lspconfig.volar_html.setup {}

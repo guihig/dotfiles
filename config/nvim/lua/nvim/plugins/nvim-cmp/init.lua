@@ -34,6 +34,7 @@ cmp.setup({
                 get_bufnrs = get_all_buffers,
                 keyword_pattern = [[\k\+]] -- Include special characters in word match.
             },
+            keyword_length = 5,
             priority = 20
         }
     }),
