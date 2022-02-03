@@ -13,6 +13,7 @@ env:
   TERM: xterm-256color
 
 window:
+  opacity: 0.85
   padding:
     x: 0
     y: 0
@@ -59,5 +60,3 @@ colors:
     magenta: "0xFFEE99"
     cyan: "0x95E6CB"
     white: "0xFFFFFF"
-
-background_opacity: 0.8

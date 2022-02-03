@@ -6,6 +6,10 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 USER = vim.fn.expand('$USER')
 
+lspconfig.util.default_config = vim.tbl_extend("force",
+                                               lspconfig.util.default_config,
+                                               {autostart = true})
+
 -- HDL Checker
 -- if not lspconfig.hdl_checker then
 --     configs.hdl_checker = {
@@ -46,9 +50,9 @@ lspconfig.hls.setup {
 
 -- JsonLS
 lspconfig.jsonls.setup {
-    on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    filetypes = {'json'},
-    capabilities = capabilities
+    -- on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    filetypes = {'json'}
+    -- capabilities = capabilities
 }
 
 -- SumnekoLua
@@ -137,61 +141,6 @@ lspconfig.texlab.setup {
         }
     }
 }
-
--- Volar
--- local function on_new_config(new_config, new_root_dir)
---     local function get_typescript_server_path(root_dir)
---         local project_root = util.find_node_modules_ancestor(root_dir)
---         return project_root and
---                    (util.path.join(project_root, 'node_modules', 'typescript',
---                                    'lib', 'tsserverlibrary.js')) or ''
---     end
-
---     if new_config.init_options and new_config.init_options.typescript and
---         new_config.init_options.typescript.serverPath == '' then
---         new_config.init_options.typescript.serverPath =
---             get_typescript_server_path(new_root_dir)
---     end
--- end
-
--- lspconfig.volar.setup {
---     on_attach = require'nvim.plugins.lsp.config'.on_attach,
---     capabilities = capabilities,
---     filetypes = {'vue'},
---     flags = {debounce_text_changes = 150},
---     init_options = {
---         documentFeatures = {
---             documentColor = false,
---             documentFormatting = {defaultPrintWidth = 100},
---             documentSymbol = true,
---             foldingRange = true,
---             linkedEditingRange = true,
---             selectionRange = true
---         },
---         languageFeatures = {
---             callHierarchy = true,
---             codeAction = true,
---             codeLens = false,
---             completion = {
---                 defaultAttrNameCase = "kebabCase",
---                 defaultTagNameCase = "both"
---             },
---             definition = true,
---             diagnostics = true,
---             documentHighlight = true,
---             documentLink = true,
---             hover = true,
---             references = true,
---             rename = true,
---             renameFileRefactoring = true,
---             schemaRequestService = true,
---             semanticTokens = false,
---             signatureHelp = true,
---             typeDefinition = true
---         },
---         typescript = {serverPath = ""}
---     }
--- }
 
 -- Pyright
 lspconfig.pyright.setup {
@@ -311,3 +260,35 @@ if not configs.volar_html then
     }
 end
 lspconfig.volar_html.setup {}
+
+-- EFM
+local eslint = {
+    lintCommand = "yarn eslint -f unix --stdin --stdin-filename ${INPUT}",
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = {"%f:%l:%c: %m"}
+}
+
+local credo = {
+    lintCommand = "mix credo suggest --strict --format=flycheck --read-from-stdin ${INPUT}",
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = {"%f:%l:%c: %m"},
+    rootMarkers = {"mix.exs", "mix.lock"}
+}
+
+local languages = {
+    typescript = {eslint},
+    javascript = {eslint},
+    typescriptreact = {eslint},
+    javascriptreact = {eslint},
+    vue = {eslint},
+    elixir = {credo}
+}
+
+lspconfig.efm.setup {
+    on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    capabilities = capabilities,
+    filetypes = vim.tbl_keys(languages),
+    settings = {rootMarkers = {".git/"}, languages = languages}
+}
