@@ -11,10 +11,11 @@ require('nvim.plugins.formatter')
 require('nvim.plugins.startify')
 require('nvim.plugins.vim-test')
 require('nvim.plugins.nvim-autopairs')
-require('nvim.plugins.nvim-ipy')
+require('nvim.plugins.magma-nvim')
 require('nvim.plugins.lightspeed')
 
 -- LSP Plugins
 require('nvim.plugins.lsp')
 require('nvim.plugins.nvim-cmp')
+require('nvim.plugins.lsp_signature')
 require('nvim.plugins.lspsaga')

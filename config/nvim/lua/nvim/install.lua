@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
     use {'windwp/nvim-autopairs'}
-    use {'bfredl/nvim-ipy'}
+    use {'dccsillag/magma-nvim', run = ':UpdateRemotePlugins'}
     use {
         "beauwilliams/focus.nvim",
         config = function() require("focus").setup() end
@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
     use {'onsails/lspkind-nvim'}
     use {'tpope/vim-fugitive'}
     use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
+    use {"ray-x/lsp_signature.nvim"}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}

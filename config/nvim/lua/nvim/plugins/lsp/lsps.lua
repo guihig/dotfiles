@@ -288,7 +288,7 @@ local languages = {
 
 lspconfig.efm.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities,
+    init_options = {documentFormatting = true, codeAction = true},
     filetypes = vim.tbl_keys(languages),
     settings = {rootMarkers = {".git/"}, languages = languages}
 }

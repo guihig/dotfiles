@@ -1,7 +1,7 @@
 {-# LANGUAGE BlockArguments #-}
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
-
 {-# OPTIONS_GHC -Wno-overflowed-literals #-}
+
 module XMonad.Local.Keys
   ( keys
   , rawKeys
@@ -106,8 +106,10 @@ baseKeys c =
 --------------------------------------------------------------------------------
 -- Specifically manage my prefix key (C-z), and for controlling XMonad.
 systemKeys :: XConfig Layout -> [(String, X ())]
-systemKeys _ =
-  [ ("S-<Print>", spawn "sleep 0.2 && gnome-screenshot -a")
+systemKeys _
+  -- [ ("S-<Print>", spawn "sleep 0.2 && gnome-screenshot -a")
+ =
+  [ ("S-<Print>", spawn "flameshot gui")
   , ("M-v", spawn "polybar-msg cmd toggle")
   , ("M-=", spawn "$HOME/.xmonad/scripts/lock.sh")
   ]
