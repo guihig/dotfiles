@@ -1,4 +1,5 @@
 local cmp = require 'cmp'
+local types = require 'cmp.types'
 local lspkind = require('lspkind')
 
 require("cmp_git").setup {}
@@ -19,6 +20,12 @@ cmp.setup({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
         }),
+        ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(
+                                    {behavior = types.cmp.SelectBehavior.Insert}),
+                                {'i', 'c'}),
+        ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(
+                                    {behavior = types.cmp.SelectBehavior.Insert}),
+                                {'i', 'c'}),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = false

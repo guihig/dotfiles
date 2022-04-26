@@ -130,6 +130,11 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/gruvbox-material",
     url = "https://github.com/sainnhe/gruvbox-material"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   kommentary = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/kommentary",

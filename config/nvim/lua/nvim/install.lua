@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
     use {'tpope/vim-fugitive'}
     use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
     use {"ray-x/lsp_signature.nvim"}
+    use {"ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim"}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
