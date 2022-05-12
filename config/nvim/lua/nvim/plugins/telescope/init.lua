@@ -59,6 +59,8 @@ require('telescope').setup {
     }
 }
 
+require('telescope').load_extension('vimwiki')
+
 vim.api.nvim_exec([[
   function! MaybeTelescope()
     if argc() == 1 && isdirectory(argv()[0])
@@ -69,4 +71,6 @@ vim.api.nvim_exec([[
   endfunction
 
   autocmd VimEnter * :call MaybeTelescope()
+
+  nnoremap <leader>vw <cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>
 ]], true)

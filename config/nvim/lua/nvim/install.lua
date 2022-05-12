@@ -60,6 +60,8 @@ return require('packer').startup(function(use)
     use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
     use {"ray-x/lsp_signature.nvim"}
     use {"ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim"}
+    use {"vimwiki/vimwiki"}
+    use {"ElPiloto/telescope-vimwiki.nvim"}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
