@@ -32,6 +32,8 @@ alias tmx tmuxinator
 
 alias pong "ping 8.8.8.8"
 
+alias restart-audio 'pulseaudio -k && sudo alsactl restore'
+
 #########################
 ######### Paths #########
 #########################
