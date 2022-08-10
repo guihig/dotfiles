@@ -97,9 +97,14 @@ withUpdatePointer = map addAction
     addAction (key, action) = (key, action >> updatePointer (0.75, 0.25) (0, 0))
 
 --------------------------------------------------------------------------------
+restartXMonad :: X ()
+restartXMonad = do
+  home <- io getHomeDirectory
+  restart (home </> ".local/bin/xmonad") True
+
 baseKeys :: XConfig Layout -> [(String, X ())]
 baseKeys c =
-  [ ("M-q", broadcastMessage ReleaseResources >> restart "xmonad" True)
+  [ ("M-q", restartXMonad)
   , ("M-S-q", confirmPrompt Local.promptConfig "Quit XMonad" $ io exitSuccess)
   ]
 
@@ -112,6 +117,10 @@ systemKeys _
   [ ("S-<Print>", spawn "flameshot gui")
   , ("M-v", spawn "polybar-msg cmd toggle")
   , ("M-=", spawn "$HOME/.xmonad/scripts/lock.sh")
+  , ("M-S-=", spawn "kill -s USR1 $(pidof deadd-notification-center)")
+  , ( "M-c"
+    , spawn
+        "~/.local/bin/notify-send.py a --hint boolean:deadd-notification-center:true string:type:clearPopups")
   ]
 
 --------------------------------------------------------------------------------
