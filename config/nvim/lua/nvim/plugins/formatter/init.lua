@@ -38,6 +38,14 @@ local function asmfmt()
     return {exe = "asmfmt", args = {vim.api.nvim_buf_get_name(0)}, stdin = true}
 end
 
+local function clang_format()
+    return {
+        exe = "clang-format",
+        args = {vim.api.nvim_buf_get_name(0)},
+        stdin = true
+    }
+end
+
 require("formatter").setup({
     logging = true,
     filetype = {
@@ -57,6 +65,7 @@ require("formatter").setup({
         haskell = {hindent},
         vhdl = {vhdlFormatter},
         tex = {latexindent},
-        asm = {asmfmt}
+        asm = {asmfmt},
+        cpp = {clang_format}
     }
 })

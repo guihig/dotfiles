@@ -39,7 +39,34 @@ lspconfig.elixirls.setup {
 -- CSSLS
 lspconfig.cssls.setup {
     on_attach = require'nvim.plugins.lsp.config'.on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    single_file_support = false,
+    settings = {
+        css = {validate = true},
+        scss = {validate = false},
+        less = {validate = true}
+    }
+}
+
+-- TailwindCss
+lspconfig.tailwindcss.setup {
+    on_attach = require'nvim.plugins.lsp.config'.on_attach,
+    capabilities = capabilities,
+    settings = {
+        tailwindCSS = {
+            validate = true,
+            lint = {
+                cssConflict = 'warning',
+                invalidApply = 'error',
+                invalidScreen = 'error',
+                invalidVariant = 'error',
+                invalidConfigPath = 'error',
+                invalidTailwindDirective = 'error',
+                recommendedVariantOrder = 'warning'
+            },
+            classAttributes = {'class', 'className', 'classList', 'ngClass'}
+        }
+    }
 }
 
 -- HLS
@@ -164,7 +191,7 @@ local function on_new_config(new_config, new_root_dir)
     end
 end
 
-local volar_cmd = {'volar-server', '--stdio'}
+local volar_cmd = {'vue-language-server', '--stdio'}
 local volar_root_dir = util.root_pattern 'package.json'
 
 if not configs.volar_api then
@@ -181,6 +208,7 @@ if not configs.volar_api then
             init_options = {
                 typescript = {serverPath = ''},
                 languageFeatures = {
+                    implementation = true,
                     references = true,
                     definition = true,
                     typeDefinition = true,
@@ -218,6 +246,7 @@ if not configs.volar_doc then
             init_options = {
                 typescript = {serverPath = ''},
                 languageFeatures = {
+                    implementation = true,
                     documentHighlight = true,
                     documentLink = true,
                     codeLens = false,

@@ -34,7 +34,7 @@ cmp.setup({
     sources = cmp.config.sources({
         {name = 'nvim_lsp', keyword_length = 0, priority = 80},
         {name = 'nvim_lua', priority = 70}, {name = 'vsnip', priority = 60},
-        {name = "cmp_git", priority = 50}, {name = "path", priority = 40},
+        {name = "git", priority = 50}, {name = "path", priority = 40},
         {name = 'emoji', priority = 30}, {
             name = "buffer",
             option = {
