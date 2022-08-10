@@ -49,15 +49,9 @@ return require('packer').startup(function(use)
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'b3nj5m1n/kommentary'}
     use {'windwp/nvim-autopairs'}
-    use {'dccsillag/magma-nvim', run = ':UpdateRemotePlugins'}
-    use {
-        "beauwilliams/focus.nvim",
-        config = function() require("focus").setup() end
-    }
     use {'elixir-editors/vim-elixir'}
     use {'onsails/lspkind-nvim'}
     use {'tpope/vim-fugitive'}
-    use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
     use {"ray-x/lsp_signature.nvim"}
     use {"ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim"}
     use {"vimwiki/vimwiki"}
@@ -77,6 +71,7 @@ return require('packer').startup(function(use)
 
     -- LSP
     -- use {'neoclide/coc.nvim', branch = "release"}
+    use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
     use {
         'hrsh7th/nvim-cmp',
         requires = {
