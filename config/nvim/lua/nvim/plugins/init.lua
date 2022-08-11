@@ -13,6 +13,7 @@ require('nvim.plugins.vim-test')
 require('nvim.plugins.nvim-autopairs')
 require('nvim.plugins.lightspeed')
 require('nvim.plugins.harpoon')
+require('nvim.plugins.vim-printer')
 
 -- LSP Plugins
 require('nvim.plugins.lsp')

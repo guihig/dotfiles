@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/hoob3rt/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -228,6 +233,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-printer"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-printer",
+    url = "https://github.com/meain/vim-printer"
   },
   ["vim-repeat"] = {
     loaded = true,

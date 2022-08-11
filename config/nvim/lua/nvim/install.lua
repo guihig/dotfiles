@@ -43,6 +43,10 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}}
     }
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end
+    })
 
     -- Code Utils
     use {'tpope/vim-surround'}
@@ -56,6 +60,7 @@ return require('packer').startup(function(use)
     use {"ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim"}
     use {"vimwiki/vimwiki"}
     use {"ElPiloto/telescope-vimwiki.nvim"}
+    use {"meain/vim-printer"}
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
