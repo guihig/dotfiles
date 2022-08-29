@@ -47,13 +47,15 @@ return require('packer').startup(function(use)
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end
     })
+    use {"tversteeg/registers.nvim"}
 
     -- Code Utils
     use {'tpope/vim-surround'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
-    use {'b3nj5m1n/kommentary'}
+    -- use {'b3nj5m1n/kommentary'}
+    use {'numToStr/Comment.nvim'}
     use {'windwp/nvim-autopairs'}
-    use {'elixir-editors/vim-elixir'}
+    -- use {'elixir-editors/vim-elixir'}
     use {'onsails/lspkind-nvim'}
     use {'tpope/vim-fugitive'}
     use {"ray-x/lsp_signature.nvim"}
@@ -73,6 +75,7 @@ return require('packer').startup(function(use)
         run = ':TSUpdate',
         requires = "p00f/nvim-ts-rainbow"
     }
+    use {'nvim-treesitter/playground'}
 
     -- LSP
     -- use {'neoclide/coc.nvim', branch = "release"}

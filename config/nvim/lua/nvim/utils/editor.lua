@@ -17,7 +17,7 @@ end
 
 Editor.reload_nvim = function()
     vim.notify("Reloading", vim.log.levels.INFO)
-    vim.cmd([[source "~/.config/nvim/init.lua"]], true)
+    vim.api.nvim_exec([[source "~/.config/nvim/init.lua"]], true)
 end
 
 return Editor
