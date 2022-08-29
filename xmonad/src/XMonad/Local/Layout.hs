@@ -2,7 +2,9 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# OPTIONS_HADDOCK hide, prune, ignore-exports #-}
 {-# OPTIONS -fno-warn-missing-signatures #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
+{-# HLINT ignore "Eta reduce" #-}
 --------------------------------------------------------------------------------
 {- This file is part of the xmonadrc package. It is subject to the
 license terms in the LICENSE file found in the top-level directory of
