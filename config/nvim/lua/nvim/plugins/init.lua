@@ -3,6 +3,7 @@ require('nvim.plugins.lualine')
 require('nvim.plugins.barbar')
 
 -- Misc
+require('nvim.plugins.markdown-preview')
 require('nvim.plugins.nvim-treesitter')
 require('nvim.plugins.rnvimr')
 require('nvim.plugins.telescope')
