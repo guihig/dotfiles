@@ -1,0 +1,12 @@
+[submodule "config/awesome/bling"]
+	path = config/awesome/bling
+	url = https://github.com/BlingCorp/bling.git
+[submodule "config/awesome/awesome-wm-widgets"]
+	path = config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git
+[submodule "config/awesome/json.lua"]
+	path = config/awesome/json.lua
+	url = https://github.com/rxi/json.lua
+[submodule "config/awesome/json"]
+	path = config/awesome/json
+	url = https://github.com/rxi/json.lua

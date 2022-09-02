@@ -64,6 +64,10 @@
     ~/.tmux.conf:
       path: config/tmux/tmux.conf
 
+    ~/.config/awesome/:
+      glob: true
+      path: config/awesome/*
+
 - clean: ["~"]
 
 - clean:
