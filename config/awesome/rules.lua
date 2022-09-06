@@ -36,7 +36,8 @@ ruled.client.connect_signal("request::rules", function()
                 "Discord Updater",
                 "Steam - Self Updater",
                 "Android Emulator*",
-                "JetBrains Toolbox"
+                "JetBrains Toolbox",
+                "splash"
             },
             role = { "pop-up" }
         },

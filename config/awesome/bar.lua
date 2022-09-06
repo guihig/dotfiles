@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local utils = require("utils")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local net_speed_widget =
     require("awesome-wm-widgets.net-speed-widget.net-speed")
@@ -10,8 +11,7 @@ local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local pomodoro_widget = require(
-                            "awesome-wm-widgets.pomodoroarc-widget.pomodoroarc")
+local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
 
 -- Task list
 local function task_list(s)
@@ -30,7 +30,8 @@ local function task_list(s)
                     {
                         {
                             { id = "icon_role", widget = wibox.widget.imagebox },
-                            margins = 3,
+                            top = 3,
+                            bottom = 3,
                             left = 3,
                             right = 5,
                             widget = wibox.container.margin
@@ -81,10 +82,21 @@ end
 -- Layout box
 local function layout_box(s)
     local layout_box_buttons = gears.table.join( --- Left click
-    awful.button({}, 1, function(c) awful.layout.inc(1) end), --- Right click
-    awful.button({}, 3, function(c) awful.layout.inc(-1) end), --- Scrolling
-    awful.button({}, 4, function() awful.layout.inc(-1) end),
-    awful.button({}, 5, function() awful.layout.inc(1) end))
+    awful.button({}, 1, function()
+        awful.layout.inc(1)
+        utils.handle_master_count()
+    end), --- Right click
+    awful.button({}, 3, function()
+        awful.layout.inc(-1)
+        utils.handle_master_count()
+    end), --- Scrolling
+    awful.button({}, 4, function()
+        awful.layout.inc(-1)
+        utils.handle_master_count()
+    end), awful.button({}, 5, function()
+        awful.layout.inc(1)
+        utils.handle_master_count()
+    end))
 
     local _layout_box = awful.widget.layoutbox {
         screen = s,
@@ -197,8 +209,8 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     spacing = 5,
+                    docker_widget(),
                     todo_widget(),
-                    pomodoro_widget,
                     ram_widget(),
                     cpu_widget(),
                     net_speed_widget(),

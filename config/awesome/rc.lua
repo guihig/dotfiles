@@ -3,6 +3,14 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- Logger
+local logging = require "logging.file"
+
+LOG = logging { filename = "aw%s.log", datePattern = "%Y-%m-%d" }
+
+LOG:info("-----------------")
+LOG:info("AwesomeWM Started")
+
 -- Consts
 HOME_DIR = os.getenv("HOME")
 
@@ -35,8 +43,3 @@ require("notifications")
 require("tags")
 
 require("bar")
-
--- Window Focus
-client.connect_signal("mouse::enter", function(c)
-    c:activate({ context = "mouse_enter", raise = false })
-end)

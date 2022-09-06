@@ -1,5 +1,6 @@
 local awful = require("awful")
 local bling = require("bling")
+local utils = require("utils")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
 
@@ -68,6 +69,12 @@ awful.keyboard.append_global_keybindings(swap_keybindings)
 awful.keyboard.append_global_keybindings({
     awful.key({ Modkey }, "u", awful.client.urgent.jumpto,
               { description = "jump to urgent client", group = "client" }),
+    awful.key({ Modkey, "Control" }, "[",
+              function() awful.tag.incnmaster(-1) end,
+              { description = "decrease master", group = "layout" }),
+    awful.key({ Modkey, "Control" }, "]",
+              function() awful.tag.incnmaster(1) end,
+              { description = "increase master", group = "layout" }),
     awful.key({ Modkey }, "]", function() awful.tag.incmwfact(0.05) end, {
         description = "increase master width factor",
         group = "layout"
@@ -86,10 +93,15 @@ awful.keyboard.append_global_keybindings({
         description = "increase client width factor",
         group = "layout"
     }),
-    awful.key({ Modkey }, "Tab", function() awful.layout.inc(1) end,
-              { description = "select next", group = "layout" }),
-    awful.key({ Modkey, "Shift" }, "Tab", function() awful.layout.inc(-1) end,
-              { description = "select previous", group = "layout" })
+    awful.key({ Modkey }, "Tab", function()
+        awful.layout.inc(1)
+        local t = awful.screen.focused().selected_tag
+        utils.handle_master_count()
+    end, { description = "select next", group = "layout" }),
+    awful.key({ Modkey, "Shift" }, "Tab", function()
+        awful.layout.inc(-1)
+        utils.handle_master_count()
+    end, { description = "select previous", group = "layout" })
 })
 
 -- @DOC_NUMBER_KEYBINDINGS@

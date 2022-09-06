@@ -6,10 +6,9 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 USER = vim.fn.expand("$USER")
 
-lspconfig.util.default_config = vim.tbl_extend(
-                                    "force", lspconfig.util.default_config,
-                                    { autostart = true }
-                                )
+lspconfig.util.default_config = vim.tbl_extend("force",
+                                               lspconfig.util.default_config,
+                                               { autostart = true })
 
 -- HDL Checker
 -- if not lspconfig.hdl_checker then
@@ -88,14 +87,15 @@ local sumneko_root_path = ""
 local sumneko_binary = ""
 
 sumneko_root_path = "/home/" .. USER .. "/.lsp/lua-language-server"
-sumneko_binary = "/home/" .. USER ..
-                     "/.lsp/lua-language-server/bin/Linux/lua-language-server"
+sumneko_binary = "/home/" .. USER
+                     .. "/.lsp/lua-language-server/bin/lua-language-server"
 lspconfig.sumneko_lua.setup {
     on_attach = require"nvim.plugins.lsp.config".on_attach,
     capabilities = capabilities,
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     settings = {
         Lua = {
+            completion = { autoRequire = true },
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
@@ -104,7 +104,17 @@ lspconfig.sumneko_lua.setup {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { "vim", "client", "awesome", "tag", "screen" }
+                globals = {
+                    "vim",
+                    -- Awesome Globals
+                    "client",
+                    "awesome",
+                    "tag",
+                    "root",
+                    "screen",
+                    "mouse"
+                },
+                unusedLocalExclude = { "_%s" }
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -183,18 +193,16 @@ lspconfig.pyright.setup {
 local function on_new_config(new_config, new_root_dir)
     local function get_typescript_server_path(root_dir)
         local project_root = util.find_node_modules_ancestor(root_dir)
-        return project_root and (util.path.join(
-                   project_root, "node_modules", "typescript", "lib",
-                   "tsserverlibrary.js"
-               )) or ""
+        return project_root
+                   and (util.path
+                       .join(project_root, "node_modules", "typescript", "lib",
+                             "tsserverlibrary.js")) or ""
     end
 
-    if new_config.init_options and new_config.init_options.typescript and
-        new_config.init_options.typescript.serverPath == "" then
+    if new_config.init_options and new_config.init_options.typescript
+        and new_config.init_options.typescript.serverPath == "" then
         new_config.init_options.typescript.serverPath =
-            get_typescript_server_path(
-                new_root_dir
-            )
+            get_typescript_server_path(new_root_dir)
     end
 end
 
