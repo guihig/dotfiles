@@ -49,6 +49,12 @@ theme.border_color_normal = "#000000"
 theme.border_color_active = "#535d6c"
 theme.border_color_marked = "#91231c"
 
+-- Titlebar
+theme.titlebar_bg_focus = theme.bg_focus
+theme.titlebar_bg_normal = theme.bg_normal
+theme.titlebar_fg_focus = theme.fg_focus
+
+-- Topbar
 theme.wibar_bg = theme.bg
 theme.wibar_height = dpi(24)
 

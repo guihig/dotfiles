@@ -20,7 +20,7 @@ M.spotify_scratch = bling.module.scratchpad {
     sticky = true,
     autoclose = false,
     floating = true,
-    geometry = { x = 360, y = 140, height = 800, width = 1200 },
+    geometry = { x = 277, y = 156, height = 768, width = 1366 },
     reapply = true,
     dont_focus_before_close = false
 }

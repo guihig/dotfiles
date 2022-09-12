@@ -1,11 +1,19 @@
-require'nvim-treesitter.configs'.setup {
-    highlight = {enable = true},
-    incremental_selection = {enable = true},
-    indent = {enable = true},
-    context_commentstring = {enable = true, enable_autocmd = false},
+require"nvim-treesitter.configs".setup {
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    indent = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
     ensure_installed = {
-        'haskell', 'lua', 'json', 'css', 'html', 'vue', 'typescript', 'latex',
-        'fish', 'elixir'
+        "haskell",
+        "lua",
+        "json",
+        "css",
+        "html",
+        "vue",
+        "typescript",
+        "latex",
+        "fish"
+        -- 'elixir'
     },
     rainbow = {
         enable = true,
@@ -14,5 +22,5 @@ require'nvim-treesitter.configs'.setup {
     }
 }
 
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"

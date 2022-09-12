@@ -245,6 +245,16 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-dbml"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-dbml",
+    url = "https://github.com/jidn/vim-dbml"
+  },
+  ["vim-elixir"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-elixir",
+    url = "https://github.com/elixir-editors/vim-elixir"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-fugitive",

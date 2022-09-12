@@ -63,10 +63,11 @@ return require("packer").startup(function(use)
     -- Code Utils
     use { "tpope/vim-surround" }
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
+    use { "jidn/vim-dbml" }
     -- use {'b3nj5m1n/kommentary'}
     use { "numToStr/Comment.nvim" }
     use { "windwp/nvim-autopairs" }
-    -- use {'elixir-editors/vim-elixir'}
+    use { "elixir-editors/vim-elixir" }
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
     use { "ray-x/lsp_signature.nvim" }
