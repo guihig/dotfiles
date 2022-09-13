@@ -178,6 +178,15 @@ client.connect_signal("request::default_keybindings", function()
             c.floating = not c.floating
             c:raise()
         end, { description = "toggle floating", group = "client" }),
+        awful.key({ Modkey, "Shift" }, "r", function(c)
+            c.floating = false
+            c.maximized = false
+            c.maximized_horizontal = false
+            c.maximized_vertical = false
+            c.sticky = false
+            c.fullscreen = false
+            c:raise()
+        end, { description = "reset client props", group = "client" }),
         awful.key({ Modkey }, "w", function(c) c:kill() end,
                   { description = "close", group = "client" }),
         awful.key({ Modkey, "Shift" }, "h",

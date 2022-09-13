@@ -67,7 +67,7 @@ return require("packer").startup(function(use)
     -- use {'b3nj5m1n/kommentary'}
     use { "numToStr/Comment.nvim" }
     use { "windwp/nvim-autopairs" }
-    use { "elixir-editors/vim-elixir" }
+    -- use { "elixir-editors/vim-elixir" }
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
     use { "ray-x/lsp_signature.nvim" }
@@ -75,6 +75,20 @@ return require("packer").startup(function(use)
     use { "vimwiki/vimwiki" }
     use { "ElPiloto/telescope-vimwiki.nvim" }
     use { "meain/vim-printer" }
+    use { "mfussenegger/nvim-dap" }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-neotest/neotest-python",
+            "nvim-neotest/neotest-plenary",
+            "nvim-neotest/neotest-vim-test",
+            "jfpedroza/neotest-elixir",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim"
+        }
+    }
 
     -- Snippets
     -- use {'rafamadriz/friendly-snippets'}
@@ -100,7 +114,8 @@ return require("packer").startup(function(use)
             { "hrsh7th/cmp-nvim-lua" },
             { "hrsh7th/cmp-vsnip" },
             { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-emoji" }
+            { "hrsh7th/cmp-emoji" },
+            { "rcarriga/cmp-dap" }
         }
     }
     use { "neovim/nvim-lspconfig" }

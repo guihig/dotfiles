@@ -25,8 +25,8 @@ M.on_attach = function(_, bufnr)
             "<cmd>lua vim.lsp.buf.type_definition()<CR>",
             l_opts
         }, -- LspSaga
-        { bufnr, "n", "<C-k>", "<cmd>Lspsaga signature_help<CR>", l_opts },
         { bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", l_opts },
+        { bufnr, "n", "<leader>o", "<cmd>LSoutlineToggle<CR>", l_opts },
         { bufnr, "n", "<leader>a", "<cmd>Lspsaga code_action<CR>", l_opts },
         { bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", l_opts },
         { bufnr, "n", "<leader>qq", "<cmd>Lspsaga lsp_finder<CR>", l_opts },

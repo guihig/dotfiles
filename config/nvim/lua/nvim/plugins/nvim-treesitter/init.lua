@@ -12,8 +12,8 @@ require"nvim-treesitter.configs".setup {
         "vue",
         "typescript",
         "latex",
-        "fish"
-        -- 'elixir'
+        "fish",
+        "elixir"
     },
     rainbow = {
         enable = true,
