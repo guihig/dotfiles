@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
-  ["FixCursorHold.nvim"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
-    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
-  },
   ["barbar.nvim"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/barbar.nvim",
@@ -98,21 +93,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
-  },
-  ["cmp-dap"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-dap",
-    url = "https://github.com/rcarriga/cmp-dap"
-  },
-  ["cmp-emoji"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-emoji",
-    url = "https://github.com/hrsh7th/cmp-emoji"
-  },
-  ["cmp-git"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/cmp-git",
-    url = "https://github.com/petertriho/cmp-git"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
@@ -185,31 +165,6 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
-  neotest = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/neotest",
-    url = "https://github.com/nvim-neotest/neotest"
-  },
-  ["neotest-elixir"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/neotest-elixir",
-    url = "https://github.com/jfpedroza/neotest-elixir"
-  },
-  ["neotest-plenary"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/neotest-plenary",
-    url = "https://github.com/nvim-neotest/neotest-plenary"
-  },
-  ["neotest-python"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/neotest-python",
-    url = "https://github.com/nvim-neotest/neotest-python"
-  },
-  ["neotest-vim-test"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/neotest-vim-test",
-    url = "https://github.com/nvim-neotest/neotest-vim-test"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -219,16 +174,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-dap"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-dap",
-    url = "https://github.com/mfussenegger/nvim-dap"
-  },
-  ["nvim-dap-ui"] = {
-    loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
-    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -290,10 +235,10 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-dbml"] = {
+  ["vim-elixir"] = {
     loaded = true,
-    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-dbml",
-    url = "https://github.com/jidn/vim-dbml"
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-elixir",
+    url = "https://github.com/elixir-editors/vim-elixir"
   },
   ["vim-fugitive"] = {
     loaded = true,

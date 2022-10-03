@@ -3,6 +3,7 @@ require("nvim.plugins.lualine")
 require("nvim.plugins.barbar")
 
 -- Misc
+require("nvim.plugins.vim-printer")
 require("nvim.plugins.markdown-preview")
 require("nvim.plugins.nvim-treesitter")
 require("nvim.plugins.rnvimr")
@@ -14,9 +15,6 @@ require("nvim.plugins.vim-test")
 require("nvim.plugins.nvim-autopairs")
 require("nvim.plugins.lightspeed")
 require("nvim.plugins.harpoon")
-require("nvim.plugins.vim-printer")
-require("nvim.plugins.neotest")
-require("nvim.plugins.nvim-dap")
 
 -- LSP Plugins
 require("nvim.plugins.lsp")

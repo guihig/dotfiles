@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
 
     -- Colorschemes
     -- use {'sainnhe/sonokai'}
+    -- use "folke/tokyonight.nvim"
     use { "sainnhe/gruvbox-material" }
 
     -- Utils
@@ -61,38 +62,20 @@ return require("packer").startup(function(use)
     use { "tversteeg/registers.nvim" }
 
     -- Code Utils
+    use { "vimwiki/vimwiki" }
+    use { "ElPiloto/telescope-vimwiki.nvim" }
     use { "tpope/vim-surround" }
+    use { "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" }
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
-    use { "jidn/vim-dbml" }
-    -- use {'b3nj5m1n/kommentary'}
     use { "numToStr/Comment.nvim" }
     use { "windwp/nvim-autopairs" }
-    -- use { "elixir-editors/vim-elixir" }
+    use { "elixir-editors/vim-elixir" }
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
     use { "ray-x/lsp_signature.nvim" }
-    use { "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" }
-    use { "vimwiki/vimwiki" }
-    use { "ElPiloto/telescope-vimwiki.nvim" }
     use { "meain/vim-printer" }
-    use { "mfussenegger/nvim-dap" }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use {
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-neotest/neotest-python",
-            "nvim-neotest/neotest-plenary",
-            "nvim-neotest/neotest-vim-test",
-            "jfpedroza/neotest-elixir",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim"
-        }
-    }
 
     -- Snippets
-    -- use {'rafamadriz/friendly-snippets'}
-    -- use {'L3MON4D3/LuaSnip'}
     use { "hrsh7th/vim-vsnip" }
 
     -- Shl
@@ -104,8 +87,6 @@ return require("packer").startup(function(use)
     use { "nvim-treesitter/playground" }
 
     -- LSP
-    -- use {'neoclide/coc.nvim', branch = "release"}
-    use { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" }
     use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -113,9 +94,7 @@ return require("packer").startup(function(use)
             { "hrsh7th/cmp-path" },
             { "hrsh7th/cmp-nvim-lua" },
             { "hrsh7th/cmp-vsnip" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-emoji" },
-            { "rcarriga/cmp-dap" }
+            { "hrsh7th/cmp-buffer" }
         }
     }
     use { "neovim/nvim-lspconfig" }

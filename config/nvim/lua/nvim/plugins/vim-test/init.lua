@@ -1,26 +1,3 @@
-local dap = require("dap")
-
-function _G.run_dap()
-    local ln = vim.api.nvim_win_get_cursor(0)
-    local fp = vim.fn.expand("%:p")
-
-    print(vim.inspect(fp))
-    print(vim.inspect(ln))
-
-    dap.run({
-        type = "mix_task",
-        name = "mix phx.server",
-        task = "test",
-        taskArgs = { fp .. ":" .. ln[1], "--trace" },
-        request = "launch",
-        startApps = true, -- for Phoenix projects
-        projectDir = "${workspaceFolder}",
-        requireFiles = { "test/**/test_helper.exs", "test/**/*_test.exs" }
-    })
-end
-
-vim.keymap.set("n", "t<C-d>", run_dap, { silent = true, noremap = true })
-
 Keybind.g({
     { "n", "t<C-n>", ":TestNearest<CR>", { silent = true } },
     { "n", "t<C-f>", ":TestFile<CR>", { silent = true } },

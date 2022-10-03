@@ -1,7 +1,30 @@
 local M = {}
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+FLOAT_WINID = nil
+
+local function close_float()
+    if FLOAT_WINID ~= nil then
+        vim.api.nvim_win_close(FLOAT_WINID, false)
+        FLOAT_WINID = nil
+        return
+    else
+        return t "<Esc>"
+    end
+end
+
+local function open_float()
+    local _, winid = vim.diagnostic.open_float()
+    FLOAT_WINID = winid
+end
+
+vim.keymap.set("n", "<Esc>", close_float, opts)
+vim.keymap.set("n", "<leader>e", open_float, opts)
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
 
@@ -31,15 +54,6 @@ M.on_attach = function(_, bufnr)
         { bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", l_opts },
         { bufnr, "n", "<leader>qq", "<cmd>Lspsaga lsp_finder<CR>", l_opts },
         { bufnr, "n", "<leader>k", "<cmd>Lspsaga preview_definition<CR>", l_opts },
-        -- { bufnr, "n", "]g", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts },
-        -- { bufnr, "n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts },
-        -- {
-        --     bufnr,
-        --     "n",
-        --     "<leader>e",
-        --     "<cmd>Lspsaga show_line_diagnostics<CR>",
-        --     opts
-        -- }, 
         { bufnr, "n", "<C-A-o>", "<cmd>lua lsp_organize_imports()<CR>", l_opts }
     })
 end
