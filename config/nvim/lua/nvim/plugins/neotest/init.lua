@@ -11,14 +11,13 @@ require("neotest").setup({
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "t<C-n>", require("neotest").run.run, opts)
-vim.keymap.set("n", "t<C-o>",
+vim.keymap.set("n", "<leader>tn", require("neotest").run.run, opts)
+vim.keymap.set("n", "<leader>to",
                function() require("neotest").output.open({ enter = true }) end,
                opts)
-vim.keymap.set("n", "t<C-f>", function()
-    print("Test file")
-    require("neotest").run.run(vim.fn.expand("%"))
-end, opts)
-vim.keymap.set("n", "t<C-d>",
+vim.keymap.set("n", "<leader>tf",
+               function() require("neotest").run.run(vim.fn.expand("%")) end,
+               opts)
+vim.keymap.set("n", "<leader>td",
                function() require("neotest").run.run({ strategy = "dap" }) end,
                opts)

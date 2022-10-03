@@ -1,21 +1,22 @@
 local dap, dapui = require("dap"), require("dapui")
 
+local USER = vim.fn.expand("$USER")
+
 dap.adapters.mix_task = {
     type = "executable",
-    command = "~/.lsp/elixir-ls/debugger.sh",
+    command = "/home/" .. USER .. "/.lsp/elixir-ls/debugger.sh",
     args = {}
 }
 
 dap.configurations.elixir = {
     {
         type = "mix_task",
-        name = "mix test",
-        task = "test",
-        taskArgs = { "--trace" },
+        name = "mix phx.server",
+        task = "phx.server",
         request = "launch",
-        startApps = true, -- for Phoenix projects
         projectDir = "${workspaceFolder}",
-        requireFiles = { "test/**/test_helper.exs", "test/**/*_test.exs" }
+        excludeModules = { "Qrusty.Native" }
+        -- requireFiles = { "test/**/test_helper.exs", "test/**/*_test.exs" }
     }
 }
 

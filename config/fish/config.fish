@@ -41,6 +41,7 @@ set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.yarn/bin $PATH
 set PATH $HOME/.npm-global/bin $PATH
 set PATH $HOME/local/nvim/bin $PATH
+set PATH $HOME/Android/Sdk/platform-tools $PATH
 
 set GOROOT (go env GOROOT)
 set GOPATH (go env GOPATH)
