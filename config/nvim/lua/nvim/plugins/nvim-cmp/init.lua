@@ -4,6 +4,9 @@ local lspkind = require("lspkind")
 
 local get_all_buffers = function() return vim.api.nvim_list_bufs() end
 
+if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft
+    == "guihua_rust" then cmp.setup.buffer { completion = { enable = false } } end
+
 -- https://www.youtube.com/watch?v=_DnmphIwnjo&t=1514s
 -- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua
 cmp.setup({

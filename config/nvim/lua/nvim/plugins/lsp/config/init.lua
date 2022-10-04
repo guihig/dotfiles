@@ -1,14 +1,18 @@
-local M = {}
+local keymap = vim.keymap
 
-local opts = { noremap = true, silent = true }
+local M = {}
 
 local function t(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-FLOAT_WINID = nil
+local function lsp_organize_imports()
+    local context = { only = { "source.organizeImports" } }
+    vim.lsp.buf.code_action(context)
+end
 
-local function close_float()
+FLOAT_WINID = nil
+local function close_diag_float()
     if FLOAT_WINID ~= nil then
         vim.api.nvim_win_close(FLOAT_WINID, false)
         FLOAT_WINID = nil
@@ -18,44 +22,33 @@ local function close_float()
     end
 end
 
-local function open_float()
+local function open_diag_float()
     local _, winid = vim.diagnostic.open_float()
     FLOAT_WINID = winid
 end
 
-vim.keymap.set("n", "<Esc>", close_float, opts)
-vim.keymap.set("n", "<leader>e", open_float, opts)
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
-
-function _G.lsp_organize_imports()
-    local context = { only = { "source.organizeImports" } }
-    vim.lsp.buf.code_action(context)
-end
+local opts = { noremap = true, silent = true }
+keymap.set("n", "<Esc>", close_diag_float, opts)
+keymap.set("n", "<leader>e", open_diag_float, opts)
+keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
+keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
 
 M.on_attach = function(_, bufnr)
-    local l_opts = { noremap = true, silent = true }
-    Option.b(bufnr, { omnifunc = "v:lua.vim.lsp.omnifunc" })
-    Keybind.b({
-        { bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", l_opts },
-        { bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", l_opts },
-        { bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", l_opts },
-        { bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", l_opts },
-        {
-            bufnr,
-            "n",
-            "<leader>D",
-            "<cmd>lua vim.lsp.buf.type_definition()<CR>",
-            l_opts
-        }, -- LspSaga
-        { bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", l_opts },
-        { bufnr, "n", "<leader>o", "<cmd>LSoutlineToggle<CR>", l_opts },
-        { bufnr, "n", "<leader>a", "<cmd>Lspsaga code_action<CR>", l_opts },
-        { bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", l_opts },
-        { bufnr, "n", "<leader>qq", "<cmd>Lspsaga lsp_finder<CR>", l_opts },
-        { bufnr, "n", "<leader>k", "<cmd>Lspsaga preview_definition<CR>", l_opts },
-        { bufnr, "n", "<C-A-o>", "<cmd>lua lsp_organize_imports()<CR>", l_opts }
-    })
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+    keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+    keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+    keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
+    keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    keymap.set("n", "<C-A-o>", lsp_organize_imports, bufopts)
+
 end
 
 return M

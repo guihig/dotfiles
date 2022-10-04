@@ -19,5 +19,3 @@ require("nvim.plugins.harpoon")
 -- LSP Plugins
 require("nvim.plugins.lsp")
 require("nvim.plugins.nvim-cmp")
-require("nvim.plugins.lsp_signature")
-require("nvim.plugins.lspsaga")

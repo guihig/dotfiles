@@ -72,7 +72,6 @@ return require("packer").startup(function(use)
     use { "elixir-editors/vim-elixir" }
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
-    use { "ray-x/lsp_signature.nvim" }
     use { "meain/vim-printer" }
 
     -- Snippets
@@ -98,9 +97,6 @@ return require("packer").startup(function(use)
         }
     }
     use { "neovim/nvim-lspconfig" }
-    use { "glepnir/lspsaga.nvim", branch = "main" }
-
-    -- use {'~/dev/neovim-plugins/lspsaga.nvim', branch = "main"}
 
     -- Formatter
     use { "mhartington/formatter.nvim" }
