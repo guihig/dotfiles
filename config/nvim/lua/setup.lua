@@ -1,6 +1,6 @@
-require('install')
-require('config')
-require('keybinds')
+require("install")
+require("config")
+require("keybinds")
 
 local fs = vim.fs
 local fn = vim.fn
@@ -13,7 +13,7 @@ for path, path_type in fs.dir(plugins_dir) do
     if path_type == "file" then
         local require_file = path:gsub("%.lua", "")
         require("plugins." .. require_file)
-  else
+    else
         require("plugins." .. path)
     end
 end

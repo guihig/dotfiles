@@ -1,4 +1,4 @@
-local USER = vim.fn.expand("$USER")
+local HOME = vim.fn.expand("$HOME")
 
 -- Cmds
 vim.cmd([[
@@ -48,7 +48,7 @@ vim.o.smartcase = true
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.writebackup = false
-vim.o.undodir = "/home/" .. USER .. "/.vim/undodir"
+vim.o.undodir = HOME .. "/.vim/undodir"
 vim.o.undofile = true
 vim.o.incsearch = true
 vim.o.showmode = false
@@ -64,6 +64,7 @@ vim.o.foldlevelstart = 20
 -- Colorscheme
 vim.g.cs = "gruvbox-material"
 
+vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 vim.g.gruvbox_material_background = "hard"

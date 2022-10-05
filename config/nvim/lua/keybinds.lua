@@ -1,3 +1,4 @@
+local utils = require("utils")
 local keymap = vim.keymap
 
 local opts = { noremap = true }
@@ -18,7 +19,7 @@ keymap.set("v", "<leader>y", "\"+y", opts)
 keymap.set("n", "<leader>Y", "gg\"+yG", opts)
 
 keymap.set("n", "<F11>", ":source %<CR>", silent_opts)
-keymap.set("n", "<F12>", "<cmd>lua Editor.reload_nvim()<CR>", opts)
+keymap.set("n", "<F12>", utils.reload_nvim, opts)
 
 -- Set NoHL
 keymap.set("n", "<leader><cr>", ":noh<CR>", opts)

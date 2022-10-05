@@ -41,16 +41,13 @@ return require("packer").startup(function(use)
     }
     use { "kyazdani42/nvim-web-devicons" }
     use { "famiu/bufdelete.nvim" }
-    use { "romgrk/barbar.nvim" }
-    use {
-        "hoob3rt/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    }
+    -- use { "romgrk/barbar.nvim" }
+    use { "noib3/nvim-cokeline" }
+    use { "hoob3rt/lualine.nvim" }
     use {
         "ggandor/lightspeed.nvim",
         requires = { "tpope/vim-repeat", opt = true }
     }
-    use { "mhinz/vim-startify" }
     use { "simeji/winresizer" }
     use { "kevinhwang91/rnvimr" }
     use { "psliwka/vim-smoothie" }
@@ -75,6 +72,7 @@ return require("packer").startup(function(use)
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
     use { "meain/vim-printer" }
+    use { "lewis6991/gitsigns.nvim" }
 
     -- Snippets
     use { "hrsh7th/vim-vsnip" }
