@@ -58,4 +58,3 @@ vim.o.scrolloff = 8
 vim.o.termguicolors = true
 vim.o.signcolumn = "yes:1"
 vim.o.foldlevelstart = 20
-vim.o.background = "dark"
