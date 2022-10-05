@@ -1,0 +1,17 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "sumneko_lua",
+        "dockerls",
+        "elixirls",
+        "hls",
+        "jsonls",
+        "tsserver",
+        "texlab",
+        "pyright",
+        "sqlls",
+        "tailwindcss",
+        "volar",
+        "efm"
+    }
+})

@@ -13,6 +13,10 @@
       glob: true
       path: config/rofi/*
 
+    ~/.config/efm-langserver/:
+      glob: true
+      path: config/efm-langserver/*
+
     ~/.config/alacritty/:
       glob: true
       path: config/alacritty/*
