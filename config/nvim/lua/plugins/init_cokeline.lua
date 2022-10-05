@@ -1,4 +1,5 @@
 local get_hex = require("cokeline/utils").get_hex
+local keymap = vim.keymap
 
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
 
@@ -37,7 +38,16 @@ require("cokeline").setup({
                 return buffer.is_focused and "bold" or nil
             end
         },
-        { text = "", delete_buffer_on_left_click = true },
+        {
+            text = function(buffer)
+                return buffer.is_modified and "●" or ""
+            end,
+            fg = function(buffer)
+                return buffer.is_modified and get_hex("Function", "fg") or nil
+            end,
+            delete_buffer_on_left_click = true,
+            truncation = { priority = 1 }
+        },
         {
             text = "",
             fg = function(buffer)
@@ -48,3 +58,7 @@ require("cokeline").setup({
         }
     }
 })
+
+local opts = { noremap = true, silent = true }
+keymap.set("n", "<S-A-h>", "<Plug>(cokeline-focus-prev)", opts)
+keymap.set("n", "<S-A-l>", "<Plug>(cokeline-focus-next)", opts)

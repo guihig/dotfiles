@@ -4,25 +4,12 @@ local keymap = vim.keymap
 local opts = { noremap = true }
 local silent_opts = { silent = true, noremap = true }
 
--- Format code
-keymap.set("n", "<leader>f", "<cmd>FormatWrite<CR>", opts)
-
--- Buffer Nav
-keymap.set("n", "<S-A-h>", "<cmd>BufferPrevious<CR>", silent_opts)
-keymap.set("n", "<S-A-l>", "<cmd>BufferNext<CR>", silent_opts)
-keymap.set("n", "<A-w>", function() require("bufdelete").bufdelete(0, true) end,
-           silent_opts)
-
 -- Copy to Clipboard
 keymap.set("n", "<leader>y", "\"+y", opts)
 keymap.set("v", "<leader>y", "\"+y", opts)
 keymap.set("n", "<leader>Y", "gg\"+yG", opts)
 
-keymap.set("n", "<F11>", ":source %<CR>", silent_opts)
 keymap.set("n", "<F12>", utils.reload_nvim, opts)
-
--- Set NoHL
-keymap.set("n", "<leader><cr>", ":noh<CR>", opts)
 
 -- Exit Term Mode
 keymap.set("t", "<C-o>", "<C-\\><C-n>", opts)
@@ -61,4 +48,4 @@ keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv==gv", opts)
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv==gv", opt)
+keymap.set("v", "<A-k>", ":m '<-2<CR>gv==gv", opts)

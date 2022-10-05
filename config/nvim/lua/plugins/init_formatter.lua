@@ -1,3 +1,5 @@
+local keymap = vim.keymap
+
 -- local util = require("formatter.util")
 local function prettier()
     return {
@@ -23,11 +25,7 @@ end
 local function luaformat()
     return {
         exe = "lua-format",
-        args = {
-            "-i",
-            "-c",
-            "~/.config/nvim/assets/lua-format.yaml"
-        },
+        args = { "-i", "-c", "~/.config/nvim/assets/lua-format.yaml" },
         stdin = true
     }
 end
@@ -90,3 +88,6 @@ require("formatter").setup({
         cpp = { clang_format }
     }
 })
+
+local opts = { noremap = true }
+keymap.set("n", "<leader>f", "<cmd>FormatWrite<CR>", opts)
