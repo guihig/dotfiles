@@ -37,10 +37,12 @@ alias restart-audio 'pulseaudio -k && sudo alsactl restore'
 #########################
 ######### Paths #########
 #########################
+set -Ux LUA_PATH '/usr/share/lua/5.4/?.lua;/usr/share/lua/5.4/?/init.lua;/usr/lib/lua/5.4/?.lua;/usr/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua;/home/ferreira/.luarocks/share/lua/5.4/?.lua;/home/ferreira/.luarocks/share/lua/5.4/?/init.lua'
+set -Ux LUA_CPATH '/usr/lib/lua/5.4/?.so;/usr/lib/lua/5.4/loadall.so;./?.so;/home/ferreira/.luarocks/lib/lua/5.4/?.so'
+
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.yarn/bin $PATH
 set PATH $HOME/.npm-global/bin $PATH
-set PATH $HOME/local/nvim/bin $PATH
 set PATH $HOME/Android/Sdk/platform-tools $PATH
 
 set GOROOT (go env GOROOT)
@@ -60,10 +62,10 @@ set PATH "$HOME/.rvm/bin" $PATH
 # ghcup-env
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 test -f /home/ferreira/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /home/ferreira/.ghcup/bin $PATH
+
 #########################
 ######### Inits #########
 #########################
-
 source ~/.asdf/asdf.fish
 
 if type -q starship

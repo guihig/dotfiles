@@ -1,28 +1,33 @@
 local keymap = vim.keymap
 
--- local util = require("formatter.util")
-local function prettier()
+local util = require("formatter.util")
+
+local function js_fmt()
     return {
         exe = "prettier",
-        args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-        stdin = true
+        args = {
+            "--stdin-filepath",
+            util.escape_path(util.get_current_buffer_file_path())
+        },
+        stdin = true,
+        try_node_modules = true
     }
 end
 
-local function black()
+local function py_fmt()
     return { exe = "black", args = { "-q", "-" }, stdin = true }
 end
 
-local function mix_format()
-    return { exe = "mix", args = { "format", "mix.exs", "-" }, stdin = true }
+local function ex_fmt()
+    return { exe = "mix", args = { "format", "-" }, stdin = true }
 end
 
-local function sql_formatter()
+local function sql_fmt()
     return
         { exe = "sql-formatter", args = { "-l", "postgresql" }, stdin = true }
 end
 
-local function luaformat()
+local function lua_fmt()
     return {
         exe = "lua-format",
         args = { "-i", "-c", "~/.config/nvim/assets/lua-format.yaml" },
@@ -30,25 +35,21 @@ local function luaformat()
     }
 end
 
-local function vhdlFormatter()
+local function vhdl_fmt()
     return {
         exe = "vhdlformatter.sh",
-        args = { vim.api.nvim_buf_get_name(0) },
+        args = { util.escape_path(util.get_current_buffer_file_name()) },
         stdin = true
     }
 end
 
-local function hindent() return { exe = "hindent", stdin = true } end
+local function haskell_fmt() return { exe = "hindent", stdin = true } end
 
-local function latexindent()
-    return {
-        exe = "latexindent",
-        args = { "-d", vim.api.nvim_buf_get_name(0) },
-        stdin = true
-    }
+local function latex_fmt()
+    return { exe = "latexindent", args = { "-g", "/dev/null" }, stdin = true }
 end
 
-local function asmfmt()
+local function asm_fmt()
     return {
         exe = "asmfmt",
         args = { vim.api.nvim_buf_get_name(0) },
@@ -56,36 +57,58 @@ local function asmfmt()
     }
 end
 
-local function clang_format()
+local function c_fmt()
     return {
         exe = "clang-format",
-        args = { vim.api.nvim_buf_get_name(0) },
-        stdin = true
+        args = {
+            "-assume-filename",
+            util.escape_path(util.get_current_buffer_file_name())
+        },
+        stdin = true,
+        try_node_modules = true
     }
 end
+
+local function yaml_fmt()
+    return {
+        exe = "prettier",
+        args = {
+            "--stdin-filepath",
+            util.escape_path(util.get_current_buffer_file_path()),
+            "--parser",
+            "yaml"
+        },
+        stdin = true,
+        try_node_modules = true
+    }
+end
+
+local function rust_fmt() return { exe = "rustfmt", stdin = true } end
 
 require("formatter").setup({
     logging = true,
     filetype = {
-        lua = { luaformat },
-        javascript = { prettier },
-        javascriptreact = { prettier },
-        typescript = { prettier },
-        typescriptreact = { prettier },
-        vue = { prettier },
-        html = { prettier },
-        json = { prettier },
-        css = { prettier },
-        scss = { prettier },
-        sass = { prettier },
-        sql = { sql_formatter },
-        python = { black },
-        elixir = { mix_format },
-        haskell = { hindent },
-        vhdl = { vhdlFormatter },
-        tex = { latexindent },
-        asm = { asmfmt },
-        cpp = { clang_format }
+        lua = { lua_fmt },
+        javascript = { js_fmt },
+        javascriptreact = { js_fmt },
+        typescript = { js_fmt },
+        typescriptreact = { js_fmt },
+        vue = { js_fmt },
+        html = { js_fmt },
+        json = { js_fmt },
+        css = { js_fmt },
+        scss = { js_fmt },
+        sass = { js_fmt },
+        sql = { sql_fmt },
+        python = { py_fmt },
+        elixir = { ex_fmt },
+        haskell = { haskell_fmt },
+        vhdl = { vhdl_fmt },
+        tex = { latex_fmt },
+        asm = { asm_fmt },
+        cpp = { c_fmt },
+        yaml = { yaml_fmt },
+        rust = { rust_fmt }
     }
 })
 

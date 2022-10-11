@@ -12,6 +12,10 @@ require("mason-lspconfig").setup({
         "sqlls",
         "tailwindcss",
         "volar",
-        "efm"
+        "efm",
+        "yamlls",
+        "asm_lsp",
+        "rust_analyzer",
+        "clangd"
     }
 })

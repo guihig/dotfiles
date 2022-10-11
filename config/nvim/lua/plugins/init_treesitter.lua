@@ -1,7 +1,7 @@
 require"nvim-treesitter.configs".setup {
     highlight = { enable = true },
     incremental_selection = { enable = true },
-    indent = { enable = true },
+    indent = { enable = false },
     context_commentstring = { enable = true, enable_autocmd = false },
     ensure_installed = {
         "haskell",

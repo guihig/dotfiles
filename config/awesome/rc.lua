@@ -6,7 +6,7 @@ pcall(require, "luarocks.loader")
 -- Logger
 local logging = require "logging.file"
 
-LOG = logging { filename = "aw%s.log", datePattern = "%Y-%m-%d" }
+LOG = logging { filename = "logs/aw%s.log", datePattern = "%Y-%m-%d" }
 
 LOG:info("-----------------")
 LOG:info("AwesomeWM Started")

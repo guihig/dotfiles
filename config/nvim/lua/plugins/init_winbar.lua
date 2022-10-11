@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd(auto_cmd, {
 
         if vim.tbl_contains(disallowed_fts, vim.bo.filetype) then
             vim.opt_local.winbar = nil
-            return true
+            return
         else
             local winid = vim.api.nvim_get_current_win()
             set_winbar(winid)
