@@ -1,5 +1,5 @@
-[submodule "config/awesome/bling"]
-	path = config/awesome/bling
+[submodule "config/awesome/modules/bling"]
+	path = config/awesome/modules/bling
 	url = https://github.com/BlingCorp/bling.git
 [submodule "config/awesome/awesome-wm-widgets"]
 	path = config/awesome/awesome-wm-widgets
@@ -7,3 +7,6 @@
 [submodule "config/awesome/json"]
 	path = config/awesome/json
 	url = https://github.com/rxi/json.lua
+[submodule "config/awesome/modules/rubato"]
+	path = config/awesome/modules/rubato
+	url = https://github.com/andOrlando/rubato.git

@@ -3,7 +3,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local utils = require("utils")
-local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local volume = require("widgets.volume")
 local net_speed_widget =
     require("awesome-wm-widgets.net-speed-widget.net-speed")
 local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
@@ -214,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
                     ram_widget(),
                     cpu_widget(),
                     net_speed_widget(),
-                    volume_widget({ widget_type = "arc" }),
+                    volume(),
                     fs_widget(),
                     clock(),
                     s.mysystray,

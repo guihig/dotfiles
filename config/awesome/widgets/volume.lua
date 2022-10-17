@@ -1,40 +1,17 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local spawn = require("awful.spawn")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local gears = require("gears")
-local beautiful = require("beautiful")
 local watch = require("awful.widget.watch")
-local utils = require("awesome-wm-widgets.volume-widget.utils")
+local spawn = require("awful.spawn")
+local rubato = require("modules.rubato")
+local beautiful = require("beautiful")
+local JSON = require("JSON")
 
-local LIST_DEVICES_CMD = [[sh -c "pactl list sources short"]]
-local function GET_VOLUME_CMD(device)
-    return "amixer -D " .. device .. " sget Master"
-end
-local function INC_VOLUME_CMD(device, step)
-    return "amixer -D " .. device .. " sset Master " .. step .. "%+"
-end
-local function DEC_VOLUME_CMD(device, step)
-    return "amixer -D " .. device .. " sset Master " .. step .. "%-"
-end
-local function TOG_VOLUME_CMD(device)
-    return "amixer -D " .. device .. " sset Master toggle"
-end
-
-local widget_types = {
-    icon_and_text = require(
-        "awesome-wm-widgets.volume-widget.widgets.icon-and-text-widget"),
-    icon = require("awesome-wm-widgets.volume-widget.widgets.icon-widget"),
-    arc = require("awesome-wm-widgets.volume-widget.widgets.arc-widget"),
-    horizontal_bar = require(
-        "awesome-wm-widgets.volume-widget.widgets.horizontal-bar-widget"),
-    vertical_bar = require(
-        "awesome-wm-widgets.volume-widget.widgets.vertical-bar-widget")
-}
 local volume = {}
-
-local rows = { layout = wibox.layout.fixed.vertical }
-
-local popup = awful.popup {
+local devices_rows = { layout = wibox.layout.fixed.vertical }
+local devices_popup = awful.popup {
     bg = beautiful.bg_normal,
     ontop = true,
     visible = false,
@@ -46,13 +23,22 @@ local popup = awful.popup {
     widget = {}
 }
 
-local function build_main_line(device)
-    if device.active_port ~= nil and device.ports[device.active_port] ~= nil then
-        return device.properties.device_description .. " · "
-                   .. device.ports[device.active_port]
-    else
-        return device.properties.device_description
-    end
+local LIST_DEVICES_CMD = "pactl -f json list sources"
+local GET_VOL_CMD = "amixer -D default sget Master"
+local INC_VOL_CMD = "amixer -D default sset Master %s%%+"
+local DEC_VOL_CMD = "amixer -D default sset Master %s%%-"
+local TOGGLE_VOL_CMD = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+local function build_header_row(text)
+    return wibox.widget {
+        {
+            markup = "<b>" .. text .. "</b>",
+            align = "center",
+            widget = wibox.widget.textbox
+        },
+        bg = beautiful.bg_normal,
+        widget = wibox.container.background
+    }
 end
 
 local function build_rows(devices, on_checkbox_click, device_type)
@@ -72,8 +58,8 @@ local function build_rows(devices, on_checkbox_click, device_type)
 
         checkbox:connect_signal("button::press", function()
             spawn.easy_async(string.format(
-                                 [[sh -c 'pacmd set-default-%s "%s"']],
-                                 device_type, device.name),
+                                 [[sh -c 'pactl set-default-%s "%s"']],
+                                 device_type, device.id),
                              function() on_checkbox_click() end)
         end)
 
@@ -87,13 +73,14 @@ local function build_rows(devices, on_checkbox_click, device_type)
                     },
                     {
                         {
-                            text = build_main_line(device),
+                            text = device["name"],
                             align = "left",
                             widget = wibox.widget.textbox
                         },
                         left = 10,
                         layout = wibox.container.margin
                     },
+
                     spacing = 8,
                     layout = wibox.layout.align.horizontal
                 },
@@ -124,8 +111,8 @@ local function build_rows(devices, on_checkbox_click, device_type)
 
         row:connect_signal("button::press", function()
             spawn.easy_async(string.format(
-                                 [[sh -c 'pacmd set-default-%s "%s"']],
-                                 device_type, device.name),
+                                 [[sh -c 'pactl set-default-%s "%s"']],
+                                 device_type, device.id),
                              function() on_checkbox_click() end)
         end)
 
@@ -135,103 +122,126 @@ local function build_rows(devices, on_checkbox_click, device_type)
     return device_rows
 end
 
-local function build_header_row(text)
-    return wibox.widget {
-        {
-            markup = "<b>" .. text .. "</b>",
-            align = "center",
-            widget = wibox.widget.textbox
-        },
-        bg = beautiful.bg_normal,
-        widget = wibox.container.background
-    }
-end
-
-local function rebuild_popup()
+local function show_devices_popup()
     spawn.easy_async(LIST_DEVICES_CMD, function(stdout)
+        local devices = JSON:decode(stdout)
+        local sinks = {}
+        local sources = {}
 
-        local sinks, sources = utils.extract_sinks_and_sources(stdout)
+        local default_sink = io.popen("pactl get-default-sink"):read("*a")
+        default_sink = default_sink:gsub("[\r\n]", "")
+        local default_source = io.popen("pactl get-default-source"):read("*a")
+        default_source = default_source:gsub("[\r\n]", "")
 
-        for i = 0, #rows do rows[i] = nil end
+        for _key, device in pairs(devices) do
+            if device["properties"]["media.class"] == "Audio/Sink" then
+                table.insert(sinks, {
+                    id = device["index"],
+                    name = device["properties"]["alsa.card_name"],
+                    is_default = device["properties"]["node.name"]
+                        == default_sink
+                })
+            else
+                table.insert(sources, {
+                    id = device["index"],
+                    name = device["properties"]["alsa.card_name"],
+                    is_default = device["properties"]["node.name"]
+                        == default_source
+                })
+            end
+        end
 
-        table.insert(rows, build_header_row("SINKS"))
-        table.insert(rows,
-                     build_rows(sinks, function() rebuild_popup() end, "sink"))
-        table.insert(rows, build_header_row("SOURCES"))
-        table.insert(rows, build_rows(sources, function() rebuild_popup() end,
-                                      "source"))
+        for i = 0, #devices_rows do devices_rows[i] = nil end
 
-        popup:setup(rows)
+        table.insert(devices_rows, build_header_row("SINKS"))
+        table.insert(devices_rows, build_rows(sinks, function()
+            show_devices_popup()
+        end, "sink"))
+        table.insert(devices_rows, build_header_row("SOURCES"))
+        table.insert(devices_rows, build_rows(sources, function()
+            show_devices_popup()
+        end, "source"))
+
+        devices_popup:setup(devices_rows)
     end)
+
 end
 
-local function worker(user_args)
+local function init()
+    local refresh_rate = 1
+    local default_step = 5
 
-    local args = user_args or {}
+    local vol_bar = wibox.widget({
+        max_value = 100,
+        value = 0,
+        forced_height = dpi(4),
+        forced_width = 100,
+        paddings = 1,
+        shape = gears.shape.rounded_bar,
+        widget = wibox.widget.progressbar,
+        background_color = beautiful.bg_focus,
+        color = beautiful.fg
+    })
 
-    local mixer_cmd = args.mixer_cmd or "pavucontrol"
-    local widget_type = args.widget_type
-    local refresh_rate = args.refresh_rate or 1
-    local step = args.step or 5
-    local device = args.device or "pulse"
+    volume.widget = wibox.widget({ layout = wibox.layout.stack, vol_bar })
 
-    if widget_types[widget_type] == nil then
-        volume.widget = widget_types["icon_and_text"].get_widget(
-                            args.icon_and_text_args)
-    else
-        volume.widget = widget_types[widget_type].get_widget(args)
-    end
+    local bar_anim = rubato.timed({
+        duration = 0.125,
+        subscribed = function(pos) vol_bar.value = pos end
+    })
 
-    local function update_graphic(widget, stdout)
-        local mute = string.match(stdout, "%[(o%D%D?)%]") -- \[(o\D\D?)\] - [on] or [off]
-        if mute == "off" then
-            widget:mute()
-        elseif mute == "on" then
-            widget:unmute()
+    local function update_bar(_, stdout)
+        bar_anim.pos = vol_bar.value or 0
+
+        local vol_level = string.match(stdout, "%[(%d?%d?%d?)%%%]")
+        local vol_value = tonumber(vol_level)
+        if not vol_value then
+            print("err parsing vol level")
+            return
         end
-        local volume_level = string.match(stdout, "(%d?%d?%d)%%") -- (\d?\d?\d)\%)
-        volume_level = string.format("% 3d", volume_level)
-        widget:set_volume_level(volume_level)
+
+        bar_anim.target = vol_value
     end
 
     function volume:inc(s)
-        spawn.easy_async(INC_VOLUME_CMD(device, s or step), function(stdout)
-            update_graphic(volume.widget, stdout)
+        local cmd = string.format(INC_VOL_CMD, s or default_step)
+        spawn.easy_async(cmd,
+                         function(stdout)
+            update_bar(volume.widget, stdout)
         end)
     end
 
     function volume:dec(s)
-        spawn.easy_async(DEC_VOLUME_CMD(device, s or step), function(stdout)
-            update_graphic(volume.widget, stdout)
+        local cmd = string.format(DEC_VOL_CMD, s or default_step)
+        spawn.easy_async(cmd,
+                         function(stdout)
+            update_bar(volume.widget, stdout)
         end)
     end
 
     function volume:toggle()
-        spawn.easy_async(TOG_VOLUME_CMD(device), function(stdout)
-            update_graphic(volume.widget, stdout)
+        spawn.easy_async(TOGGLE_VOL_CMD, function()
+            vol_bar.background_color = beautiful.red
+            vol_bar.color = beautiful.red
         end)
     end
 
-    function volume:mixer() if mixer_cmd then spawn.easy_async(mixer_cmd) end end
-
-    volume.widget:buttons(awful.util.table.join(
-                              awful.button({}, 3, function()
-            if popup.visible then
-                popup.visible = not popup.visible
-            else
-                rebuild_popup()
-                popup:move_next_to(mouse.current_widget_geometry)
-            end
-        end), awful.button({}, 4, function() volume:inc() end),
+    volume.widget:buttons(gears.table.join(
+                              awful.button({}, 4, function() volume:inc() end),
                               awful.button({}, 5, function() volume:dec() end),
-                              awful.button({}, 2, function()
-            volume:mixer()
-        end), awful.button({}, 1, function() volume:toggle() end)))
+                              awful.button({}, 1, function()
+            volume:toggle()
+        end), awful.button({}, 3, function()
+            if devices_popup.visible then
+                devices_popup.visible = not devices_popup.visible
+            else
+                show_devices_popup()
+                devices_popup:move_next_to(mouse.current_widget_geometry)
+            end
+        end)))
 
-    watch(GET_VOLUME_CMD(device), refresh_rate, update_graphic, volume.widget)
-
+    watch(GET_VOL_CMD, refresh_rate, update_bar, volume.widget)
     return volume.widget
 end
 
-return
-    setmetatable(volume, { __call = function(_, ...) return worker(...) end })
+return setmetatable(volume, { __call = function(_, ...) return init(...) end })

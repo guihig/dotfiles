@@ -1,5 +1,5 @@
 local awful = require("awful")
-local bling = require("bling")
+local bling = require("modules.bling")
 local utils = require("utils")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
