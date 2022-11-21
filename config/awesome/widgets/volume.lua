@@ -179,6 +179,7 @@ local function init()
         paddings = 1,
         shape = gears.shape.rounded_bar,
         widget = wibox.widget.progressbar,
+        margins = 5,
         background_color = beautiful.bg_focus,
         color = beautiful.fg
     })

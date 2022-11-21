@@ -73,6 +73,8 @@ return require("packer").startup(function(use)
     use { "tpope/vim-fugitive" }
     use { "meain/vim-printer" }
     use { "lewis6991/gitsigns.nvim" }
+    use { "j-hui/fidget.nvim" }
+    use { "glepnir/lspsaga.nvim", branch = "main" }
 
     -- Snippets
     use { "hrsh7th/vim-vsnip" }

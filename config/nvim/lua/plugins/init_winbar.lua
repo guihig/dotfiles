@@ -26,7 +26,17 @@ end
 
 vim.api.nvim_create_autocmd(auto_cmd, {
     callback = function()
-        local disallowed_fts = { "TelescopePrompt", "rnvimr", "none", " ", "" }
+        local disallowed_fts = {
+            "TelescopePrompt",
+            "rnvimr",
+            "code-action-menu-warning-message",
+            "code-action-menu-menu",
+            "code-action-menu-diff",
+            "code-action-menu-details",
+            "none",
+            " ",
+            ""
+        }
 
         if vim.tbl_contains(disallowed_fts, vim.bo.filetype) then
             vim.opt_local.winbar = nil

@@ -86,3 +86,6 @@ set -gx PATH "$PNPM_HOME" $PATH
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ferreira/dev/misc/gcloud/google-cloud-sdk/path.fish.inc' ]; . '/home/ferreira/dev/misc/gcloud/google-cloud-sdk/path.fish.inc'; end

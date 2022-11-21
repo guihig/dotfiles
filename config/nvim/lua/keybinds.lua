@@ -42,6 +42,10 @@ keymap.set("i", ";", ";<c-g>u", opts)
 keymap.set("i", "!", "!<c-g>u", opts)
 keymap.set("i", "?", "?<c-g>u", opts)
 
+-- keymap.set("n", "p", "\"0p", opts)
+-- keymap.set("v", "p", "\"0p", opts)
+-- keymap.set("x", "p", "\"0p", opts)
+
 -- Move Lines
 keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
