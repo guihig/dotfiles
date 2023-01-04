@@ -250,3 +250,5 @@ cabal.project.local~
 /config/polybar/main_error.txt
 /config/polybar/secondary_error.txt
 /xmonad/xmonad-x86_64-linux
+
+.luarc.json
