@@ -13,8 +13,8 @@ require"nvim-treesitter.configs".setup {
         "typescript",
         "latex",
         "fish",
-        "vim"
-        -- "elixir"
+        "vim",
+        "elixir"
     },
     rainbow = {
         enable = true,

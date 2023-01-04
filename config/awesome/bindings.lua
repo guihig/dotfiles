@@ -45,7 +45,7 @@ local focus_keybindings = {
 
 for _, value in ipairs(directions) do
     table.insert(focus_keybindings, awful.key({ Modkey }, value.k, function()
-        awful.client.focus.global_bydirection(value.d, client.focus, false)
+        awful.client.focus.global_bydirection(value.d, client.focus, true)
         bling.module.flash_focus.flashfocus(client.focus)
 
     end, { description = "focus " .. value.d .. " client", group = "client" }))
@@ -95,7 +95,6 @@ awful.keyboard.append_global_keybindings({
     }),
     awful.key({ Modkey }, "Tab", function()
         awful.layout.inc(1)
-        local t = awful.screen.focused().selected_tag
         utils.handle_master_count()
     end, { description = "select next", group = "layout" }),
     awful.key({ Modkey, "Shift" }, "Tab", function()
@@ -189,12 +188,21 @@ client.connect_signal("request::default_keybindings", function()
         end, { description = "reset client props", group = "client" }),
         awful.key({ Modkey }, "w", function(c) c:kill() end,
                   { description = "close", group = "client" }),
-        awful.key({ Modkey, "Shift" }, "h",
-                  function(c) c:move_to_screen(screen[1]) end,
-                  { description = "move client to screen 2", group = "screen" }),
-        awful.key({ Modkey, "Shift" }, "l",
-                  function(c) c:move_to_screen(screen[2]) end,
-                  { description = "move client to screen 2", group = "screen" })
+        awful.key({ Modkey, "Shift" }, "h", function(c)
+            local idx = c.screen.index
+            c:move_to_screen(screen[idx - 1])
+        end, {
+            description = "move client to the previous screen",
+            group = "screen"
+        }),
+        awful.key({ Modkey, "Shift" }, "l", function(c)
+            local idx = c.screen.index
+            c:move_to_screen(screen[idx + 1])
+        end,
+                  {
+            description = "move client to the next screen",
+            group = "screen"
+        })
     })
 end)
 

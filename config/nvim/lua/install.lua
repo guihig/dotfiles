@@ -68,13 +68,22 @@ return require("packer").startup(function(use)
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
     use { "numToStr/Comment.nvim" }
     use { "windwp/nvim-autopairs" }
-    use { "elixir-editors/vim-elixir" }
+    -- use { "elixir-editors/vim-elixir" }
     use { "onsails/lspkind-nvim" }
     use { "tpope/vim-fugitive" }
     use { "meain/vim-printer" }
     use { "lewis6991/gitsigns.nvim" }
     use { "j-hui/fidget.nvim" }
     use { "glepnir/lspsaga.nvim", branch = "main" }
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "jfpedroza/neotest-elixir",
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim"
+        }
+    }
 
     -- Snippets
     use { "hrsh7th/vim-vsnip" }

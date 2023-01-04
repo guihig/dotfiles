@@ -7,8 +7,7 @@ tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
         awful.layout.suit.tile,
         awful.layout.suit.max,
-        awful.layout.suit.magnifier,
-        bling.layout.mstab
+        bling.layout.equalarea
     })
 end)
 
@@ -17,16 +16,15 @@ screen.connect_signal("request::wallpaper", function(s)
     awful.wallpaper {
         screen = s,
         widget = {
-            {
-                image = HOME_DIR .. "/dotfiles/wallpapers/wallpaper.jpg",
-                upscale = true,
-                downscale = true,
-                widget = wibox.widget.imagebox
-            },
+            image = HOME_DIR
+                .. "/dotfiles/wallpapers/flatppuccin_4k_macchiato.png",
+            upscale = false,
+            downscale = true,
             valign = "center",
             halign = "center",
-            tiled = false,
-            widget = wibox.container.tile
+            horizontal_fit_policy = "fit",
+            vertical_fit_policy = "auto",
+            widget = wibox.widget.imagebox
         }
     }
 end)
@@ -64,3 +62,6 @@ client.connect_signal("manage",
 client.connect_signal("mouse::enter", function(c)
     c:activate({ context = "mouse_enter", raise = false })
 end)
+
+-- Screen ordering
+screen[2]:swap(screen[1])

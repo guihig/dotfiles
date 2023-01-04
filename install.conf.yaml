@@ -68,6 +68,10 @@
     ~/.tmux.conf:
       path: config/tmux/tmux.conf
 
+    ~/.zshrc:
+      glob: true
+      path: config/zsh/zshrc
+
     ~/.config/awesome/:
       glob: true
       path: config/awesome/*

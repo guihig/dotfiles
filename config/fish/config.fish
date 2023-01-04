@@ -76,8 +76,6 @@ if type -q keychain
   eval (keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 end
 
-#cat ~/.cache/wal/sequences &
-
 # pnpm
 set -gx PNPM_HOME "/home/ferreira/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
