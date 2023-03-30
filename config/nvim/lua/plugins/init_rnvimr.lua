@@ -11,10 +11,9 @@ keymap.set("t", "<A-q>", "<C-\\><C-n>:RnvimrToggle<CR>", opts)
 
 vim.g.rnvimr_enable_ex = 1
 vim.g.rnvimr_enable_picker = 1
-vim.g.rnvimr_hide_gitignore = 1
-vim.g.rnvimr_draw_border = "both"
-vim.g.rnvimr_border_attr = { fg = 14, bg = -1 }
 vim.g.rnvimr_enable_bw = 1
+vim.g.rnvimr_hide_gitignore = 1
+vim.g.rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" }
 vim.g.rnvimr_shadow_winblend = 100
 vim.g.rnvimr_action = {
     ["<C-t>"] = "NvimEdit tabedit",
@@ -22,11 +21,6 @@ vim.g.rnvimr_action = {
     ["<C-v>"] = "NvimEdit vsplit",
     ["gw"] = "JumpNvimCwd",
     ["yw"] = "EmitRangerCwd"
-}
-vim.g.rnvimr_presets = {
-    { ["width"] = 0.600, ["height"] = 0.600 },
-    { ["width"] = 0.800, ["height"] = 0.800 },
-    { ["width"] = 0.950, ["height"] = 0.950 }
 }
 
 vim.cmd([[

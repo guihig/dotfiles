@@ -139,7 +139,7 @@ local servers = {
     },
     hls = {},
     jsonls = {},
-    sumneko_lua = {
+    lua_ls = {
         settings = {
             Lua = {
                 completion = { autoRequire = true },
@@ -170,7 +170,7 @@ local servers = {
             }
         }
     },
-    -- tsserver = { flags = { debounce_text_changes = 50 } },
+    tsserver = { flags = { debounce_text_changes = 50 } },
     texlab = {
         settings = {
             texlab = {
@@ -209,16 +209,15 @@ local servers = {
     -- volar_html = {},
     volar = {
         filetypes = {
-            "typescript",
+            -- "typescript",
             "javascript",
             "javascriptreact",
-            "typescriptreact",
+            -- "typescriptreact",
             "vue",
             "json"
         }
     },
     yamlls = {},
-    asm_lsp = {},
     rust_analyzer = {},
     clangd = {}
 }

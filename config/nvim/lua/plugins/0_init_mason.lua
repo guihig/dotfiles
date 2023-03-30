@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "sumneko_lua",
+        "lua_ls",
         "dockerls",
         "elixirls",
         "hls",
@@ -14,7 +14,6 @@ require("mason-lspconfig").setup({
         "volar",
         "efm",
         "yamlls",
-        "asm_lsp",
         "rust_analyzer",
         "clangd"
     }

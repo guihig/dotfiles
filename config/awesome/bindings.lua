@@ -186,6 +186,11 @@ client.connect_signal("request::default_keybindings", function()
             c.fullscreen = false
             c:raise()
         end, { description = "reset client props", group = "client" }),
+        awful.key({ Modkey, "Shift" }, "s", function(c)
+            c.sticky = true
+            c.ontop = true
+            c:raise()
+        end, { description = "sticky client", group = "client" }),
         awful.key({ Modkey }, "w", function(c) c:kill() end,
                   { description = "close", group = "client" }),
         awful.key({ Modkey, "Shift" }, "h", function(c)

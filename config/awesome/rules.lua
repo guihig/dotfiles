@@ -26,22 +26,29 @@ ruled.client.connect_signal("request::rules", function()
             class = {
                 "Arandr",
                 "Spotify",
+                "spotify",
                 "Mailspring",
                 "Slack",
                 "Rocket.Chat",
-                "discord",
                 "gnome-calendar"
             },
             name = {
-                "Discord Updater",
                 "Steam - Self Updater",
                 "Android Emulator*",
                 "JetBrains Toolbox",
+                "Discord Updater",
                 "splash"
             },
             role = { "pop-up" }
         },
         properties = { floating = true, placement = utils.placement.centered }
+    })
+
+    ruled.client.append_rule({
+        id = "discord",
+        rule_any = { class = { "discord" } },
+        except_any = { name = "Discord Updater" },
+        properties = { floating = true, placement = awful.placement.left }
     })
 
     ruled.client.append_rule({
@@ -64,13 +71,14 @@ ruled.client.connect_signal("request::rules", function()
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     ruled.client.append_rule {
-        rule = { class = "Firefox", "google-chrome", "firefox" },
+        rule = { class = "firefox" },
         properties = {
-            screen = 2,
+            screen = 1,
             tag = "1",
             opacity = 1,
             maximized = false,
-            floating = false
+            floating = false,
+            sticky = false
         }
     }
 end)

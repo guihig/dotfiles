@@ -4,7 +4,8 @@ local M = {}
 
 M.polybar = gears.filesystem.get_xdg_config_home() .. "polybar/launch.sh"
 M.terminal = "alacritty"
-M.discord = "discord"
+M.discord =
+    "discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy"
 M.flameshot = "flameshot gui"
 M.mailspring = "mailspring"
 M.spotify = "spotify"

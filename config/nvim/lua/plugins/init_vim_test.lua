@@ -1,11 +1,11 @@
--- local keymap = vim.keymap
---
--- local opts = {silent = true}
--- keymap.set("n", "t<C-n>", ":TestNearest<CR>", opts)
--- keymap.set("n", "t<C-f>", ":TestFile<CR>", opts)
--- keymap.set("n", "t<C-s>", ":TestSuite<CR>", opts)
--- keymap.set("n", "t<C-l>", ":TestLast<CR>", opts)
--- keymap.set("n", "t<C-g>", ":TestVisit<CR>", opts)
+local keymap = vim.keymap
+
+local opts = { silent = true }
+keymap.set("n", "t<C-n>", ":TestNearest<CR>", opts)
+keymap.set("n", "t<C-f>", ":TestFile<CR>", opts)
+keymap.set("n", "t<C-s>", ":TestSuite<CR>", opts)
+keymap.set("n", "t<C-l>", ":TestLast<CR>", opts)
+keymap.set("n", "t<C-g>", ":TestVisit<CR>", opts)
 
 -- local function HarpunxTest(cmd)
 --     require("harpoon.tmux").sendCommand(9, string.format("clear; %s", cmd))
