@@ -3,6 +3,7 @@ local bling = require("modules.bling")
 local utils = require("utils")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
+local volume = require("widgets.volume")
 
 local directions = {
     { k = "h", d = "left" },
@@ -30,11 +31,17 @@ awful.keyboard.append_global_keybindings({
         awful.spawn.with_shell(
             "~/.local/bin/notify-send.py a --hint boolean:deadd-notification-center:true string:type:clearPopups")
     end, { description = "clear notifications", group = "util" }),
-    awful.key({ Modkey }, "=", function()
+    awful.key({}, "Scroll_Lock", function()
         awful.spawn(HOME_DIR .. "/dotfiles/scripts/lock.sh")
     end, { description = "lock screen", group = "util" }),
-    awful.key({ "Shift" }, "Print", function() awful.spawn(apps.flameshot) end,
-              { description = "open the flameshot gui", group = "launcher" })
+    awful.key({}, "Print", function() awful.spawn(apps.flameshot) end,
+              { description = "open the flameshot gui", group = "launcher" }),
+    awful.key({}, "XF86AudioLowerVolume", function() volume:dec() end,
+              { description = "decrease volume", group = "audio" }),
+    awful.key({}, "XF86AudioRaiseVolume", function() volume:inc() end,
+              { description = "increse volume", group = "audio" }),
+    awful.key({}, "XF86AudioMute", function() volume:toggle() end,
+              { description = "mute volume", group = "audio" })
 })
 
 -- Focus keybindings

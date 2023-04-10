@@ -185,6 +185,7 @@ local function init()
     })
 
     volume.widget = wibox.widget({ layout = wibox.layout.stack, vol_bar })
+    volume.muted = false
 
     local bar_anim = rubato.timed({
         duration = 0.125,
@@ -222,8 +223,14 @@ local function init()
 
     function volume:toggle()
         spawn.easy_async(TOGGLE_VOL_CMD, function()
-            vol_bar.background_color = beautiful.red
-            vol_bar.color = beautiful.red
+            volume.muted = not volume.muted
+            if volume.muted then
+                vol_bar.background_color = beautiful.red
+                vol_bar.color = beautiful.red
+            else
+                vol_bar.background_color = beautiful.bg_focus
+                vol_bar.color = beautiful.fg
+            end
         end)
     end
 
