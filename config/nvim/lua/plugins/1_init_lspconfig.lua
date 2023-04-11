@@ -39,13 +39,13 @@ local function on_attach(_, bufnr)
     keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    -- keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
     keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    keymap.set("n", "K", ":LspUI hover", bufopts)
     -- keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
-    keymap.set({ "n", "v" }, "<leader>a", ":Lspsaga code_action<CR>", bufopts)
-    keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    keymap.set({ "n", "v" }, "<leader>a", ":LspUI code_action<CR>", bufopts)
+    keymap.set("n", "<leader>rn", ":LspUI rename", bufopts)
     keymap.set("n", "<C-A-o>", lsp_organize_imports, bufopts)
 
 end
@@ -55,22 +55,11 @@ vim.cmd [[highlight NormalFloat guibg=none]]
 vim.cmd [[highlight FloatBorder guifg=white guibg=none]]
 -- vim.lsp.set_log_level("debug")
 
-local border = {
-    { "╭", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
-    { "│", "FloatBorder" }
-}
-
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or border
+    opts.border = opts.border or "rounded"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
@@ -204,9 +193,6 @@ local servers = {
             "elixir"
         }
     },
-    -- volar_api = {},
-    -- volar_doc = {},
-    -- volar_html = {},
     volar = {
         filetypes = {
             -- "typescript",

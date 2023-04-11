@@ -74,8 +74,8 @@ return require("packer").startup(function(use)
     use { "meain/vim-printer" }
     use { "lewis6991/gitsigns.nvim" }
     use { "j-hui/fidget.nvim" }
-    use { "glepnir/lspsaga.nvim", branch = "main" }
     use { "vim-test/vim-test" }
+    use { "jinzhongjia/LspUI.nvim" }
     use {
         "nvim-neotest/neotest",
         requires = {
