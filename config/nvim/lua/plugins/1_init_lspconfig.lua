@@ -42,10 +42,10 @@ local function on_attach(_, bufnr)
     -- keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
     keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-    keymap.set("n", "K", ":LspUI hover", bufopts)
+    keymap.set("n", "K", ":LspUI hover<CR>", bufopts)
     -- keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
     keymap.set({ "n", "v" }, "<leader>a", ":LspUI code_action<CR>", bufopts)
-    keymap.set("n", "<leader>rn", ":LspUI rename", bufopts)
+    keymap.set("n", "<leader>rn", ":LspUI rename<CR>", bufopts)
     keymap.set("n", "<C-A-o>", lsp_organize_imports, bufopts)
 
 end
@@ -127,7 +127,7 @@ local servers = {
         }
     },
     hls = {},
-    jsonls = {},
+    jsonls = { filetypes = { "json" } },
     lua_ls = {
         settings = {
             Lua = {
@@ -199,8 +199,7 @@ local servers = {
             "javascript",
             "javascriptreact",
             -- "typescriptreact",
-            "vue",
-            "json"
+            "vue"
         }
     },
     yamlls = {},

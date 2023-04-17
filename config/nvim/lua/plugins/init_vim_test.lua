@@ -14,6 +14,7 @@ vim.api.nvim_exec([[
   let g:nicemux_test_session = 'test'
   function! NiceMux(cmd) abort
     call system('tmux send-keys -t ' . g:nicemux_test_session . ':1.1 ENTER')
+    call system('tmux send-keys -t ' . g:nicemux_test_session . ':1.1 C-c')
 
     let root_dir = finddir('.git/..', expand('%:p:h').';')
     call system('tmux send-keys -t ' . g:nicemux_test_session . ':1.1 "cd ' . root_dir . '" ENTER')
