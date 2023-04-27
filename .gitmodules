@@ -10,3 +10,6 @@
 [submodule "config/awesome/modules/rubato"]
 	path = config/awesome/modules/rubato
 	url = https://github.com/andOrlando/rubato.git
+[submodule "config/awesomeDE"]
+	path = config/awesomeDE
+	url = git@github.com:guihig/awesomeDE.git
