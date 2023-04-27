@@ -75,7 +75,7 @@ return require("packer").startup(function(use)
     use { "lewis6991/gitsigns.nvim" }
     use { "j-hui/fidget.nvim" }
     use { "vim-test/vim-test" }
-    use { "jinzhongjia/LspUI.nvim" }
+    use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }
     use {
         "nvim-neotest/neotest",
         requires = {

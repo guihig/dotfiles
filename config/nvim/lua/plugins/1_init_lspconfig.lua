@@ -31,24 +31,26 @@ keymap.set("n", "<leader>e", open_diag_float, keymap_opts)
 keymap.set("n", "[g", vim.diagnostic.goto_prev, keymap_opts)
 keymap.set("n", "]g", vim.diagnostic.goto_next, keymap_opts)
 
-local function on_attach(_, bufnr)
-    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-    keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    -- keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-    keymap.set("n", "K", ":LspUI hover<CR>", bufopts)
-    -- keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
-    keymap.set({ "n", "v" }, "<leader>a", ":LspUI code_action<CR>", bufopts)
-    keymap.set("n", "<leader>rn", ":LspUI rename<CR>", bufopts)
-    keymap.set("n", "<C-A-o>", lsp_organize_imports, bufopts)
-
-end
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    end
+})
 
 -- Init
 vim.cmd [[highlight NormalFloat guibg=none]]
