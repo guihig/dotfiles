@@ -30,8 +30,6 @@ return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
     -- Colorschemes
-    -- use {'sainnhe/sonokai'}
-    -- use "folke/tokyonight.nvim"
     use { "sainnhe/gruvbox-material" }
 
     -- Utils
@@ -41,7 +39,6 @@ return require("packer").startup(function(use)
     }
     use { "kyazdani42/nvim-web-devicons" }
     use { "famiu/bufdelete.nvim" }
-    -- use { "romgrk/barbar.nvim" }
     use { "noib3/nvim-cokeline" }
     use { "hoob3rt/lualine.nvim" }
     use {
@@ -90,12 +87,7 @@ return require("packer").startup(function(use)
     use { "hrsh7th/vim-vsnip" }
 
     -- Shl
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        requires = "p00f/nvim-ts-rainbow"
-    }
-    use { "nvim-treesitter/playground" }
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     -- LSP
     use { "williamboman/mason.nvim" }

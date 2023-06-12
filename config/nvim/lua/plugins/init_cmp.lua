@@ -60,5 +60,5 @@ cmp.setup({
         })
     },
     completion = { keyword_length = 2 },
-    experimental = { native_menu = false, ghost_text = true }
+    experimental = { native_menu = false, ghost_text = false }
 })

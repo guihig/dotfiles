@@ -4,11 +4,6 @@ local utils = require("utils")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Helpers
-local function lsp_organize_imports()
-    local context = { only = { "source.organizeImports" } }
-    vim.lsp.buf.code_action(context)
-end
-
 FLOAT_WINID = nil
 local function close_diag_float()
     if FLOAT_WINID ~= nil then
@@ -38,7 +33,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -47,7 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set({ "n", "v" }, "<space>a", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     end
 })
@@ -72,62 +66,8 @@ lspconfig.util.default_config = vim.tbl_extend("force",
 -- Servers cfgs
 local servers = {
     elixirls = {},
-    cssls = {
-        single_file_support = false,
-        settings = {
-            css = { validate = true },
-            scss = { validate = false },
-            less = { validate = true }
-        }
-    },
-    tailwindcss = {
-        filetypes = {
-            "aspnetcorerazor",
-            "astro",
-            "astro-markdown",
-            "blade",
-            "django-html",
-            "htmldjango",
-            "edge",
-            "ejs",
-            "erb",
-            "eruby",
-            "gohtml",
-            "haml",
-            "handlebars",
-            "hbs",
-            "html",
-            "html-eex",
-            "heex",
-            "jade",
-            "leaf",
-            "liquid",
-            "markdown",
-            "mdx",
-            "mustache",
-            "njk",
-            "nunjucks",
-            "php",
-            "razor",
-            "slim",
-            "twig",
-            "css",
-            "less",
-            "postcss",
-            "sass",
-            "scss",
-            "stylus",
-            "sugarss",
-            "javascript",
-            "javascriptreact",
-            "reason",
-            "rescript",
-            "typescript",
-            "typescriptreact",
-            "vue",
-            "svelte"
-        }
-    },
+    cssls = {},
+    tailwindcss = {},
     hls = {},
     jsonls = { filetypes = { "json" } },
     lua_ls = {
@@ -210,7 +150,7 @@ local servers = {
 }
 
 for server, server_cfg in pairs(servers) do
-    local cfg = { on_attach = on_attach, capabilities = capabilities }
+    local cfg = { capabilities = capabilities }
     local merged_cfg = utils.merge_table(cfg, server_cfg)
     lspconfig[server].setup(merged_cfg)
 end
