@@ -2,9 +2,12 @@ local keymap = vim.keymap
 
 local util = require("formatter.util")
 
+local mason_pkgs_path = vim.fn.stdpath("data") .. "/mason/packages"
+
 local function js_fmt()
     return {
-        exe = "prettier",
+        exe = mason_pkgs_path
+            .. "/prettier/node_modules/prettier/bin/prettier.cjs",
         args = {
             "--stdin-filepath",
             util.escape_path(util.get_current_buffer_file_path())
@@ -15,7 +18,11 @@ local function js_fmt()
 end
 
 local function py_fmt()
-    return { exe = "black", args = { "-q", "-" }, stdin = true }
+    return {
+        exe = mason_pkgs_path .. "/black/venv/bin/black",
+        args = { "-q", "-" },
+        stdin = true
+    }
 end
 
 local function ex_fmt()
@@ -23,13 +30,17 @@ local function ex_fmt()
 end
 
 local function sql_fmt()
-    return
-        { exe = "sql-formatter", args = { "-l", "postgresql" }, stdin = true }
+    return {
+        exe = mason_pkgs_path
+            .. "/sql-formatter/node_modules/sql-formatter/bin/sql-formatter-cli.cjs",
+        args = { "-l", "postgresql" },
+        stdin = true
+    }
 end
 
 local function lua_fmt()
     return {
-        exe = "lua-format",
+        exe = mason_pkgs_path .. "/luaformatter/bin/lua-format",
         args = { "-i", "-c", "~/.config/nvim/assets/lua-format.yaml" },
         stdin = true
     }
@@ -46,7 +57,11 @@ end
 local function haskell_fmt() return { exe = "hindent", stdin = true } end
 
 local function latex_fmt()
-    return { exe = "latexindent", args = { "-g", "/dev/null" }, stdin = true }
+    return {
+        exe = mason_pkgs_path .. "/latexindent/latexindent-linux",
+        args = { "-g", "/dev/null" },
+        stdin = true
+    }
 end
 
 local function asm_fmt()
@@ -59,7 +74,7 @@ end
 
 local function c_fmt()
     return {
-        exe = "clang-format",
+        exe = mason_pkgs_path .. "/clang-format/venv/bin/clang-format",
         args = {
             "-assume-filename",
             util.escape_path(util.get_current_buffer_file_name())
@@ -71,7 +86,7 @@ end
 
 local function yaml_fmt()
     return {
-        exe = "prettier",
+        exe = mason_pkgs_path .. "/yamlfmt/yamlfmt",
         args = {
             "--stdin-filepath",
             util.escape_path(util.get_current_buffer_file_path()),

@@ -1,7 +1,7 @@
 require"nvim-treesitter.configs".setup {
     highlight = { enable = true },
     incremental_selection = { enable = true },
-    indent = { enable = false },
+    indent = { enable = true },
     context_commentstring = { enable = true, enable_autocmd = false },
     ensure_installed = {
         "haskell",
@@ -19,5 +19,5 @@ require"nvim-treesitter.configs".setup {
     }
 }
 
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

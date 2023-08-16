@@ -5,6 +5,7 @@ set -g fish_greeting
 #########################
 set BROWSER "firefox"
 set EDITOR "vim"
+set -gx CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 
 #########################
 ####### Functions #######
@@ -67,6 +68,8 @@ set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.yarn/bin $PATH
 set PATH $HOME/.npm-global/bin $PATH
 set PATH $HOME/Android/Sdk/platform-tools $PATH
+set PATH $HOME/Android/Sdk/platform-tools $PATH
+set PATH /opt/flutter/bin $PATH
 
 set GOROOT (go env GOROOT)
 set GOPATH (go env GOPATH)

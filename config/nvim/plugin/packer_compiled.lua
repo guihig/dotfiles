@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
     url = "https://github.com/antoinemadec/FixCursorHold.nvim"
   },
+  ["LspUI.nvim"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/LspUI.nvim",
+    url = "https://github.com/jinzhongjia/LspUI.nvim"
+  },
   ["bufdelete.nvim"] = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
@@ -252,6 +257,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-dbml"] = {
+    loaded = true,
+    path = "/home/ferreira/.local/share/nvim/site/pack/packer/start/vim-dbml",
+    url = "https://github.com/jidn/vim-dbml"
   },
   ["vim-fugitive"] = {
     loaded = true,

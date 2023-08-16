@@ -60,6 +60,7 @@ return require("packer").startup(function(use)
 
     -- Code Utils
     use { "vimwiki/vimwiki" }
+    use { "jidn/vim-dbml" }
     use { "ElPiloto/telescope-vimwiki.nvim" }
     use { "tpope/vim-surround" }
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
@@ -70,7 +71,7 @@ return require("packer").startup(function(use)
     use { "tpope/vim-fugitive" }
     use { "meain/vim-printer" }
     use { "lewis6991/gitsigns.nvim" }
-    use { "j-hui/fidget.nvim" }
+    use { "j-hui/fidget.nvim", branch = "legacy" }
     use { "vim-test/vim-test" }
     use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }
     use {
@@ -90,6 +91,8 @@ return require("packer").startup(function(use)
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     -- LSP
+    use { "jinzhongjia/LspUI.nvim", branch = "main" }
+    -- use { "/home/ferreira/dev/neovim-plugins/LspUI.nvim", branch = "v2" }
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
     use {
