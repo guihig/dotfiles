@@ -91,8 +91,11 @@ return require("packer").startup(function(use)
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     -- LSP
-    use { "jinzhongjia/LspUI.nvim", branch = "main" }
-    -- use { "/home/ferreira/dev/neovim-plugins/LspUI.nvim", branch = "v2" }
+    use {
+        "nvimdev/lspsaga.nvim",
+        after = "nvim-lspconfig",
+        config = function() require("lazy_plugins.init_lspsaga") end
+    }
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
     use {

@@ -15,7 +15,9 @@ require"nvim-treesitter.configs".setup {
         "fish",
         "vim",
         "elixir",
-        "scss"
+        "scss",
+        "markdown",
+        "markdown_inline"
     }
 }
 
