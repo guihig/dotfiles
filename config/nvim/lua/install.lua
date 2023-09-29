@@ -59,6 +59,7 @@ return require("packer").startup(function(use)
     use { "tversteeg/registers.nvim" }
 
     -- Code Utils
+    use { "sjl/tis100.vim" }
     use { "vimwiki/vimwiki" }
     use { "jidn/vim-dbml" }
     use { "ElPiloto/telescope-vimwiki.nvim" }

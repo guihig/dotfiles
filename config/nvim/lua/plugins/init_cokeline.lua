@@ -1,4 +1,4 @@
-local get_hex = require("cokeline/utils").get_hex
+local get_hex = require("cokeline/hlgroups").get_hl_attr
 local keymap = vim.keymap
 
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
