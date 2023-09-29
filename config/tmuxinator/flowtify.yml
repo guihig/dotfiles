@@ -1,0 +1,67 @@
+name: flowtify
+root: ~/dev/granter/flowtify/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+pre_window: export GITLAB_TOKEN=glpat-xy8EQwDz4Jkz8cvy5_zh && tmux setenv GITLAB_TOKEN $GITLAB_TOKEN
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.j
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - frontend-editor:
+      root: ~/dev/granter/flowtify/frontend/flowtify-frontend
+      panes:
+        - nvim .
+  - frontend-term:
+      root: ~/dev/granter/flowtify/frontend/flowtify-frontend
+      layout: even-horizontal
+      panes:
+        - yarn dev
+        - git status
+  - backend-editor:
+      root: ~/dev/granter/flowtify/backend/flowtify-backend
+      panes:
+        - nvim .
+  - backend-term:
+      root: ~/dev/granter/flowtify/backend/flowtify-backend
+      layout: even-horizontal
+      panes:
+        - phx_server:
+            - MIX_ENV=dev mix phx.server
+        - git status
+

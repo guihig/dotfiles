@@ -1,0 +1,71 @@
+Host gitlab.com
+  UpdateHostKeys no
+
+Host ciasc_app_07
+    HostName 10.111.43.136
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_06
+    HostName 10.111.43.135
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_05
+    HostName 10.111.43.134
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_04
+    HostName 10.111.43.133
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_03
+    HostName 10.111.43.132
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_02
+    HostName 10.111.43.131
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host ciasc_app_01
+    HostName 10.111.43.130
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+    LocalForward 9191 localhost:9191
+    LocalForward 45989 localhost:45989
+
+Host ciasc_db
+    HostName 10.111.43.128
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/ciasc_rsa
+
+Host owls
+    HostName 15.229.12.33
+    User admin
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/owls_cloud.pem
+
+Host flowtify_bastion
+    HostName 54.232.19.197
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/id_rsa
+    LocalForward 8200 active.vault.service.consul:8200
+    LocalForward 8500 consul.service.consul:8500
+    LocalForward 4646 nomad.service.consul:4646
+    LocalForward 9090 prometheus.service.consul:9090
+    LocalForward 3000 grafana.service.consul:3000
+    LocalForward 5433 flowtify-demo.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
+    LocalForward 5434 flowtify-prod.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
