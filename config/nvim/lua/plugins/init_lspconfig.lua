@@ -160,6 +160,7 @@ local servers = {
             "vue"
         }
     },
+    rnix = {},
     yamlls = {},
     rust_analyzer = {},
     clangd = {}

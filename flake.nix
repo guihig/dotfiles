@@ -9,21 +9,20 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-    };
+    # Agenix
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    agenix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -55,10 +54,11 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      rodrigo-pc = nixpkgs.lib.nixosSystem {
+      ferreira-pc = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
+          agenix.nixosModules.default
         ];
       };
     };
@@ -66,7 +66,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "rmoretto@rodrigo-pc" = home-manager.lib.homeManagerConfiguration {
+      "ferreira@ferreira-pc" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
