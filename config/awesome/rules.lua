@@ -2,19 +2,47 @@ local awful = require("awful")
 local ruled = require("ruled")
 local utils = require("utils")
 
+require("awful.autofocus")
+
+client.connect_signal("request::manage", function(client)
+    if not awesome.startup then client:to_secondary_section() end
+end)
+
+client.connect_signal("property::floating", function(client)
+    if client.floating and not client.fullscreen then
+        client.ontop = true
+    else
+        client.ontop = false
+    end
+end)
+
+client.connect_signal("mouse::enter", function(client)
+    if not client.fullscreen and client.can_focus ~= false then
+        client:activate{ context = "mouse_enter", raise = false }
+    end
+end)
+
 ruled.client.connect_signal("request::rules", function()
-    -- All clients will match this rule.
-    ruled.client.append_rule({
-        id = "global",
+    -- Global
+    ruled.client.append_rule {
         rule = {},
-        except_any = { class = { "polybar" } },
         properties = {
             focus = awful.client.focus.filter,
             raise = true,
-            screen = awful.screen.preferred,
+            screen = awful.screen.focused,
+            size_hints_honor = false,
+            honor_workarea = true,
+            honor_padding = true,
             placement = awful.placement.no_overlap + awful.placement
                 .no_offscreen
         }
+    }
+
+    -- Add titlebars to normal clients and dialogs
+    ruled.client.append_rule({
+        id = "titlebars",
+        rule_any = { type = { "normal", "dialog" } },
+        properties = { titlebars_enabled = true }
     })
 
     -- Floating clients.
@@ -62,19 +90,24 @@ ruled.client.connect_signal("request::rules", function()
         }
     })
 
-    -- Add titlebars to normal clients and dialogs
-    ruled.client.append_rule({
-        id = "titlebars",
-        rule_any = { type = { "normal", "dialog" } },
-        properties = { titlebars_enabled = true }
-    })
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
+    -- Set Firefox to always map on the tag named "1" on screen 1.
     ruled.client.append_rule {
         rule = { class = "firefox" },
         properties = {
-            screen = 1,
-            tag = "1",
+            tag = screen[1].tags[1],
+            switch_to_tags = true,
+            opacity = 1,
+            maximized = false,
+            floating = false,
+            sticky = false
+        }
+    }
+
+    ruled.client.append_rule {
+        rule = { class = "google-chrome" },
+        properties = {
+            tag = screen[1].tags[2],
+            switch_to_tags = true,
             opacity = 1,
             maximized = false,
             floating = false,

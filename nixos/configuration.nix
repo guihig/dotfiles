@@ -12,26 +12,27 @@
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
   ];
 
   nixpkgs = {
     # You can add overlays here
-    # overlays = [
-    # Add overlays your own flake exports (from overlays and pkgs dir):
-    # outputs.overlays.additions
-    # outputs.overlays.modifications
-    # outputs.overlays.unstable-packages
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
 
-    # You can also add overlays exported from other flakes:
-    # neovim-nightly-overlay.overlays.default
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
 
-    # Or define it inline, for example:
-    # (final: prev: {
-    #   hi = final.hello.overrideAttrs (oldAttrs: {
-    #     patches = [ ./change-hello-to-hi.patch ];
-    #   });
-    # })
-    # ];
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -101,22 +102,31 @@
     enable = true;
     # videoDrivers = ["nvidia"];
     displayManager = {
-      gdm.enable = true;
+      # lemurs = {
+      #   enable = true;
+      #   package = pkgs.unstable.lemurs;
+      # };
+      autoLogin.user = "ferreira";
+      # lightdm.enable = true;
       defaultSession = "none+awesome";
     };
-    windowManager.awesome.enable = true;
-    layout = "us";
+    windowManager.awesome = {
+      enable = true;
+      package = pkgs.awesome-git;
+      luaModules = with pkgs.luaPackages; [ luarocks lua-cjson inspect ];
+    };
     xkbVariant = "intl";
     exportConfiguration = true;
   };
 
   # services.xserver.displayManager.setupCommands = ''
-  #   LEFT='DP-2'
-  #   CENTER='DP-4'
-  #   RIGHT='DP-0'
-  #   ${pkgs.xorg.xrandr}/bin/xrandr --output $RIGHT --mode 1920x1080 --pos 3840x0 --rotate right \
-  #          --output $LEFT --mode 1920x1080 --pos 0x478 --rotate normal \
-  #          --output $CENTER --primary --mode 1920x1080 --pos 1920x478 --rotate normal --rate 143.98
+  #   LEFT='HDMI-0'
+  #   CENTER='DP-0'
+  #   RIGHT='DP-2'
+  #
+  #   ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x840 --rotate normal \
+  #     --output $CENTER --mode 3440x1440 --pos 1920x240 --rotate normal --rate 144.00 \
+  #     --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
   # '';
 
   boot.kernelPackages = pkgs.linuxPackages_6_5;
@@ -173,10 +183,19 @@
     gnome.gnome-keyring
   ];
 
+  sops = {
+    age.sshKeyPaths = ["/etc/ssh/id_ed25519"];
+    defaultSopsFile = ../secrets/common/secrets.yaml;
+
+    secrets."passwd/ferreira" = {
+      neededForUsers = true;
+    };
+  };
+
   users.users = {
     ferreira = {
-      initialPassword = "1234";
       isNormalUser = true;
+      passwordFile = config.sops.secrets."passwd/ferreira".path;
       description = "CABECA";
       extraGroups = ["networkmanager" "wheel" "docker"];
       packages = with pkgs; [

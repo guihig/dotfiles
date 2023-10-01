@@ -1,9 +1,10 @@
 local awful = require("awful")
-local bling = require("modules.bling")
 local utils = require("utils")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
-local volume = require("widgets.volume")
+local naughty = require("naughty")
+
+local keys = { mod = "Mod4", ctrl = "Control", shift = "Shift", alt = "Mod1" }
 
 local directions = {
     { k = "h", d = "left" },
@@ -14,46 +15,62 @@ local directions = {
 
 -- General keys
 awful.keyboard.append_global_keybindings({
-    awful.key({ Modkey }, "q", awesome.restart,
+    awful.key({ keys.mod }, "q", awesome.restart,
               { description = "reload awesome", group = "awesome" }),
-    awful.key({ Modkey, "Shift" }, "q", awesome.quit,
+    awful.key({ keys.mod, keys.shift }, "q", awesome.quit,
               { description = "quit awesome", group = "awesome" }),
-    awful.key({ Modkey }, "Return", function() awful.spawn(apps.terminal) end,
+    awful.key({ keys.mod }, "Return", function() awful.spawn(apps.terminal) end,
               { description = "open a terminal", group = "launcher" }),
-    awful.key({ Modkey }, "space", function() awful.spawn(apps.launcher) end,
+    awful.key({ keys.mod }, "space", function() awful.spawn(apps.launcher) end,
               { description = "open a launcher", group = "launcher" }),
-    awful.key({ Modkey, "Shift" }, "=",
+    awful.key({ keys.mod, keys.shift }, "=",
               function() awful.spawn.with_shell(apps.notification_center) end, {
         description = "open the notification center",
         group = "launcher"
     }),
-    awful.key({ Modkey }, "c", function()
-        awful.spawn.with_shell(
-            "~/.local/bin/notify-send.py a --hint boolean:deadd-notification-center:true string:type:clearPopups")
-    end, { description = "clear notifications", group = "util" }),
-    awful.key({}, "Scroll_Lock", function()
-        awful.spawn(HOME_DIR .. "/dotfiles/scripts/lock.sh")
-    end, { description = "lock screen", group = "util" }),
+    awful.key({ keys.mod }, "c",
+              function() naughty.destroy_all_notifications() end,
+              { description = "clear notifications", group = "util" }),
     awful.key({}, "Print", function() awful.spawn(apps.flameshot) end,
-              { description = "open the flameshot gui", group = "launcher" }),
-    awful.key({}, "XF86AudioLowerVolume", function() volume:dec() end,
-              { description = "decrease volume", group = "audio" }),
-    awful.key({}, "XF86AudioRaiseVolume", function() volume:inc() end,
-              { description = "increse volume", group = "audio" }),
-    awful.key({}, "XF86AudioMute", function() volume:toggle() end,
-              { description = "mute volume", group = "audio" })
+              { description = "open the flameshot gui", group = "launcher" })
+    -- awful.key {
+    --     modifiers = {},
+    --     key = "XF86AudioRaiseVolume",
+    --     group = "media",
+    --     description = "increase volume",
+    --     on_press = function()
+    --         audio_daemon:get_default_sink():volume_up(5)
+    --     end
+    -- },
+    -- awful.key {
+    --     modifiers = {},
+    --     key = "XF86AudioLowerVolume",
+    --     group = "media",
+    --     description = "decrease volume",
+    --     on_press = function()
+    --         audio_daemon:get_default_sink():volume_down(5)
+    --     end
+    -- },
+    -- awful.key {
+    --     modifiers = {},
+    --     key = "XF86AudioMute",
+    --     group = "media",
+    --     description = "mute volume",
+    --     on_press = function()
+    --         audio_daemon:get_default_sink():toggle_mute()
+    --     end
+    -- }
 })
 
 -- Focus keybindings
 local focus_keybindings = {
-    awful.key({ Modkey }, ";", function() awful.screen.focus_relative(1) end,
+    awful.key({ keys.mod }, ";", function() awful.screen.focus_relative(1) end,
               { description = "focus the other screen", group = "screen" })
 }
 
 for _, value in ipairs(directions) do
-    table.insert(focus_keybindings, awful.key({ Modkey }, value.k, function()
+    table.insert(focus_keybindings, awful.key({ keys.mod }, value.k, function()
         awful.client.focus.global_bydirection(value.d, client.focus, true)
-        bling.module.flash_focus.flashfocus(client.focus)
 
     end, { description = "focus " .. value.d .. " client", group = "client" }))
 end
@@ -64,7 +81,7 @@ awful.keyboard.append_global_keybindings(focus_keybindings)
 local swap_keybindings = {}
 
 for _, value in ipairs(directions) do
-    table.insert(swap_keybindings, awful.key({ Modkey, "Control" }, value.k,
+    table.insert(swap_keybindings, awful.key({ keys.mod, keys.ctrl }, value.k,
                                              function()
         awful.client.swap.bydirection(value.d)
     end, { description = "swap " .. value.d .. " client", group = "client" }))
@@ -74,37 +91,37 @@ awful.keyboard.append_global_keybindings(swap_keybindings)
 
 -- Layout related keybindings
 awful.keyboard.append_global_keybindings({
-    awful.key({ Modkey }, "u", awful.client.urgent.jumpto,
+    awful.key({ keys.mod }, "u", awful.client.urgent.jumpto,
               { description = "jump to urgent client", group = "client" }),
-    awful.key({ Modkey, "Control" }, "[",
+    awful.key({ keys.mod, keys.ctrl }, "[",
               function() awful.tag.incnmaster(-1) end,
               { description = "decrease master", group = "layout" }),
-    awful.key({ Modkey, "Control" }, "]",
+    awful.key({ keys.mod, keys.ctrl }, "]",
               function() awful.tag.incnmaster(1) end,
               { description = "increase master", group = "layout" }),
-    awful.key({ Modkey }, "]", function() awful.tag.incmwfact(0.05) end, {
+    awful.key({ keys.mod }, "]", function() awful.tag.incmwfact(0.05) end, {
         description = "increase master width factor",
         group = "layout"
     }),
-    awful.key({ Modkey }, "[", function() awful.tag.incmwfact(-0.05) end, {
+    awful.key({ keys.mod }, "[", function() awful.tag.incmwfact(-0.05) end, {
         description = "decrease master width factor",
         group = "layout"
     }),
-    awful.key({ Modkey, "Shift" }, "[",
+    awful.key({ keys.mod, keys.shift }, "[",
               function() awful.client.incwfact(-0.05, client.focus) end, {
         description = "decrease client width factor",
         group = "layout"
     }),
-    awful.key({ Modkey, "Shift" }, "]",
+    awful.key({ keys.mod, keys.shift }, "]",
               function() awful.client.incwfact(0.05, client.focus) end, {
         description = "increase client width factor",
         group = "layout"
     }),
-    awful.key({ Modkey }, "Tab", function()
+    awful.key({ keys.mod }, "Tab", function()
         awful.layout.inc(1)
         utils.handle_master_count()
     end, { description = "select next", group = "layout" }),
-    awful.key({ Modkey, "Shift" }, "Tab", function()
+    awful.key({ keys.mod, keys.shift }, "Tab", function()
         awful.layout.inc(-1)
         utils.handle_master_count()
     end, { description = "select previous", group = "layout" })
@@ -113,7 +130,7 @@ awful.keyboard.append_global_keybindings({
 -- @DOC_NUMBER_KEYBINDINGS@
 awful.keyboard.append_global_keybindings({
     awful.key({
-        modifiers = { Modkey },
+        modifiers = { keys.mod },
         keygroup = "numrow",
         description = "only view tag",
         group = "tag",
@@ -124,7 +141,7 @@ awful.keyboard.append_global_keybindings({
         end
     }),
     awful.key({
-        modifiers = { Modkey, "Control" },
+        modifiers = { keys.mod, keys.ctrl },
         keygroup = "numrow",
         description = "toggle tag",
         group = "tag",
@@ -135,7 +152,7 @@ awful.keyboard.append_global_keybindings({
         end
     }),
     awful.key({
-        modifiers = { Modkey, "Shift" },
+        modifiers = { keys.mod, keys.shift },
         keygroup = "numrow",
         description = "move focused client to tag",
         group = "tag",
@@ -147,7 +164,7 @@ awful.keyboard.append_global_keybindings({
         end
     }),
     awful.key({
-        modifiers = { Modkey, "Control", "Shift" },
+        modifiers = { keys.mod, keys.ctrl, keys.shift },
         keygroup = "numrow",
         description = "toggle focused client on tag",
         group = "tag",
@@ -161,30 +178,17 @@ awful.keyboard.append_global_keybindings({
 })
 
 -- Client keybindings
-client.connect_signal("request::default_mousebindings", function()
-    awful.mouse.append_client_mousebindings({
-        awful.button({}, 1,
-                     function(c) c:activate({ context = "mouse_click" }) end),
-        awful.button({ Modkey }, 1, function(c)
-            c:activate({ context = "mouse_click", action = "mouse_move" })
-        end),
-        awful.button({ Modkey }, 3, function(c)
-            c:activate({ context = "mouse_click", action = "mouse_resize" })
-        end)
-    })
-end)
-
 client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings({
-        awful.key({ Modkey }, "f", function(c)
+        awful.key({ keys.mod }, "f", function(c)
             c.fullscreen = not c.fullscreen
             c:raise()
         end, { description = "toggle fullscreen", group = "client" }),
-        awful.key({ Modkey }, "y", function(c)
+        awful.key({ keys.mod }, "y", function(c)
             c.floating = not c.floating
             c:raise()
         end, { description = "toggle floating", group = "client" }),
-        awful.key({ Modkey, "Shift" }, "r", function(c)
+        awful.key({ keys.mod, keys.shift }, "r", function(c)
             c.floating = false
             c.maximized = false
             c.maximized_horizontal = false
@@ -193,40 +197,90 @@ client.connect_signal("request::default_keybindings", function()
             c.fullscreen = false
             c:raise()
         end, { description = "reset client props", group = "client" }),
-        awful.key({ Modkey, "Shift" }, "s", function(c)
+        awful.key({ keys.mod, keys.shift }, "s", function(c)
             c.sticky = true
             c.ontop = true
             c:raise()
         end, { description = "sticky client", group = "client" }),
-        awful.key({ Modkey }, "w", function(c) c:kill() end,
+        awful.key({ keys.mod }, "w", function(c) c:kill() end,
                   { description = "close", group = "client" }),
-        awful.key({ Modkey, "Shift" }, "h", function(c)
+        awful.key({ keys.mod, keys.shift }, "h", function(c)
             local idx = c.screen.index
             c:move_to_screen(screen[idx - 1])
         end, {
             description = "move client to the previous screen",
             group = "screen"
         }),
-        awful.key({ Modkey, "Shift" }, "l", function(c)
+        awful.key({ keys.mod, keys.shift }, "l", function(c)
             local idx = c.screen.index
             c:move_to_screen(screen[idx + 1])
         end,
                   {
             description = "move client to the next screen",
             group = "screen"
-        })
+        }),
+        awful.key {
+            modifiers = { keys.mod, keys.shift },
+            key = "n",
+            group = "client",
+            description = "restore minimized",
+            on_press = function()
+                local c = awful.client.restore()
+                if c then
+                    c:activate{ raise = true, context = "key.unminimize" }
+                end
+            end
+        }
+    })
+end)
+
+client.connect_signal("request::default_mousebindings", function()
+    awful.mouse.append_client_mousebindings({ -- Focus a client
+        awful.button {
+            modifiers = {},
+            button = 1,
+            on_press = function(c)
+                if c.can_focus ~= false then
+                    c:activate{ context = "mouse_click" }
+                end
+            end
+        }, -- Make a client floating and move it
+        awful.button {
+            modifiers = { keys.mod },
+            button = 1,
+            on_press = function(c)
+                if c.can_move ~= false then
+                    c.floating = true
+                    c.maximized = false
+                    c.fullscreen = false
+                    c:activate{ context = "mouse_click", action = "mouse_move" }
+                end
+            end
+        }, -- Make a client floating and resize it
+        awful.button {
+            modifiers = { keys.mod },
+            button = 3,
+            on_press = function(c)
+                if c.can_resize ~= false then
+                    c.floating = true
+                    c.maximized = false
+                    c.fullscreen = false
+                    c:activate{ context = "mouse_click", action = "mouse_resize" }
+                end
+            end
+        }
     })
 end)
 
 -- Scratchpad keys
 awful.keyboard.append_global_keybindings({
-    awful.key({ Modkey }, "a",
+    awful.key({ keys.mod }, "a",
               function() scratchpad.discord_scratch:toggle() end,
               { description = "discord scratchpad", group = "scratchpad" }),
-    awful.key({ Modkey }, "s",
+    awful.key({ keys.mod }, "s",
               function() scratchpad.spotify_scratch:toggle() end,
               { description = "spotify scratchpad", group = "scratchpad" }),
-    awful.key({ Modkey }, "r",
+    awful.key({ keys.mod }, "r",
               function() scratchpad.mailspring_scratch:toggle() end,
               { description = "mailspring scratchpad", group = "scratchpad" })
 })

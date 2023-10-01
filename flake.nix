@@ -9,20 +9,28 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # AwesomeWM Libs
+    bling = {
+      url = "github:BlingCorp/bling";
+      flake = false;
+    };
+    rubato = {
+      url = "github:andOrlando/rubato";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Agenix
-    agenix.url = "github:ryantm/agenix";
+    # Sops
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    agenix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -58,7 +66,6 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
-          agenix.nixosModules.default
         ];
       };
     };

@@ -14,7 +14,7 @@ local theme = {}
 local xtheme = xresources.get_current_theme()
 
 theme.font = "JetBrainsMono Nerd Font Medium 9"
-theme.icon_font = "Material Design Icons Regular 9"
+-- theme.icon_font = "Material Design Icons Regular 9"
 
 -- Colors
 theme.bg = xtheme.background
@@ -63,18 +63,6 @@ theme.systray_icon_spacing = dpi(5)
 
 theme.icon_theme = "WhiteSur-dark"
 
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
--- Example:
--- theme.taglist_bg_focus = "#ff0000"
-
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
@@ -116,13 +104,6 @@ theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
-
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height,
-                                               theme.bg_focus, theme.fg_focus)
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal("request::rules", function()

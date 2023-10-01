@@ -7,7 +7,7 @@ local watch = require("awful.widget.watch")
 local spawn = require("awful.spawn")
 local rubato = require("modules.rubato")
 local beautiful = require("beautiful")
-local JSON = require("JSON")
+local cjson = require("cjson")
 
 local volume = {}
 local devices_rows = { layout = wibox.layout.fixed.vertical }
@@ -124,7 +124,7 @@ end
 
 local function show_devices_popup()
     spawn.easy_async(LIST_DEVICES_CMD, function(stdout)
-        local devices = JSON:decode(stdout)
+        local devices = cjson.decode(stdout)
         local sinks = {}
         local sources = {}
 

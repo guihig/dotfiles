@@ -1,10 +1,7 @@
 local bling = require("modules.bling")
 local awful = require("awful")
 local apps = require("apps")
-local naughty = require("naughty")
-local inspect = require("inspect")
 
--- Error Handling
 local M = {}
 
 M.discord_scratch = bling.module.scratchpad {

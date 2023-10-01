@@ -5,29 +5,31 @@ local bling = require("modules.bling")
 
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
-        awful.layout.suit.tile,
+        awful.layout.suit.tile.left,
+        awful.layout.suit.tile.right,
         awful.layout.suit.max,
         bling.layout.equalarea
+        -- machi.default_layout
     })
 end)
 
 -- Wallpaper
-screen.connect_signal("request::wallpaper", function(s)
-    awful.wallpaper {
-        screen = s,
-        widget = {
-            image = HOME_DIR
-                .. "/dotfiles/wallpapers/flatppuccin_4k_macchiato.png",
-            upscale = false,
-            downscale = true,
-            valign = "center",
-            halign = "center",
-            horizontal_fit_policy = "fit",
-            vertical_fit_policy = "auto",
-            widget = wibox.widget.imagebox
-        }
-    }
-end)
+-- screen.connect_signal("request::wallpaper", function(s)
+--     awful.wallpaper {
+--         screen = s,
+--         widget = {
+--             image = HOME_DIR
+--                 .. "/dotfiles/wallpapers/flatppuccin_4k_macchiato.png",
+--             upscale = false,
+--             downscale = true,
+--             valign = "center",
+--             halign = "center",
+--             horizontal_fit_policy = "fit",
+--             vertical_fit_policy = "auto",
+--             widget = wibox.widget.imagebox
+--         }
+--     }
+-- end)
 
 -- Titlebars
 client.connect_signal("request::titlebars", function(c)
@@ -64,4 +66,4 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- Screen ordering
-screen[2]:swap(screen[1])
+-- screen[2]:swap(screen[1])

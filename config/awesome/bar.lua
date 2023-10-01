@@ -3,15 +3,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local utils = require("utils")
-local c_widgets = require("widgets")
-local net_speed_widget =
-    require("awesome-wm-widgets.net-speed-widget.net-speed")
-local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
-local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
-local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
-local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
+local wgt = require("widgets")
 
 -- Task list
 local function task_list(s)
@@ -127,19 +119,19 @@ local function clock()
         previous_month_button = 1,
         next_month_button = 3
     })
-    local icon = wibox.widget({
-        text = "󰃰",
-        align = "center",
-        valign = "center",
-        font = beautiful.icon_font,
-        widget = wibox.widget.textbox
-    })
-
-    icon:connect_signal("button::press",
-                        function(self, _lx, _ly, button, _mods,
-                                 _find_widget_results)
-        if button == 1 then cw.toggle() end
-    end)
+    -- local icon = wibox.widget({
+    --     text = "󰃰",
+    --     align = "center",
+    --     valign = "center",
+    --     font = beautiful.icon_font,
+    --     widget = wibox.widget.textbox
+    -- })
+    --
+    -- icon:connect_signal("button::press",
+    --                     function(self, _lx, _ly, button, _mods,
+    --                              _find_widget_results)
+    --     if button == 1 then cw.toggle() end
+    -- end)
 
     local clock_text = wibox.widget({
         widget = wibox.widget.textclock,
@@ -171,7 +163,7 @@ local function clock()
             layout = wibox.layout.fixed.horizontal,
             widget = wibox.container.place,
             valign = "center",
-            { widget = wibox.container.margin, left = 5, right = 5, icon },
+            -- { widget = wibox.container.margin, left = 5, right = 5, icon },
             { widget = wibox.container.margin, right = 5, clock_text }
         }
     })
@@ -209,16 +201,9 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     spacing = 5,
-                    docker_widget(),
-                    todo_widget(),
-                    ram_widget(),
-                    cpu_widget(),
-                    net_speed_widget(),
-                    c_widgets.volume,
-                    fs_widget(),
-                    clock(),
-                    s.mysystray,
-                    s.mylayoutbox
+                    wgt.volume,
+                    -- clock(),
+                    s.mysystray
                 },
                 widget = wibox.container.margin,
                 margins = 3

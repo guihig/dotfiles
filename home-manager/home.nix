@@ -18,6 +18,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+
+    # Sops
+    inputs.sops-nix.homeManagerModule
   ];
 
   nixpkgs = {
@@ -40,14 +43,16 @@
   home = {
     username = "ferreira";
     homeDirectory = "/home/ferreira";
+    activation = {
+
+    };
   };
 
   home.packages = with pkgs; [
     # Very Fun and games
     firefox
     google-chrome
-    # chromium
-    # spotify
+    spotify
     discord
 
     # System utilities
@@ -115,9 +120,6 @@
     termsyn
     material-icons
     material-design-icons
-    material-symbols
-    terminus_font
-    terminus-nerdfont
     fantasque-sans-mono
     noto-fonts
   ];
@@ -303,9 +305,19 @@
   };
 
   # ---- Awesome Configuration ---- #
-  xsession.windowManager.awesome.enable = true;
+  xsession.windowManager.awesome = {
+    enable = true;
+  };
   home.file.".config/awesome" = {
     source = ../config/awesome;
+    recursive = true;
+  };
+  home.file.".config/awesome/modules/bling" = {
+    source = inputs.bling.outPath;
+    recursive = true;
+  };
+  home.file.".config/awesome/modules/rubato" = {
+    source = inputs.rubato.outPath;
     recursive = true;
   };
 
@@ -325,56 +337,94 @@
     source = ../config/ssh/config;
   };
 
-  # ---- Gnome Keyring Configs ---- #
-  services.picom = {
-    enable = true;
-    fade = true;
-    fadeSteps = [ 0.1 0.1 ];
-    shadow = true;
-    shadowOffsets = [ (-7) (-7) ];
-    shadowExclude = [
-      "name = 'Notification'"
-      "class_g = 'Conky'"
-      "class_g ?= 'Notify-osd'"
-      "class_g = 'Cairo-clock'"
-      "class_g = ''"
-      "_GTK_FRAME_EXTENTS@:c"
-    ];
-    inactiveOpacity = 0.9;
-    wintypes = {
-      tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; full-shadow = false; };
-      dock = { shadow = false; clip-shadow-above = true; };
-      dnd = { shadow = false; };
-      popup_menu = { shadow = false; fade = false; };
-    };
-    backend = "glx";
-    opacityRules = [
-      "100:name = 'Picture-in-Picture'"
-    ];
-    settings = {
-      inactive-opacity-override = false;
-      corner-radius = 8;
-      frame-opacity = 0.7;
-      rounded-corners-exclude = [
-        "window_type = 'dock'"
-        "window_type = 'desktop'"
-      ];
-      blur-kern = "3x3box";
-      blur-background-exclude = [
-        "window_type = 'dock'"
-        "window_type = 'desktop'"
-        "_GTK_FRAME_EXTENTS@:c"
-      ];
-      glx-no-stencil = true;
-      shadow-radius = 7;
-    };
-  };
+  # ---- Picom Config ---- #
+  # services.picom = {
+  #   enable = true;
+  #   fade = true;
+  #   fadeSteps = [ 0.1 0.1 ];
+  #   shadow = true;
+  #   shadowOffsets = [ (-7) (-7) ];
+  #   shadowExclude = [
+  #     "name = 'Notification'"
+  #     "class_g = 'Conky'"
+  #     "class_g ?= 'Notify-osd'"
+  #     "class_g = 'Cairo-clock'"
+  #     "class_g = ''"
+  #     "_GTK_FRAME_EXTENTS@:c"
+  #   ];
+  #   inactiveOpacity = 0.9;
+  #   wintypes = {
+  #     tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; full-shadow = false; };
+  #     dock = { shadow = false; clip-shadow-above = true; };
+  #     dnd = { shadow = false; };
+  #     popup_menu = { shadow = false; fade = false; };
+  #   };
+  #   backend = "glx";
+  #   opacityRules = [
+  #     "100:name = 'Picture-in-Picture'"
+  #   ];
+  #   settings = {
+  #     inactive-opacity-override = false;
+  #     corner-radius = 8;
+  #     frame-opacity = 0.7;
+  #     rounded-corners-exclude = [
+  #       "window_type = 'dock'"
+  #       "window_type = 'desktop'"
+  #     ];
+  #     blur-kern = "3x3box";
+  #     blur-background-exclude = [
+  #       "window_type = 'dock'"
+  #       "window_type = 'desktop'"
+  #       "_GTK_FRAME_EXTENTS@:c"
+  #     ];
+  #     glx-no-stencil = true;
+  #     shadow-radius = 7;
+  #   };
+  # };
 
   gtk = {
     enable = true;
     theme = {
       name = "Materia-dark";
       package = pkgs.materia-theme;
+    };
+  };
+
+  # Sops
+  sops = {
+    age.sshKeyPaths = ["/etc/ssh/id_ed25519"];
+    defaultSopsFile = ../secrets/common/secrets.yaml;
+
+    secrets."ssh_keys/id_rsa/priv" = {
+      path = "${config.home.homeDirectory}/.ssh/id_rsa";
+      mode = "0600";
+    };
+    secrets."ssh_keys/id_rsa/pub" = {
+      path = "${config.home.homeDirectory}/.ssh/id_rsa.pub";
+      mode = "0644";
+    };
+
+    secrets."ssh_keys/ciasc_rsa/priv" = {
+      path = "${config.home.homeDirectory}/.ssh/ciasc_rsa";
+      mode = "0600";
+    };
+    secrets."ssh_keys/ciasc_rsa/pub" = {
+      path = "${config.home.homeDirectory}/.ssh/ciasc_rsa.pub";
+      mode = "0644";
+    };
+
+    secrets."ssh_keys/owls_cloud/pem" = {
+      path = "${config.home.homeDirectory}/.ssh/owls_cloud.pem";
+      mode = "0600";
+    };
+
+    secrets."ssh_keys/google_compute_engine/priv" = {
+      path = "${config.home.homeDirectory}/.ssh/google_compute_engine";
+      mode = "0600";
+    };
+    secrets."ssh_keys/google_compute_engine/pub" = {
+      path = "${config.home.homeDirectory}/.ssh/google_compute_engine.pub";
+      mode = "0644";
     };
   };
 

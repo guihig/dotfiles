@@ -5,57 +5,17 @@
       force: true
 
 - link:
-    ~/.config/polybar/:
-      glob: true
-      path: config/polybar/*
-
     ~/.config/rofi/:
       glob: true
       path: config/rofi/*
-
-    ~/.config/efm-langserver/:
-      glob: true
-      path: config/efm-langserver/*
 
     ~/.config/alacritty/:
       glob: true
       path: config/alacritty/*
 
-    ~/.config/kitty/:
-      glob: true
-      path: config/kitty/*
-
-    ~/.local/share/fonts/:
-      glob: true
-      path: local/share/fonts/*
-
-    ~/.xmonad/:
-      glob: true
-      path: xmonad/*
-
-    ~/.config/wal/:
-      glob: true
-      path: config/wal/*
-
-    ~/.xmonad/src/Colors.hs:
-      path: ~/.cache/wal/Colors.hs
-
-    ~/.config/starship.toml:
-      path: config/starship/starship.toml
-
     ~/.config/fish/:
       glob: true
       path: config/fish/*
-
-    # ~/.config/dunst/dunstrc:
-    #   path: config/dunst/dunstrc
-
-    ~/.config/deadd/:
-      glob: true
-      path: config/deadd/*
-
-    ~/.config/picom.conf:
-      path: config/picom/picom.conf
 
     ~/.config/nvim/:
       glob: true
@@ -67,10 +27,6 @@
 
     ~/.tmux.conf:
       path: config/tmux/tmux.conf
-
-    ~/.zshrc:
-      glob: true
-      path: config/zsh/zshrc
 
     # ~/.config/awesome/:
     #   glob: true
