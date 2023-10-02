@@ -6,11 +6,11 @@ local M = {}
 
 M.discord_scratch = bling.module.scratchpad {
     command = apps.discord,
-    rule = { class = "discord" },
+    rule = {class = "discord"},
     sticky = false,
     autoclose = false,
     floating = true,
-    geometry = { x = 0, y = 0 },
+    geometry = {x = 0, y = 0},
     dont_focus_before_close = true
 }
 
@@ -28,11 +28,11 @@ end)
 
 M.spotify_scratch = bling.module.scratchpad {
     command = apps.spotify,
-    rule = { name = "Spotify" },
+    rule = {name = "Spotify"},
     sticky = false,
     autoclose = false,
     floating = true,
-    geometry = { x = 0, y = 0 },
+    geometry = {x = 0, y = 0},
     dont_focus_before_close = true
 }
 
@@ -51,11 +51,11 @@ end)
 
 M.mailspring_scratch = bling.module.scratchpad {
     command = apps.mailspring,
-    rule = { class = "Mailspring" },
+    rule = {class = "Mailspring"},
     sticky = false,
     autoclose = false,
     floating = true,
-    geometry = { x = 0, y = 0 },
+    geometry = {x = 0, y = 0},
     dont_focus_before_close = true
 }
 

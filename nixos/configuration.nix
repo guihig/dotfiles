@@ -101,7 +101,7 @@
     videoDrivers = ["nvidia"];
     displayManager = {
       autoLogin.user = "ferreira";
-      lightdm.enable = true;
+      gdm.enable = true;
       defaultSession = "none+awesome";
     };
     windowManager.awesome = {
@@ -119,8 +119,8 @@
     CENTER='DP-0'
     RIGHT='DP-2'
 
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x840 --rotate normal \
-      --output $CENTER --mode 3440x1440 --pos 1920x240 --rotate normal --rate 144.00 \
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x738 --rotate normal \
+      --output $CENTER --mode 3440x1440 --pos 1920x282 --rotate normal --rate 144.00 \
       --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
   '';
 
@@ -205,6 +205,8 @@
   };
 
   services.davfs2.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   services.openssh = {
     enable = true;
@@ -215,7 +217,16 @@
 
   services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
+
   programs.dconf.enable = true;
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

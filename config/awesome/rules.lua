@@ -32,8 +32,8 @@ ruled.client.connect_signal("request::rules", function()
             type = {"dialog"},
             instance = {"spad"},
             class = {
-                "Arandr", "Spotify", "spotify", "discord", "Mailspring",
-                "Slack", "Rocket.Chat", "gnome-calendar"
+                "Arandr", "Spotify", "spotify", "Mailspring", "Slack",
+                "Rocket.Chat", "gnome-calendar"
             },
             name = {
                 "Steam - Self Updater", "Android Emulator*",
@@ -42,13 +42,6 @@ ruled.client.connect_signal("request::rules", function()
             role = {"pop-up"}
         },
         properties = {floating = true, placement = utils.placement.centered}
-    })
-
-    ruled.client.append_rule({
-        id = "discord",
-        rule_any = {class = {"discord"}},
-        except_any = {name = "Discord Updater"},
-        properties = {floating = true, placement = awful.placement.left}
     })
 
     ruled.client.append_rule({

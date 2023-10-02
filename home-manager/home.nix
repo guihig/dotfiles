@@ -72,17 +72,18 @@
     neofetch
     cmatrix
     libnotify
-    gnome.nautilus
     gnome.seahorse
     gparted
     flameshot
     gzip
-    libsForQt5.ark
     ntfs3g
+    papirus-icon-theme
+    arandr
 
     # soundsss
     pavucontrol
     alsa-utils
+    vlc
 
     # networking
     openfortivpn
@@ -99,7 +100,7 @@
     lua
     nodejs
     tree-sitter
-    luajitPackages.luarocks
+    luaPackages.luarocks
     (let
       python3-with-packages = pkgs.python3.withPackages (p:
         with p; [
@@ -125,10 +126,16 @@
     # Fonts
     nerdfonts
     iosevka
+    iosevka-bin
+    siji
+    termsyn
     jetbrains-mono
     material-icons
     material-design-icons
+    terminus_font
+    terminus-nerdfont
     font-awesome
+    noto-fonts
   ];
 
   # Enable home-manager and git
@@ -325,6 +332,10 @@
   # ---- Rofi Configuration ---- #
   programs.rofi = {
     enable = true;
+  };
+  home.file.".config/rofi" = {
+    source = ../config/rofi;
+    recursive = true;
   };
 
   # ---- nvim Configuration ---- #

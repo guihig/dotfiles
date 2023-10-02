@@ -30,8 +30,8 @@ screen.connect_signal("request::wallpaper", function(s)
     awful.wallpaper {
         screen = s,
         widget = {
-            image = HOME_DIR ..
-                "/dotfiles/wallpapers/flatppuccin_4k_macchiato.png",
+            image = gears.filesystem.get_xdg_config_home() ..
+                "/wallpapers/flatppuccin_4k_macchiato.png",
             upscale = false,
             downscale = true,
             valign = "center",

@@ -23,6 +23,7 @@ require("formatter").setup({
         vue = {ts_fmt},
         html = {js_fmt},
         json = {js_fmt},
+        rasi = {js_fmt},
         css = {js_fmt},
         scss = {js_fmt},
         sass = {js_fmt},

@@ -5,18 +5,12 @@ pcall(require, "luarocks.loader")
 
 -- Imports
 local apps = require("apps")
--- local beautiful = require("beautiful")
--- local gears = require("gears")
---
--- package.loaded["naughty.dbus"] = {}
-
--- Defaults
-Terminal = apps.terminal
-Modkey = "Mod4"
+local beautiful = require("beautiful")
+local gears = require("gears")
 
 -- Theme
--- local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
--- beautiful.init(theme_dir .. "theme.lua")
+local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
+beautiful.init(theme_dir .. "theme.lua")
 
 require("bindings")
 
