@@ -5,11 +5,11 @@ local previewers = require("telescope.previewers")
 local putils = require("telescope.previewers.utils")
 local pfiletype = require("plenary.filetype")
 
-local keymap_opts = {noremap = true}
-    keymap.set("n", "<leader>p", "<cmd>Telescope find_files<CR>", keymap_opts)
-    keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<CR>", keymap_opts)
-    keymap.set("n", "<C-f>", "<cmd>Telescope live_grep<CR>", keymap_opts)
-    keymap.set("n", "<C-b>", "<cmd>Telescope buffers<CR>", keymap_opts)
+local keymap_opts = { noremap = true }
+keymap.set("n", "<leader>p", "<cmd>Telescope find_files<CR>", keymap_opts)
+keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<CR>", keymap_opts)
+keymap.set("n", "<C-f>", "<cmd>Telescope live_grep<CR>", keymap_opts)
+keymap.set("n", "<C-b>", "<cmd>Telescope buffers<CR>", keymap_opts)
 
 local new_maker = function(filepath, bufnr, opts)
     opts = opts or {}
@@ -45,7 +45,9 @@ require("telescope").setup {
             ".git",
             ".idea",
             ".elixis_ls",
-            "_build/"
+            "_build/",
+            "wallpapers",
+            "awesomeDE"
         },
         mappings = {
             i = {

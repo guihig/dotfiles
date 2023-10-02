@@ -43,9 +43,6 @@
   home = {
     username = "ferreira";
     homeDirectory = "/home/ferreira";
-    activation = {
-
-    };
   };
 
   home.packages = with pkgs; [
@@ -54,6 +51,7 @@
     google-chrome
     spotify
     discord
+    mailspring
 
     # System utilities
     htop
@@ -80,7 +78,8 @@
     flameshot
     gzip
     libsForQt5.ark
-    
+    ntfs3g
+
     # soundsss
     pavucontrol
     alsa-utils
@@ -99,29 +98,37 @@
     gcc
     lua
     nodejs
+    tree-sitter
+    luajitPackages.luarocks
     (let
       python3-with-packages = pkgs.python3.withPackages (p:
         with p; [
           pynvim
           setuptools
+          pip
         ]);
     in
       python3-with-packages)
-    # jetbrains.pycharm-professional
-    # docker-compose
-    # postgresql_13
+    jetbrains.pycharm-professional
+    docker-compose
+    postgresql_13
+    vimPlugins.nvim-web-devicons
+
+    # Code formatters
+    luaformatter
+    yamlfmt
+    black
+    nodePackages.sql-formatter
+    stylish-haskell
+    alejandra
 
     # Fonts
     nerdfonts
-    jetbrains-mono
     iosevka
-    iosevka-bin
-    siji
-    termsyn
+    jetbrains-mono
     material-icons
     material-design-icons
-    fantasque-sans-mono
-    noto-fonts
+    font-awesome
   ];
 
   # Enable home-manager and git
@@ -130,6 +137,7 @@
   # ---- Git Configuration ---- #
   programs.git = {
     enable = true;
+    lfs.enable = true;
     aliases = {
       s = "status";
       a = "add";
@@ -263,10 +271,9 @@
   # ---- Starship Configuration ---- #
   programs.starship = {
     enable = true;
-    enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 
-  # TODO: Changed to .config/tmux config
   # ---- tmux Configuration ---- #
   programs.tmux = {
     enable = true;
@@ -278,10 +285,27 @@
     shell = "${pkgs.zsh}/bin/zsh";
     tmuxinator.enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.tilish
+      {
+        plugin = tmuxPlugins.tilish;
+        extraConfig = ''
+          set -g @tilish-easymode 'on'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.power-theme;
+        extraConfig = ''
+          set -g @tmux_power_theme 'moon'
+        '';
+      }
     ];
     extraConfig = ''
+      unbind C-b
+      set-option -g prefix C-a
+      bind-key C-a send-prefix
+
       set-option -ga terminal-overrides ",*256col*:Tc:RGB"
+      set -g base-index 1
+      setw -g pane-base-index 1
     '';
   };
 
@@ -291,8 +315,14 @@
     recursive = true;
   };
 
+  # ---- Ranger Configuration ---- #
+  home.file.".config/ranger" = {
+    source = ../config/ranger;
+    recursive = true;
+  };
+
   # TODO: Apply theme
-  # ---- rofi Configuration ---- #
+  # ---- Rofi Configuration ---- #
   programs.rofi = {
     enable = true;
   };
@@ -307,6 +337,10 @@
   # ---- Awesome Configuration ---- #
   xsession.windowManager.awesome = {
     enable = true;
+  };
+  home.file.".config/wallpapers" = {
+    source = ../wallpapers;
+    recursive = true;
   };
   home.file.".config/awesome" = {
     source = ../config/awesome;
@@ -338,49 +372,60 @@
   };
 
   # ---- Picom Config ---- #
-  # services.picom = {
-  #   enable = true;
-  #   fade = true;
-  #   fadeSteps = [ 0.1 0.1 ];
-  #   shadow = true;
-  #   shadowOffsets = [ (-7) (-7) ];
-  #   shadowExclude = [
-  #     "name = 'Notification'"
-  #     "class_g = 'Conky'"
-  #     "class_g ?= 'Notify-osd'"
-  #     "class_g = 'Cairo-clock'"
-  #     "class_g = ''"
-  #     "_GTK_FRAME_EXTENTS@:c"
-  #   ];
-  #   inactiveOpacity = 0.9;
-  #   wintypes = {
-  #     tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; full-shadow = false; };
-  #     dock = { shadow = false; clip-shadow-above = true; };
-  #     dnd = { shadow = false; };
-  #     popup_menu = { shadow = false; fade = false; };
-  #   };
-  #   backend = "glx";
-  #   opacityRules = [
-  #     "100:name = 'Picture-in-Picture'"
-  #   ];
-  #   settings = {
-  #     inactive-opacity-override = false;
-  #     corner-radius = 8;
-  #     frame-opacity = 0.7;
-  #     rounded-corners-exclude = [
-  #       "window_type = 'dock'"
-  #       "window_type = 'desktop'"
-  #     ];
-  #     blur-kern = "3x3box";
-  #     blur-background-exclude = [
-  #       "window_type = 'dock'"
-  #       "window_type = 'desktop'"
-  #       "_GTK_FRAME_EXTENTS@:c"
-  #     ];
-  #     glx-no-stencil = true;
-  #     shadow-radius = 7;
-  #   };
-  # };
+  services.picom = {
+    enable = true;
+    fade = true;
+    fadeSteps = [0.1 0.1];
+    shadow = true;
+    shadowOffsets = [(-7) (-7)];
+    shadowExclude = [
+      "name = 'Notification'"
+      "class_g = 'Conky'"
+      "class_g ?= 'Notify-osd'"
+      "class_g = 'Cairo-clock'"
+      "class_g = ''"
+      "_GTK_FRAME_EXTENTS@:c"
+    ];
+    inactiveOpacity = 0.9;
+    wintypes = {
+      tooltip = {
+        fade = true;
+        shadow = true;
+        opacity = 0.75;
+        focus = true;
+        full-shadow = false;
+      };
+      dock = {
+        shadow = false;
+        clip-shadow-above = true;
+      };
+      dnd = {shadow = false;};
+      popup_menu = {
+        shadow = false;
+        fade = false;
+      };
+    };
+    backend = "glx";
+    opacityRules = [
+      "100:name = 'Picture-in-Picture'"
+    ];
+    settings = {
+      inactive-opacity-override = false;
+      frame-opacity = 0.7;
+      rounded-corners-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
+      blur-kern = "3x3box";
+      blur-background-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+        "_GTK_FRAME_EXTENTS@:c"
+      ];
+      glx-no-stencil = true;
+      shadow-radius = 7;
+    };
+  };
 
   gtk = {
     enable = true;

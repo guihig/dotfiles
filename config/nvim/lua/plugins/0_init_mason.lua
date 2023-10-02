@@ -4,7 +4,6 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "dockerls",
         "elixirls",
-        "hls",
         "jsonls",
         "tsserver",
         "texlab",
@@ -15,6 +14,7 @@ require("mason-lspconfig").setup({
         "efm",
         "yamlls",
         "rust_analyzer",
-        "clangd"
+        "clangd",
+        "rnix_lsp"
     }
 })

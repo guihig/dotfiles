@@ -61,18 +61,17 @@
   networking.networkmanager.enable = true;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader = {
-  #   efi.canTouchEfiVariables = true;
-  #   grub = {
-  #     enable = true;
-  #     efiSupport = true;
-  #     device = "nodev";
-  #     useOSProber = true;
-  #     # efiInstallAsRemovable = true;
-  #   };
-  # };
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    # systemd-boot.enable = true;
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+    };
+  };
+  boot.supportedFilesystems = ["ntfs"];
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -92,59 +91,55 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-
-  # security.pam.services.lightdm.enableGnomeKeyring = true;
-  # security.pam.services.login.enableGnomeKeyring = true;
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    # videoDrivers = ["nvidia"];
+    videoDrivers = ["nvidia"];
     displayManager = {
-      # lemurs = {
-      #   enable = true;
-      #   package = pkgs.unstable.lemurs;
-      # };
       autoLogin.user = "ferreira";
-      # lightdm.enable = true;
+      lightdm.enable = true;
       defaultSession = "none+awesome";
     };
     windowManager.awesome = {
       enable = true;
       package = pkgs.awesome-git;
-      luaModules = with pkgs.luaPackages; [ luarocks lua-cjson inspect ];
+      luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
     };
+    layout = "us";
     xkbVariant = "intl";
     exportConfiguration = true;
   };
 
-  # services.xserver.displayManager.setupCommands = ''
-  #   LEFT='HDMI-0'
-  #   CENTER='DP-0'
-  #   RIGHT='DP-2'
-  #
-  #   ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x840 --rotate normal \
-  #     --output $CENTER --mode 3440x1440 --pos 1920x240 --rotate normal --rate 144.00 \
-  #     --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
-  # '';
+  services.xserver.displayManager.setupCommands = ''
+    LEFT='HDMI-0'
+    CENTER='DP-0'
+    RIGHT='DP-2'
+
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x840 --rotate normal \
+      --output $CENTER --mode 3440x1440 --pos 1920x240 --rotate normal --rate 144.00 \
+      --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
+  '';
 
   boot.kernelPackages = pkgs.linuxPackages_6_5;
 
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-  # };
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   # powerManagement.enable = false;
-  #   # powerManagement.finegrained = false;
-  #   open = false;
-  #   nvidiaSettings = true;
-  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-  # };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    # powerManagement.enable = false;
+    # powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -213,11 +208,14 @@
 
   services.openssh = {
     enable = true;
-    permitRootLogin = "no";
+    settings = {
+      PermitRootLogin = "no";
+    };
   };
 
   services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
+  programs.dconf.enable = true;
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -234,7 +232,6 @@
       };
     };
   };
-
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

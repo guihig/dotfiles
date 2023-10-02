@@ -14,7 +14,7 @@ local theme = {}
 local xtheme = xresources.get_current_theme()
 
 theme.font = "JetBrainsMono Nerd Font Medium 9"
--- theme.icon_font = "Material Design Icons Regular 9"
+theme.icon_font = "Material Design Icons Regular 9"
 
 -- Colors
 theme.bg = xtheme.background
@@ -108,8 +108,8 @@ theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 -- Set different colors for urgent notifications.
 rnotification.connect_signal("request::rules", function()
     rnotification.append_rule {
-        rule = { urgency = "critical" },
-        properties = { bg = "#ff0000", fg = "#ffffff" }
+        rule = {urgency = "critical"},
+        properties = {bg = "#ff0000", fg = "#ffffff"}
     }
 end)
 

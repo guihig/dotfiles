@@ -1,9 +1,3 @@
-[submodule "config/awesome/modules/bling"]
-	path = config/awesome/modules/bling
-	url = https://github.com/BlingCorp/bling.git
-[submodule "config/awesome/modules/rubato"]
-	path = config/awesome/modules/rubato
-	url = https://github.com/andOrlando/rubato.git
 [submodule "config/awesomeDE"]
 	path = config/awesomeDE
 	url = git@github.com:guihig/awesomeDE.git

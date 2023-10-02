@@ -22,6 +22,10 @@ require("bindings")
 
 require("layout")
 
+require("startup")
+
+require("titlebars")
+
 require("rules")
 
 require("notifications")

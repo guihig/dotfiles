@@ -10,7 +10,7 @@ local function task_list(s)
     local _task_list = awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.focused,
-        style = { shape = gears.shape.octogon },
+        style = {shape = gears.shape.octogon},
         layout = {
             spacing = 5,
             forced_num_rows = 1,
@@ -21,7 +21,7 @@ local function task_list(s)
                 {
                     {
                         {
-                            { id = "icon_role", widget = wibox.widget.imagebox },
+                            {id = "icon_role", widget = wibox.widget.imagebox},
                             top = 3,
                             bottom = 3,
                             left = 3,
@@ -29,7 +29,7 @@ local function task_list(s)
                             widget = wibox.container.margin
                         },
                         {
-                            { id = "text_role", widget = wibox.widget.textbox },
+                            {id = "text_role", widget = wibox.widget.textbox},
                             margins = 3,
                             widget = wibox.container.margin
                         },
@@ -54,11 +54,11 @@ end
 local function tag_list(s)
     local tag_list_buttons = gears.table.join( -- Left click
     awful.button({}, 1, function(t) t:view_only() end), -- Mod Left Click
-    awful.button({ Modkey }, 1, function(t)
+    awful.button({Modkey}, 1, function(t)
         if client.focus then client.focus:move_to_tag(t) end
     end), -- Right Click
     awful.button({}, 3, awful.tag.viewtoggle), -- Mod Right Click
-    awful.button({ Modkey }, 3, function(t)
+    awful.button({Modkey}, 3, function(t)
         if client.focus then client.focus:toggle_tag(t) end
     end))
 
@@ -111,22 +111,22 @@ end
 
 -- Clock
 local function clock()
-    local cw = calendar_widget({
-        placement = "top_right",
-        start_sunday = true,
-        radius = 8,
-        -- with customized next/previous (see table above)
-        previous_month_button = 1,
-        next_month_button = 3
-    })
-    -- local icon = wibox.widget({
-    --     text = "󰃰",
-    --     align = "center",
-    --     valign = "center",
-    --     font = beautiful.icon_font,
-    --     widget = wibox.widget.textbox
+    -- local cw = calendar_widget({
+    --     placement = "top_right",
+    --     start_sunday = true,
+    --     radius = 8,
+    --     -- with customized next/previous (see table above)
+    --     previous_month_button = 1,
+    --     next_month_button = 3
     -- })
-    --
+    local icon = wibox.widget({
+        text = "󰃰",
+        align = "center",
+        valign = "center",
+        font = beautiful.icon_font,
+        widget = wibox.widget.textbox
+    })
+
     -- icon:connect_signal("button::press",
     --                     function(self, _lx, _ly, button, _mods,
     --                              _find_widget_results)
@@ -164,7 +164,7 @@ local function clock()
             widget = wibox.container.place,
             valign = "center",
             -- { widget = wibox.container.margin, left = 5, right = 5, icon },
-            { widget = wibox.container.margin, right = 5, clock_text }
+            {widget = wibox.container.margin, right = 5, clock_text}
         }
     })
 end
@@ -201,8 +201,8 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     spacing = 5,
-                    wgt.volume,
-                    -- clock(),
+                    -- wgt.volume,
+                    clock(),
                     s.mysystray
                 },
                 widget = wibox.container.margin,
