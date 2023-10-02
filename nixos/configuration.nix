@@ -101,7 +101,7 @@
     videoDrivers = ["nvidia"];
     displayManager = {
       autoLogin.user = "ferreira";
-      gdm.enable = true;
+      lightdm.enable = true;
       defaultSession = "none+awesome";
     };
     windowManager.awesome = {
@@ -116,8 +116,8 @@
 
   services.xserver.displayManager.setupCommands = ''
     LEFT='HDMI-0'
-    CENTER='DP-0'
-    RIGHT='DP-2'
+    CENTER='DP-2'
+    RIGHT='DP-0'
 
     ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x738 --rotate normal \
       --output $CENTER --mode 3440x1440 --pos 1920x282 --rotate normal --rate 144.00 \

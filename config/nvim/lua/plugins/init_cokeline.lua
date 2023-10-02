@@ -18,37 +18,69 @@ require("cokeline").setup({
     },
 
     components = {
-        {text = " ", bg = "none"}, {
+        -- {text = " ", bg = "none"},
+        {
             text = "",
             fg = function(buffer)
+                return buffer.is_focused and get_hex("Normal", "fg") or
+                           get_hex("Comment", "fg")
+            end,
+            bg = function(buffer)
                 return buffer.is_focused and get_hex(hl_group, "bg") or
                            get_hex("ColorColumn", "bg")
-            end,
-            bg = get_hex("Normal", "bg")
+            end
         }, {
             text = function(buffer) return buffer.devicon.icon end,
-            fg = function(buffer) return buffer.devicon.color end
-        }, {text = " "}, {
+            fg = function(buffer) return buffer.devicon.color end,
+            bg = function(buffer)
+                return buffer.is_focused and get_hex(hl_group, "bg") or
+                           get_hex("ColorColumn", "bg")
+            end
+        }, {
+            text = " ",
+            fg = function(buffer)
+                return buffer.is_focused and get_hex("Normal", "fg") or
+                           get_hex("Comment", "fg")
+            end,
+            bg = function(buffer)
+                return buffer.is_focused and get_hex(hl_group, "bg") or
+                           get_hex("ColorColumn", "bg")
+            end
+        }, {
             text = function(buffer) return buffer.filename .. "  " end,
-            style = function(buffer)
-                return buffer.is_focused and "bold" or nil
+            fg = function(buffer)
+                return buffer.is_focused and get_hex("Normal", "fg") or
+                           get_hex("Comment", "fg")
+            end,
+            bg = function(buffer)
+                return buffer.is_focused and get_hex(hl_group, "bg") or
+                           get_hex("ColorColumn", "bg")
             end
         }, {
             text = function(buffer)
-                return buffer.is_modified and "●" or ""
+                if buffer.is_modified then return "" end
+                if buffer.is_hovered then return "󰅙" end
+                return "󰅖"
             end,
+            on_click = function(_, _, _, _, buffer) buffer:delete() end,
             fg = function(buffer)
                 return buffer.is_modified and get_hex("Function", "fg") or nil
             end,
-            delete_buffer_on_left_click = true,
+            bg = function(buffer)
+                return buffer.is_focused and get_hex(hl_group, "bg") or
+                           get_hex("ColorColumn", "bg")
+            end,
             truncation = {priority = 1}
         }, {
             text = "",
             fg = function(buffer)
+                return buffer.is_focused and get_hex("Normal", "fg") or
+                           get_hex("Comment", "fg")
+            end,
+            bg = function(buffer)
                 return buffer.is_focused and get_hex(hl_group, "bg") or
                            get_hex("ColorColumn", "bg")
-            end,
-            bg = get_hex("Normal", "bg")
+            end
         }
     }
 })

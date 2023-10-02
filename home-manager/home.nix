@@ -52,6 +52,7 @@
     spotify
     discord
     mailspring
+    steam
 
     # System utilities
     htop
@@ -79,6 +80,8 @@
     ntfs3g
     papirus-icon-theme
     arandr
+    ueberzug
+    zathura
 
     # soundsss
     pavucontrol
@@ -122,6 +125,7 @@
     nodePackages.sql-formatter
     stylish-haskell
     alejandra
+    texlive.combined.scheme-full
 
     # Fonts
     nerdfonts
@@ -154,6 +158,21 @@
   };
 
   # TODO: Change to fish
+  # ---- fish Configuration ---- #
+  # programs.fish = {
+  #   enable = true;
+  #   shellAliases = {
+  #     myip = "curl -fSsL 'https://api.ipify.org?format=json' | jq \".ip\"";
+  #     ssh = "TERM=xterm-256color ssh";
+  #     cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
+  #     toclip = "xclip -selection clipboard";
+  #     granter = "cd /home/ferreira/dev/granter/";
+  #     ls = "exa";
+  #     ll = "exa -la";
+  #     ip = "ip -c";
+  #     ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
+  #   };
+  # };
   # ---- zsh Configuration ---- #
   programs.zsh = {
     enable = true;
@@ -177,6 +196,9 @@
       EDITOR = "nvim";
     };
     shellAliases = {
+      pong = "ping 8.8.8.8";
+      tmx = "tmuxinator";
+      vim = "nvim";
       myip = "curl -fSsL 'https://api.ipify.org?format=json' | jq \".ip\"";
       ssh = "TERM=xterm-256color ssh";
       cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
@@ -327,8 +349,15 @@
     source = ../config/ranger;
     recursive = true;
   };
+  home.file.".config/ranger/plugins/ranger_devicons" = {
+    source = pkgs.fetchFromGitHub {
+      owner = "alexanderjeurissen";
+      repo = "ranger_devicons";
+      rev = "de64ab26fb581c00a803381d522c6b3e48b79415";
+      hash = "sha256-6JEhyU08QEkGdRW2L00ynRaoaaR5PaiVUccEUbtTQuU=";
+    };
+  };
 
-  # TODO: Apply theme
   # ---- Rofi Configuration ---- #
   programs.rofi = {
     enable = true;
