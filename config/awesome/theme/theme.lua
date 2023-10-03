@@ -20,7 +20,9 @@ theme.icon_font = "Material Design Icons Regular 9"
 theme.bg = xtheme.background
 theme.fg = xtheme.foreground
 
-for i = 0, 15, 1 do theme["color" .. i] = xtheme["color" .. i] end
+for i = 0, 15, 1 do
+	theme["color" .. i] = xtheme["color" .. i]
+end
 
 theme.primary = "#00BCD4"
 theme.black = "#0c0e0f"
@@ -65,10 +67,8 @@ theme.icon_theme = "WhiteSur-dark"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-                                taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-                                  taglist_square_size, theme.fg_normal)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -107,10 +107,10 @@ theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal("request::rules", function()
-    rnotification.append_rule {
-        rule = {urgency = "critical"},
-        properties = {bg = "#ff0000", fg = "#ffffff"}
-    }
+	rnotification.append_rule({
+		rule = { urgency = "critical" },
+		properties = { bg = "#ff0000", fg = "#ffffff" },
+	})
 end)
 
 -- mstab

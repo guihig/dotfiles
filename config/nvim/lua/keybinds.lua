@@ -5,9 +5,9 @@ local opts = { noremap = true }
 local silent_opts = { silent = true, noremap = true }
 
 -- Copy to Clipboard
-keymap.set("n", "<leader>y", "\"+y", opts)
-keymap.set("v", "<leader>y", "\"+y", opts)
-keymap.set("n", "<leader>Y", "gg\"+yG", opts)
+keymap.set("n", "<leader>y", '"+y', opts)
+keymap.set("v", "<leader>y", '"+y', opts)
+keymap.set("n", "<leader>Y", 'gg"+yG', opts)
 
 keymap.set("n", "<F12>", utils.reload_nvim, opts)
 

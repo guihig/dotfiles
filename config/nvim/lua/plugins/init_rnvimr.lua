@@ -16,11 +16,11 @@ vim.g.rnvimr_hide_gitignore = 1
 vim.g.rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" }
 vim.g.rnvimr_shadow_winblend = 100
 vim.g.rnvimr_action = {
-    ["<C-t>"] = "NvimEdit tabedit",
-    ["<C-x>"] = "NvimEdit split",
-    ["<C-v>"] = "NvimEdit vsplit",
-    ["gw"] = "JumpNvimCwd",
-    ["yw"] = "EmitRangerCwd"
+	["<C-t>"] = "NvimEdit tabedit",
+	["<C-x>"] = "NvimEdit split",
+	["<C-v>"] = "NvimEdit vsplit",
+	["gw"] = "JumpNvimCwd",
+	["yw"] = "EmitRangerCwd",
 }
 
 vim.cmd([[

@@ -119,7 +119,7 @@
     vimPlugins.nvim-web-devicons
 
     # Code formatters
-    luaformatter
+    stylua
     yamlfmt
     black
     nodePackages.sql-formatter

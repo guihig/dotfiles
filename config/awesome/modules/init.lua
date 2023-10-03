@@ -1,4 +1,4 @@
 return {
-    bling = require("modules.bling"),
-    rubato = require("modules.rubato")
+	bling = require("modules.bling"),
+	rubato = require("modules.rubato"),
 }

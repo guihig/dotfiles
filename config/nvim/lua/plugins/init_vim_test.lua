@@ -10,7 +10,8 @@ keymap.set("n", "t<C-g>", ":TestVisit<CR>", opts)
 -- local function HarpunxTest(cmd)
 --     require("harpoon.tmux").sendCommand(9, string.format("clear; %s", cmd))
 -- end
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
   let g:nicemux_test_session = 'test'
   function! NiceMux(cmd) abort
     call system('tmux send-keys -t ' . g:nicemux_test_session . ':1.1 ENTER')
@@ -24,7 +25,9 @@ vim.api.nvim_exec([[
 
   let g:test#custom_strategies = {"nicemux": function("NiceMux")}
   let test#strategy = "nicemux"
-]], true)
+]],
+	true
+)
 
 -- Variable.g({
 --     ["test#custom_strategies"] = {harpunx = HarpunxTest},
