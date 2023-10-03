@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "lain": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673554968,
+        "narHash": "sha256-MH/aiYfcO3lrcuNbnIu4QHqPq25LwzTprOhEJUJBJ7I=",
+        "owner": "lcpz",
+        "repo": "lain",
+        "rev": "88f5a8abd2649b348ffec433a24a263b37f122c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lcpz",
+        "repo": "lain",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1695825837,
@@ -105,6 +121,7 @@
       "inputs": {
         "bling": "bling",
         "home-manager": "home-manager",
+        "lain": "lain",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "rubato": "rubato",

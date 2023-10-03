@@ -101,7 +101,10 @@
     videoDrivers = ["nvidia"];
     displayManager = {
       autoLogin.user = "ferreira";
-      lightdm.enable = true;
+      lightdm = {
+        enable = true;
+        greeters.gtk.enable = true;
+      };
       defaultSession = "none+awesome";
     };
     windowManager.awesome = {
@@ -207,6 +210,7 @@
   services.davfs2.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
+  services.blueman.enable = true;
 
   services.openssh = {
     enable = true;
@@ -218,15 +222,27 @@
   services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
 
-  programs.dconf.enable = true;
+  programs = {
+    nm-applet = {
+      enable = true;
+      indicator = false;
+    };
 
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
+    dconf.enable = true;
+
+    thunar = {
+      enable = true;
+
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-volman
+      ];
+    };
   };
+
+  # Create fonts dir
+  fonts.fontDir.enable = true;
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

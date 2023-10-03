@@ -16,15 +16,13 @@ require("cokeline").setup({
 	},
 
 	components = {
-		-- {text = " ", bg = "none"},
+		{ text = " ", bg = "none" },
 		{
 			text = "",
 			fg = function(buffer)
-				return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
-			end,
-			bg = function(buffer)
 				return buffer.is_focused and get_hex(hl_group, "bg") or get_hex("ColorColumn", "bg")
 			end,
+			bg = "none",
 		},
 		{
 			text = function(buffer)
@@ -81,11 +79,9 @@ require("cokeline").setup({
 		{
 			text = "",
 			fg = function(buffer)
-				return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
-			end,
-			bg = function(buffer)
 				return buffer.is_focused and get_hex(hl_group, "bg") or get_hex("ColorColumn", "bg")
 			end,
+			bg = "none",
 		},
 	},
 })

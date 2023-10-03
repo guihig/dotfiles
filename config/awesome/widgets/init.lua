@@ -1,7 +1,4 @@
-local volume = require("widgets.volume")
-
-local M = {}
-
-M.volume = volume()
-
-return M
+return {
+	volume = require("widgets.volume"),
+	clock = require("widgets.clock"),
+}

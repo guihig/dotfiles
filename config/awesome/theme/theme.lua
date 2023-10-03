@@ -1,93 +1,111 @@
----------------------------
--- Default awesome theme --
----------------------------
+-- #-------- Imports --------#
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local rnotification = require("ruled.notification")
+local gfs = require("gears.filesystem")
+local gears = require("gears")
+local awful = require("awful")
+
 local dpi = xresources.apply_dpi
 
-local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 local theme = {}
-
 local xtheme = xresources.get_current_theme()
 
+-- #-------- Fonts --------#
 theme.font = "JetBrainsMono Nerd Font Medium 9"
-theme.icon_font = "Material Design Icons Regular 9"
+theme.icon_font = "Material Design Icons Regular 10"
 
--- Colors
-theme.bg = xtheme.background
-theme.fg = xtheme.foreground
-
+-- #-------- Colors --------#
+-- From 0 to 15  xresources colors
 for i = 0, 15, 1 do
 	theme["color" .. i] = xtheme["color" .. i]
 end
 
-theme.primary = "#00BCD4"
-theme.black = "#0c0e0f"
-theme.white = "#edeff0"
-theme.grey = "#343637"
-theme.red = "#FF5250"
-theme.green = "#43a047"
-theme.yellow = "#fdd835"
-theme.transparent = "#00000000"
-
-theme.bg_normal = theme.bg
-theme.bg_focus = theme.grey
-theme.bg_urgent = theme.red
-theme.bg_minimize = theme.primary
-
-theme.bg_systray = theme.bg_normal
+theme.bg = xtheme.background
+theme.fg = xtheme.foreground
 
 theme.fg_normal = theme.fg
+theme.bg_normal = theme.bg
 theme.fg_focus = theme.fg
-theme.fg_urgent = theme.white
-theme.fg_minimize = theme.white
+theme.bg_focus = theme.color8
+theme.fg_urgent = theme.color15
+theme.bg_urgent = theme.color1
 
-theme.useless_gap = dpi(0)
-theme.border_width = dpi(1)
-theme.border_color_normal = "#000000"
-theme.border_color_active = "#535d6c"
-theme.border_color_marked = "#91231c"
+theme.transparent = "#00000000"
 
--- Titlebar
-theme.titlebar_bg_focus = theme.bg_focus
+-- #-------- Icons --------#
+theme.icons = {
+	volume = "󰕾",
+	volume_low = "󰖀",
+	volume_off = "󰖁",
+	volume_mute = "󰝟",
+}
+-- #-------- Common --------#
+theme.wallpaper = themes_path .. "default/background.png"
+theme.icon_theme = "Papirus-Dark"
+theme.useless_gap = dpi(4)
+
+-- #-------- Titlebar --------#
+theme.titlebar_fg_normal = theme.fg_normal
 theme.titlebar_bg_normal = theme.bg_normal
-theme.titlebar_fg_focus = theme.fg_focus
 
--- Topbar
+theme.titlebar_fg_focus = theme.fg_focus
+theme.titlebar_bg_focus = theme.bg_focus
+
+theme.titlebar_fg_urgent = theme.color15
+theme.titlebar_bg_urgent = theme.color1
+
+-- #-------- Systray --------#
+theme.bg_systray = theme.bg
+theme.systray_icon_spacing = dpi(4)
+theme.systray_max_rows = 1
+
+-- #-------- Wibar --------#
+theme.wibar_border_width = dpi(2)
+theme.wibar_border_color = theme.color0
+theme.wibar_opacity = 0.85
+theme.wibar_fg = theme.fg
 theme.wibar_bg = theme.bg
 theme.wibar_height = dpi(24)
 
-theme.systray_icon_size = dpi(4)
-theme.systray_icon_spacing = dpi(5)
-
-theme.icon_theme = "WhiteSur-dark"
-
--- Generate taglist squares:
+-- #-------- Taglist --------#
 local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg)
 
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
+-- #-------- Tasklist --------#
+theme.tasklist_shape = gears.shape.rounded_rect
+theme.tasklist_shape_border_width = dpi(1)
+theme.tasklist_shape_border_color = theme.color0
 
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height = dpi(1)
-theme.menu_width = dpi(100)
+-- #-------- Notifications --------#
+rnotification.connect_signal("request::rules", function()
+	rnotification.append_rule({
+		rule = { urgency = "critical" },
+		properties = { bg = theme.bg_urgent, fg = theme.foreground },
+	})
+	rnotification.append_rule({
+		rule = {},
+		properties = {
+			icon_size = dpi(80),
+			screen = awful.screen.focused or awful.screen.preferred,
+		},
+	})
+end)
 
-theme.menubar_bg_color = theme.bg_urgent
+theme.notification_font = theme.font
+theme.notification_bg = theme.bg
+theme.notification_fg = theme.color15
+theme.notification_border_width = dpi(1)
+theme.notification_border_color = theme.color0
+theme.notification_shape = gears.shape.rounded_rect
+theme.notification_opacity = 0.8
+theme.notification_margin = dpi(4)
+theme.notification_spacing = dpi(4)
 
-theme.wallpaper = themes_path .. "default/background.png"
-
--- You can use your own layout icons like this:
+-- #-------- Layout Icons --------#
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
 theme.layout_fairv = themes_path .. "default/layouts/fairvw.png"
 theme.layout_floating = themes_path .. "default/layouts/floatingw.png"
@@ -104,29 +122,5 @@ theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
-
--- Set different colors for urgent notifications.
-rnotification.connect_signal("request::rules", function()
-	rnotification.append_rule({
-		rule = { urgency = "critical" },
-		properties = { bg = "#ff0000", fg = "#ffffff" },
-	})
-end)
-
--- mstab
-theme.mstab_bar_disable = false -- disable the tabbar
-theme.mstab_bar_ontop = false -- whether you want to allow the bar to be ontop of clients
-theme.mstab_dont_resize_slaves = false -- whether the tabbed stack windows should be smaller than the
--- currently focused stack window (set it to true if you use
--- transparent terminals. False if you use shadows on solid ones
-theme.mstab_bar_padding = "default" -- how much padding there should be between clients and your tabbar
--- by default it will adjust based on your useless gaps.
--- If you want a custom value. Set it to the number of pixels (int)
-theme.mstab_border_radius = 0 -- border radius of the tabbar
-theme.mstab_bar_height = 40 -- height of the tabbar
-theme.mstab_tabbar_position = "top" -- position of the tabbar (mstab currently does not support left,right)
-theme.mstab_tabbar_style = "default" -- style of the tabbar ("default", "boxes" or "modern")
--- defaults to the tabbar_style so only change if you want a
--- different style for mstab and tabbed
 
 return theme

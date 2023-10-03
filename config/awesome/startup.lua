@@ -44,6 +44,3 @@ screen.connect_signal("request::wallpaper", function(s)
 		},
 	})
 end)
-
--- Screen ordering
--- screen[2]:swap(screen[1])

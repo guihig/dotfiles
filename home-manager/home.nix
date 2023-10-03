@@ -43,6 +43,12 @@
   home = {
     username = "ferreira";
     homeDirectory = "/home/ferreira";
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.qogir-theme;
+      name = "Qogir";
+    };
   };
 
   home.packages = with pkgs; [
@@ -79,9 +85,12 @@
     gzip
     ntfs3g
     papirus-icon-theme
+    qogir-icon-theme
+    qogir-theme
     arandr
     ueberzug
     zathura
+    lxappearance
 
     # soundsss
     pavucontrol
@@ -394,6 +403,10 @@
     source = inputs.rubato.outPath;
     recursive = true;
   };
+  home.file.".config/awesome/lain" = {
+    source = inputs.lain.outPath;
+    recursive = true;
+  };
 
   # ---- Xresources colors :) ---- #
   xresources.extraConfig = builtins.readFile (
@@ -469,10 +482,27 @@
 
   gtk = {
     enable = true;
+    gtk3 = {
+      extraConfig = {gtk-decoration-layout = "menu:";};
+    };
     theme = {
       name = "Materia-dark";
       package = pkgs.materia-theme;
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    # cursorTheme = {
+    #   name = "Qogir-Dark";
+    #   package = pkgs.qogir-theme;
+    #   size = 10;
+    # };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
   };
 
   # Sops

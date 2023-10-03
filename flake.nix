@@ -18,6 +18,10 @@
       url = "github:andOrlando/rubato";
       flake = false;
     };
+    lain = {
+      url = "github:lcpz/lain";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";

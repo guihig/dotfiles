@@ -59,6 +59,12 @@ return require("packer").startup(function(use)
 	use({ "tversteeg/registers.nvim" })
 
 	-- Code Utils
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	})
 	use({ "sjl/tis100.vim" })
 	use({ "vimwiki/vimwiki" })
 	use({ "jidn/vim-dbml" })
