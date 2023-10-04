@@ -74,6 +74,10 @@ require("lazy").setup({
 
 	-- LSP
 	{ "folke/neodev.nvim", opts = {} },
+	{
+		"williamboman/mason.nvim",
+	},
+	{ "williamboman/mason-lspconfig.nvim" },
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{
 		"nvimdev/lspsaga.nvim",
@@ -98,8 +102,4 @@ require("lazy").setup({
 
 	-- Test
 	{ "vim-test/vim-test" },
-
-	-- "folke/which-key.nvim",
-	-- { "folke/neoconf.nvim", cmd = "Neoconf" },
-	-- "folke/neodev.nvim",
 })

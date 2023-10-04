@@ -1,5 +1,5 @@
 local keymap = vim.keymap
-local lspconfig = require("lspconfig")
+-- local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 
 require("neodev").setup({
@@ -12,9 +12,9 @@ require("neodev").setup({
 })
 
 lsp_zero.on_attach(function(client, bufnr)
-	local opts = { buffer = bufnr }
+	local opts = { buffer = bufnr, remap = false }
 
-	keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
+	-- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
 	keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", opts)
 	keymap.set("n", "gi", "<cmd>Lspsaga peek_definition<cr>", opts)
@@ -28,52 +28,91 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
--- Servers cfgs
-local servers = {
-	elixirls = { cmd = { "elixir-ls" } },
-	cssls = {},
-	jsonls = { filetypes = { "json" } },
-	lua_ls = {},
-	tsserver = { flags = { debounce_text_changes = 50 } },
-	texlab = {
-		settings = {
-			texlab = {
-				build = {
-					executable = "lualatex",
-					args = {
-						"-pdf",
-						"-interaction=nonstopmode",
-						"-synctex=1",
-						"%f",
-						"-pvc",
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"dockerls",
+		"elixirls",
+		"jsonls",
+		"tsserver",
+		"texlab",
+		"pyright",
+		"sqlls",
+		"tailwindcss",
+		"volar",
+		"efm",
+		"yamlls",
+		"rust_analyzer",
+		"rnix",
+	},
+	handlers = {
+		lsp_zero.default_setup,
+		texlab = function()
+			require("lspconfig").lua_ls.setup({
+				settings = {
+					texlab = {
+						build = {
+							executable = "lualatex",
+							args = {
+								"-pdf",
+								"-interaction=nonstopmode",
+								"-synctex=1",
+								"%f",
+								"-pvc",
+							},
+							onSave = true,
+							forwardSearchAfter = false,
+						},
+						forwardSearch = {
+							executable = "zathura",
+							args = { "--synctex-forward", "%l:1:%f", "%p" },
+						},
 					},
-					onSave = true,
-					forwardSearchAfter = false,
 				},
-				forwardSearch = {
-					executable = "zathura",
-					args = { "--synctex-forward", "%l:1:%f", "%p" },
+			})
+		end,
+		tsserver = function()
+			require("lspconfig").tsserver.setup({
+				flags = { debounce_text_changes = 50 },
+			})
+		end,
+		jsonls = function()
+			require("lspconfig").jsonls.setup({
+				filetypes = { "json" },
+			})
+		end,
+		efm = function()
+			require("lspconfig").efm.setup({
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"elixir",
 				},
-			},
-		},
+			})
+		end,
 	},
-	pyright = {},
-	efm = {
-		filetypes = {
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"elixir",
-		},
-	},
-	volar = {},
-	rnix = {},
-	yamlls = {},
-	rust_analyzer = {},
-}
+})
 
-for server, server_cfg in pairs(servers) do
-	lspconfig[server].setup(server_cfg)
-end
+-- Servers cfgs
+-- local servers = {
+-- 	elixirls = { cmd = { "elixir-ls" } },
+-- 	cssls = {},
+-- 	jsonls = {},
+-- 	lua_ls = {},
+-- 	tsserver = {},
+-- 	texlab = {},
+-- 	pyright = {},
+-- 	efm = {},
+-- 	volar = {},
+-- 	rnix = {},
+-- 	yamlls = {},
+-- 	rust_analyzer = {},
+-- }
+--
+-- for server, server_cfg in pairs(servers) do
+-- 	lspconfig[server].setup(server_cfg)
+-- end
