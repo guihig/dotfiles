@@ -110,7 +110,9 @@
     rustc
     go
     gcc
+    gnumake
     lua
+    elixir
     nodejs
     tree-sitter
     luaPackages.luarocks

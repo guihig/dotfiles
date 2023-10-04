@@ -12,9 +12,10 @@ require("neodev").setup({
 })
 
 lsp_zero.on_attach(function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
+	local opts = { buffer = bufnr }
 
 	keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
+	keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", opts)
 	keymap.set("n", "gi", "<cmd>Lspsaga peek_definition<cr>", opts)
 	keymap.set("n", "gs", "<cmd>Lspsaga peek_type_definition<cr>", opts)
@@ -31,7 +32,6 @@ end)
 local servers = {
 	elixirls = { cmd = { "elixir-ls" } },
 	cssls = {},
-	tailwindcss = {},
 	jsonls = { filetypes = { "json" } },
 	lua_ls = {},
 	tsserver = { flags = { debounce_text_changes = 50 } },
@@ -72,7 +72,6 @@ local servers = {
 	rnix = {},
 	yamlls = {},
 	rust_analyzer = {},
-	-- clangd = {},
 }
 
 for server, server_cfg in pairs(servers) do
