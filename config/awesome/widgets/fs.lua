@@ -20,7 +20,7 @@ local function init()
 	local lain_fs = lain.widget.fs({
 		notification_preset = { font = beautiful.font },
 		settings = function()
-			widget:set_text(string.format("/: %.02f/%.02f (%s)", fs_now["/"].used, fs_now["/"].size, fs_now["/"].units))
+			widget:set_text(string.format("%s%%", fs_now["/"].percentage))
 		end,
 	})
 
