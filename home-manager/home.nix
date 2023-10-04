@@ -137,7 +137,7 @@
     # nodePackages.yaml-language-server
     # nodePackages.pyright
     # nodePackages.volar
-    # texlab
+    texlab
     # sqls
     # efm-langserver
     # rnix-lsp

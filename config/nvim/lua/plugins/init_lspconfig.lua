@@ -1,5 +1,5 @@
 local keymap = vim.keymap
--- local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 
 require("neodev").setup({
@@ -36,7 +36,7 @@ require("mason-lspconfig").setup({
 		"elixirls",
 		"jsonls",
 		"tsserver",
-		"texlab",
+		-- "texlab" (Installed by the system),
 		"pyright",
 		"sqlls",
 		"tailwindcss",
@@ -48,30 +48,6 @@ require("mason-lspconfig").setup({
 	},
 	handlers = {
 		lsp_zero.default_setup,
-		texlab = function()
-			require("lspconfig").lua_ls.setup({
-				settings = {
-					texlab = {
-						build = {
-							executable = "lualatex",
-							args = {
-								"-pdf",
-								"-interaction=nonstopmode",
-								"-synctex=1",
-								"%f",
-								"-pvc",
-							},
-							onSave = true,
-							forwardSearchAfter = false,
-						},
-						forwardSearch = {
-							executable = "zathura",
-							args = { "--synctex-forward", "%l:1:%f", "%p" },
-						},
-					},
-				},
-			})
-		end,
 		tsserver = function()
 			require("lspconfig").tsserver.setup({
 				flags = { debounce_text_changes = 50 },
@@ -97,22 +73,32 @@ require("mason-lspconfig").setup({
 	},
 })
 
--- Servers cfgs
--- local servers = {
--- 	elixirls = { cmd = { "elixir-ls" } },
--- 	cssls = {},
--- 	jsonls = {},
--- 	lua_ls = {},
--- 	tsserver = {},
--- 	texlab = {},
--- 	pyright = {},
--- 	efm = {},
--- 	volar = {},
--- 	rnix = {},
--- 	yamlls = {},
--- 	rust_analyzer = {},
--- }
---
--- for server, server_cfg in pairs(servers) do
--- 	lspconfig[server].setup(server_cfg)
--- end
+-- Manual servers cfgs
+local servers = {
+	texlab = {},
+}
+
+for server, server_cfg in pairs(servers) do
+	lspconfig[server].setup({
+		settings = {
+			texlab = {
+				build = {
+					executable = "lualatex",
+					args = {
+						"-pdf",
+						"-interaction=nonstopmode",
+						"-synctex=1",
+						"%f",
+						"-pvc",
+					},
+					onSave = true,
+					forwardSearchAfter = false,
+				},
+				forwardSearch = {
+					executable = "zathura",
+					args = { "--synctex-forward", "%l:1:%f", "%p" },
+				},
+			},
+		},
+	})
+end
