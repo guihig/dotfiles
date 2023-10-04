@@ -3,6 +3,7 @@ local utils = require("utils")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
 local naughty = require("naughty")
+local alsabar = require("handlers.audio")
 
 local keys = { mod = "Mod4", ctrl = "Control", shift = "Shift", alt = "Mod1" }
 
@@ -35,33 +36,36 @@ awful.keyboard.append_global_keybindings({
 	awful.key({}, "Print", function()
 		awful.spawn(apps.flameshot)
 	end, { description = "open the flameshot gui", group = "launcher" }),
-	-- awful.key {
-	--     modifiers = {},
-	--     key = "XF86AudioRaiseVolume",
-	--     group = "media",
-	--     description = "increase volume",
-	--     on_press = function()
-	--         audio_daemon:get_default_sink():volume_up(5)
-	--     end
-	-- },
-	-- awful.key {
-	--     modifiers = {},
-	--     key = "XF86AudioLowerVolume",
-	--     group = "media",
-	--     description = "decrease volume",
-	--     on_press = function()
-	--         audio_daemon:get_default_sink():volume_down(5)
-	--     end
-	-- },
-	-- awful.key {
-	--     modifiers = {},
-	--     key = "XF86AudioMute",
-	--     group = "media",
-	--     description = "mute volume",
-	--     on_press = function()
-	--         audio_daemon:get_default_sink():toggle_mute()
-	--     end
-	-- }
+	awful.key({
+		modifiers = {},
+		key = "XF86AudioRaiseVolume",
+		group = "media",
+		description = "increase volume",
+		on_press = function()
+			os.execute(string.format("%s set %s 5%%+", alsabar.cmd, alsabar.channel))
+			alsabar.notify()
+		end,
+	}),
+	awful.key({
+		modifiers = {},
+		key = "XF86AudioLowerVolume",
+		group = "media",
+		description = "decrease volume",
+		on_press = function()
+			os.execute(string.format("%s set %s 5%%-", alsabar.cmd, alsabar.channel))
+			alsabar.notify()
+		end,
+	}),
+	awful.key({
+		modifiers = {},
+		key = "XF86AudioMute",
+		group = "media",
+		description = "mute volume",
+		on_press = function()
+			os.execute(string.format("%s set %s toggle", alsabar.cmd, alsabar.togglechannel or alsabar.channel))
+			alsabar.notify()
+		end,
+	}),
 })
 
 -- Focus keybindings

@@ -1,6 +1,5 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local gears = require("gears")
 local wrapper = require("widgets.wrapper")
 local lain = require("lain")
 local xresources = require("beautiful.xresources")
@@ -11,7 +10,7 @@ local clock = {}
 
 local function init()
 	local icon = wibox.widget({
-		text = "󰃮",
+		text = beautiful.icons.calendar,
 		align = "center",
 		valign = "center",
 		font = beautiful.icon_font,

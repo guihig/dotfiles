@@ -1,14 +1,14 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local beautiful = require("beautiful")
 local utils = require("utils")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
 
 -- Widgets
 local volume = require("widgets").volume
 local clock = require("widgets").clock
+local cpu = require("widgets").cpu
+local mem = require("widgets").mem
+local fs = require("widgets").fs
 
 -- Task list
 local function tasklist(s)
@@ -139,7 +139,9 @@ awful.screen.connect_for_each_screen(function(s)
 				{
 					layout = wibox.layout.fixed.horizontal,
 					spacing = 5,
-					-- TODO: Add mem, fs, cpu
+					fs(),
+					mem(),
+					cpu(),
 					volume(),
 					clock(),
 					s.mysystray,

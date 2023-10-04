@@ -130,7 +130,7 @@
     postgresql_13
 
     # Lsps
-    # lua-language-server
+    lua-language-server
     # nodePackages.vscode-langservers-extracted
     # nodePackages.dockerfile-language-server-nodejs
     # nodePackages.typescript-language-server

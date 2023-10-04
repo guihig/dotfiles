@@ -28,7 +28,9 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
-require("mason").setup()
+require("mason").setup({
+	PATH = "append",
+})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
@@ -36,7 +38,6 @@ require("mason-lspconfig").setup({
 		"elixirls",
 		"jsonls",
 		"tsserver",
-		-- "texlab" (Installed by the system),
 		"pyright",
 		"sqlls",
 		"tailwindcss",
@@ -75,11 +76,7 @@ require("mason-lspconfig").setup({
 
 -- Manual servers cfgs
 local servers = {
-	texlab = {},
-}
-
-for server, server_cfg in pairs(servers) do
-	lspconfig[server].setup({
+	texlab = {
 		settings = {
 			texlab = {
 				build = {
@@ -100,5 +97,9 @@ for server, server_cfg in pairs(servers) do
 				},
 			},
 		},
-	})
+	},
+}
+
+for server, server_cfg in pairs(servers) do
+	lspconfig[server].setup(server_cfg)
 end

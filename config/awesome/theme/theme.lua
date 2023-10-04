@@ -41,6 +41,10 @@ theme.icons = {
 	volume_low = "󰖀",
 	volume_off = "󰖁",
 	volume_mute = "󰝟",
+	cpu = "󰻠",
+	calendar = "󰃮",
+	mem = "󰍛",
+	fs = "󰋊",
 }
 -- #-------- Common --------#
 theme.wallpaper = themes_path .. "default/background.png"

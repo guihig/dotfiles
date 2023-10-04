@@ -14,7 +14,12 @@ local function init(content)
 		shape = gears.shape.octogon,
 		{
 			layout = wibox.container.margin,
-			margins = dpi(2),
+			margins = {
+				top = dpi(2),
+				bottom = dpi(2),
+				left = dpi(2),
+				right = dpi(4),
+			},
 			content,
 		},
 	})
