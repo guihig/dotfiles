@@ -91,6 +91,7 @@
     ueberzug
     zathura
     lxappearance
+    nix-your-shell
 
     # soundsss
     pavucontrol
@@ -126,6 +127,21 @@
     docker-compose
     postgresql_13
     vimPlugins.nvim-web-devicons
+
+    # Lsps
+    lua-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.typescript-language-server
+    nodePackages.yaml-language-server
+    nodePackages.pyright
+    nodePackages.volar
+    texlab
+    sqls
+    efm-langserver
+    rnix-lsp
+    rust-analyzer
+    elixir-ls
 
     # Code formatters
     stylua
@@ -166,44 +182,9 @@
     };
   };
 
-  # TODO: Change to fish
   # ---- fish Configuration ---- #
-  # programs.fish = {
-  #   enable = true;
-  #   shellAliases = {
-  #     myip = "curl -fSsL 'https://api.ipify.org?format=json' | jq \".ip\"";
-  #     ssh = "TERM=xterm-256color ssh";
-  #     cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
-  #     toclip = "xclip -selection clipboard";
-  #     granter = "cd /home/ferreira/dev/granter/";
-  #     ls = "exa";
-  #     ll = "exa -la";
-  #     ip = "ip -c";
-  #     ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
-  #   };
-  # };
-  # ---- zsh Configuration ---- #
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    enableCompletion = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
-    historySubstringSearch.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "fzf"
-        "colored-man-pages"
-        "mix"
-        "tmuxinator"
-        "docker-compose"
-        "docker"
-      ];
-    };
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
     shellAliases = {
       pong = "ping 8.8.8.8";
       tmx = "tmuxinator";
@@ -218,38 +199,82 @@
       ip = "ip -c";
       ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
     };
-    initExtra = ''
-      _ssh_configfile()
-      {
-          set -- "''${words[@]}"
-          while [[ $# -gt 0 ]]; do
-              if [[ $1 == -F* ]]; then
-                  if [[ ''${#1} -gt 2 ]]; then
-                      configfile="$(dequote "''${1:2}")"
-                  else
-                      shift
-                      [[ $1 ]] && configfile="$(dequote "$1")"
-                  fi
-                  break
-              fi
-              shift
-          done
-      }
-      complete -F _ssh_configfile get-ssh-hostname
+    interactiveShellInit = ''
+      set fish_greeting
+      set EDITOR "vim"
 
-      ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
-      pasteinit() {
-        OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
-        zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-      }
-
-      pastefinish() {
-        zle -N self-insert $OLD_SELF_INSERT
-      }
-      zstyle :bracketed-paste-magic paste-init pasteinit
-      zstyle :bracketed-paste-magic paste-finish pastefinis
+      nix-your-shell fish | source
     '';
   };
+
+  # # ---- zsh Configuration ---- #
+  # programs.zsh = {
+  #   enable = true;
+  #   enableCompletion = true;
+  #   enableAutosuggestions = true;
+  #   enableSyntaxHighlighting = true;
+  #   historySubstringSearch.enable = true;
+  #   oh-my-zsh = {
+  #     enable = true;
+  #     plugins = [
+  #       "git"
+  #       "fzf"
+  #       "colored-man-pages"
+  #       "mix"
+  #       "tmuxinator"
+  #       "docker-compose"
+  #       "docker"
+  #     ];
+  #   };
+  #   sessionVariables = {
+  #     EDITOR = "nvim";
+  #   };
+  #   shellAliases = {
+  #     pong = "ping 8.8.8.8";
+  #     tmx = "tmuxinator";
+  #     vim = "nvim";
+  #     myip = "curl -fSsL 'https://api.ipify.org?format=json' | jq \".ip\"";
+  #     ssh = "TERM=xterm-256color ssh";
+  #     cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
+  #     toclip = "xclip -selection clipboard";
+  #     granter = "cd /home/ferreira/dev/granter/";
+  #     ls = "exa";
+  #     ll = "exa -la";
+  #     ip = "ip -c";
+  #     ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
+  #   };
+  #   initExtra = ''
+  #     _ssh_configfile()
+  #     {
+  #         set -- "''${words[@]}"
+  #         while [[ $# -gt 0 ]]; do
+  #             if [[ $1 == -F* ]]; then
+  #                 if [[ ''${#1} -gt 2 ]]; then
+  #                     configfile="$(dequote "''${1:2}")"
+  #                 else
+  #                     shift
+  #                     [[ $1 ]] && configfile="$(dequote "$1")"
+  #                 fi
+  #                 break
+  #             fi
+  #             shift
+  #         done
+  #     }
+  #     complete -F _ssh_configfile get-ssh-hostname
+  #
+  #     ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+  #     pasteinit() {
+  #       OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
+  #       zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+  #     }
+  #
+  #     pastefinish() {
+  #       zle -N self-insert $OLD_SELF_INSERT
+  #     }
+  #     zstyle :bracketed-paste-magic paste-init pasteinit
+  #     zstyle :bracketed-paste-magic paste-finish pastefinis
+  #   '';
+  # };
 
   # ---- Alacritty Configuration ---- #
   programs.alacritty = {
@@ -258,7 +283,7 @@
       env = {
         TERM = "xterm-256color";
       };
-      shell.program = "${pkgs.zsh}/bin/zsh";
+      shell.program = "${pkgs.fish}/bin/fish";
       window = {
         opacity = 0.85;
         padding = {
@@ -309,7 +334,7 @@
   # ---- Starship Configuration ---- #
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 
   # ---- tmux Configuration ---- #
@@ -320,7 +345,7 @@
     historyLimit = 10000;
     escapeTime = 10;
     mouse = true;
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.fish}/bin/fish";
     tmuxinator.enable = true;
     plugins = with pkgs; [
       {

@@ -194,6 +194,7 @@
     ferreira = {
       isNormalUser = true;
       passwordFile = config.sops.secrets."passwd/ferreira".path;
+      shell = pkgs.fish;
       description = "CABECA";
       extraGroups = ["networkmanager" "wheel" "docker"];
       packages = with pkgs; [
@@ -227,6 +228,8 @@
       enable = true;
       indicator = false;
     };
+
+    fish.enable = true;
 
     dconf.enable = true;
 

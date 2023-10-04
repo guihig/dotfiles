@@ -1,131 +1,105 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost install.lua source <afile> | PackerCompile
-  augroup end
-]])
-
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({
-			"git",
-			"clone",
-			"--depth",
-			"1",
-			"https://github.com/wbthomason/packer.nvim",
-			install_path,
-		})
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-
+require("lazy").setup({
 	-- Colorschemes
-	use({ "sainnhe/gruvbox-material" })
+	{ "sainnhe/gruvbox-material" },
+
+	-- UI
+	{ "nvim-tree/nvim-web-devicons" },
+	{ "noib3/nvim-cokeline" },
+	{ "hoob3rt/lualine.nvim" },
+
+	-- FS
+	{ "kevinhwang91/rnvimr" },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{ "ElPiloto/telescope-vimwiki.nvim" },
+	{ "vimwiki/vimwiki" },
 
 	-- Utils
-	use({
+	{
 		"beauwilliams/focus.nvim",
 		config = function()
 			require("focus").setup()
 		end,
-	})
-	use({ "kyazdani42/nvim-web-devicons" })
-	use({ "famiu/bufdelete.nvim" })
-	use({ "noib3/nvim-cokeline" })
-	use({ "hoob3rt/lualine.nvim" })
-	use({ "ggandor/lightspeed.nvim", requires = { "tpope/vim-repeat", opt = true } })
-	use({ "simeji/winresizer" })
-	use({ "kevinhwang91/rnvimr" })
-	use({ "psliwka/vim-smoothie" })
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use({
+	},
+	{ "famiu/bufdelete.nvim" },
+	{ "ggandor/lightspeed.nvim", dependencies = { "tpope/vim-repeat", opt = true } },
+	{ "simeji/winresizer" },
+	{ "psliwka/vim-smoothie" },
+	{ "tversteeg/registers.nvim" },
+	{
 		"iamcco/markdown-preview.nvim",
-		run = function()
+		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-	})
-	use({ "tversteeg/registers.nvim" })
+	},
 
-	-- Code Utils
-	use({
+	-- Code
+	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
-	})
-	use({ "sjl/tis100.vim" })
-	use({ "vimwiki/vimwiki" })
-	use({ "jidn/vim-dbml" })
-	use({ "ElPiloto/telescope-vimwiki.nvim" })
-	use({ "tpope/vim-surround" })
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	use({ "numToStr/Comment.nvim" })
-	use({ "windwp/nvim-autopairs" })
-	-- use { "elixir-editors/vim-elixir" }
-	use({ "onsails/lspkind-nvim" })
-	use({ "tpope/vim-fugitive" })
-	use({ "meain/vim-printer" })
-	use({ "lewis6991/gitsigns.nvim" })
-	use({ "j-hui/fidget.nvim", branch = "legacy" })
-	use({ "vim-test/vim-test" })
-	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
-	use({
+	},
+	{ "sjl/tis100.vim" },
+	{ "jidn/vim-dbml" },
+	{ "tpope/vim-surround" },
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+	{ "numToStr/Comment.nvim" },
+	{ "windwp/nvim-autopairs" },
+	--   { "elixir-editors/vim-elixir" }
+	{ "onsails/lspkind-nvim" },
+	{ "tpope/vim-fugitive" },
+	{ "meain/vim-printer" },
+	{ "lewis6991/gitsigns.nvim" },
+	{ "j-hui/fidget.nvim", branch = "legacy" },
+	{ "vim-test/vim-test" },
+	{ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+	{
 		"nvim-neotest/neotest",
-		requires = {
+		dependencies = {
 			"jfpedroza/neotest-elixir",
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"antoinemadec/FixCursorHold.nvim",
 		},
-	})
+	},
 
 	-- Snippets
-	use({ "hrsh7th/vim-vsnip" })
+	{ "hrsh7th/vim-vsnip" },
 
 	-- Shl
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
 	-- LSP
-	use({
+	{ "folke/neodev.nvim", opts = {} },
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{
 		"nvimdev/lspsaga.nvim",
-		after = "nvim-lspconfig",
 		config = function()
 			require("lazy_plugins.init_lspsaga")
 		end,
-	})
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({
+	},
+	{
 		"hrsh7th/nvim-cmp",
-		requires = {
+		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-vsnip" },
 			{ "hrsh7th/cmp-buffer" },
 		},
-	})
-	use({ "neovim/nvim-lspconfig" })
+	},
+	{ "neovim/nvim-lspconfig" },
 
 	-- Formatter
-	use({ "mhartington/formatter.nvim" })
+	{ "mhartington/formatter.nvim" },
 
 	-- Test
-	use({ "vim-test/vim-test" })
+	{ "vim-test/vim-test" },
 
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+	-- "folke/which-key.nvim",
+	-- { "folke/neoconf.nvim", cmd = "Neoconf" },
+	-- "folke/neodev.nvim",
+})

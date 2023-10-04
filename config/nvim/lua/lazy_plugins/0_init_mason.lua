@@ -1,0 +1,19 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		-- "lua_ls",
+		--"dockerls",
+		--"elixirls",
+		--"jsonls",
+		--"tsserver",
+		--"texlab",
+		--"pyright",
+		-- "sqlls",
+		-- "tailwindcss",
+		--"volar",
+		--"efm",
+		--"yamlls",
+		--"rust_analyzer",
+		--"rnix",
+	},
+})
