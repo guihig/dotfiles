@@ -18,8 +18,9 @@ windows:
   - backend-editor:
       root: ~/dev/granter/inova_defesa/backend/inova-backend
       panes:
-        - nix develop
-        - nvim .
+        - editor:
+            - nix develop
+            - nvim .
   - backend-term:
       root: ~/dev/granter/inova_defesa/backend/inova-backend
       layout: even-horizontal
