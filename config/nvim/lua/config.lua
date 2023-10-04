@@ -64,7 +64,6 @@ vim.o.foldlevelstart = 20
 -- Colorscheme
 vim.g.cs = "gruvbox-material"
 
-vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 vim.g.gruvbox_material_background = "hard"

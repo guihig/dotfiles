@@ -30,17 +30,52 @@ end)
 
 -- Wallpaper
 screen.connect_signal("request::wallpaper", function(s)
-	awful.wallpaper({
-		screen = s,
-		widget = {
-			image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/flatppuccin_4k_macchiato.png",
-			upscale = false,
-			downscale = true,
-			valign = "center",
-			halign = "center",
-			horizontal_fit_policy = "fit",
-			vertical_fit_policy = "auto",
-			widget = wibox.widget.imagebox,
-		},
-	})
+	local width = s.geometry.width
+	if width == 1920 then
+		awful.wallpaper({
+			screen = s,
+			widget = {
+				image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/forest_house.jpg",
+				upscale = false,
+				downscale = true,
+				valign = "center",
+				halign = "center",
+				horizontal_fit_policy = "fit",
+				vertical_fit_policy = "auto",
+				widget = wibox.widget.imagebox,
+			},
+		})
+	elseif width == 3440 then
+		awful.wallpaper({
+			screen = s,
+			widget = {
+				image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/forest_house.jpg",
+				upscale = true,
+				downscale = false,
+				valign = "center",
+				halign = "center",
+				horizontal_fit_policy = "auto",
+				vertical_fit_policy = "auto",
+				widget = wibox.widget.imagebox,
+			},
+		})
+	elseif width == 1080 then
+		awful.wallpaper({
+			screen = s,
+			widget = {
+				widget = wibox.container.rotate,
+				direction = "west",
+				{
+					widget = wibox.widget.imagebox,
+					image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/cyberpunk_helmet.png",
+					upscale = false,
+					downscale = true,
+					valign = "center",
+					halign = "center",
+					horizontal_fit_policy = "fit",
+					vertical_fit_policy = "auto",
+				},
+			},
+		})
+	end
 end)
