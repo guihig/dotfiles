@@ -289,7 +289,7 @@
       {
         plugin = tmuxPlugins.power-theme;
         extraConfig = ''
-          set -g @tmux_power_theme 'moon'
+          set -g @tmux_power_theme 'snow'
         '';
       }
     ];

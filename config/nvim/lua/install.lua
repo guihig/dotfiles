@@ -42,20 +42,17 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
-	{ "sjl/tis100.vim" },
 	{ "jidn/vim-dbml" },
 	{ "tpope/vim-surround" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	{ "numToStr/Comment.nvim" },
 	{ "windwp/nvim-autopairs" },
-	--   { "elixir-editors/vim-elixir" }
 	{ "onsails/lspkind-nvim" },
 	{ "tpope/vim-fugitive" },
 	{ "meain/vim-printer" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "j-hui/fidget.nvim", branch = "legacy" },
 	{ "vim-test/vim-test" },
-	{ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
 	{
 		"nvim-neotest/neotest",
 		dependencies = {
@@ -69,8 +66,9 @@ require("lazy").setup({
 	-- Snippets
 	{ "hrsh7th/vim-vsnip" },
 
-	-- Shl
+	-- SHL
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	--   { "elixir-editors/vim-elixir" }
 
 	-- LSP
 	{ "folke/neodev.nvim", opts = {} },

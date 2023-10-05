@@ -15,6 +15,7 @@ end
 _M.is_buffer_not_empty = function()
 	return vim.fn.empty(vim.fn.expand("%:t")) == 1
 end
+
 _M.get_lua_modules = function(nvim_lua_dir, prefix)
 	local lua_modules = {}
 	for path, path_type in fs.dir(nvim_lua_dir) do

@@ -23,7 +23,6 @@ vim.cmd([[
 vim.g.mapleader = " "
 
 -- Variables
-vim.g.python3_host_prog = "/usr/bin/python"
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -57,7 +56,6 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.cmdheight = 0
 vim.o.updatetime = 250
 vim.o.scrolloff = 8
-vim.o.termguicolors = true
 vim.o.signcolumn = "yes:1"
 vim.o.foldlevelstart = 20
 
