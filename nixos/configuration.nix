@@ -163,6 +163,9 @@
 
   hardware.keyboard.qmk.enable = true;
   environment.etc."ppp/options".text = "ipcp-accept-remote";
+  environment.extraInit = ''
+    xset s off -dpms
+  '';
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -241,6 +244,11 @@
         thunar-media-tags-plugin
         thunar-volman
       ];
+    };
+    slock.enable = true;
+    xss-lock = {
+      enable = true;
+      lockerCommand = "${pkgs.slock}/bin/slock";
     };
   };
 

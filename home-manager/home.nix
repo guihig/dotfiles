@@ -92,6 +92,8 @@
     zathura
     lxappearance
     nix-your-shell
+    xss-lock
+    slock
 
     # soundsss
     pavucontrol

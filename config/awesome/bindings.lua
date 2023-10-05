@@ -30,6 +30,9 @@ awful.keyboard.append_global_keybindings({
 	awful.key({}, "Print", function()
 		awful.spawn(apps.flameshot)
 	end, { description = "open the flameshot gui", group = "launcher" }),
+	awful.key({}, "Scroll_Lock", function()
+		awful.spawn(apps.lockscreen)
+	end, { description = "lock screen", group = "util" }),
 	awful.key({
 		modifiers = {},
 		key = "XF86AudioRaiseVolume",
