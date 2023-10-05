@@ -65,7 +65,7 @@ require("lazy").setup({
 	},
 
 	-- Snippets
-	{ "hrsh7th/vim-vsnip" },
+	{ "L3MON4D3/LuaSnip", version = "v2.*" },
 
 	-- SHL
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
