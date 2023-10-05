@@ -40,12 +40,11 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"pyright",
 		"sqlls",
-		"tailwindcss",
 		"volar",
-		"efm",
 		"yamlls",
 		"rust_analyzer",
 		"rnix",
+		"unocss",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -57,18 +56,6 @@ require("mason-lspconfig").setup({
 		jsonls = function()
 			require("lspconfig").jsonls.setup({
 				filetypes = { "json" },
-			})
-		end,
-		efm = function()
-			require("lspconfig").efm.setup({
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"typescriptreact",
-					"vue",
-					"elixir",
-				},
 			})
 		end,
 	},

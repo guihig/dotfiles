@@ -42,15 +42,14 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lua" },
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp", trigger_characters = { "-" } },
 		{ name = "luasnip" },
 	}, {
-		{ name = "path" },
+		{ name = "async_path" },
 		{ name = "buffer", keyword_length = 5 },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
 	},
-	completion = { keyword_length = 2 },
 	experimental = { native_menu = false, ghost_text = false },
 })

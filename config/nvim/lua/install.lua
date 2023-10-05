@@ -88,9 +88,9 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-path" },
+			{ "FelipeLema/cmp-async-path" },
 			{ "hrsh7th/cmp-nvim-lua" },
-			{ "hrsh7th/cmp-vsnip" },
+			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-buffer" },
 		},
 	},

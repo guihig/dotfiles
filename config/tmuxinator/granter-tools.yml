@@ -1,6 +1,5 @@
 name: granter-tools
 root: ~/dev/granter/granter_tools/
-
 windows:
   - frontend-editor:
       root: ~/dev/granter/granter_tools
@@ -10,8 +9,12 @@ windows:
       root: ~/dev/granter/granter_tools
       layout: even-horizontal
       panes:
-        - pnpm dev
-        - git status
+        - pnpm:
+            - nix develop
+            - pnpm dev
+        - git:
+            - nix develop
+            - git status
   - backend-editor:
       root: ~/dev/granter/flowtify/backend/flowtify-backend
       panes:
@@ -23,4 +26,3 @@ windows:
         - phx_server:
             - MIX_ENV=dev mix phx.server
         - git status
-
