@@ -24,12 +24,6 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ keys.mod }, "space", function()
 		awful.spawn(apps.launcher)
 	end, { description = "open a launcher", group = "launcher" }),
-	awful.key({ keys.mod, keys.shift }, "=", function()
-		awful.spawn.with_shell(apps.notification_center)
-	end, {
-		description = "open the notification center",
-		group = "launcher",
-	}),
 	awful.key({ keys.mod }, "c", function()
 		naughty.destroy_all_notifications()
 	end, { description = "clear notifications", group = "util" }),
@@ -294,4 +288,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ keys.mod }, "s", function()
 		scratchpad.spotify_scratch:toggle()
 	end, { description = "spotify scratchpad", group = "scratchpad" }),
+	awful.key({ keys.mod }, "r", function()
+		scratchpad.mailspring_scratch:toggle()
+	end, { description = "mailspring scratchpad", group = "scratchpad" }),
 })
