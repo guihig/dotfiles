@@ -6,8 +6,7 @@ keymap.set("n", "<A-q>", ":RnvimrToggle<CR>", opts)
 keymap.set("t", "<A-q>", "<C-\\><C-n>:RnvimrToggle<CR>", opts)
 
 -- vim.g.loaded_netrw = 1
--- vim.g.netrw_loaded_netrwPlugin = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrwPlugin = 1
 vim.g.rnvimr_enable_ex = 1
 vim.g.rnvimr_enable_picker = 1
 vim.g.rnvimr_enable_bw = 1

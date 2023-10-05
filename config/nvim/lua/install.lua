@@ -14,6 +14,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "ElPiloto/telescope-vimwiki.nvim" },
+	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "vimwiki/vimwiki" },
 
 	-- Utils

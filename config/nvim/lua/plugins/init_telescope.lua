@@ -26,9 +26,6 @@ end
 
 require("telescope").setup({
 	defaults = {
-		--[[ file_previewer = require'telescope.previewers'.cat.new,
-        grep_previewer = require'telescope.previewers'.cat.new,
-        qflist_previewer = require'telescope.previewers'.cat.new, ]]
 		buffer_previewer_maker = new_maker,
 		vimgrep_arguments = {
 			"rg",
@@ -46,24 +43,14 @@ require("telescope").setup({
 			".idea",
 			".elixis_ls",
 			"_build/",
-			"wallpapers",
-			"awesomeDE",
 		},
 		mappings = {
 			i = {
-				--[[ ["<S-Tab>"] = actions.toggle_selection +
-                    actions.move_selection_worse,
-                ["<Tab>"] = actions.toggle_selection +
-                    actions.move_selection_better, ]]
 				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous, -- otherwise, just set the mapping to the function that you want it to be.
+				["<C-k>"] = actions.move_selection_previous,
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 			},
 			n = {
-				--[[ ["<S-Tab>"] = actions.toggle_selection +
-                    actions.move_selection_worse,
-                ["<Tab>"] = actions.toggle_selection +
-                    actions.move_selection_better, ]]
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 			},
 		},
@@ -71,18 +58,14 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("vimwiki")
+require("telescope").load_extension("fzy_native")
 
-vim.api.nvim_exec(
-	[[
+vim.cmd([[
   function! MaybeTelescope()
     if argc() == 1 && isdirectory(argv()[0])
-          " Uncomment this to remove the Netrw buffer (optional)
-          execute "bdelete"
           execute "Telescope find_files"
       endif
   endfunction
 
   autocmd VimEnter * :call MaybeTelescope()
-]],
-	true
-)
+]])
