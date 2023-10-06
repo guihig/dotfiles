@@ -45,6 +45,8 @@ theme.icons = {
 	calendar = "󰃮",
 	mem = "󰍛",
 	fs = "󰋊",
+	float = "󰉈",
+	tile = "󱇙",
 }
 -- #-------- Common --------#
 theme.wallpaper = themes_path .. "default/background.png"
@@ -67,8 +69,6 @@ theme.systray_icon_spacing = dpi(4)
 theme.systray_max_rows = 1
 
 -- #-------- Wibar --------#
-theme.wibar_border_width = dpi(2)
-theme.wibar_border_color = theme.color0
 theme.wibar_opacity = 0.85
 theme.wibar_fg = theme.fg
 theme.wibar_bg = theme.bg

@@ -431,10 +431,12 @@
     backend = "glx";
     opacityRules = [
       "100:name = 'Picture-in-Picture'"
+      "100:fullscreen"
     ];
     settings = {
+      transparent-clipping = true;
       inactive-opacity-override = false;
-      frame-opacity = 0.7;
+      frame-opacity = 1.0;
       rounded-corners-exclude = [
         "window_type = 'dock'"
         "window_type = 'desktop'"
@@ -463,11 +465,6 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    # cursorTheme = {
-    #   name = "Qogir-Dark";
-    #   package = pkgs.qogir-theme;
-    #   size = 10;
-    # };
   };
 
   qt = {

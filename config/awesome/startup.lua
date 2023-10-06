@@ -22,6 +22,14 @@ client.connect_signal("property::floating", function(client)
 	end
 end)
 
+client.connect_signal("property::fullscreen", function(c)
+	if c.fullscreen then
+		c.shape = gears.shape.rectangle
+	else
+		c.shape = gears.shape.rounded_rect
+	end
+end)
+
 client.connect_signal("mouse::enter", function(client)
 	if not client.fullscreen and client.can_focus ~= false then
 		client:activate({ context = "mouse_enter", raise = false })

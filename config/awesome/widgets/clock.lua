@@ -17,7 +17,7 @@ local function init()
 		widget = wibox.widget.textbox,
 	})
 
-	local _calendar = lain.widget.cal({
+	lain.widget.cal({
 		attach_to = { icon },
 	})
 
