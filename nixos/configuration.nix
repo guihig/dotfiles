@@ -123,7 +123,7 @@
     RIGHT='DP-0'
 
     ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 1920x1080 --pos 0x738 --rotate normal \
-      --output --primary $CENTER --mode 3440x1440 --pos 1920x282 --rotate normal --rate 144.00 \
+      --output $CENTER --primary --mode 3440x1440 --pos 1920x282 --rotate normal --rate 144.00 \
       --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
   '';
 
