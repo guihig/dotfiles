@@ -151,7 +151,6 @@
     yamlfmt
     black
     nodePackages.sql-formatter
-    nodePackages.prettier
     stylish-haskell
     alejandra
     texlive.combined.scheme-full
