@@ -168,6 +168,7 @@
     terminus-nerdfont
     font-awesome
     noto-fonts
+    liberation_ttf
   ];
 
   # Enable home-manager and git

@@ -3,6 +3,7 @@ local keymap = vim.keymap
 local lua_fmt = require("formatter.filetypes.lua").stylua
 local js_fmt = require("formatter.filetypes.javascript").prettier
 local ts_fmt = require("formatter.filetypes.typescript").prettier
+local vue_fmt = require("formatter.filetypes.vue").prettier
 local sql_fmt = require("formatter.filetypes.sql").pgformat
 local py_fmt = require("formatter.filetypes.python").black
 local latex_fmt = require("formatter.filetypes.latex").latexindent
@@ -20,7 +21,7 @@ require("formatter").setup({
 		javascriptreact = { js_fmt },
 		typescript = { ts_fmt },
 		typescriptreact = { ts_fmt },
-		vue = { ts_fmt },
+		vue = { vue_fmt },
 		html = { js_fmt },
 		json = { js_fmt },
 		rasi = { js_fmt },
