@@ -151,6 +151,7 @@
     yamlfmt
     black
     nodePackages.sql-formatter
+    nodePackages.prettier
     stylish-haskell
     alejandra
     texlive.combined.scheme-full
@@ -177,6 +178,8 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+    userName = "guihig";
+    userEmail = "guiih.ig@gmail.com";
     aliases = {
       s = "status";
       a = "add";
