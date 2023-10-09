@@ -20,8 +20,6 @@ vim.cmd([[
   syntax on
 ]])
 
-vim.g.mapleader = " "
-
 -- Variables
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0

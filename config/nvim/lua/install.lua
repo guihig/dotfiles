@@ -19,6 +19,14 @@ require("lazy").setup({
 
 	-- Utils
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+	},
+	{
 		"beauwilliams/focus.nvim",
 		config = function()
 			require("focus").setup()
@@ -50,7 +58,14 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs" },
 	{ "onsails/lspkind-nvim" },
 	{ "tpope/vim-fugitive" },
-	{ "meain/vim-printer" },
+	{
+		"rareitems/printer.nvim",
+		config = function()
+			require("printer").setup({
+				keymap = "gp", -- Plugin doesn't have any keymaps by default
+			})
+		end,
+	},
 	{ "lewis6991/gitsigns.nvim" },
 	{ "j-hui/fidget.nvim", branch = "legacy" },
 	{ "vim-test/vim-test" },
@@ -69,21 +84,13 @@ require("lazy").setup({
 
 	-- SHL
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	--   { "elixir-editors/vim-elixir" }
 
 	-- LSP
 	{ "folke/neodev.nvim", opts = {} },
-	{
-		"williamboman/mason.nvim",
-	},
+	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-	{
-		"nvimdev/lspsaga.nvim",
-		config = function()
-			require("lazy_plugins.init_lspsaga")
-		end,
-	},
+	{ "nvimdev/lspsaga.nvim" },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
