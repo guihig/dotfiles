@@ -196,7 +196,6 @@
       tmx = "tmuxinator";
       vim = "nvim";
       myip = "curl -fSsL 'https://api.ipify.org?format=json' | jq \".ip\"";
-      ssh = "TERM=xterm-256color ssh";
       cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
       toclip = "xclip -selection clipboard";
       granter = "cd /home/ferreira/dev/granter/";
@@ -204,6 +203,14 @@
       ll = "exa -la";
       ip = "ip -c";
       ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
+    };
+    functions = {
+      ssh = {
+        description = "SSH with xterm-256color";
+        body = ''
+          TERM=xterm-256color command ssh $argv
+        '';
+      };
     };
     interactiveShellInit = ''
       set fish_greeting

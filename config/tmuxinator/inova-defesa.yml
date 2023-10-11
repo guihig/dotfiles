@@ -4,7 +4,9 @@ windows:
   - frontend-editor:
       root: ~/dev/granter/inova_defesa/frontend/inova-frontend
       panes:
-        - nvim .
+        - editor:
+            - nix develop
+            - nvim .
   - frontend-term:
       root: ~/dev/granter/inova_defesa/frontend/inova-frontend
       layout: even-horizontal
