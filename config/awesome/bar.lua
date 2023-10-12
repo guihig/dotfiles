@@ -2,6 +2,9 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local utils = require("utils")
+local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 -- Widgets
 local volume = require("widgets").volume
@@ -122,9 +125,11 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mysystray = systray()
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({
+	s.h_wibar = awful.wibar({
 		position = "top",
 		ontop = false,
+		margins = 3,
+		shape = gears.shape.rounded_rect,
 		screen = s,
 		widget = {
 			layout = wibox.layout.align.horizontal,
