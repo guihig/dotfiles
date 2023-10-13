@@ -124,6 +124,7 @@
           pynvim
           setuptools
           pip
+          psycopg2
         ]);
     in
       python3-with-packages)
