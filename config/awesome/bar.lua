@@ -128,7 +128,12 @@ awful.screen.connect_for_each_screen(function(s)
 	s.h_wibar = awful.wibar({
 		position = "top",
 		ontop = false,
-		margins = 3,
+		margins = {
+			top = 3,
+			left = 3,
+			right = 3,
+			bottom = 0,
+		},
 		shape = gears.shape.rounded_rect,
 		screen = s,
 		widget = {
