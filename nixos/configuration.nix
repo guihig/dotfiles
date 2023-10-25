@@ -182,6 +182,7 @@
     home-manager
     polkit_gnome
     gnome.gnome-keyring
+    gnome.file-roller
   ];
 
   sops = {
