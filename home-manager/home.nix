@@ -94,6 +94,8 @@
     nix-your-shell
     xss-lock
     slock
+    bluez
+    bluez-tools
 
     # soundsss
     pavucontrol
@@ -125,6 +127,7 @@
           setuptools
           pip
           psycopg2
+          ds4drv
         ]);
     in
       python3-with-packages)
