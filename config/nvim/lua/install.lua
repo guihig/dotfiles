@@ -80,7 +80,7 @@ require("lazy").setup({
 	},
 
 	-- Snippets
-	{ "L3MON4D3/LuaSnip", version = "v2.*" },
+	{ "L3MON4D3/LuaSnip", version = "v2.*", dependencies = { "rafamadriz/friendly-snippets" } },
 
 	-- SHL
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },

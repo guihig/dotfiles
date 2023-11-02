@@ -2,6 +2,8 @@ local cmp = require("cmp")
 local types = require("cmp.types")
 local lspkind = require("lspkind")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft == "guihua_rust" then
 	cmp.setup.buffer({ completion = { enable = false } })
 end
@@ -42,14 +44,21 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lua" },
-		{ name = "nvim_lsp", trigger_characters = { "-" } },
+		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	}, {
 		{ name = "async_path" },
 		{ name = "buffer", keyword_length = 5 },
 	}),
 	formatting = {
-		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+		format = lspkind.cmp_format({
+			with_text = false,
+			maxwidth = 50,
+			menu = {
+				buffer = "[Buf]",
+				luasnip = "[Snip]",
+			},
+		}),
 	},
 	experimental = { native_menu = false, ghost_text = false },
 })
