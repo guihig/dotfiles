@@ -96,6 +96,7 @@
     slock
     bluez
     bluez-tools
+    kazam
 
     # soundsss
     pavucontrol
