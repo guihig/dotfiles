@@ -69,7 +69,13 @@
       ferreira-pc = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/ferreira-pc/configuration.nix
+        ];
+      };
+      granter-pc = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/granter-pc/configuration.nix
         ];
       };
     };
@@ -81,7 +87,14 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix
+          ./home/ferreira-pc
+        ];
+      };
+      "ferreira@granter-pc" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home/granter-pc
         ];
       };
     };

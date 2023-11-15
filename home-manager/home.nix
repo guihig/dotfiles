@@ -59,6 +59,7 @@
     discord
     mailspring
     steam
+    lutris
 
     # System utilities
     htop
