@@ -17,7 +17,9 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ../commons/packages.nix
+    ../commons/pkgs/essential.nix
+    ../commons/pkgs/system.nix
+    ../commons/pkgs/code.nix
     ../commons/ui.nix
     ../commons/git.nix
     ../commons/ssh.nix
