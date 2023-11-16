@@ -1,4 +1,4 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p bash
 
-home-manager switch --flake .#ferreira@ferreira-pc
+home-manager switch --flake .#$USER@$HOSTNAME

@@ -85,5 +85,19 @@ screen.connect_signal("request::wallpaper", function(s)
 				},
 			},
 		})
+	else
+		awful.wallpaper({
+			screen = s,
+			widget = {
+				image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/zaindul_mountains.png",
+				upscale = false,
+				downscale = true,
+				valign = "center",
+				halign = "center",
+				horizontal_fit_policy = "fit",
+				vertical_fit_policy = "auto",
+				widget = wibox.widget.imagebox,
+			},
+		})
 	end
 end)
