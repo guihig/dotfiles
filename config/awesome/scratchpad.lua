@@ -28,7 +28,7 @@ end)
 
 M.telegram_scratch = bling.module.scratchpad({
 	command = apps.telegram,
-	rule = { class = "telegram-desktop" },
+	rule = { name = "Telegram" },
 	sticky = false,
 	autoclose = false,
 	floating = true,
@@ -50,7 +50,7 @@ end)
 
 M.whatsapp_scratch = bling.module.scratchpad({
 	command = apps.whatsapp,
-	rule = { class = "whatsapp-for-linux" },
+	rule = { name = "WhatsApp for Linux" },
 	sticky = false,
 	autoclose = false,
 	floating = true,
