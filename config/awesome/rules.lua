@@ -35,7 +35,6 @@ ruled.client.connect_signal("request::rules", function()
 				"Spotify",
 				"spotify",
 				"telegram-desktop",
-				"Mailspring",
 				"Slack",
 				"Rocket.Chat",
 				"gnome-calendar",

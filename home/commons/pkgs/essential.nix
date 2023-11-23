@@ -4,7 +4,6 @@
     google-chrome
     spotify
     discord
-    mailspring
     whatsapp-for-linux
     telegram-desktop
     zathura

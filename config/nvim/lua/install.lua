@@ -58,6 +58,7 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs" },
 	{ "onsails/lspkind-nvim" },
 	{ "tpope/vim-fugitive" },
+	{ "akinsho/git-conflict.nvim" },
 	{
 		"rareitems/printer.nvim",
 		config = function()

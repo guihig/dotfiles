@@ -4,4 +4,8 @@ require("lspsaga").setup({
 	definition = { keys = { quit = "<ESC>" } },
 	diagnostic = { max_height = 0.8, keys = { quit = "<ESC>" } },
 	rename = { keys = { quit = "<ESC>" } },
+	lightbulb = {
+		sign = false,
+		virtual_text = true,
+	},
 })

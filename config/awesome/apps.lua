@@ -7,7 +7,6 @@ M.flameshot = "flameshot gui"
 M.telegram = "telegram-desktop"
 M.whatsapp = "whatsapp-for-linux"
 M.lockscreen = "slock"
-M.mailspring = "mailspring"
 M.spotify = "spotify"
 M.launcher =
 	"rofi -modi drun,run,ssh -show drun -matching fuzzy -show-icons -drun-icon-theme -lines 20 -padding 25 -width 30 -columns 1"

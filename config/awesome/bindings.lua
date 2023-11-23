@@ -297,7 +297,4 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ keys.mod }, "s", function()
 		scratchpad.spotify_scratch:toggle()
 	end, { description = "spotify scratchpad", group = "scratchpad" }),
-	awful.key({ keys.mod }, "r", function()
-		scratchpad.mailspring_scratch:toggle()
-	end, { description = "mailspring scratchpad", group = "scratchpad" }),
 })
