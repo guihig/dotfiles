@@ -45,7 +45,6 @@ ruled.client.connect_signal("request::rules", function()
 				"JetBrains Toolbox",
 				"Discord Updater",
 				"splash",
-				"WhatsApp for Linux",
 				"Telegram",
 			},
 			role = { "pop-up" },

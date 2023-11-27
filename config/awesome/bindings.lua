@@ -291,9 +291,6 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ keys.mod }, "d", function()
 		scratchpad.telegram_scratch:toggle()
 	end, { description = "telegram scratchpad", group = "scratchpad" }),
-	awful.key({ keys.mod }, "e", function()
-		scratchpad.whatsapp_scratch:toggle()
-	end, { description = "telegram scratchpad", group = "scratchpad" }),
 	awful.key({ keys.mod }, "s", function()
 		scratchpad.spotify_scratch:toggle()
 	end, { description = "spotify scratchpad", group = "scratchpad" }),
