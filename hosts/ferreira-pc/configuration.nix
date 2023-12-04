@@ -119,12 +119,12 @@
   };
 
   services.xserver.displayManager.setupCommands = ''
-    LEFT='HDMI-0'
-    CENTER='DP-2'
-    RIGHT='DP-0'
+    LEFT='DP-4'
+    CENTER='DP-0'
+    RIGHT='DP-2'
 
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --primary --mode 1920x1080 --pos 0x738 --rotate normal \
-      --output $CENTER --mode 3440x1440 --pos 1920x282 --rotate normal --rate 144.00 \
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 3440x1440 --pos 0x358 --rotate normal \
+      --output $CENTER --primary --mode 1920x1080 --pos 3440x538 --rotate normal \
       --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
   '';
 
