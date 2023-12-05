@@ -1,6 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local naughty = require("naughty")
 
 local M = { placement = {} }
 
@@ -28,6 +29,14 @@ M.handle_master_count = function()
 	else
 		t.master_count = 1
 	end
+end
+
+M.log = function(title, message)
+	naughty.notification({
+		urgency = "info",
+		title = tostring(title),
+		message = tostring(message),
+	})
 end
 
 return M
