@@ -220,15 +220,15 @@ client.connect_signal("request::default_keybindings", function()
 			c:kill()
 		end, { description = "close", group = "client" }),
 		awful.key({ keys.mod, keys.shift }, "h", function(c)
-			local idx = c.screen.index
-			c:move_to_screen(screen[idx - 1])
+			local previous_screen = c.screen:get_next_in_direction("left")
+			c:move_to_screen(previous_screen)
 		end, {
 			description = "move client to the previous screen",
 			group = "screen",
 		}),
 		awful.key({ keys.mod, keys.shift }, "l", function(c)
-			local idx = c.screen.index
-			c:move_to_screen(screen[idx + 1])
+			local next_screen = c.screen:get_next_in_direction("right")
+			c:move_to_screen(next_screen)
 		end, { description = "move client to the next screen", group = "screen" }),
 		awful.key({
 			modifiers = { keys.mod, keys.shift },
