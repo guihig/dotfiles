@@ -42,6 +42,9 @@
     alsa-utils
     vlc
 
+    # Codecs
+    ffmpeg
+
     # Networking
     openfortivpn
     networkmanagerapplet
