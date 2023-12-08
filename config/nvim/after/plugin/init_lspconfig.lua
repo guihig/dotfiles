@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
+local mason_path = require("mason-core.path")
 
 require("neodev").setup({
 	override = function(root_dir, library)
@@ -28,9 +29,29 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
+local handlers = {
+	lsp_zero.default_setup,
+	["tsserver"] = function()
+		require("lspconfig").tsserver.setup({
+			flags = { debounce_text_changes = 50 },
+		})
+	end,
+	["elixirls"] = function()
+		require("lspconfig").elixirls.setup({
+			cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
+		})
+	end,
+	["jsonls"] = function()
+		require("lspconfig").jsonls.setup({
+			filetypes = { "json" },
+		})
+	end,
+}
+
 require("mason").setup({
 	PATH = "append",
 })
+
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
@@ -46,19 +67,7 @@ require("mason-lspconfig").setup({
 		"rnix",
 		"unocss",
 	},
-	handlers = {
-		lsp_zero.default_setup,
-		tsserver = function()
-			require("lspconfig").tsserver.setup({
-				flags = { debounce_text_changes = 50 },
-			})
-		end,
-		jsonls = function()
-			require("lspconfig").jsonls.setup({
-				filetypes = { "json" },
-			})
-		end,
-	},
+	handlers = handlers,
 })
 
 -- Manual servers cfgs
