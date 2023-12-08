@@ -10,7 +10,6 @@
     gcc
     gnumake
     lua
-    elixir
     nodejs
     tree-sitter
     luaPackages.luarocks
