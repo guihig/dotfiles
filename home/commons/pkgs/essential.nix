@@ -6,5 +6,6 @@
     discord
     telegram-desktop
     zathura
+    gimp
   ];
 }
