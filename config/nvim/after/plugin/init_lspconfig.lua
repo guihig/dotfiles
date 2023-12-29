@@ -2,6 +2,7 @@ local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
+local utils = require("utils")
 
 require("neodev").setup({
 	override = function(root_dir, library)
@@ -28,6 +29,17 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
+
+local additional_capabilities = {
+	workspace = {
+		didChangeWatchedFiles = {
+			dynamicRegistration = true,
+		},
+	},
+}
+lsp_zero.set_server_config({
+	capabilities = additional_capabilities,
+})
 
 local handlers = {
 	lsp_zero.default_setup,
