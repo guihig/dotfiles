@@ -27,6 +27,7 @@
     jetbrains.pycharm-professional
     docker-compose
     postgresql_13
+    insomnia
 
     # Lsps
     lua-language-server
