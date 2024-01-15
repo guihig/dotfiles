@@ -122,9 +122,9 @@
   };
 
   services.xserver.displayManager.setupCommands = ''
-    LEFT='DP-0'
+    LEFT='DP-2'
     CENTER='DP-4'
-    RIGHT='DP-2'
+    RIGHT='DP-0'
 
     ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 3440x1440 --rate 144 --pos 0x358 --rotate normal  \
       --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 3440x538 --dpi 102 --rotate normal \
