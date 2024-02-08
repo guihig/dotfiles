@@ -1,4 +1,4 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p bash
 
-home-manager switch -b backup --flake .#$USER@$HOSTNAME
+home-manager switch --flake .#$USER@$HOSTNAME
