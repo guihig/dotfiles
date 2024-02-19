@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
-local utils = require("utils")
+-- local utils = require("utils")
 
 require("neodev").setup({
 	override = function(root_dir, library)
