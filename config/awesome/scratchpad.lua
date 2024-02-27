@@ -50,7 +50,7 @@ end)
 
 M.spotify_scratch = bling.module.scratchpad({
 	command = apps.spotify,
-	rule = { name = "Spotify" },
+	rule = { class = "Spotify" },
 	sticky = false,
 	autoclose = false,
 	floating = true,
