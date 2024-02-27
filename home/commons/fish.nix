@@ -12,8 +12,8 @@
       cowalert = "xcowsay --monitor 1 comando: \" $(history | tail -n1 | grep -oP '\''(?<=  )[^;]++'\'' | head -n1) \" acabou ";
       toclip = "xclip -selection clipboard";
       granter = "cd /home/ferreira/dev/granter/";
-      ls = "exa";
-      ll = "exa -la";
+      ls = "eza";
+      ll = "eza -la";
       ip = "ip -c";
       ciasc-vpn = "sudo openfortivpn sslvpn01.ciasc.gov.br:443 --username=granter_gferreira@vpn.ciasc.gov.br";
     };

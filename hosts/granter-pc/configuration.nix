@@ -191,7 +191,7 @@
   users.users = {
     ferreira = {
       isNormalUser = true;
-      passwordFile = config.sops.secrets."passwd/ferreira".path;
+      hashedPasswordFile = config.sops.secrets."passwd/ferreira".path;
       shell = pkgs.fish;
       description = "CABECA";
       extraGroups = ["networkmanager" "wheel" "docker"];
@@ -267,5 +267,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
 }
+  system.stateVersion = "23.11";
