@@ -5,7 +5,7 @@
     fade = true;
     fadeSteps = [0.1 0.1];
     shadow = true;
-    shadowOffsets = [(-7) (-7)];
+    shadowOffsets = [(-2) (-2)];
     shadowExclude = [
       "name = 'Notification'"
       "class_g = 'Conky'"
@@ -39,7 +39,7 @@
       "100:fullscreen"
     ];
     settings = {
-      transparent-clipping = true;
+      transparent-clipping = false;
       inactive-opacity-override = false;
       frame-opacity = 1.0;
       rounded-corners-exclude = [
