@@ -4,7 +4,6 @@ require("lazy").setup({
 
 	-- UI
 	{ "nvim-tree/nvim-web-devicons" },
-	{ "noib3/nvim-cokeline" },
 	{ "hoob3rt/lualine.nvim" },
 
 	-- FS

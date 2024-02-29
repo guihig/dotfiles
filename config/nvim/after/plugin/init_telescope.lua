@@ -9,7 +9,7 @@ local keymap_opts = { noremap = true }
 keymap.set("n", "<leader>p", "<cmd>Telescope find_files<CR>", keymap_opts)
 keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<CR>", keymap_opts)
 keymap.set("n", "<C-f>", "<cmd>Telescope live_grep<CR>", keymap_opts)
-keymap.set("n", "<C-b>", "<cmd>Telescope buffers<CR>", keymap_opts)
+keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", keymap_opts)
 
 local new_maker = function(filepath, bufnr, opts)
 	opts = opts or {}

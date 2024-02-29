@@ -59,7 +59,7 @@ _M.reload_lua = function()
 end
 
 _M.reload_nvim = function()
-	vim.cmd([[source "~/.config/nvim/init.lua"]], true)
+	vim.cmd([[source "~/.config/nvim/init.lua"]])
 	_M.reload_lua()
 	vim.cmd("e")
 

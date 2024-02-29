@@ -8,7 +8,7 @@ local volume = {}
 local function init()
 	alsabar.bar:buttons(awful.util.table.join(
 		awful.button({}, 1, function() -- left click
-			awful.spawn(string.format("%s -e alsamixer", "alacritty"))
+			awful.spawn(string.format("%s -e alsamixer", "kitty"))
 		end),
 		awful.button({}, 2, function() -- middle click
 			os.execute(string.format("%s set %s 85%%", alsabar.cmd, alsabar.channel))
