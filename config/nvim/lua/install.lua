@@ -37,10 +37,32 @@ require("lazy").setup({
 	{ "simeji/winresizer" },
 	{ "psliwka/vim-smoothie" },
 	{ "tversteeg/registers.nvim" },
+	{ "rcarriga/nvim-notify" },
 	{
 		"iamcco/markdown-preview.nvim",
 		build = function()
 			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
 		end,
 	},
 
@@ -51,6 +73,7 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
+	{ "wfxr/minimap.vim" },
 	{ "jidn/vim-dbml" },
 	{ "tpope/vim-surround" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -59,7 +82,14 @@ require("lazy").setup({
 	{ "onsails/lspkind-nvim" },
 	{ "tpope/vim-fugitive" },
 	{ "akinsho/git-conflict.nvim" },
-	{ "meain/vim-printer" },
+	{
+		"rareitems/printer.nvim",
+		config = function()
+			require("printer").setup({
+				keymap = "gp", -- Plugin doesn't have any keymaps by default
+			})
+		end,
+	},
 	{ "lewis6991/gitsigns.nvim" },
 	{ "j-hui/fidget.nvim", branch = "legacy" },
 	{ "vim-test/vim-test" },
