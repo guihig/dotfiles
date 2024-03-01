@@ -1,4 +1,11 @@
 {pkgs, ...}: {
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.qogir-theme;
+    name = "Qogir";
+  };
+
   gtk = {
     enable = true;
     gtk3 = {

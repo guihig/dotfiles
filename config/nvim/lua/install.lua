@@ -59,14 +59,7 @@ require("lazy").setup({
 	{ "onsails/lspkind-nvim" },
 	{ "tpope/vim-fugitive" },
 	{ "akinsho/git-conflict.nvim" },
-	{
-		"rareitems/printer.nvim",
-		config = function()
-			require("printer").setup({
-				keymap = "gp", -- Plugin doesn't have any keymaps by default
-			})
-		end,
-	},
+	{ "meain/vim-printer" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "j-hui/fidget.nvim", branch = "legacy" },
 	{ "vim-test/vim-test" },

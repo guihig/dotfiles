@@ -11,7 +11,7 @@
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
+    outputs.homeManagerModules.helpers
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -50,14 +50,16 @@
   };
 
   home = {
-    username = "ferreira";
-    homeDirectory = "/home/ferreira";
-    pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
-      package = pkgs.qogir-theme;
-      name = "Qogir";
+    username = lib.mkDefault "ferreira";
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    sessionPath = ["$HOME/.local/bin"];
+    sessionVariables = {
+      TERMINAL = "kitty";
+      EDITOR = "nvim";
+      BROWSER = "firefox";
     };
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = lib.mkDefault "23.05";
   };
 
   # Enable home-manager
@@ -65,7 +67,4 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
 }
