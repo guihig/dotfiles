@@ -28,6 +28,7 @@
     docker-compose
     postgresql_13
     insomnia
+    code-minimap
 
     # Lsps
     lua-language-server

@@ -1,1 +1,3 @@
-require("hardtime").setup()
+require("hardtime").setup({
+	max_count = 10,
+})

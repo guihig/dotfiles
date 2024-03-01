@@ -26,12 +26,12 @@ require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 	},
-	{
-		"beauwilliams/focus.nvim",
-		config = function()
-			require("focus").setup()
-		end,
-	},
+	-- {
+	-- 	"beauwilliams/focus.nvim",
+	-- 	config = function()
+	-- 		require("focus").setup()
+	-- 	end,
+	-- },
 	{ "famiu/bufdelete.nvim" },
 	{ "ggandor/lightspeed.nvim", dependencies = { "tpope/vim-repeat", opt = true } },
 	{ "simeji/winresizer" },
