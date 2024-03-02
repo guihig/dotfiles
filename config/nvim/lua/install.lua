@@ -26,15 +26,9 @@ require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 	},
-	-- {
-	-- 	"beauwilliams/focus.nvim",
-	-- 	config = function()
-	-- 		require("focus").setup()
-	-- 	end,
-	-- },
 	{ "famiu/bufdelete.nvim" },
 	{ "ggandor/lightspeed.nvim", dependencies = { "tpope/vim-repeat", opt = true } },
-	{ "simeji/winresizer" },
+	{ "mrjones2014/smart-splits.nvim" },
 	{ "psliwka/vim-smoothie" },
 	{ "tversteeg/registers.nvim" },
 	{ "rcarriga/nvim-notify" },
@@ -73,7 +67,6 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
-	{ "wfxr/minimap.vim" },
 	{ "jidn/vim-dbml" },
 	{ "tpope/vim-surround" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
