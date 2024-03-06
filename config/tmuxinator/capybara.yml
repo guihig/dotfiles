@@ -1,0 +1,35 @@
+name: capybara
+root: ~/dev/granter/capybara/
+windows:
+  - frontend-editor:
+      root: ~/dev/granter/capybara/frontend
+      panes:
+        - editor:
+            - nix develop
+            - nvim .
+  - frontend-term:
+      root: ~/dev/granter/capybara/frontend
+      layout: even-horizontal
+      panes:
+        - yarn:
+            - nix develop
+            - pnpm dev
+        - git:
+            - nix develop
+            - git status
+  - backend-editor:
+      root: ~/dev/granter/capybara/backend
+      panes:
+        - editor:
+            - nix develop
+            - nvim .
+  - backend-term:
+      root: ~/dev/granter/capybara/backend
+      layout: even-horizontal
+      panes:
+        - phx_server:
+            - nix develop
+            - MIX_ENV=dev mix phx.server
+        - git:
+            - nix develop
+            - git status
