@@ -30,17 +30,6 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
-local additional_capabilities = {
-	workspace = {
-		didChangeWatchedFiles = {
-			dynamicRegistration = true,
-		},
-	},
-}
-lsp_zero.set_server_config({
-	capabilities = additional_capabilities,
-})
-
 local handlers = {
 	lsp_zero.default_setup,
 	["tsserver"] = function()
@@ -56,6 +45,17 @@ local handlers = {
 	["jsonls"] = function()
 		require("lspconfig").jsonls.setup({
 			filetypes = { "json" },
+		})
+	end,
+	["volar"] = function()
+		require("lspconfig").volar.setup({
+			capabilities = {
+				workspace = {
+					didChangeWatchedFiles = {
+						dynamicRegistration = true,
+					},
+				},
+			},
 		})
 	end,
 }
@@ -77,7 +77,6 @@ require("mason-lspconfig").setup({
 		"yamlls",
 		"rust_analyzer",
 		"rnix",
-		"unocss",
 	},
 	handlers = handlers,
 })
