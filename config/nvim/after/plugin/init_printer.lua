@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 
 require("printer").setup({
+	keymap = "gp",
 	behavior = "insert_below",
 	formatters = {
 		elixir = function(text_inside, text_var)
