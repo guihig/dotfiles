@@ -71,6 +71,8 @@ require("mason-lspconfig").setup({
 		"elixirls",
 		"jsonls",
 		"tsserver",
+		"eslint",
+		"cssls",
 		"pyright",
 		"sqlls",
 		"volar",
