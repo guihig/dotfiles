@@ -49,6 +49,7 @@ local handlers = {
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 			capabilities = {
 				workspace = {
 					didChangeWatchedFiles = {
@@ -70,7 +71,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"elixirls",
 		"jsonls",
-		"tsserver",
+		-- "tsserver",
 		"eslint",
 		"cssls",
 		"pyright",
