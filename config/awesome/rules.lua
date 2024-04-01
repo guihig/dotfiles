@@ -52,17 +52,6 @@ ruled.client.connect_signal("request::rules", function()
 		properties = { floating = true, placement = utils.placement.centered },
 	})
 
-	ruled.client.append_rule({
-		id = "calendar",
-		rule = { class = "gnome-calendar" },
-		properties = {
-			floating = true,
-			placement = utils.placement.centered,
-			width = 640,
-			height = 480,
-		},
-	})
-
 	-- Set Firefox to always map on the tag named "1" on screen 1.
 	ruled.client.append_rule({
 		rule = { class = "firefox" },
