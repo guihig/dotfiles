@@ -32,11 +32,20 @@ end)
 
 local handlers = {
 	lsp_zero.default_setup,
-	["tsserver"] = function()
-		require("lspconfig").tsserver.setup({
-			flags = { debounce_text_changes = 50 },
-		})
-	end,
+	-- ["tsserver"] = function()
+	-- 	require("lspconfig").tsserver.setup({
+	-- 		init_options = {
+	-- 			plugins = {
+	-- 				{
+	-- 					name = "@vue/typescript-plugin",
+	-- 					location = vue_language_server_path,
+	-- 					languages = { "vue" },
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	-- 	})
+	-- end,
 	["elixirls"] = function()
 		require("lspconfig").elixirls.setup({
 			cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
@@ -49,14 +58,23 @@ local handlers = {
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-			capabilities = {
-				workspace = {
-					didChangeWatchedFiles = {
-						dynamicRegistration = true,
-					},
+			filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+			init_options = {
+				vue = {
+					hybridMode = false,
+				},
+				typescript = {
+					tsdk = vim.fn.getcwd() .. "node_modules/typescript",
 				},
 			},
+			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+			-- capabilities = {
+			-- 	workspace = {
+			-- 		didChangeWatchedFiles = {
+			-- 			dynamicRegistration = true,
+			-- 		},
+			-- 	},
+			-- },
 		})
 	end,
 }
