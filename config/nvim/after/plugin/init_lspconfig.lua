@@ -2,7 +2,8 @@ local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
--- local utils = require("utils")
+
+local vue_language_server_path = mason_path.package_prefix() .. "/vue-language-server/node_modules/@vue/language-server"
 
 require("neodev").setup({
 	override = function(root_dir, library)
@@ -32,20 +33,20 @@ end)
 
 local handlers = {
 	lsp_zero.default_setup,
-	-- ["tsserver"] = function()
-	-- 	require("lspconfig").tsserver.setup({
-	-- 		init_options = {
-	-- 			plugins = {
-	-- 				{
-	-- 					name = "@vue/typescript-plugin",
-	-- 					location = vue_language_server_path,
-	-- 					languages = { "vue" },
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-	-- 	})
-	-- end,
+	["tsserver"] = function()
+		require("lspconfig").tsserver.setup({
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "vue" },
+					},
+				},
+			},
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+		})
+	end,
 	["elixirls"] = function()
 		require("lspconfig").elixirls.setup({
 			cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
@@ -58,23 +59,14 @@ local handlers = {
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
-			filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
 			init_options = {
 				vue = {
 					hybridMode = false,
 				},
 				typescript = {
-					tsdk = vim.fn.getcwd() .. "node_modules/typescript",
+					tsdk = vim.fn.getcwd() .. "node_modules/typescript/lib",
 				},
 			},
-			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-			-- capabilities = {
-			-- 	workspace = {
-			-- 		didChangeWatchedFiles = {
-			-- 			dynamicRegistration = true,
-			-- 		},
-			-- 	},
-			-- },
 		})
 	end,
 }
@@ -89,7 +81,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"elixirls",
 		"jsonls",
-		-- "tsserver",
+		"tsserver",
 		"eslint",
 		"cssls",
 		"pyright",

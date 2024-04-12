@@ -43,7 +43,8 @@ screen.connect_signal("request::wallpaper", function(s)
 		awful.wallpaper({
 			screen = s,
 			widget = {
-				image = gears.filesystem.get_xdg_config_home() .. "/wallpapers/forest_house.jpg",
+				image = gears.filesystem.get_xdg_config_home()
+					.. "/wallpapers/2024_Into_the_Light_Press_Kit_Cinematics_COMPRESSED_003.jpg",
 				upscale = false,
 				downscale = true,
 				valign = "center",
