@@ -3,7 +3,7 @@ local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
 
-local vue_language_server_path = mason_path.package_prefix() .. "/vue-language-server/node_modules/@vue/language-server"
+-- local vue_language_server_path = mason_path.package_prefix() .. "/vue-language-server/node_modules/@vue/language-server"
 
 require("neodev").setup({
 	override = function(root_dir, library)
@@ -33,20 +33,20 @@ end)
 
 local handlers = {
 	lsp_zero.default_setup,
-	["tsserver"] = function()
-		require("lspconfig").tsserver.setup({
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = vue_language_server_path,
-						languages = { "vue" },
-					},
-				},
-			},
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-		})
-	end,
+	-- ["tsserver"] = function()
+	-- 	require("lspconfig").tsserver.setup({
+	-- 		init_options = {
+	-- 			plugins = {
+	-- 				{
+	-- 					name = "@vue/typescript-plugin",
+	-- 					location = vue_language_server_path,
+	-- 					languages = { "vue" },
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+	-- 	})
+	-- end,
 	["elixirls"] = function()
 		require("lspconfig").elixirls.setup({
 			cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
