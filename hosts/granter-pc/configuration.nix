@@ -117,7 +117,7 @@
     exportConfiguration = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
 
   hardware.opengl = {
     enable = true;

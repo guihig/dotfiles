@@ -131,7 +131,7 @@
       --output $RIGHT --mode 1920x1080 --pos 5360x0 --rotate right
   '';
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
 
   hardware.opengl = {
     enable = true;
