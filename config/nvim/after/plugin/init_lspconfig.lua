@@ -2,8 +2,7 @@ local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
-
--- local vue_language_server_path = mason_path.package_prefix() .. "/vue-language-server/node_modules/@vue/language-server"
+-- local utils = require("utils")
 
 require("neodev").setup({
 	override = function(root_dir, library)
@@ -44,7 +43,7 @@ local handlers = {
 	-- 				},
 	-- 			},
 	-- 		},
-	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 	-- 	})
 	-- end,
 	["elixirls"] = function()
@@ -59,6 +58,7 @@ local handlers = {
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
+			filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
 			init_options = {
 				vue = {
 					hybridMode = false,
@@ -67,6 +67,14 @@ local handlers = {
 					tsdk = vim.fn.getcwd() .. "node_modules/typescript/lib",
 				},
 			},
+			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+			-- capabilities = {
+			-- 	workspace = {
+			-- 		didChangeWatchedFiles = {
+			-- 			dynamicRegistration = true,
+			-- 		},
+			-- 	},
+			-- },
 		})
 	end,
 }
@@ -81,7 +89,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"elixirls",
 		"jsonls",
-		"tsserver",
+		-- "tsserver",
 		"eslint",
 		"cssls",
 		"pyright",
