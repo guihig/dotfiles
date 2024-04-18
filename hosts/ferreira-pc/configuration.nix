@@ -128,7 +128,7 @@
 
     ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 3440x1440 --rate 144 --pos 0x358 --rotate normal  \
       --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 3440x180 --dpi 102 --rotate normal \
-      --output $RIGHT --mode 1920x1080 --pos 5360x180 --rotate right
+      --output $RIGHT --mode 1920x1080 --pos 5360x180 --rotate normal
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_6_8;
