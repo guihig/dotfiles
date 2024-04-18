@@ -201,6 +201,7 @@
 
   sops = {
     age.sshKeyPaths = ["/etc/ssh/id_ed25519"];
+    age.keyFile = "/home/ferreira/.config/sops/age/keys.txt";
     defaultSopsFile = ../../secrets/common/secrets.yaml;
 
     secrets."passwd/ferreira" = {
@@ -264,6 +265,10 @@
     xss-lock = {
       enable = true;
       lockerCommand = "${pkgs.slock}/bin/slock";
+    };
+
+    ssh = {
+      startAgent = true;
     };
   };
 
