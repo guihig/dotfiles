@@ -28,9 +28,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Sops
-    sops-nix = {
-      url = "github:Mic92/sops-nix/97889b4da4f45a4c1a3a3014d96aae8789f151a9";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
