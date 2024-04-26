@@ -59,6 +59,7 @@ require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 	},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
 	-- Code
 	{

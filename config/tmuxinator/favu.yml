@@ -21,7 +21,7 @@ windows:
       root: ~/dev/granter/flowtify/backend/flowtify-backend
       panes:
         - editor:
-            - nix develop
+            - nix develop .#test
             - nvim .
   - backend-term:
       root: ~/dev/granter/flowtify/backend/flowtify-backend
