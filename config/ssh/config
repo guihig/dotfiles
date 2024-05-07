@@ -69,3 +69,10 @@ Host flowtify_bastion
     LocalForward 3000 grafana.service.consul:3000
     LocalForward 5433 flowtify-demo.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
     LocalForward 5434 flowtify-prod.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
+
+Host rbov
+    HostName 18.228.26.81
+    User guihig
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/id_rsa
+    LocalForward 5535 localhost:5432
