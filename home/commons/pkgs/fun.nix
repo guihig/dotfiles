@@ -3,7 +3,7 @@
     steam
     wineWowPackages.stable
     winetricks
-    ferium
+    unstable.wowup-cf
     (lutris.override {
       extraPkgs = pkgs: [
         # List package dependencies here
