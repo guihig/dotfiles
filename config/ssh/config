@@ -67,8 +67,8 @@ Host flowtify_bastion
     LocalForward 4646 nomad.service.consul:4646
     LocalForward 9090 prometheus.service.consul:9090
     LocalForward 3000 grafana.service.consul:3000
-    LocalForward 5433 flowtify-demo.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
-    LocalForward 5434 flowtify-prod.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
+    LocalForward 5533 flowtify-demo.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
+    LocalForward 5534 flowtify-prod.c3yty0cpxryt.sa-east-1.rds.amazonaws.com:5432
 
 Host rbov
     HostName 18.228.26.81
