@@ -120,6 +120,13 @@ require("lazy").setup({
 		},
 	},
 	{ "neovim/nvim-lspconfig" },
+	{
+		"dmmulroy/ts-error-translator.nvim",
+		config = true,
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+	},
+	{ "b0o/schemastore.nvim" },
+	{ "catgoose/vue-goto-definition.nvim" },
 
 	-- Formatter
 	{ "mhartington/formatter.nvim" },

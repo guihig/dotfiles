@@ -30,22 +30,22 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
+local tsdk = function()
+	return vim.fn.getcwd() .. "/node_modules/typescript/lib"
+end
+
 local handlers = {
 	lsp_zero.default_setup,
-	-- ["tsserver"] = function()
-	-- 	require("lspconfig").tsserver.setup({
-	-- 		init_options = {
-	-- 			plugins = {
-	-- 				{
-	-- 					name = "@vue/typescript-plugin",
-	-- 					location = vue_language_server_path,
-	-- 					languages = { "vue" },
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-	-- 	})
-	-- end,
+	["tsserver"] = function()
+		require("lspconfig").tsserver.setup({
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+			init_options = {
+				typescript = {
+					tsdk = tsdk(),
+				},
+			},
+		})
+	end,
 	["elixirls"] = function()
 		require("lspconfig").elixirls.setup({
 			cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
@@ -54,17 +54,45 @@ local handlers = {
 	["jsonls"] = function()
 		require("lspconfig").jsonls.setup({
 			filetypes = { "json" },
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas({
+						select = {
+							"package.json",
+							".eslintrc",
+							"tsconfig.json",
+						},
+					}),
+					validate = { enable = true },
+				},
+			},
+		})
+	end,
+	["cssls"] = function()
+		require("lspconfig").jsonls.setup({
+			filetypes = { "css", "scss", "less", "sass", "vue" },
+			settings = {
+				css = { validate = true, lint = {
+					unknownAtRules = "ignore",
+				} },
+				scss = { validate = true, lint = {
+					unknownAtRules = "ignore",
+				} },
+				less = { validate = true, lint = {
+					unknownAtRules = "ignore",
+				} },
+			},
 		})
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
-			filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+			filetypes = { "vue" },
 			init_options = {
 				vue = {
 					hybridMode = false,
 				},
 				typescript = {
-					tsdk = vim.fn.getcwd() .. "node_modules/typescript/lib",
+					tsdk = tsdk(),
 				},
 			},
 			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
@@ -89,15 +117,16 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"elixirls",
 		"jsonls",
-		-- "tsserver",
+		"tsserver",
 		"eslint",
 		"cssls",
 		"pyright",
 		"sqlls",
 		"volar",
 		"yamlls",
+		"cssmodules_ls",
 		"rust_analyzer",
-		"rnix",
+		"nil_ls",
 	},
 	handlers = handlers,
 })
