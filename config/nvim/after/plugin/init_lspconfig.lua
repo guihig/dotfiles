@@ -24,8 +24,8 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set({ "n", "v" }, "<leader>a", "<cmd>Lspsaga code_action<cr>", opts)
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
 	keymap.set("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<cr>", opts)
-	keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-	keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+	keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+	keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
@@ -53,7 +53,6 @@ local handlers = {
 	end,
 	["jsonls"] = function()
 		require("lspconfig").jsonls.setup({
-			filetypes = { "json" },
 			settings = {
 				json = {
 					schemas = require("schemastore").json.schemas({
@@ -69,7 +68,7 @@ local handlers = {
 		})
 	end,
 	["cssls"] = function()
-		require("lspconfig").jsonls.setup({
+		require("lspconfig").cssls.setup({
 			filetypes = { "css", "scss", "less", "sass", "vue" },
 			settings = {
 				css = { validate = true, lint = {
