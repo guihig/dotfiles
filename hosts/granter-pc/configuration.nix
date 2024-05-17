@@ -245,6 +245,10 @@
       enable = true;
       lockerCommand = "${pkgs.slock}/bin/slock";
     };
+
+    ssh = {
+      startAgent = true;
+    };
   };
 
   # Create fonts dir
@@ -267,5 +271,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-}
   system.stateVersion = "23.11";
+}

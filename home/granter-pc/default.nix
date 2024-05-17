@@ -18,6 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ../commons/pkgs/essential.nix
+    ../commons/pkgs/fun.nix
     ../commons/pkgs/system.nix
     ../commons/pkgs/code.nix
     ../commons/ui.nix
