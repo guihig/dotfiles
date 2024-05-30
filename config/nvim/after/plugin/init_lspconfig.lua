@@ -86,6 +86,7 @@ local handlers = {
 	["volar"] = function()
 		require("lspconfig").volar.setup({
 			filetypes = { "vue" },
+			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 			init_options = {
 				vue = {
 					hybridMode = false,
@@ -94,14 +95,13 @@ local handlers = {
 					tsdk = tsdk(),
 				},
 			},
-			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-			-- capabilities = {
-			-- 	workspace = {
-			-- 		didChangeWatchedFiles = {
-			-- 			dynamicRegistration = true,
-			-- 		},
-			-- 	},
-			-- },
+			capabilities = {
+				workspace = {
+					didChangeWatchedFiles = {
+						dynamicRegistration = true,
+					},
+				},
+			},
 		})
 	end,
 }
