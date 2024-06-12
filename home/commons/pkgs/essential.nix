@@ -6,6 +6,7 @@
     discord
     telegram-desktop
     zathura
+    libreoffice
     gimp
   ];
 }
