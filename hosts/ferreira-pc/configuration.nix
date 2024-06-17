@@ -105,25 +105,15 @@
     defaultSession = "hyprland";
   };
 
-  # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
     displayManager = {
-      # lightdm = {
-      #   enable = true;
-      #   greeters.gtk.enable = true;
-      # };
       gdm = {
         enable = true;
         wayland = true;
       };
     };
-    # windowManager.awesome = {
-    #   enable = true;
-    #   package = pkgs.awesome-git;
-    #   luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
-    # };
     xkb = {
       layout = "us";
       variant = "intl";
@@ -132,21 +122,9 @@
   };
 
   programs.hyprland = {
-    # Install the packages from nixpkgs
     enable = true;
-    # Whether to enable XWayland
     xwayland.enable = true;
   };
-
-  services.xserver.displayManager.setupCommands = ''
-    LEFT='DP-2'
-    CENTER='DP-4'
-    RIGHT='DP-0'
-
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --mode 3440x1440 --rate 144 --pos 0x0 --rotate normal  \
-      --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 3440x246 --dpi 102 --rotate normal \
-      --output $RIGHT --mode 1920x1080 --pos 5360x246 --rotate normal
-  '';
 
   boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
@@ -176,23 +154,11 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
   programs.noisetorch.enable = true;
 
   hardware.keyboard.qmk.enable = true;
   environment.etc."ppp/options".text = "ipcp-accept-remote";
-  # environment.extraInit = ''
-  #   xset s off -dpms
-  # '';
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -288,22 +254,6 @@
 
   # Create fonts dir
   fonts.fontDir.enable = true;
-
-  systemd = {
-    # user.services.polkit-gnome-authentication-agent-1 = {
-    #   description = "polkit-gnome-authentication-agent-1";
-    #   wantedBy = ["graphical-session.target"];
-    #   wants = ["graphical-session.target"];
-    #   after = ["graphical-session.target"];
-    #   serviceConfig = {
-    #     Type = "simple";
-    #     ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    #     Restart = "on-failure";
-    #     RestartSec = 1;
-    #     TimeoutStopSec = 10;
-    #   };
-    # };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";

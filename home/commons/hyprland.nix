@@ -17,7 +17,6 @@
     "$monitor_right" = "DP-1";
 
     env = [
-      # "LIBVA_DRIVER_NAME,nvidia"
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
@@ -220,7 +219,6 @@
     windowrulev2 = [
       "opacity 1 override 1 override,class:^(vesktop)$"
       "opacity 1 override 1 override,class:^(firefox)$"
-      "opacity 1 override 1 override,class:^(Google-chrome)$"
       "float,title:^(.*)(Extension:)(.*)(- Bitwarden)(.*)$"
 
       "workspace special:spotify silent,class:^(Spotify)$"
