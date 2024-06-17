@@ -27,7 +27,6 @@
     ../commons/fish.nix
     ../commons/rofi.nix
     ../commons/dunst.nix
-    ../commons/picom.nix
     ../commons/hyprland.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
