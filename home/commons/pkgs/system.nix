@@ -36,6 +36,22 @@
     bluez
     bluez-tools
     kazam
+    xwaylandvideobridge
+    xdg-desktop-portal-hyprland
+
+    # Wayland
+    waybar
+    wl-gammactl
+    wl-clipboard
+    wf-recorder
+    wlprop
+    hyprpicker
+    wayshot
+    swappy
+    grim
+    slurp
+    imagemagick
+    swww
 
     # Audio
     pavucontrol

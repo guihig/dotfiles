@@ -8,5 +8,7 @@
     zathura
     libreoffice
     gimp
+    vesktop
+    bitwarden
   ];
 }

@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   # ---- Awesome Configuration ---- #
   xsession.windowManager.awesome = {
     enable = true;

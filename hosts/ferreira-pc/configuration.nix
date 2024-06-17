@@ -75,6 +75,7 @@
     };
   };
   boot.supportedFilesystems = ["ntfs"];
+  security.polkit.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -99,26 +100,42 @@
   security.pam.services.lightdm.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
+  services.displayManager = {
+    autoLogin.user = "ferreira";
+    defaultSession = "hyprland";
+  };
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
     displayManager = {
-      autoLogin.user = "ferreira";
-      lightdm = {
+      # lightdm = {
+      #   enable = true;
+      #   greeters.gtk.enable = true;
+      # };
+      gdm = {
         enable = true;
-        greeters.gtk.enable = true;
+        wayland = true;
       };
-      defaultSession = "none+awesome";
     };
-    windowManager.awesome = {
-      enable = true;
-      package = pkgs.awesome-git;
-      luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
+    # windowManager.awesome = {
+    #   enable = true;
+    #   package = pkgs.awesome-git;
+    #   luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
+    # };
+    xkb = {
+      layout = "us";
+      variant = "intl";
     };
-    layout = "us";
-    xkbVariant = "intl";
     exportConfiguration = true;
+  };
+
+  programs.hyprland = {
+    # Install the packages from nixpkgs
+    enable = true;
+    # Whether to enable XWayland
+    xwayland.enable = true;
   };
 
   services.xserver.displayManager.setupCommands = ''
@@ -131,24 +148,16 @@
       --output $RIGHT --mode 1920x1080 --pos 5360x246 --rotate normal
   '';
 
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
   };
 
   hardware.nvidia = {
     modesetting.enable = true;
-    # powerManagement.enable = false;
-    # powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -174,12 +183,13 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  programs.noisetorch.enable = true;
 
   hardware.keyboard.qmk.enable = true;
   environment.etc."ppp/options".text = "ipcp-accept-remote";
-  environment.extraInit = ''
-    xset s off -dpms
-  '';
+  # environment.extraInit = ''
+  #   xset s off -dpms
+  # '';
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -197,6 +207,8 @@
     polkit_gnome
     gnome.gnome-keyring
     gnome.file-roller
+    kitty
+    lxqt.lxqt-policykit
   ];
 
   sops = {
@@ -227,6 +239,8 @@
     };
   };
 
+  xdg.portal.enable = true;
+  services.flatpak.enable = true;
   services.davfs2.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
@@ -276,21 +290,21 @@
   fonts.fontDir.enable = true;
 
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
+    # user.services.polkit-gnome-authentication-agent-1 = {
+    #   description = "polkit-gnome-authentication-agent-1";
+    #   wantedBy = ["graphical-session.target"];
+    #   wants = ["graphical-session.target"];
+    #   after = ["graphical-session.target"];
+    #   serviceConfig = {
+    #     Type = "simple";
+    #     ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    #     Restart = "on-failure";
+    #     RestartSec = 1;
+    #     TimeoutStopSec = 10;
+    #   };
+    # };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
