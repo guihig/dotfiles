@@ -28,7 +28,6 @@ vim.g.loaded_perl_provider = 0
 -- Options
 vim.o.mouse = "a"
 vim.o.encoding = "UTF-8"
-vim.o.pastetoggle = "<F3>"
 vim.o.hidden = true
 vim.o.timeoutlen = 1000
 vim.o.ttimeoutlen = 0
