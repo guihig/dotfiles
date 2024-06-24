@@ -226,13 +226,15 @@
       "workspace special:spotify silent,class:^(Spotify)$"
       "float,class:^(Spotify)$"
       "noanim,class:^(Spotify)$"
-      "size 71% 71%,class:^(Spotify)$"
+      "minsize 71% 71%,class:^(vesktop)$"
+      "maxsize 71% 71%,class:^(vesktop)$"
       "center 1,class:^(Spotify)$"
 
       "workspace special:discord silent,class:^(vesktop)$"
       "float,class:^(vesktop)$"
       "noanim,class:^(vesktop)$"
-      "size 71% 71%,class:^(vesktop)$"
+      "minsize 71% 71%,class:^(vesktop)$"
+      "maxsize 71% 71%,class:^(vesktop)$"
       "move 12 14.5%,class:^(vesktop)$"
     ];
   };
