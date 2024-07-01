@@ -29,6 +29,7 @@
     postgresql_13
     insomnia
     code-minimap
+    zrok
 
     # Lsps
     lua-language-server
