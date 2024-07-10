@@ -24,9 +24,9 @@
     ];
 
     monitor = [
-      "$monitor_left, 3440x1440@144, 0x0, 1"
-      "$monitor_center, 1920x1080@240, 3440x246, 1"
-      "$monitor_right, 1920x1080, 5360x246, 1"
+      "$monitor_left, 3440x1440@144, -3440x-246, 1"
+      "$monitor_center, 1920x1080@240, 0x0, 1"
+      "$monitor_right, 1920x1080, 1920x0, 1"
     ];
 
     exec-once = [
@@ -43,7 +43,7 @@
       kb_layout = "us";
       kb_variant = "intl";
       follow_mouse = 1;
-      mouse_refocus = false;
+      mouse_refocus = true;
     };
 
     bind = [
@@ -104,6 +104,8 @@
       "SUPER_SHIFT, 0, movetoworkspace, 10"
 
       "SUPER, A, togglespecialworkspace, discord"
+      "SUPER, O, exec, vesktop"
+      "SUPER, O, focusworkspaceoncurrentmonitor, special:discord"
       "SUPER, S, togglespecialworkspace, spotify"
     ];
 
@@ -226,15 +228,13 @@
       "workspace special:spotify silent,class:^(Spotify)$"
       "float,class:^(Spotify)$"
       "noanim,class:^(Spotify)$"
-      "minsize 71% 71%,class:^(vesktop)$"
-      "maxsize 71% 71%,class:^(vesktop)$"
+      "size 71% 71%,class:^(Spotify)$"
       "center 1,class:^(Spotify)$"
 
       "workspace special:discord silent,class:^(vesktop)$"
       "float,class:^(vesktop)$"
       "noanim,class:^(vesktop)$"
-      "minsize 71% 71%,class:^(vesktop)$"
-      "maxsize 71% 71%,class:^(vesktop)$"
+      "size 71% 71%,class:^(vesktop)$"
       "move 12 14.5%,class:^(vesktop)$"
     ];
   };
