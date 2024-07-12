@@ -13,7 +13,7 @@ windows:
       panes:
         - yarn:
             - nix develop
-            - yarn dev
+            - pnpm dev
         - git:
             - nix develop
             - git status
