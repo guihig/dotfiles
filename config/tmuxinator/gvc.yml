@@ -1,0 +1,19 @@
+name: granter-vue-components
+root: ~/dev/granter/granter-vue-components/
+windows:
+  - editor:
+      root: ~/dev/granter/granter-vue-components/
+      panes:
+        - editor:
+            - nix develop
+            - nvim .
+  - term:
+      root: ~/dev/granter/granter-vue-components/
+      layout: even-horizontal
+      panes:
+        - yarn:
+            - nix develop
+            - yarn dev
+        - git:
+            - nix develop
+            - git status
