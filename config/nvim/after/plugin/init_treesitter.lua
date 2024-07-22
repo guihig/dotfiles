@@ -18,6 +18,8 @@ require("nvim-treesitter.configs").setup({
 		"scss",
 		"markdown",
 		"markdown_inline",
+		"regex",
+		"vimdoc",
 	},
 })
 
