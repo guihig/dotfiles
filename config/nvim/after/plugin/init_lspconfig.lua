@@ -2,6 +2,8 @@ local keymap = vim.keymap
 local lspconfig = require("lspconfig")
 local lsp_zero = require("lsp-zero")
 local mason_path = require("mason-core.path")
+local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 -- local utils = require("utils")
 
 require("neodev").setup({
@@ -30,18 +32,22 @@ lsp_zero.on_attach(function(client, bufnr)
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 end)
 
-local tsdk = function()
-	return vim.fn.getcwd() .. "/node_modules/typescript/lib"
-end
+-- local tsdk = function()
+-- 	return vim.fn.getcwd() .. "/node_modules/typescript/lib"
+-- end
 
 local handlers = {
 	lsp_zero.default_setup,
 	["tsserver"] = function()
 		require("lspconfig").tsserver.setup({
-			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 			init_options = {
-				typescript = {
-					tsdk = tsdk(),
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = volar_path,
+						languages = { "vue" },
+					},
 				},
 			},
 		})
@@ -85,23 +91,20 @@ local handlers = {
 	end,
 	["volar"] = function()
 		require("lspconfig").volar.setup({
-			filetypes = { "vue" },
+			-- filetypes = { "vue" },
 			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 			init_options = {
 				vue = {
-					hybridMode = false,
-				},
-				typescript = {
-					tsdk = tsdk(),
+					hybridMode = true,
 				},
 			},
-			capabilities = {
-				workspace = {
-					didChangeWatchedFiles = {
-						dynamicRegistration = true,
-					},
-				},
-			},
+			-- capabilities = {
+			-- 	workspace = {
+			-- 		didChangeWatchedFiles = {
+			-- 			dynamicRegistration = true,
+			-- 		},
+			-- 	},
+			-- },
 		})
 	end,
 }
