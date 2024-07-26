@@ -50,6 +50,7 @@
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       "SUPER, Return, exec, kitty"
       "SUPER, w, killactive"
+      "SUPER_SHIFT, w, exec, hyprctl kill"
       "SUPER, Space, exec, rofi -show drun"
 
       "SUPER, F, fullscreen, 1"
