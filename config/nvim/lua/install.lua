@@ -96,6 +96,11 @@ require("lazy").setup({
 			"antoinemadec/FixCursorHold.nvim",
 		},
 	},
+	{ "dmmulroy/tsc.nvim" },
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+	},
 
 	-- Snippets
 	{ "L3MON4D3/LuaSnip", version = "v2.*", dependencies = { "rafamadriz/friendly-snippets" } },
