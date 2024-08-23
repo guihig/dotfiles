@@ -50,20 +50,6 @@ local handlers = {
 					},
 				},
 			},
-			settings = {
-				typescript = {
-					inlayHints = {
-						includeInlayParameterNameHints = "all",
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayVariableTypeHints = true,
-						includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayEnumMemberValueHints = true,
-					},
-				},
-			},
 		})
 	end,
 	["elixirls"] = function()
@@ -107,34 +93,11 @@ local handlers = {
 		require("lspconfig").volar.setup({
 			-- filetypes = { "vue" },
 			-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-			init_options = {
-				vue = {
-					hybridMode = true,
-				},
-			},
-
-			settings = {
-				typescript = {
-					inlayHints = {
-						enumMemberValues = {
-							enabled = true,
-						},
-						functionLikeReturnTypes = {
-							enabled = true,
-						},
-						propertyDeclarationTypes = {
-							enabled = true,
-						},
-						parameterTypes = {
-							enabled = true,
-							suppressWhenArgumentMatchesName = true,
-						},
-						variableTypes = {
-							enabled = true,
-						},
-					},
-				},
-			},
+			-- init_options = {
+			-- 	vue = {
+			-- 		hybridMode = true,
+			-- 	},
+			-- },
 			-- capabilities = {
 			-- 	workspace = {
 			-- 		didChangeWatchedFiles = {
