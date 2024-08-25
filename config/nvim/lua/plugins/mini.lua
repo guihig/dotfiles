@@ -10,7 +10,7 @@ return {
 		version = "*",
 		config = function()
 			local keymap_opts = { silent = true, noremap = true }
-			keymap.set("n", "<A-w>", ":bdelete<CR>", keymap_opts)
+			keymap.set("n", "<A-w>", ":bp|bd #<CR>", keymap_opts)
 		end,
 	},
 }
