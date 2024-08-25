@@ -26,13 +26,12 @@ return {
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			local lsp_zero = require("lsp-zero")
 			local mason_path = require("mason-core.path")
 			local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
 			local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 
-			local lsp_attach = function(client, bufnr)
+			local lsp_attach = function(_, bufnr)
 				local keymap_opts = { buffer = bufnr, remap = false }
 
 				-- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
@@ -72,9 +71,14 @@ return {
 						},
 					})
 				end,
-				["elixirls"] = function()
-					require("lspconfig").elixirls.setup({
-						cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
+				-- ["elixirls"] = function()
+				-- 	require("lspconfig").elixirls.setup({
+				-- 		cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
+				-- 	})
+				-- end,
+				["lexical"] = function()
+					require("lspconfig").lexical.setup({
+						cmd = { mason_path.bin_prefix() .. "/lexical" },
 					})
 				end,
 				["jsonls"] = function()
@@ -161,7 +165,8 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"dockerls",
-					"elixirls",
+					-- "elixirls",
+					"lexical",
 					"jsonls",
 					"tsserver",
 					"eslint",
