@@ -1,3 +1,4 @@
-require("install")
-require("config")
-require("keybinds")
+require("config.options")
+require("lazy")
+require("config.autocmds")
+require("config.keybinds")

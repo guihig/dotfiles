@@ -13,31 +13,35 @@ local rust_fmt = require("formatter.filetypes.rust").rustfmt
 local elixir_fmt = require("formatter.filetypes.elixir").mixformat
 local haskell_fmt = require("formatter.filetypes.haskell").stylish_haskell
 
-require("formatter").setup({
-	logging = true,
-	filetype = {
-		lua = { lua_fmt },
-		javascript = { js_fmt },
-		javascriptreact = { js_fmt },
-		typescript = { ts_fmt },
-		typescriptreact = { ts_fmt },
-		vue = { vue_fmt },
-		html = { js_fmt },
-		json = { js_fmt },
-		rasi = { js_fmt },
-		css = { js_fmt },
-		scss = { js_fmt },
-		sass = { js_fmt },
-		sql = { sql_fmt },
-		python = { py_fmt },
-		elixir = { elixir_fmt },
-		haskell = { haskell_fmt },
-		tex = { latex_fmt },
-		yaml = { yaml_fmt },
-		rust = { rust_fmt },
-		nix = { nix_fmt },
+return {
+	"mhartington/formatter.nvim",
+	opts = {
+		logging = true,
+		filetype = {
+			lua = { lua_fmt },
+			javascript = { js_fmt },
+			javascriptreact = { js_fmt },
+			typescript = { ts_fmt },
+			typescriptreact = { ts_fmt },
+			vue = { vue_fmt },
+			html = { js_fmt },
+			json = { js_fmt },
+			rasi = { js_fmt },
+			css = { js_fmt },
+			scss = { js_fmt },
+			sass = { js_fmt },
+			sql = { sql_fmt },
+			python = { py_fmt },
+			elixir = { elixir_fmt },
+			haskell = { haskell_fmt },
+			tex = { latex_fmt },
+			yaml = { yaml_fmt },
+			rust = { rust_fmt },
+			nix = { nix_fmt },
+		},
 	},
-})
-
-local opts = { noremap = true }
-keymap.set("n", "<leader>f", "<cmd>FormatWrite<CR>", opts)
+	config = function()
+		local keymap_opts = { noremap = true }
+		keymap.set("n", "<leader>f", "<cmd>FormatWrite<CR>", keymap_opts)
+	end,
+}

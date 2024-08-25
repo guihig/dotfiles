@@ -1,5 +1,0 @@
--- local keymap = vim.keymap
---
--- local keymap_opts = { noremap = true }
--- keymap.set("n", "<leader>tx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", keymap_opts)
--- keymap.set("n", "<leader>tx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", keymap_opts)
