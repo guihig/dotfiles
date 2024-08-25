@@ -1,10 +1,10 @@
-local get_hex = require("cokeline/hlgroups").get_hl_attr
 local keymap = vim.keymap
-local hl_group = "DiffChange"
 
 return {
 	"noib3/nvim-cokeline",
 	opts = function()
+		local get_hex = require("cokeline/hlgroups").get_hl_attr
+		local hl_group = "DiffChange"
 		return {
 			default_hl = {
 				fg = function(buffer)

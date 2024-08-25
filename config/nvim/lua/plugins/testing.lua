@@ -15,7 +15,6 @@ return {
 			keymap.set("t", "<C-N>", [[<C-\><C-N>]], keymap_opts)
 		end,
 	},
-
 	{
 		"vim-test/vim-test",
 		config = function(_, _)
