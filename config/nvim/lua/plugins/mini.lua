@@ -3,7 +3,6 @@ return {
 	{ "echasnovski/mini.move", version = "*" },
 	{ "echasnovski/mini.surround", version = "*" },
 	{ "echasnovski/mini.cursorword", version = "*" },
-	{ "echasnovski/mini.indentscope", version = "*" },
 	{ "echasnovski/mini.animate", version = "*" },
 	{
 		"echasnovski/mini.bufremove",
