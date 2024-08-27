@@ -51,6 +51,7 @@ return {
 			lsp_zero.extend_lspconfig({
 				sign_text = true,
 				lsp_attach = lsp_attach,
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 
 			local handlers = {
@@ -98,28 +99,17 @@ return {
 					})
 				end,
 				["cssls"] = function()
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
 					require("lspconfig").cssls.setup({
-						filetypes = { "css", "scss", "less", "sass", "vue" },
-						settings = {
-							css = { validate = true, lint = {
-								unknownAtRules = "ignore",
-							} },
-							scss = { validate = true, lint = {
-								unknownAtRules = "ignore",
-							} },
-							less = { validate = true, lint = {
-								unknownAtRules = "ignore",
-							} },
-						},
+						capabilities = capabilities,
 					})
 				end,
 				["volar"] = function()
 					require("lspconfig").volar.setup({
-						-- filetypes = { "vue" },
-						-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 						-- init_options = {
 						-- 	vue = {
-						-- 		hybridMode = true,
+						-- 		hybridMode = false,
 						-- 	},
 						-- },
 						-- capabilities = {
