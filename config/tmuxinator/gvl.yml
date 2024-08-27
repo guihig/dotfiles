@@ -1,4 +1,4 @@
-name: granter-vue-components
+name: granter-vue-library
 root: ~/dev/granter/granter-vue-components/
 windows:
   - editor:
@@ -13,7 +13,7 @@ windows:
       panes:
         - yarn:
             - nix develop
-            - pnpm dev
+            - pnpm storybook
         - git:
             - nix develop
             - git status
