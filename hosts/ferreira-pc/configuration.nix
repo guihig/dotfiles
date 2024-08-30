@@ -60,9 +60,6 @@
     };
   };
 
-  networking.hostName = "ferreira-pc";
-  networking.networkmanager.enable = true;
-
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -75,108 +72,178 @@
     };
   };
   boot.supportedFilesystems = ["ntfs"];
-  security.polkit.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
-  time.hardwareClockInLocalTime = true;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+  time = {
+    timeZone = "America/Sao_Paulo";
+    hardwareClockInLocalTime = true;
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
-
-  services.displayManager = {
-    autoLogin.user = "ferreira";
-    defaultSession = "hyprland";
+  # I18n Config
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pt_BR.UTF-8";
+      LC_IDENTIFICATION = "pt_BR.UTF-8";
+      LC_MEASUREMENT = "pt_BR.UTF-8";
+      LC_MONETARY = "pt_BR.UTF-8";
+      LC_NAME = "pt_BR.UTF-8";
+      LC_NUMERIC = "pt_BR.UTF-8";
+      LC_PAPER = "pt_BR.UTF-8";
+      LC_TELEPHONE = "pt_BR.UTF-8";
+      LC_TIME = "pt_BR.UTF-8";
+    };
   };
 
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
+  # Networking
+  networking = {
+    hostName = "ferreira-pc";
+    networkmanager.enable = true;
+  };
+
+  # Enable sound
+  sound.enable = true;
+
+  # Services
+  services = {
+    gnome.gnome-keyring.enable = true;
+    flatpak.enable = true;
+    davfs2.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
+    blueman.enable = true;
+    spice-vdagentd.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
       };
     };
-    xkb = {
-      layout = "us";
-      variant = "intl";
+
+    # Hyprland DM
+    displayManager = {
+      autoLogin.user = "ferreira";
+      defaultSession = "hyprland";
     };
-    exportConfiguration = true;
+
+    # XServer Config
+    xserver = {
+      enable = true;
+      videoDrivers = ["nvidia"];
+      displayManager = {
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
+      };
+      xkb = {
+        layout = "us";
+        variant = "intl";
+      };
+      exportConfiguration = true;
+    };
+
+    # Audio with pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  # Programs
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
+    nm-applet = {
+      enable = true;
+      indicator = false;
+    };
+
+    fish.enable = true;
+
+    dconf.enable = true;
+
+    thunar = {
+      enable = true;
+
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-volman
+      ];
+    };
+
+    slock.enable = true;
+
+    xss-lock = {
+      enable = true;
+      lockerCommand = "${pkgs.slock}/bin/slock";
+    };
+
+    ssh = {
+      startAgent = true;
+    };
+
+    # Noise supression
+    noisetorch.enable = true;
   };
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  # Hardware
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    bluetooth = {
+      enable = true;
+    };
+    pulseaudio.enable = false;
+    keyboard.qmk.enable = true;
   };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  security = {
+    polkit.enable = true;
+    pam = {
+      services = {
+        login.enableGnomeKeyring = true;
+      };
+    };
+    rtkit.enable = true;
   };
-
-  hardware.bluetooth = {
-    enable = true;
-  };
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  programs.noisetorch.enable = true;
-
-  hardware.keyboard.qmk.enable = true;
-  environment.etc."ppp/options".text = "ipcp-accept-remote";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    firefox
-    git
-    wget
-    curl
-    vim
-    neovim
-    home-manager
-    polkit_gnome
-    gnome.gnome-keyring
-    gnome.file-roller
-    kitty
-    lxqt.lxqt-policykit
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      firefox
+      git
+      wget
+      curl
+      vim
+      neovim
+      home-manager
+      polkit_gnome
+      gnome.gnome-keyring
+      gnome.file-roller
+      kitty
+      lxqt.lxqt-policykit
+    ];
+    etc."ppp/options".text = "ipcp-accept-remote";
+  };
 
+  # Sops Config
   sops = {
     age.sshKeyPaths = ["/etc/ssh/id_ed25519"];
     age.keyFile = "/home/ferreira/.config/sops/age/keys.txt";
@@ -205,52 +272,12 @@
     };
   };
 
+  # Extra
   xdg.portal.enable = true;
-  services.flatpak.enable = true;
-  services.davfs2.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-  services.blueman.enable = true;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-    };
-  };
-
-  services.spice-vdagentd.enable = true;
   virtualisation.docker.enable = true;
 
-  programs = {
-    nm-applet = {
-      enable = true;
-      indicator = false;
-    };
-
-    fish.enable = true;
-
-    dconf.enable = true;
-
-    thunar = {
-      enable = true;
-
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-media-tags-plugin
-        thunar-volman
-      ];
-    };
-    slock.enable = true;
-    xss-lock = {
-      enable = true;
-      lockerCommand = "${pkgs.slock}/bin/slock";
-    };
-
-    ssh = {
-      startAgent = true;
-    };
-  };
+  # Kernel
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # Create fonts dir
   fonts.fontDir.enable = true;
