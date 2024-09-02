@@ -62,8 +62,8 @@ return {
 					}),
 					["<CR>"] = cmp.mapping(
 						cmp.mapping.confirm({
-							behavior = cmp.ConfirmBehavior.Replace,
-							select = false,
+							behavior = cmp.ConfirmBehavior.Insert,
+							select = true,
 						}),
 						{ "i", "c" }
 					),
@@ -77,6 +77,7 @@ return {
 					{ name = "buffer", keyword_length = 5 },
 				}),
 				formatting = {
+					expandable_indicator = true,
 					format = lspkind.cmp_format({
 						with_text = false,
 						maxwidth = 50,
