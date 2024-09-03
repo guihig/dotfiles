@@ -93,6 +93,7 @@
       "SUPER, T, togglegroup, "
       "SUPER, Y, togglefloating, "
       ", Print, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+      ", Scroll_Lock, exec, hyprlock --immediate"
 
       # Sound control
       ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +2%"
