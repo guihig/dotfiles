@@ -72,16 +72,16 @@ return {
 						},
 					})
 				end,
-				-- ["elixirls"] = function()
-				-- 	require("lspconfig").elixirls.setup({
-				-- 		cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
-				-- 	})
-				-- end,
-				["lexical"] = function()
-					require("lspconfig").lexical.setup({
-						cmd = { mason_path.bin_prefix() .. "/lexical" },
+				["elixirls"] = function()
+					require("lspconfig").elixirls.setup({
+						cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
 					})
 				end,
+				-- ["lexical"] = function()
+				-- 	require("lspconfig").lexical.setup({
+				-- 		cmd = { mason_path.bin_prefix() .. "/lexical" },
+				-- 	})
+				-- end,
 				["jsonls"] = function()
 					require("lspconfig").jsonls.setup({
 						settings = {
@@ -155,8 +155,8 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"dockerls",
-					-- "elixirls",
-					"lexical",
+					"elixirls",
+					-- "lexical",
 					"jsonls",
 					"tsserver",
 					"eslint",
