@@ -168,6 +168,7 @@ return {
 					"cssmodules_ls",
 					"rust_analyzer",
 					"nil_ls",
+					"unocss",
 				},
 				handlers = handlers,
 			})
