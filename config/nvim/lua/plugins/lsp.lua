@@ -66,7 +66,7 @@ return {
 								{
 									name = "@vue/typescript-plugin",
 									location = volar_path,
-									languages = { "vue" },
+									languages = { "javascript", "typescript", "vue" },
 								},
 							},
 						},
@@ -156,7 +156,6 @@ return {
 					"lua_ls",
 					"dockerls",
 					"elixirls",
-					-- "lexical",
 					"jsonls",
 					"tsserver",
 					"eslint",
