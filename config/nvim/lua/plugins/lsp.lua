@@ -58,7 +58,7 @@ return {
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
-				["ts_ls"] = function()
+				["tsserver"] = function()
 					require("lspconfig").tsserver.setup({
 						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 						init_options = {
