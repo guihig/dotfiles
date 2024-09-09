@@ -58,7 +58,7 @@ return {
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
-				["tsserver"] = function()
+				["ts_ls"] = function()
 					require("lspconfig").tsserver.setup({
 						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 						init_options = {
@@ -157,7 +157,7 @@ return {
 					"dockerls",
 					"elixirls",
 					"jsonls",
-					"tsserver",
+					"ts_ls",
 					"eslint",
 					"cssls",
 					"pyright",
