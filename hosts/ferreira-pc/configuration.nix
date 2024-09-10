@@ -120,28 +120,19 @@
       };
     };
 
-    # Hyprland DM
-    displayManager = {
-      autoLogin.user = "ferreira";
-      defaultSession = "hyprland";
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "ferreira";
+        };
+        default_session = initial_session;
+      };
     };
 
     # XServer Config
-    xserver = {
-      enable = true;
-      videoDrivers = ["nvidia"];
-      displayManager = {
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
-      };
-      xkb = {
-        layout = "us";
-        variant = "intl";
-      };
-      exportConfiguration = true;
-    };
+    xserver.videoDrivers = ["nvidia"];
 
     # Audio with pipewire
     pipewire = {
