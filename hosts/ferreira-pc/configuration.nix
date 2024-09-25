@@ -214,6 +214,14 @@
     rtkit.enable = true;
   };
 
+  # Swapfile
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
