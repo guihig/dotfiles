@@ -8,6 +8,7 @@
     libreoffice
     gimp
     vesktop
+    ventoy-full
     bitwarden
   ];
 }
