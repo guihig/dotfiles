@@ -23,7 +23,7 @@ return {
 		dependencies = {
 			{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" }
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")

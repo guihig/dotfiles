@@ -4,7 +4,6 @@
     google-chrome
     spotify
     discord
-    telegram-desktop
     zathura
     libreoffice
     gimp

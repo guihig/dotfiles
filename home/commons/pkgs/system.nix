@@ -38,6 +38,7 @@
     kazam
     xwaylandvideobridge
     xdg-desktop-portal-hyprland
+    bootiso
 
     # Wayland
     waybar

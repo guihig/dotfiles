@@ -9,21 +9,27 @@
 @define-color light-orange #e67e80;
 
 @keyframes gradient_f {
-	0% { background-position: 0% 200%; }
-  50% { background-position: 200% 0%; }
-	100% { background-position: 400% 200%; }
+  0% {
+    background-position: 0% 200%;
+  }
+  50% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: 400% 200%;
+  }
 }
 
 * {
-    font-family: 'SF Pro Text', sans-serif;
-    font-weight: bold;
-    font-size: 11px;
-    border-radius: 50px;
+  font-family: "SF Pro Text", sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  border-radius: 50px;
 }
 
 window#waybar {
-    background-color: transparent;
-    color: @fg;
+  background-color: transparent;
+  color: @fg;
 }
 
 #workspaces {
@@ -39,76 +45,88 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background: rgb(84,166,230);
-    background: radial-gradient(circle, rgba(84,166,230,1) 21%, rgba(22,163,179,1) 47%, rgba(43,101,145,1) 69%, rgba(33,33,33,1) 100%);
-    background-size: 400% 400%;
-    animation: gradient_f 20s ease-in-out infinite;
+  background: rgb(84, 166, 230);
+  background: radial-gradient(
+    circle,
+    rgba(84, 166, 230, 1) 21%,
+    rgba(22, 163, 179, 1) 47%,
+    rgba(43, 101, 145, 1) 69%,
+    rgba(33, 33, 33, 1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient_f 20s ease-in-out infinite;
 
-    padding: 0 12px;
+  padding: 0 12px;
 
-    color: #eee;
-    font-weight: bolder;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.68);
+  color: #eee;
+  font-weight: bolder;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
 #window {
-    color: #eee;
-    margin-left: 6px;
-    padding: 0 15px;
+  color: #eee;
+  margin-left: 6px;
+  padding: 0 15px;
 
-    background: rgb(28,60,85);
-    background: radial-gradient(circle, rgba(28,60,85,1) 16%, rgba(43,81,84,1) 54%, rgba(5,30,48,1) 83%, rgba(33,33,33,1) 100%);
-    background-size: 400% 400%;
-    animation: gradient_f 20s ease-in-out infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  background: rgb(28, 60, 85);
+  background: radial-gradient(
+    circle,
+    rgba(28, 60, 85, 1) 16%,
+    rgba(43, 81, 84, 1) 54%,
+    rgba(5, 30, 48, 1) 83%,
+    rgba(33, 33, 33, 1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient_f 20s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 window#waybar.empty {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .modules-left {
-    margin-left: 12px;    
+  margin-left: 12px;
 }
 
 .modules-right {
-    margin-right: 12px;    
+  margin-right: 12px;
 }
 
 #battery,
 #tray,
 #pulseaudio,
 #backlight {
-    color: @light-blue;
-    background-color: @bg;
-    margin: 0 6px 0 6px;
-    padding: 0 15px 0 15px; /* top, right, bottom, left */
+  color: @light-blue;
+  background-color: @bg;
+  margin: 0 6px 0 6px;
+  padding: 0 15px 0 15px; /* top, right, bottom, left */
 }
 
 #network {
-    color: @light-blue;
-    background-color: @bg;
-    margin: 0 6px 0 6px;
-    padding: 0 15px 0 15px; /* top, right, bottom, left */
+  color: @light-blue;
+  background-color: @bg;
+  margin: 0 6px 0 6px;
+  padding: 0 15px 0 15px; /* top, right, bottom, left */
 }
 
 #clock {
-    color: @light-green;
-    background-color: @bg;
-    margin: 0 0 0 6px;
-    padding: 0 15px 0 15px;
+  color: @light-green;
+  background-color: @bg;
+  margin: 0 0 0 6px;
+  padding: 0 15px 0 15px;
 
-    transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #network {
-    color: @light-purple;
+  color: @light-purple;
 }
 
 #pulseaudio {
-    color: @light-yellow;
+  color: @light-yellow;
 }
 
 #backlight {
-    color: @light-orange;
+  color: @light-orange;
 }

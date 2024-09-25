@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # very cool code kid0
-    vim
-    nano
-    vscode
+    # Essential
     cargo
     rustc
     go
@@ -24,35 +21,16 @@
         ]);
     in
       python3-with-packages)
-    jetbrains.pycharm-professional
     docker-compose
     postgresql_13
     insomnia
     code-minimap
     zrok
 
-    # Lsps
-    lua-language-server
-    # nodePackages.vscode-langservers-extracted
-    # nodePackages.dockerfile-language-server-nodejs
-    # nodePackages.typescript-language-server
-    # nodePackages.yaml-language-server
-    # nodePackages.pyright
-    # nodePackages.volar
-    texlab
-    # sqls
-    # efm-langserver
-    # rnix-lsp
-    # rust-analyzer
-    # elixir-ls
-
-    # Code formatters
-    stylua
-    yamlfmt
-    black
-    nodePackages.sql-formatter
-    stylish-haskell
-    alejandra
-    texlive.combined.scheme-full
+    # Editors
+    vim
+    nano
+    vscode
+    jetbrains.pycharm-professional
   ];
 }

@@ -2,7 +2,8 @@
     "layer": "top",
     "position": "top",
     "margin-top": 6,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "clock", "tray"],
 
     "clock": {
