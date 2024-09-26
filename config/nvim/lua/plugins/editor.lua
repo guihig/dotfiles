@@ -40,4 +40,27 @@ return {
 			require("flit").setup()
 		end,
 	},
+	{
+		"chrisgrieser/nvim-early-retirement",
+		opts = {
+			notificationOnAutoClose = true,
+			deleteBufferWhenFileDeleted = true,
+		},
+		event = "VeryLazy",
+	},
+	{
+		"theKnightsOfRohan/csvlens.nvim",
+		dependencies = {
+			"akinsho/toggleterm.nvim",
+		},
+		config = true,
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		opts = {
+			user_default_options = {
+				mode = "virtualtext",
+			},
+		},
+	},
 }

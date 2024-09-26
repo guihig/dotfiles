@@ -9,41 +9,24 @@ return {
 	},
 	opts = function()
 		local actions = require("telescope.actions")
-		local previewers = require("telescope.previewers")
-		local putils = require("telescope.previewers.utils")
-		local pfiletype = require("plenary.filetype")
+		local rg_ignore_patterns =
+			"!{**/.git/*,**/node_modules/*,**/.idea/*,**/.elixir_ls/*,**/_build/*,**/yarn.lock,**/.yarn/*}"
 
-		local new_maker = function(filepath, bufnr, opts)
-			opts = opts or {}
-			if opts.use_ft_detect == nil then
-				local ft = pfiletype.detect(filepath, {})
-				-- Here for example you can say: if ft == "xyz" then this_regex_highlighing else nothing end
-				if ft == "elixir" then
-					opts.use_ft_detect = false
-					putils.regex_highlighter(bufnr, ft)
-				end
-			end
-			previewers.buffer_previewer_maker(filepath, bufnr, opts)
-		end
 		return {
 			defaults = {
 				buffer_previewer_maker = new_maker,
 				vimgrep_arguments = {
 					"rg",
-					"--hidden",
 					"--color=never",
 					"--no-heading",
 					"--with-filename",
 					"--line-number",
 					"--column",
 					"--smart-case",
-				},
-				file_ignore_patterns = {
-					"node_modules",
-					".git",
-					".idea",
-					".elixis_ls",
-					"_build/",
+					"--trim",
+					"--hidden",
+					"--glob",
+					rg_ignore_patterns,
 				},
 				mappings = {
 					i = {
@@ -53,6 +36,17 @@ return {
 					},
 					n = {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+					},
+				},
+			},
+			pickers = {
+				find_files = {
+					find_command = {
+						"rg",
+						"--files",
+						"--hidden",
+						"--glob",
+						rg_ignore_patterns,
 					},
 				},
 			},
@@ -69,15 +63,5 @@ return {
 
 		require("telescope").load_extension("vimwiki")
 		require("telescope").load_extension("fzy_native")
-
-		vim.cmd([[
-          function! MaybeTelescope()
-            if argc() == 1 && isdirectory(argv()[0])
-                  execute "Telescope find_files"
-              endif
-          endfunction
-
-          autocmd VimEnter * :call MaybeTelescope()
-        ]])
 	end,
 }
