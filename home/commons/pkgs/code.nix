@@ -6,10 +6,10 @@
     go
     gcc
     gnumake
-    lua
+    lua51Packages.lua
+    lua51Packages.luarocks
     nodejs
     tree-sitter
-    luaPackages.luarocks
     (let
       python3-with-packages = pkgs.python3.withPackages (p:
         with p; [

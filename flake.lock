@@ -299,11 +299,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1728740863,
-        "narHash": "sha256-u+rxA79a0lyhG+u+oPBRtTDtzz8kvkc9a6SWSt9ekVc=",
+        "lastModified": 1728909085,
+        "narHash": "sha256-WLxED18lodtQiayIPDE5zwAfkPJSjHJ35UhZ8h3cJUg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a3f9ad65a0bf298ed5847629a57808b97e6e8077",
+        "rev": "c0b1da36f7c34a7146501f684e9ebdf15d2bebf8",
         "type": "github"
       },
       "original": {
@@ -344,11 +344,11 @@
     "rubato": {
       "flake": false,
       "locked": {
-        "lastModified": 1695847712,
-        "narHash": "sha256-AvHOUXWZFJNmstjQsmIcW24pgHE0r0mCyL7Jz2q3jU8=",
+        "lastModified": 1729117558,
+        "narHash": "sha256-MbVuYmclWYc3PImE5vvi7eR1JUaJtGLh4G7RoEX3TKc=",
         "owner": "andOrlando",
         "repo": "rubato",
-        "rev": "8a3737b7af4c9dc40c53d700118333d36541d4d3",
+        "rev": "187d440f12f718f3ca78d8c234df7273bbc9e3f1",
         "type": "github"
       },
       "original": {
