@@ -53,6 +53,7 @@
     slurp
     imagemagick
     swww
+    cliphist
 
     # Audio
     pavucontrol

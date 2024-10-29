@@ -106,6 +106,8 @@
       "waybar"
       "vesktop"
       "spotify"
+      "wl-paste --type text --watch cliphist store # Stores only text data"
+      "wl-paste --type image --watch cliphist store # Stores only image data"
     ];
 
     input = {
