@@ -84,7 +84,7 @@ return {
 				-- end,
 				["nextls"] = function()
 					require("lspconfig").lexical.setup({
-						cmd = { mason_path.bin_prefix() .. "/lexical" },
+						cmd = { mason_path.bin_prefix() .. "/nextls" },
 					})
 				end,
 				["jsonls"] = function()
