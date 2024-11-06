@@ -23,7 +23,7 @@ return {
 		dependencies = {
 			{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" }
+			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
@@ -72,16 +72,16 @@ return {
 						},
 					})
 				end,
-				["elixirls"] = function()
-					require("lspconfig").elixirls.setup({
-						cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
-					})
-				end,
-				-- ["lexical"] = function()
-				-- 	require("lspconfig").lexical.setup({
-				-- 		cmd = { mason_path.bin_prefix() .. "/lexical" },
+				-- ["elixirls"] = function()
+				-- 	require("lspconfig").elixirls.setup({
+				-- 		cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
 				-- 	})
 				-- end,
+				["lexical"] = function()
+					require("lspconfig").lexical.setup({
+						cmd = { mason_path.bin_prefix() .. "/lexical" },
+					})
+				end,
 				["jsonls"] = function()
 					require("lspconfig").jsonls.setup({
 						settings = {
@@ -155,7 +155,8 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"dockerls",
-					"elixirls",
+					-- "elixirls",
+					"lexical",
 					"jsonls",
 					"ts_ls",
 					"eslint",
