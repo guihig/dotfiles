@@ -77,7 +77,12 @@ return {
 				-- 		cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
 				-- 	})
 				-- end,
-				["lexical"] = function()
+				-- ["lexical"] = function()
+				-- 	require("lspconfig").lexical.setup({
+				-- 		cmd = { mason_path.bin_prefix() .. "/lexical" },
+				-- 	})
+				-- end,
+				["nextls"] = function()
 					require("lspconfig").lexical.setup({
 						cmd = { mason_path.bin_prefix() .. "/lexical" },
 					})
@@ -156,7 +161,8 @@ return {
 					"lua_ls",
 					"dockerls",
 					-- "elixirls",
-					"lexical",
+					-- "lexical",
+					"nextls",
 					"jsonls",
 					"ts_ls",
 					"eslint",
