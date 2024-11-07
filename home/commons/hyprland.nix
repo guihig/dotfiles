@@ -227,11 +227,6 @@
         contrast = 1;
       };
 
-      drop_shadow = "yes";
-      shadow_range = 4;
-      shadow_render_power = 3;
-      "col.shadow" = "rgba(1a1a1aee)";
-
       dim_inactive = false;
       dim_strength = 0.1;
       dim_special = 0.3;
