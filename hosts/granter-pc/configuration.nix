@@ -57,9 +57,6 @@
     };
   };
 
-  networking.hostName = "granter-pc";
-  networking.networkmanager.enable = true;
-
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -74,113 +71,182 @@
   boot.supportedFilesystems = ["ntfs"];
 
   # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+  time = {
+    timeZone = "America/Sao_Paulo";
+    hardwareClockInLocalTime = true;
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia" "intel"];
-    displayManager = {
-      autoLogin.user = "ferreira";
-      lightdm = {
-        enable = true;
-        greeters.gtk.enable = true;
-      };
-      defaultSession = "none+awesome";
+  # I18n Config
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pt_BR.UTF-8";
+      LC_IDENTIFICATION = "pt_BR.UTF-8";
+      LC_MEASUREMENT = "pt_BR.UTF-8";
+      LC_MONETARY = "pt_BR.UTF-8";
+      LC_NAME = "pt_BR.UTF-8";
+      LC_NUMERIC = "pt_BR.UTF-8";
+      LC_PAPER = "pt_BR.UTF-8";
+      LC_TELEPHONE = "pt_BR.UTF-8";
+      LC_TIME = "pt_BR.UTF-8";
     };
-    windowManager.awesome = {
-      enable = true;
-      package = pkgs.awesome-git;
-      luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
-    };
-    layout = "us";
-    xkbVariant = "intl";
-    exportConfiguration = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  # Networking
+  networking = {
+    hostName = "granter-pc";
+    networkmanager.enable = true;
   };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    # powerManagement.enable = false;
-    # powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-  };
-
-  # Enable sound with pipewire.
+  # Enable sound
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+  # Services
+  services = {
+    gnome.gnome-keyring.enable = true;
+    flatpak.enable = true;
+    davfs2.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
+    blueman.enable = true;
+    spice-vdagentd.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+      };
+    };
+
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "ferreira";
+        };
+        default_session = initial_session;
+      };
+    };
+
+    # XServer Config
+    xserver.videoDrivers = ["nvidia" "intel"];
+
+    # Audio with pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
   };
 
-  hardware.keyboard.qmk.enable = true;
-  environment.etc."ppp/options".text = "ipcp-accept-remote";
+  # Programs
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
+    nm-applet = {
+      enable = true;
+      indicator = false;
+    };
+
+    fish.enable = true;
+
+    dconf.enable = true;
+
+    thunar = {
+      enable = true;
+
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-volman
+      ];
+    };
+
+    slock.enable = true;
+
+    xss-lock = {
+      enable = true;
+      lockerCommand = "${pkgs.slock}/bin/slock";
+    };
+
+    ssh = {
+      startAgent = true;
+    };
+
+    # Noise supression
+    noisetorch.enable = true;
+  };
+
+  # Hardware
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    bluetooth = {
+      enable = true;
+    };
+    pulseaudio.enable = false;
+    keyboard.qmk.enable = true;
+  };
+
+  security = {
+    polkit.enable = true;
+    pam = {
+      services = {
+        login.enableGnomeKeyring = true;
+      };
+    };
+    rtkit.enable = true;
+  };
+
+  # Swapfile
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
   environment.extraInit = ''
     xset s off -dpms
   '';
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    firefox
-    git
-    wget
-    curl
-    vim
-    neovim
-    home-manager
-    polkit_gnome
-    gnome.gnome-keyring
-    gnome.file-roller
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      firefox
+      git
+      wget
+      curl
+      vim
+      neovim
+      home-manager
+      polkit_gnome
+      gnome.gnome-keyring
+      gnome.file-roller
+      kitty
+      lxqt.lxqt-policykit
+    ];
+    etc."ppp/options".text = "ipcp-accept-remote";
+  };
 
+  # Sops Config
   sops = {
     age.sshKeyPaths = ["/etc/ssh/id_ed25519"];
+    age.keyFile = "/home/ferreira/.config/sops/age/keys.txt";
     defaultSopsFile = ../../secrets/common/secrets.yaml;
 
     secrets."passwd/ferreira" = {
@@ -206,70 +272,16 @@
     };
   };
 
-  services.davfs2.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-  services.blueman.enable = true;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-    };
-  };
-
-  services.spice-vdagentd.enable = true;
+  # Extra
+  xdg.portal.enable = true;
   virtualisation.docker.enable = true;
 
-  programs = {
-    nm-applet = {
-      enable = true;
-      indicator = false;
-    };
-
-    fish.enable = true;
-
-    dconf.enable = true;
-
-    thunar = {
-      enable = true;
-
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-media-tags-plugin
-        thunar-volman
-      ];
-    };
-    slock.enable = true;
-    xss-lock = {
-      enable = true;
-      lockerCommand = "${pkgs.slock}/bin/slock";
-    };
-
-    ssh = {
-      startAgent = true;
-    };
-  };
+  # Kernel
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # Create fonts dir
   fonts.fontDir.enable = true;
 
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

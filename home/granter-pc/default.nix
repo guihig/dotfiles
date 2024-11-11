@@ -28,8 +28,8 @@
     ../commons/ssh.nix
     ../commons/fish.nix
     ../commons/rofi.nix
-    ../commons/picom.nix
-    ../commons/awesome.nix
+    ../commons/dunst.nix
+    ../commons/hyprland.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
   ];
@@ -61,7 +61,7 @@
       BROWSER = "firefox";
     };
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = lib.mkDefault "23.05";
+    stateVersion = lib.mkDefault "24.05";
   };
 
   # Enable home-manager
