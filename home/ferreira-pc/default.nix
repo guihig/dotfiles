@@ -29,7 +29,7 @@
     ../commons/fish.nix
     ../commons/rofi.nix
     ../commons/dunst.nix
-    ../commons/hyprland.nix
+    ../commons/hyprland-desktop.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
   ];
