@@ -93,9 +93,9 @@
     ];
 
     monitor = [
-      "$monitor_left, 3440x1440@144, -3440x-246, 1"
+      "$monitor_left, 3440x1440@144, -3440x25, 1"
       "$monitor_center, 1920x1080@240, 0x0, 1"
-      "$monitor_right, 1920x1080@60, 1920x0, 1"
+      "$monitor_right, 1920x1080@60, 270x-1080, 1"
     ];
 
     exec-once = [
