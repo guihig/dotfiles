@@ -17,12 +17,8 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ../commons/pkgs/programs.nix
-    ../commons/pkgs/formatters.nix
-    ../commons/pkgs/lsps.nix
+    ../commons/pkgs/default.nix
     ../commons/pkgs/fun.nix
-    ../commons/pkgs/system.nix
-    ../commons/pkgs/code.nix
     ../commons/ui.nix
     ../commons/git.nix
     ../commons/ssh.nix
