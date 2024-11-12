@@ -5,13 +5,6 @@
 
   services.xserver = {
     enable = true;
-    displayManager = {
-      lightdm = {
-        enable = true;
-        greeters.gtk.enable = true;
-      };
-      defaultSession = "none+awesome";
-    };
     windowManager.awesome = {
       enable = true;
       package = pkgs.awesome-git;
@@ -22,5 +15,13 @@
       variant = "intl";
     };
     exportConfiguration = true;
+  };
+
+  services.displayManager = {
+    lightdm = {
+      enable = true;
+      greeters.gtk.enable = true;
+    };
+    defaultSession = "none+awesome";
   };
 }

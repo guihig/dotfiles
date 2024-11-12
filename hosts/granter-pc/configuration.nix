@@ -42,11 +42,9 @@
 
   networking.hostName = "granter-pc";
 
-  services.xserver = {
-    videoDrivers = ["nvidia" "intel"];
-    displayManager = {
-      autoLogin.user = "ferreira";
-    };
+  services.xserver.videoDrivers = ["nvidia" "intel"];
+  services.displayManager = {
+    autoLogin.user = "ferreira";
   };
 
   users.users = {
