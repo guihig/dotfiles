@@ -49,7 +49,6 @@
   };
 
   # Extra
-  xdg.portal.enable = true;
   virtualisation.docker.enable = true;
 
   # Create fonts dir

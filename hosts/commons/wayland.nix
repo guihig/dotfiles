@@ -18,4 +18,6 @@
       xwayland.enable = true;
     };
   };
+
+  xdg.portal.enable = true;
 }
