@@ -5,6 +5,7 @@
 
   services.xserver = {
     enable = true;
+    desktopManager.xterm.enable = false;
     windowManager.awesome = {
       enable = true;
       package = pkgs.awesome-git;
@@ -14,14 +15,16 @@
       layout = "us";
       variant = "intl";
     };
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.gtk.enable = true;
+      };
+    };
     exportConfiguration = true;
   };
 
   services.displayManager = {
-    lightdm = {
-      enable = true;
-      greeters.gtk.enable = true;
-    };
     defaultSession = "none+awesome";
   };
 }
