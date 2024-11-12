@@ -29,7 +29,8 @@
     ../commons/fish.nix
     ../commons/rofi.nix
     ../commons/dunst.nix
-    ../commons/hyprland-notebook.nix
+    ../commons/picom.nix
+    ../commons/awesome.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
   ];
