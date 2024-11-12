@@ -4,17 +4,16 @@
   '';
 
   services.xserver = {
+    enable = true;
     windowManager.awesome = {
       enable = true;
       package = pkgs.awesome-git;
       luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
     };
-
     xkb = {
       layout = "us";
       variant = "intl";
     };
-
     exportConfiguration = true;
   };
 
