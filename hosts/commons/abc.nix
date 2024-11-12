@@ -53,4 +53,6 @@
 
   # Create fonts dir
   fonts.fontDir.enable = true;
+
+  xdg.portal.enable = true;
 }
