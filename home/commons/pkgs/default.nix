@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   imports = [
-    ./audio.nix
-    ./fonts.nix
-    ./network.nix
+    ./system.nix
+    ./programs.nix
+    ./code.nix
+    ./lsps.nix
+    ./formatters.nix
   ];
 
   home.packages = with pkgs; [

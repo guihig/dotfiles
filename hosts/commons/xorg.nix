@@ -10,8 +10,11 @@
       luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
     };
 
-    layout = "us";
-    xkbVariant = "intl";
+    xkb = {
+      layout = "us";
+      variant = "intl";
+    };
+
     exportConfiguration = true;
   };
 
