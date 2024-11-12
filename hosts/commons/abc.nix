@@ -54,5 +54,10 @@
   # Create fonts dir
   fonts.fontDir.enable = true;
 
-  xdg.portal.enable = true;
+  # XDG Portal
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "gtk";
+  };
 }
