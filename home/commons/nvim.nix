@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     unstable.elixir-ls
     unstable.nodePackages.bash-language-server
@@ -21,7 +17,8 @@
   };
 
   home.file.".config/nvim" = {
-    source = config.lib.meta.mkMutableSymlink ../../config/nvim;
+    source = ../../config/nvim;
+    recursive = true;
   };
 
   home.file.".config/nvim/lua/lsp_location.lua" = with pkgs; {
