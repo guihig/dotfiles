@@ -31,7 +31,6 @@ return {
 				erlangls = true,
 				eslint = true,
 				html = true,
-				jsonls = true,
 				pyright = true,
 				rust_analyzer = true,
 				sqlls = true,
@@ -103,6 +102,7 @@ return {
 		},
 		config = function(_, opts)
 			local lsp_zero = require("lsp-zero")
+			local lspconfig = require("lspconfig")
 
 			local lsp_attach = function(_, bufnr)
 				local keymap_opts = { buffer = bufnr, remap = false }
