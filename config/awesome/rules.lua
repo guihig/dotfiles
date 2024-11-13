@@ -9,7 +9,7 @@ ruled.client.connect_signal("request::rules", function()
 		properties = {
 			focus = awful.client.focus.filter,
 			raise = true,
-			screen = awful.screen.focused,
+			screen = awful.screen.preferred,
 			size_hints_honor = false,
 			honor_workarea = true,
 			honor_padding = true,
@@ -17,11 +17,12 @@ ruled.client.connect_signal("request::rules", function()
 		},
 	})
 
-	-- Add titlebars to normal clients and dialogs
+	-- Tasklist order
 	ruled.client.append_rule({
-		id = "titlebars",
-		rule_any = { type = { "normal", "dialog" } },
-		properties = { titlebars_enabled = true },
+		id = "tasklist_order",
+		rule = {},
+		properties = {},
+		callback = awful.client.setslave,
 	})
 
 	-- Floating clients.
@@ -29,7 +30,7 @@ ruled.client.connect_signal("request::rules", function()
 		id = "floating",
 		rule_any = {
 			type = { "dialog" },
-			instance = { "spad" },
+			instance = { "spad", "discord" },
 			class = {
 				"Arandr",
 				"Spotify",

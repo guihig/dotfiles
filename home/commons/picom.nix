@@ -1,7 +1,8 @@
-{
+{pkgs, ...}: {
   # ---- Picom Config ---- #
   services.picom = {
     enable = true;
+    package = pkgs.unstable.picom;
     fade = true;
     fadeSteps = [0.1 0.1];
     shadow = true;
@@ -12,7 +13,6 @@
       "class_g ?= 'Notify-osd'"
       "class_g = 'Cairo-clock'"
       "class_g = ''"
-      "_GTK_FRAME_EXTENTS@:c"
     ];
     inactiveOpacity = 0.9;
     wintypes = {
@@ -50,10 +50,25 @@
       blur-background-exclude = [
         "window_type = 'dock'"
         "window_type = 'desktop'"
-        "_GTK_FRAME_EXTENTS@:c"
       ];
       glx-no-stencil = true;
       shadow-radius = 7;
+      # animations = [
+      #   {
+      #     triggers = ["open" "show"];
+      #     preset = "fly-in";
+      #     direction = "right";
+      #   }
+      #   {
+      #     triggers = ["close" "hide"];
+      #     preset = "fly-out";
+      #     direction = "left";
+      #   }
+      #   {
+      #     triggers = ["geometry"];
+      #     preset = "geometry-change";
+      #   }
+      # ];
     };
   };
 }

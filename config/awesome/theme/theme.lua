@@ -109,6 +109,10 @@ theme.notification_opacity = 0.8
 theme.notification_margin = dpi(4)
 theme.notification_spacing = dpi(4)
 
+-- #-------- Clients --------#
+theme.border_color_active = theme.color8
+theme.border_width_active = dpi(1)
+
 -- #-------- Layout Icons --------#
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
 theme.layout_fairv = themes_path .. "default/layouts/fairvw.png"
