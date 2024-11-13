@@ -3,7 +3,6 @@
     ./system.nix
     ./programs.nix
     ./code.nix
-    ./lsps.nix
     ./formatters.nix
   ];
 

@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local lsp_location = require("lsp_location")
 
 return {
 	{
@@ -22,14 +23,86 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
 		},
-		config = function()
+		opts = {
+			servers = {
+				dockerls = true,
+				elixirls = true,
+				erlangls = true,
+				eslint = true,
+				html = true,
+				jsonls = true,
+				pyright = true,
+				rust_analyzer = true,
+				sqlls = true,
+				lua_ls = true,
+				nil_ls = true,
+				unocss = true,
+				ts_ls = function()
+					return {
+						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = lsp_location["vue_ts_plugin"],
+									languages = { "javascript", "typescript", "vue" },
+								},
+							},
+						},
+					}
+				end,
+				jsonls = function()
+					return {
+						settings = {
+							json = {
+								schemas = require("schemastore").json.schemas({
+									select = {
+										"package.json",
+										".eslintrc",
+										"tsconfig.json",
+									},
+								}),
+								validate = { enable = true },
+							},
+						},
+					}
+				end,
+				cssls = function()
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
+					return {
+						capabilities = capabilities,
+					}
+				end,
+				texlab = function()
+					return {
+						settings = {
+							texlab = {
+								build = {
+									executable = "lualatex",
+									args = {
+										"-pdf",
+										"-interaction=nonstopmode",
+										"-synctex=1",
+										"%f",
+										"-pvc",
+									},
+									onSave = true,
+									forwardSearchAfter = false,
+								},
+								forwardSearch = {
+									executable = "zathura",
+									args = { "--synctex-forward", "%l:1:%f", "%p" },
+								},
+							},
+						},
+					}
+				end,
+			},
+		},
+		config = function(_, opts)
 			local lsp_zero = require("lsp-zero")
-			local mason_path = require("mason-core.path")
-			local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
-			local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 
 			local lsp_attach = function(_, bufnr)
 				local keymap_opts = { buffer = bufnr, remap = false }
@@ -54,118 +127,22 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 
-			local handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-				["ts_ls"] = function()
-					require("lspconfig").ts_ls.setup({
-						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-						init_options = {
-							plugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = volar_path,
-									languages = { "javascript", "typescript", "vue" },
-								},
-							},
-						},
-					})
-				end,
-				["elixirls"] = function()
-					require("lspconfig").elixirls.setup({
-						cmd = { mason_path.bin_prefix() .. "/elixir-ls" },
-					})
-				end,
-				["jsonls"] = function()
-					require("lspconfig").jsonls.setup({
-						settings = {
-							json = {
-								schemas = require("schemastore").json.schemas({
-									select = {
-										"package.json",
-										".eslintrc",
-										"tsconfig.json",
-									},
-								}),
-								validate = { enable = true },
-							},
-						},
-					})
-				end,
-				["cssls"] = function()
-					local capabilities = vim.lsp.protocol.make_client_capabilities()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-					require("lspconfig").cssls.setup({
-						capabilities = capabilities,
-					})
-				end,
-				["volar"] = function()
-					require("lspconfig").volar.setup({
-						-- init_options = {
-						-- 	vue = {
-						-- 		hybridMode = false,
-						-- 	},
-						-- },
-						-- capabilities = {
-						-- 	workspace = {
-						-- 		didChangeWatchedFiles = {
-						-- 			dynamicRegistration = true,
-						-- 		},
-						-- 	},
-						-- },
-					})
-				end,
-				["texlab"] = function()
-					require("lspconfig").texlab.setup({
-						settings = {
-							texlab = {
-								build = {
-									executable = "lualatex",
-									args = {
-										"-pdf",
-										"-interaction=nonstopmode",
-										"-synctex=1",
-										"%f",
-										"-pvc",
-									},
-									onSave = true,
-									forwardSearchAfter = false,
-								},
-								forwardSearch = {
-									executable = "zathura",
-									args = { "--synctex-forward", "%l:1:%f", "%p" },
-								},
-							},
-						},
-					})
-				end,
-			}
+			local function setup_server(lsp_name, server_opts)
+				if server_opts == nil then
+					server_opts = {}
+				end
 
-			require("mason").setup({
-				PATH = "append",
-			})
+				if lsp_location[lsp_name] then
+					server_opts.cmd = lsp_location[lsp_name]
+				end
 
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					"dockerls",
-					"elixirls",
-					"jsonls",
-					"ts_ls",
-					"eslint",
-					"cssls",
-					"pyright",
-					"sqlls",
-					"volar",
-					"yamlls",
-					"cssmodules_ls",
-					"rust_analyzer",
-					"nil_ls",
-					"unocss",
-				},
-				handlers = handlers,
-			})
+				lspconfig[lsp_name].setup(server_opts)
+			end
+
+			for server, server_opts in pairs(opts.servers) do
+				opts = server_opts == true and {} or server_opts()
+				setup_server(server, opts)
+			end
 		end,
 	},
 }

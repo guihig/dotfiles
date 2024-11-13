@@ -16,6 +16,7 @@
     ../commons/programs.nix
     ../commons/services.nix
     ../commons/xorg.nix
+    ../commons/window-manager/awesome.nix
     inputs.sops-nix.nixosModules.sops
   ];
 
