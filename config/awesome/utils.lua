@@ -16,7 +16,6 @@ M.placement.centered = function(c)
 end
 
 -- UI Helpers
-
 M.spacer = function()
 	return wibox.widget({ widget = wibox.container.margin, left = 5, right = 5 })
 end

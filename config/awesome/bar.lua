@@ -19,8 +19,7 @@ local function tasklist(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.focused,
 		style = {
-
-			shape = gears.shape.rounded_rect,
+			shape = gears.shape.octogon,
 		},
 		layout = {
 			spacing = 5,
@@ -33,27 +32,27 @@ local function tasklist(s)
 					{
 						{
 							{ id = "icon_role", widget = wibox.widget.imagebox },
-							top = 3,
-							bottom = 3,
-							left = 3,
-							right = 5,
+							top = dpi(2),
+							bottom = dpi(2),
+							left = dpi(2),
+							right = dpi(4),
 							widget = wibox.container.margin,
 						},
 						{
 							{ id = "text_role", widget = wibox.widget.textbox },
-							margins = 3,
+							margins = dpi(2),
 							widget = wibox.container.margin,
 						},
 						layout = wibox.layout.fixed.horizontal,
 					},
-					left = 5,
-					right = 5,
+					left = dpi(5),
+					right = dpi(5),
 					widget = wibox.container.margin,
 				},
 				id = "background_role",
 				widget = wibox.container.background,
 			},
-			margins = 4,
+			margins = dpi(3),
 			widget = wibox.container.margin,
 		},
 	})
@@ -134,18 +133,15 @@ awful.screen.connect_for_each_screen(function(s)
 			right = 3,
 			bottom = 0,
 		},
-		shape = gears.shape.rounded_rect,
+		-- shape = gears.shape.rounded_rect,
 		screen = s,
 		widget = {
 			layout = wibox.layout.align.horizontal,
 			{
 				layout = wibox.layout.fixed.horizontal,
 				s.mytaglist,
-				s.mytasklist,
 			},
-			{
-				layout = wibox.layout.flex.horizontal,
-			},
+			s.mytasklist,
 			{
 				{
 					layout = wibox.layout.fixed.horizontal,
@@ -159,7 +155,7 @@ awful.screen.connect_for_each_screen(function(s)
 					layout_box(s),
 				},
 				widget = wibox.container.margin,
-				margins = 5,
+				margins = dpi(4),
 			},
 		},
 	})

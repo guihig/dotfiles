@@ -4,7 +4,6 @@
 pcall(require, "luarocks.loader")
 
 -- Imports
-local apps = require("apps")
 local beautiful = require("beautiful")
 local gears = require("gears")
 
@@ -18,7 +17,7 @@ require("layout")
 
 require("startup")
 
-require("titlebars")
+-- require("titlebars")
 
 require("rules")
 
