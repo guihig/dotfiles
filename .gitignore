@@ -251,4 +251,6 @@ cabal.project.local~
 /config/polybar/secondary_error.txt
 /xmonad/xmonad-x86_64-linux
 
+**/lsp_location.lua
+
 .luarc.json
