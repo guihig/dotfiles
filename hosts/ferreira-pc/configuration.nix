@@ -62,6 +62,10 @@
   networking.hostName = "ferreira-pc";
   services.xserver.videoDrivers = ["nvidia"];
 
+  services.displayManager = {
+    autoLogin.user = "ferreira";
+  };
+
   services.xserver.displayManager.setupCommands = ''
     LEFT='DP-2'
     CENTER='DP-4'
