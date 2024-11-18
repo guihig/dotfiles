@@ -4,9 +4,10 @@ local apps = require("apps")
 
 local M = {}
 
+-- Discord
 M.discord_scratch = bling.module.scratchpad({
 	command = apps.discord,
-	rule = { class = "discord" },
+	rule = { class = "vesktop" },
 	sticky = false,
 	autoclose = false,
 	floating = true,
@@ -26,28 +27,7 @@ M.discord_scratch:connect_signal("turn_on", function(c)
 	})
 end)
 
-M.telegram_scratch = bling.module.scratchpad({
-	command = apps.telegram,
-	rule = { name = "Telegram" },
-	sticky = false,
-	autoclose = false,
-	floating = true,
-	geometry = { x = 0, y = 0 },
-	dont_focus_before_close = true,
-})
-
-M.telegram_scratch:connect_signal("turn_on", function(c)
-	local s = awful.screen.focused()
-	local width = s.geometry.width * 0.71
-	local height = s.geometry.height * 0.71
-	c.client:geometry({
-		x = 0 + s.geometry.x,
-		y = s.geometry.y + (s.geometry.height - height) / 2,
-		width = width,
-		height = height,
-	})
-end)
-
+-- Spotify
 M.spotify_scratch = bling.module.scratchpad({
 	command = apps.spotify,
 	rule = { class = "Spotify" },
@@ -57,7 +37,6 @@ M.spotify_scratch = bling.module.scratchpad({
 	geometry = { x = 0, y = 0 },
 	dont_focus_before_close = true,
 })
-
 M.spotify_scratch:connect_signal("turn_on", function(c)
 	local s = awful.screen.focused()
 	local width = s.geometry.width * 0.71

@@ -15,7 +15,7 @@ local xtheme = xresources.get_current_theme()
 
 -- #-------- Fonts --------#
 theme.font = "JetBrainsMono Nerd Font Medium 9"
-theme.icon_font = "Material Design Icons Regular 10"
+theme.icon = "Material Design Icons 10"
 
 -- #-------- Colors --------#
 -- From 0 to 15  xresources colors
@@ -64,20 +64,26 @@ theme.titlebar_fg_urgent = theme.color15
 theme.titlebar_bg_urgent = theme.color1
 
 -- #-------- Systray --------#
-theme.bg_systray = theme.bg
+theme.bg_systray = theme.transparent
 theme.systray_icon_spacing = dpi(4)
 theme.systray_max_rows = 1
 
 -- #-------- Wibar --------#
-theme.wibar_opacity = 0.85
-theme.wibar_fg = theme.fg
-theme.wibar_bg = theme.bg
-theme.wibar_height = dpi(24)
+-- theme.wibar_opacity = 0.85
+-- theme.wibar_fg = theme.fg
+-- theme.wibar_bg = theme.bg
+-- theme.wibar_height = dpi(24)
 
 -- #-------- Taglist --------#
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg)
+theme.taglist_bg_focus = theme.color2
+theme.taglist_fg_focus = theme.fg
+theme.taglist_bg_urgent = theme.red
+theme.taglist_fg_urgent = theme.fg
+theme.taglist_bg_occupied = theme.color3 .. "33"
+theme.taglist_fg_occupied = theme.fg
+theme.taglist_bg_empty = theme.color3 .. "33"
+theme.taglist_fg_empty = theme.fg
+theme.taglist_disable_icon = true
 
 -- #-------- Tasklist --------#
 theme.tasklist_shape = gears.shape.rounded_rect
@@ -111,7 +117,8 @@ theme.notification_spacing = dpi(4)
 
 -- #-------- Clients --------#
 theme.border_color_active = theme.color8
-theme.border_width_active = dpi(1)
+theme.border_color_normal = theme.color0
+theme.border_width = dpi(1)
 
 -- #-------- Layout Icons --------#
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

@@ -13,7 +13,7 @@ local icon = wibox.widget({
 	text = beautiful.icons.volume,
 	align = "center",
 	valign = "center",
-	font = beautiful.icon_font,
+	font = beautiful.icon,
 	widget = wibox.widget.textbox,
 })
 

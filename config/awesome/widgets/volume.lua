@@ -8,15 +8,15 @@ local volume = {}
 local function init()
 	alsabar.bar:buttons(awful.util.table.join(
 		awful.button({}, 1, function() -- left click
-			awful.spawn(string.format("%s -e alsamixer", "kitty"))
+			os.execute(string.format("%s set %s toggle", alsabar.cmd, alsabar.togglechannel or alsabar.channel))
+			alsabar.update()
 		end),
 		awful.button({}, 2, function() -- middle click
 			os.execute(string.format("%s set %s 85%%", alsabar.cmd, alsabar.channel))
 			alsabar.update()
 		end),
 		awful.button({}, 3, function() -- right click
-			os.execute(string.format("%s set %s toggle", alsabar.cmd, alsabar.togglechannel or alsabar.channel))
-			alsabar.update()
+			awful.spawn(string.format("%s -e alsamixer", "kitty"))
 		end),
 		awful.button({}, 4, function() -- scroll up
 			os.execute(string.format("%s set %s 5%%+", alsabar.cmd, alsabar.channel))

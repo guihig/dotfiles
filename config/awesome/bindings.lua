@@ -255,7 +255,7 @@ client.connect_signal("request::default_mousebindings", function()
 					c:activate({ context = "mouse_click" })
 				end
 			end,
-		}), -- Make a client floating and move it
+		}), -- Move client
 		awful.button({
 			modifiers = { keys.mod },
 			button = 1,
@@ -267,15 +267,12 @@ client.connect_signal("request::default_mousebindings", function()
 					c:activate({ context = "mouse_click", action = "mouse_move" })
 				end
 			end,
-		}), -- Make a client floating and resize it
+		}), -- Resize client
 		awful.button({
 			modifiers = { keys.mod },
 			button = 3,
 			on_press = function(c)
 				if c.can_resize ~= false then
-					c.floating = true
-					c.maximized = false
-					c.fullscreen = false
 					c:activate({ context = "mouse_click", action = "mouse_resize" })
 				end
 			end,

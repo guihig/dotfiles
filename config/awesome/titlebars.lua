@@ -10,7 +10,7 @@ client.connect_signal("request::titlebars", function(c)
 		text = c.floating and beautiful.icons.float or beautiful.icons.tile,
 		align = "center",
 		valign = "center",
-		font = beautiful.icon_font,
+		font = beautiful.icon,
 		widget = wibox.widget.textbox,
 	})
 

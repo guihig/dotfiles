@@ -18,15 +18,15 @@
 
     # You can also split up your configuration and import pieces of it here:
     ../commons/pkgs/default.nix
-    ../commons/pkgs/wayland.nix
+    ../commons/pkgs/xorg.nix
     ../commons/pkgs/fun.nix
+    ../commons/picom.nix
+    ../commons/awesome.nix
     ../commons/ui.nix
     ../commons/git.nix
     ../commons/ssh.nix
     ../commons/fish.nix
     ../commons/rofi.nix
-    ../commons/dunst.nix
-    ../commons/hyprland.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
   ];

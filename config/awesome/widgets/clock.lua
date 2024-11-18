@@ -13,7 +13,7 @@ local function init()
 		text = beautiful.icons.calendar,
 		align = "center",
 		valign = "center",
-		font = beautiful.icon_font,
+		font = beautiful.icon,
 		widget = wibox.widget.textbox,
 	})
 

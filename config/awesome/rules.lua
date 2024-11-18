@@ -35,6 +35,7 @@ ruled.client.connect_signal("request::rules", function()
 				"Arandr",
 				"Spotify",
 				"spotify",
+				"vesktop",
 				"telegram-desktop",
 				"Slack",
 				"Rocket.Chat",
@@ -51,30 +52,5 @@ ruled.client.connect_signal("request::rules", function()
 			role = { "pop-up" },
 		},
 		properties = { floating = true, placement = utils.placement.centered },
-	})
-
-	-- Set Firefox to always map on the tag named "1" on screen 1.
-	ruled.client.append_rule({
-		rule = { class = "firefox" },
-		properties = {
-			tag = screen[1].tags[1],
-			switch_to_tags = true,
-			opacity = 1,
-			maximized = false,
-			floating = false,
-			sticky = false,
-		},
-	})
-
-	ruled.client.append_rule({
-		rule = { class = "google-chrome" },
-		properties = {
-			tag = screen[1].tags[2],
-			switch_to_tags = true,
-			opacity = 1,
-			maximized = false,
-			floating = false,
-			sticky = false,
-		},
 	})
 end)

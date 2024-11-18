@@ -25,4 +25,6 @@ require("notifications")
 
 require("tags")
 
-require("bar")
+require("ui")
+
+require("spawn")

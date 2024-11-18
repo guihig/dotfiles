@@ -1,8 +1,7 @@
 local M = {}
 
 M.terminal = "kitty"
-M.discord =
-	"discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy"
+M.discord = "vesktop"
 M.flameshot = "flameshot gui"
 M.telegram = "telegram-desktop"
 M.lockscreen = "slock"
