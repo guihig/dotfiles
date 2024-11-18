@@ -6,6 +6,18 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local rubato = require("modules.rubato")
 
+-- local function easing_bem_loco(t)
+-- 	local c4 = (2 * math.pi) / 3
+--
+-- 	if t == 0 then
+-- 		return 0
+-- 	elseif t == 1 then
+-- 		return 1
+-- 	else
+-- 		return math.pow(2, -10 * t) * math.sin((t * 10 - 0.75) * c4) + 1
+-- 	end
+-- end
+
 return function(s)
 	local taglist = awful.widget.taglist({
 		layout = {
