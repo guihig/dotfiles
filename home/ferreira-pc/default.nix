@@ -18,6 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ../commons/pkgs/default.nix
+    ../commons/pkgs/wayland.nix
     ../commons/pkgs/fun.nix
     ../commons/ui.nix
     ../commons/git.nix
