@@ -95,6 +95,13 @@
     };
   };
 
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "* * * * *  ferreira pactl set-source-volume alsa_input.usb-Kingston_HyperX_QuadCast_S_4100-00.analog-stereo 100%"
+    ];
+  };
+
   # Kernel
   boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
