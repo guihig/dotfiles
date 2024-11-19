@@ -1,22 +1,9 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local gears = require("gears")
-local helpers = require("helpers")
+local utils = require("utils")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local rubato = require("modules.rubato")
-
--- local function easing_bem_loco(t)
--- 	local c4 = (2 * math.pi) / 3
---
--- 	if t == 0 then
--- 		return 0
--- 	elseif t == 1 then
--- 		return 1
--- 	else
--- 		return math.pow(2, -10 * t) * math.sin((t * 10 - 0.75) * c4) + 1
--- 	end
--- end
 
 return function(s)
 	local taglist = awful.widget.taglist({
@@ -25,7 +12,7 @@ return function(s)
 			layout = wibox.layout.fixed.horizontal,
 		},
 		style = {
-			shape = helpers.rrect(8),
+			shape = utils.rrect(8),
 		},
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
@@ -44,12 +31,12 @@ return function(s)
 			{
 				{
 					markup = "",
-					shape = helpers.rrect(3),
+					shape = utils.rrect(3),
 					widget = wibox.widget.textbox,
 				},
 				valign = "center",
 				id = "background_role",
-				shape = helpers.rrect(1),
+				shape = utils.rrect(1),
 				widget = wibox.container.background,
 				forced_width = dpi(40),
 				forced_height = dpi(14),
@@ -81,7 +68,7 @@ return function(s)
 	})
 	local wrapper = {
 		widget = wibox.container.background,
-		shape = helpers.rrect(4),
+		shape = utils.rrect(4),
 		bg = beautiful.color0,
 		{
 			widget = wibox.container.margin,

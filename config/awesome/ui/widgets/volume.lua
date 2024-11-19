@@ -1,6 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local wrapper = require("widgets.wrapper")
+local wrapper = require("ui.widgets.wrapper")
 local alsabar = require("handlers.audio")
 
 local volume = {}

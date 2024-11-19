@@ -1,6 +1,6 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local wrapper = require("widgets.wrapper")
+local wrapper = require("ui.widgets.wrapper")
 local lain = require("lain")
 local xresources = require("beautiful.xresources")
 

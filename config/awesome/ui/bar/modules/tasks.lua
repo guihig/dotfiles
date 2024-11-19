@@ -3,7 +3,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local helpers = require("helpers")
+local utils = require("utils")
 
 local tasklist_buttons = gears.table.join(
 	-- Left click
@@ -26,24 +26,29 @@ return function(s)
 				layout = wibox.layout.fixed.horizontal,
 			},
 			style = {
-				shape = helpers.rrect(1),
+				shape = utils.rrect(1),
 			},
 			widget_template = {
+				nil,
+				{
+					{
+						widget = wibox.container.margin,
+						margins = dpi(5),
+						{
+							id = "clienticon",
+							widget = awful.widget.clienticon,
+						},
+					},
+					halign = "center",
+					valign = "center",
+					widget = wibox.container.place,
+				},
 				{
 					wibox.widget.base.make_widget(),
-					forced_width = dpi(4),
+					forced_height = dpi(4),
 					id = "background_role",
 					widget = wibox.container.background,
 				},
-				{
-					{
-						id = "clienticon",
-						widget = awful.widget.clienticon,
-					},
-					margins = dpi(7),
-					widget = wibox.container.margin,
-				},
-				nil,
 				create_callback = function(self, c, _, _)
 					self:get_children_by_id("clienticon")[1].client = c
 				end,
@@ -54,12 +59,12 @@ return function(s)
 
 	local wrapper = {
 		widget = wibox.container.background,
-		shape = helpers.rrect(4),
+		shape = utils.rrect(4),
 		bg = beautiful.color0,
 		{
 			widget = wibox.container.margin,
-			left = dpi(12),
-			right = dpi(12),
+			left = dpi(4),
+			right = dpi(4),
 			task,
 		},
 	}
