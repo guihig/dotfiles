@@ -1,9 +1,21 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    papirus-icon-theme
+    qogir-icon-theme
+    qogir-theme
+    bibata-cursors
+    graphite-gtk-theme
+    tela-icon-theme
+    orchis-theme
+    lxappearance
+  ];
+
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.qogir-theme;
-    name = "Qogir";
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Amber";
+    size = 24;
   };
 
   gtk = {
@@ -12,12 +24,12 @@
       extraConfig = {gtk-decoration-layout = "menu:";};
     };
     theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
+      name = "Orchis-Orange-Dark";
+      package = pkgs.orchis-theme;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Tela-orange-dark";
+      package = pkgs.tela-icon-theme;
     };
   };
 

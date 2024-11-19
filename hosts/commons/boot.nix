@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -8,6 +8,7 @@
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
+      theme = pkgs.sleek-grub-theme;
     };
   };
   boot.supportedFilesystems = ["ntfs"];

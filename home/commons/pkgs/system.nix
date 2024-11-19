@@ -28,11 +28,7 @@
     flameshot
     gzip
     ntfs3g
-    papirus-icon-theme
-    qogir-icon-theme
-    qogir-theme
     ueberzug
-    lxappearance
     nix-your-shell
     xss-lock
     slock
