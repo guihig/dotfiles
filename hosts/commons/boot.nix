@@ -8,7 +8,10 @@
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
-      theme = pkgs.sleek-grub-theme;
+      theme = pkgs.sleek-grub-theme.override {
+        withStyle = "bigSur";
+        withBanner = "GRUB MUITO BAITA";
+      };
     };
   };
   boot.supportedFilesystems = ["ntfs"];
