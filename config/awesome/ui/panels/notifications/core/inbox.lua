@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
-local utils = require("utils")
+local helpers = require("helpers")
 local inspect = require("inspect")
 local dpi = beautiful.xresources.apply_dpi
 
@@ -37,7 +37,7 @@ local add_notification = function(n, icon, color)
 end
 
 naughty.connect_signal("request::display", function(n)
-	if n.category == "fs" or n.category == "cal" then
+	if helpers.misc.table_includes({ "lain_popup" }, n.category) then
 		return
 	end
 

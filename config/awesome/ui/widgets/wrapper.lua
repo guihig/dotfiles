@@ -1,6 +1,6 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local utils = require("utils")
+local helpers = require("helpers")
 
 local wrapper = {}
 
@@ -10,7 +10,7 @@ local function init(content)
 		bg = beautiful.transparent,
 		content,
 	})
-	utils.ui.add_hover_cursor(widget, "hand2")
+	helpers.ui.add_hover_cursor(widget, "hand2")
 	return widget
 end
 

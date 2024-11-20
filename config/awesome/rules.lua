@@ -1,6 +1,6 @@
 local awful = require("awful")
 local ruled = require("ruled")
-local utils = require("utils")
+local helpers = require("helpers")
 
 ruled.client.connect_signal("request::rules", function()
 	-- Global
@@ -51,6 +51,6 @@ ruled.client.connect_signal("request::rules", function()
 			},
 			role = { "pop-up" },
 		},
-		properties = { floating = true, placement = utils.ui.placement.centered },
+		properties = { floating = true, placement = helpers.ui.placement.centered },
 	})
 end)

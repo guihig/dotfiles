@@ -1,3 +1,5 @@
+local lsp_location = require("lsp_location")
+
 return {
 	{
 		"folke/lazydev.nvim",
@@ -5,6 +7,11 @@ return {
 		cmd = "LazyDev",
 		opts = {
 			library = {
+				lsp_location["awesomewm_lib"],
+				"~/.config/awesome/modules/rubato",
+				"~/.config/awesome/modules/bling",
+				"~/.config/awesome/modules/color",
+				"~/.config/awesome/lain",
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 				{ path = "LazyVim", words = { "LazyVim" } },
 				{ path = "lazy.nvim", words = { "LazyVim" } },

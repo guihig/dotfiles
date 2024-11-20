@@ -13,7 +13,7 @@ local function init()
 		text = beautiful.icons.calendar,
 		align = "center",
 		valign = "center",
-		font = beautiful.icon .. "12",
+		font = beautiful.icon_font .. "12",
 		widget = wibox.widget.textbox,
 	})
 
@@ -21,7 +21,7 @@ local function init()
 		attach_to = { icon },
 		notification_preset = {
 			font = beautiful.font .. "Medium 9",
-			category = "cal",
+			category = "lain_popup",
 			bg = beautiful.notification_bg,
 			fg = beautiful.notification_fg,
 		},

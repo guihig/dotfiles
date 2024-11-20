@@ -22,6 +22,10 @@
       url = "github:lcpz/lain";
       flake = false;
     };
+    color = {
+      url = "github:andOrlando/color";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";

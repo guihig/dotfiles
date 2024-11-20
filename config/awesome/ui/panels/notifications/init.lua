@@ -3,7 +3,7 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
-local utils = require("utils")
+local helpers = require("helpers")
 
 return function(s)
 	s.notification_panel = awful.popup({
@@ -23,7 +23,7 @@ return function(s)
 		widget = {
 			{
 				{ ----------- TOP GROUP -----------
-					utils.ui.vertical_pad(dpi(30)),
+					helpers.ui.vertical_pad(dpi(30)),
 					{
 						require("ui.panels.notifications.core")(s),
 						margins = dpi(20),
@@ -33,7 +33,7 @@ return function(s)
 				},
 				layout = wibox.layout.flex.vertical,
 			},
-			shape = utils.ui.prect(beautiful.border_radius * 2, true, false, false, false),
+			shape = helpers.ui.prect(beautiful.border_radius * 2, true, false, false, false),
 			bg = beautiful.wibar_bg,
 			widget = wibox.container.background,
 		},

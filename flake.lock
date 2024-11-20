@@ -49,6 +49,22 @@
         "type": "github"
       }
     },
+    "color": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1674325504,
+        "narHash": "sha256-vvl1nbHQY08q/dL4QG9Y/vdn+6GpBqVWtLpEnDaiQdc=",
+        "owner": "andOrlando",
+        "repo": "color",
+        "rev": "a143626149c0b9aa3302874cba6ce8ee0813c13b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andOrlando",
+        "repo": "color",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -151,11 +167,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1731978971,
-        "narHash": "sha256-iwELdS0z0Yr8e3zRIBw07ug451T0rkEfGo3+vA5/Gg0=",
+        "lastModified": 1732100541,
+        "narHash": "sha256-ryxqTo2N5EOwHjrDXCoVFKuG1ZKpoMlRmCjqqUhjQPU=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "67cee430061626ccd73dc6d30eed9db289053608",
+        "rev": "940f7aa990dbc99815bab8d355999d8277534b17",
         "type": "github"
       },
       "original": {
@@ -391,6 +407,7 @@
     "root": {
       "inputs": {
         "bling": "bling",
+        "color": "color",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "lain": "lain",

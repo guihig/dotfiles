@@ -1,5 +1,5 @@
 local awful = require("awful")
-local utils = require("utils")
+local helpers = require("helpers")
 local apps = require("apps")
 local scratchpad = require("scratchpad")
 local naughty = require("naughty")
@@ -125,11 +125,11 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "increase client width factor", group = "layout" }),
 	awful.key({ keys.mod }, "Tab", function()
 		awful.layout.inc(1)
-		utils.misc.handle_master_count()
+		helpers.misc.handle_master_count()
 	end, { description = "select next", group = "layout" }),
 	awful.key({ keys.mod, keys.shift }, "Tab", function()
 		awful.layout.inc(-1)
-		utils.misc.handle_master_count()
+		helpers.misc.handle_master_count()
 	end, { description = "select previous", group = "layout" }),
 })
 
@@ -261,9 +261,6 @@ client.connect_signal("request::default_mousebindings", function()
 			button = 1,
 			on_press = function(c)
 				if c.can_move ~= false then
-					c.floating = true
-					c.maximized = false
-					c.fullscreen = false
 					c:activate({ context = "mouse_click", action = "mouse_move" })
 				end
 			end,

@@ -3,7 +3,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local naughty = require("naughty")
 local gears = require("gears")
-local utils = require("utils")
+local helpers = require("helpers")
 
 local M = {}
 
@@ -86,7 +86,7 @@ M.actions = function(n)
 		widget = naughty.list.actions,
 	})
 
-	utils.ui.add_hover_cursor(actions_template, "hand1")
+	helpers.ui.add_hover_cursor(actions_template, "hand1")
 	return actions_template
 end
 
@@ -95,8 +95,8 @@ M.dismiss = function()
 	local dismiss_textbox = wibox.widget({
 		{
 			id = "dismiss_icon",
-			font = beautiful.icon .. "11",
-			markup = utils.ui.colorize_text("󰩹", beautiful.fg),
+			font = beautiful.icon_font .. "11",
+			markup = helpers.ui.colorize_text("󰩹", beautiful.fg),
 			align = "center",
 			valign = "center",
 			widget = wibox.widget.textbox,
@@ -116,7 +116,7 @@ M.dismiss = function()
 		widget = wibox.container.background,
 	})
 
-	utils.ui.add_hover_cursor(dismiss, "hand2")
+	helpers.ui.add_hover_cursor(dismiss, "hand2")
 	return dismiss
 end
 

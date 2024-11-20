@@ -35,7 +35,8 @@
         volar = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
         nil_ls = { "${unstable.nil}/bin/nil" },
         lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },
-        vue_ts_plugin = "${unstable.vue-language-server}/lib/node_modules/@vue/language-server"
+        vue_ts_plugin = "${unstable.vue-language-server}/lib/node_modules/@vue/language-server",
+        awesomewm_lib = "${pkgs.awesome-git}/share/awesome/lib"
       }
     '';
   };

@@ -3,7 +3,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local utils = require("utils")
+local helpers = require("helpers")
 
 local tasklist_buttons = gears.table.join(
 	-- Left click
@@ -26,7 +26,7 @@ return function(s)
 				layout = wibox.layout.fixed.horizontal,
 			},
 			style = {
-				shape = utils.ui.rrect(beautiful.border_radius),
+				shape = helpers.ui.rrect(beautiful.border_radius),
 			},
 			widget_template = {
 				nil,
@@ -59,7 +59,7 @@ return function(s)
 
 	local wrapper = {
 		widget = wibox.container.background,
-		shape = utils.ui.rrect(beautiful.border_radius),
+		shape = helpers.ui.rrect(beautiful.border_radius),
 		bg = beautiful.color0,
 		{
 			widget = wibox.container.margin,

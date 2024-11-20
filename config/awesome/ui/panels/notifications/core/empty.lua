@@ -1,4 +1,4 @@
-local utils = require("utils")
+local helpers = require("helpers")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local wibox = require("wibox")
@@ -14,14 +14,14 @@ return wibox.widget({
 	{
 		{
 			widget = wibox.widget.textbox,
-			markup = utils.ui.colorize_text("", beautiful.color5),
-			font = beautiful.icon .. "10",
+			markup = helpers.ui.colorize_text("", beautiful.color5),
+			font = beautiful.icon_font .. "12",
 			valign = "center",
 			align = "center",
 		},
 		{
 			widget = wibox.widget.textbox,
-			markup = utils.ui.colorize_text("No Notifications", beautiful.white),
+			markup = helpers.ui.colorize_text("No Notifications", beautiful.white),
 			font = beautiful.font .. "Bold 14",
 			valign = "center",
 			align = "center",

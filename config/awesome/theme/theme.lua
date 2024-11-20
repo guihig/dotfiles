@@ -15,7 +15,8 @@ local xtheme = xresources.get_current_theme()
 
 -- #-------- Fonts --------#
 theme.font = "JetBrainsMono Nerd Font "
-theme.icon = "Material Design Icons "
+theme.font_name = theme.font .. "Medium 10"
+theme.icon_font = "Material Design Icons "
 
 -- #-------- Colors --------#
 -- From 0 to 15  xresources colors
@@ -34,6 +35,7 @@ theme.fg_urgent = theme.color15
 theme.bg_urgent = theme.color1
 
 theme.white = "#FFFFFF"
+theme.black = "#000000"
 theme.transparent = "#00000000"
 
 --- Accent colors

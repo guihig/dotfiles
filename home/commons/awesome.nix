@@ -19,6 +19,10 @@
     source = inputs.rubato.outPath;
     recursive = true;
   };
+  home.file.".config/awesome/modules/color" = {
+    source = inputs.color.outPath;
+    recursive = true;
+  };
   home.file.".config/awesome/lain" = {
     source = inputs.lain.outPath;
     recursive = true;

@@ -22,8 +22,8 @@ M.log = function(title, message)
 	})
 end
 
---
-M.string_in_table = function(tbl, str)
+-- Utils
+M.table_includes = function(tbl, str)
 	for i = 1, #tbl do
 		if tbl[i] == str then
 			return true

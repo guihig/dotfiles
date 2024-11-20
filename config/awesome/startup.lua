@@ -1,7 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local utils = require("utils")
+local helpers = require("helpers")
 local beautiful = require("beautiful")
 
 require("awful.autofocus")
@@ -13,7 +13,7 @@ client.connect_signal("request::manage", function(client)
 end)
 
 client.connect_signal("manage", function(c)
-	c.shape = utils.ui.rrect(beautiful.border_radius)
+	c.shape = helpers.ui.rrect(beautiful.border_radius)
 end)
 
 client.connect_signal("property::floating", function(client)
@@ -28,7 +28,7 @@ client.connect_signal("property::fullscreen", function(c)
 	if c.fullscreen then
 		c.shape = gears.shape.rectangle
 	else
-		c.shape = utils.ui.rrect(beautiful.border_radius)
+		c.shape = helpers.ui.rrect(beautiful.border_radius)
 	end
 end)
 
