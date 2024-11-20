@@ -13,12 +13,18 @@ local function init()
 		text = beautiful.icons.calendar,
 		align = "center",
 		valign = "center",
-		font = beautiful.icon,
+		font = beautiful.icon .. "12",
 		widget = wibox.widget.textbox,
 	})
 
 	lain.widget.cal({
 		attach_to = { icon },
+		notification_preset = {
+			font = beautiful.font .. "Medium 9",
+			category = "cal",
+			bg = beautiful.notification_bg,
+			fg = beautiful.notification_fg,
+		},
 	})
 
 	local clock_text = wibox.widget({

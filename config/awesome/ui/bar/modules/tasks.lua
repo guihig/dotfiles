@@ -26,7 +26,7 @@ return function(s)
 				layout = wibox.layout.fixed.horizontal,
 			},
 			style = {
-				shape = utils.rrect(1),
+				shape = utils.ui.rrect(beautiful.border_radius),
 			},
 			widget_template = {
 				nil,
@@ -59,7 +59,7 @@ return function(s)
 
 	local wrapper = {
 		widget = wibox.container.background,
-		shape = utils.rrect(4),
+		shape = utils.ui.rrect(beautiful.border_radius),
 		bg = beautiful.color0,
 		{
 			widget = wibox.container.margin,

@@ -12,7 +12,7 @@ return function(s)
 			layout = wibox.layout.fixed.horizontal,
 		},
 		style = {
-			shape = utils.rrect(8),
+			shape = utils.ui.rrect(beautiful.border_radius),
 		},
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
@@ -31,12 +31,12 @@ return function(s)
 			{
 				{
 					markup = "",
-					shape = utils.rrect(3),
+					shape = utils.ui.rrect(3),
 					widget = wibox.widget.textbox,
 				},
 				valign = "center",
 				id = "background_role",
-				shape = utils.rrect(1),
+				shape = utils.ui.rrect(1),
 				widget = wibox.container.background,
 				forced_width = dpi(40),
 				forced_height = dpi(14),
@@ -68,7 +68,7 @@ return function(s)
 	})
 	local wrapper = {
 		widget = wibox.container.background,
-		shape = utils.rrect(4),
+		shape = utils.ui.rrect(beautiful.border_radius),
 		bg = beautiful.color0,
 		{
 			widget = wibox.container.margin,

@@ -19,7 +19,7 @@ local systray = wibox.widget({
 
 local widget = wibox.widget({
 	widget = wibox.container.background,
-	shape = utils.rrect(4),
+	shape = utils.ui.rrect(beautiful.border_radius),
 	bg = beautiful.color0,
 	{
 		widget = wibox.container.margin,

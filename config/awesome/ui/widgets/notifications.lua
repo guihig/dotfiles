@@ -1,39 +1,37 @@
+local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local wrapper = require("ui.widgets.wrapper")
-local lain = require("lain")
 local xresources = require("beautiful.xresources")
 
 local dpi = xresources.apply_dpi
 
-local mem = {}
+local clock = {}
 
 local function init()
 	local icon = wibox.widget({
-		text = beautiful.icons.mem,
+		text = beautiful.icons.bell,
 		align = "center",
 		valign = "center",
 		font = beautiful.icon .. "12",
 		widget = wibox.widget.textbox,
-	})
-
-	local lain_mem = lain.widget.mem({
-		settings = function()
-			widget:set_text(string.format("%s%%", mem_now.perc))
-		end,
+		buttons = {
+			awful.button({}, 1, function()
+				awesome.emit_signal("notification_panel::toggle", awful.screen.focused())
+			end),
+		},
 	})
 
 	local widget = wibox.widget({
 		layout = wibox.layout.fixed.horizontal,
 		spacing = dpi(4),
 		icon,
-		lain_mem.widget,
 	})
 
 	return wrapper(widget)
 end
 
-return setmetatable(mem, {
+return setmetatable(clock, {
 	__call = function(_, ...)
 		return init(...)
 	end,

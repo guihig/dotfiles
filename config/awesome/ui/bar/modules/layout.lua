@@ -41,14 +41,14 @@ local widget = {
 	{
 		{
 			layouts,
-			clip_shape = utils.rrect(3),
+			clip_shape = utils.ui.rrect(3),
 			widget = wibox.container.margin,
 		},
 		margins = dpi(10),
 		widget = wibox.container.margin,
 	},
 	bg = beautiful.color0,
-	shape = utils.rrect(5),
+	shape = utils.ui.rrect(beautiful.border_radius),
 	widget = wibox.container.background,
 }
 

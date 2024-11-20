@@ -51,6 +51,6 @@ ruled.client.connect_signal("request::rules", function()
 			},
 			role = { "pop-up" },
 		},
-		properties = { floating = true, placement = utils.placement.centered },
+		properties = { floating = true, placement = utils.ui.placement.centered },
 	})
 end)

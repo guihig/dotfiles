@@ -125,11 +125,11 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "increase client width factor", group = "layout" }),
 	awful.key({ keys.mod }, "Tab", function()
 		awful.layout.inc(1)
-		utils.handle_master_count()
+		utils.misc.handle_master_count()
 	end, { description = "select next", group = "layout" }),
 	awful.key({ keys.mod, keys.shift }, "Tab", function()
 		awful.layout.inc(-1)
-		utils.handle_master_count()
+		utils.misc.handle_master_count()
 	end, { description = "select previous", group = "layout" }),
 })
 

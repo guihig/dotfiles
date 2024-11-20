@@ -14,8 +14,8 @@ local theme = {}
 local xtheme = xresources.get_current_theme()
 
 -- #-------- Fonts --------#
-theme.font = "JetBrainsMono Nerd Font Medium 9"
-theme.icon = "Material Design Icons 10"
+theme.font = "JetBrainsMono Nerd Font "
+theme.icon = "Material Design Icons "
 
 -- #-------- Colors --------#
 -- From 0 to 15  xresources colors
@@ -33,7 +33,23 @@ theme.bg_focus = theme.color8
 theme.fg_urgent = theme.color15
 theme.bg_urgent = theme.color1
 
+theme.white = "#FFFFFF"
 theme.transparent = "#00000000"
+
+--- Accent colors
+function theme.random_accent_color()
+	local accents = {
+		theme.color9,
+		theme.color10,
+		theme.color11,
+		theme.color12,
+		theme.color13,
+		theme.color14,
+	}
+
+	local i = math.random(1, #accents)
+	return accents[i]
+end
 
 -- #-------- Icons --------#
 theme.icons = {
@@ -47,11 +63,13 @@ theme.icons = {
 	fs = "󰋊",
 	float = "󰉈",
 	tile = "󱇙",
+	bell = "󰂜",
 }
 -- #-------- Common --------#
 theme.wallpaper = themes_path .. "default/background.png"
 theme.icon_theme = "Papirus-Dark"
 theme.useless_gap = dpi(4)
+theme.border_radius = dpi(8)
 
 -- #-------- Titlebar --------#
 theme.titlebar_fg_normal = theme.fg_normal
@@ -70,9 +88,9 @@ theme.systray_max_rows = 1
 
 -- #-------- Wibar --------#
 -- theme.wibar_opacity = 0.85
--- theme.wibar_fg = theme.fg
--- theme.wibar_bg = theme.bg
--- theme.wibar_height = dpi(24)
+theme.wibar_fg = theme.fg
+theme.wibar_bg = theme.bg
+theme.wibar_height = dpi(40)
 
 -- #-------- Taglist --------#
 theme.taglist_bg_focus = theme.color2
@@ -114,6 +132,9 @@ theme.notification_shape = gears.shape.rounded_rect
 theme.notification_opacity = 0.8
 theme.notification_margin = dpi(4)
 theme.notification_spacing = dpi(4)
+
+theme.notification_panel_bg = theme.color0
+theme.notification_panel_bg_alt = theme.color8 .. "66"
 
 -- #-------- Clients --------#
 theme.border_color_active = theme.color8

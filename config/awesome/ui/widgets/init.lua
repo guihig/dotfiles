@@ -1,4 +1,5 @@
 return {
+	notifications = require("ui.widgets.notifications"),
 	volume = require("ui.widgets.volume"),
 	clock = require("ui.widgets.clock"),
 	cpu = require("ui.widgets.cpu"),

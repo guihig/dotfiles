@@ -1,0 +1,48 @@
+local awful = require("awful")
+local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+local wibox = require("wibox")
+local utils = require("utils")
+
+return function(s)
+	s.notification_panel = awful.popup({
+		type = "dock",
+		screen = s,
+		minimum_height = s.geometry.height - beautiful.wibar_height,
+		maximum_height = s.geometry.height - beautiful.wibar_height,
+		minimum_width = dpi(350),
+		maximum_width = dpi(350),
+		bg = beautiful.transparent,
+		ontop = true,
+		visible = false,
+		placement = function(w)
+			awful.placement.top_right(w)
+			awful.placement.maximize_vertically(w, { honor_workarea = true, margins = { top = beautiful.useless_gap } })
+		end,
+		widget = {
+			{
+				{ ----------- TOP GROUP -----------
+					utils.ui.vertical_pad(dpi(30)),
+					{
+						require("ui.panels.notifications.core")(s),
+						margins = dpi(20),
+						widget = wibox.container.margin,
+					},
+					layout = wibox.layout.fixed.vertical,
+				},
+				layout = wibox.layout.flex.vertical,
+			},
+			shape = utils.ui.prect(beautiful.border_radius * 2, true, false, false, false),
+			bg = beautiful.wibar_bg,
+			widget = wibox.container.background,
+		},
+	})
+
+	--- Toggle container visibility
+	awesome.connect_signal("notification_panel::toggle", function(scr)
+		if scr == s then
+			s.notification_panel.visible = not s.notification_panel.visible
+		end
+	end)
+end

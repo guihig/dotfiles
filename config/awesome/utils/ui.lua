@@ -1,11 +1,10 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
-local naughty = require("naughty")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-
 local M = { placement = {} }
+local capi = { mouse = mouse }
 
 -- Client helpers
 M.placement.centered = function(c)
@@ -44,23 +43,36 @@ M.colorize_text = function(txt, fg)
 	return "<span foreground='" .. fg .. "'>" .. txt .. "</span>"
 end
 
--- Layout
-M.handle_master_count = function()
-	local t = awful.screen.focused().selected_tag
-	if t.layout.name == "mstab" then
-		t.master_count = 0
-	else
-		t.master_count = 1
-	end
+M.vertical_pad = function(height)
+	return wibox.widget({
+		forced_height = height,
+		layout = wibox.layout.fixed.vertical,
+	})
 end
 
--- Log
-M.log = function(title, message)
-	naughty.notification({
-		urgency = "info",
-		title = tostring(title),
-		message = tostring(message),
+M.horizontal_pad = function(width)
+	return wibox.widget({
+		forced_width = width,
+		layout = wibox.layout.fixed.horizontal,
 	})
+end
+
+M.add_hover_cursor = function(w, hover_cursor)
+	local original_cursor = "left_ptr"
+
+	w:connect_signal("mouse::enter", function()
+		local widget = capi.mouse.current_wibox
+		if widget then
+			widget.cursor = hover_cursor
+		end
+	end)
+
+	w:connect_signal("mouse::leave", function()
+		local widget = capi.mouse.current_wibox
+		if widget then
+			widget.cursor = original_cursor
+		end
+	end)
 end
 
 return M

@@ -9,10 +9,10 @@ local tasks = require("ui.bar.modules.tasks")
 local systray = require("ui.bar.modules.systray")
 local controls = require("ui.bar.modules.controls")
 
-local function init(s)
+return function(s)
 	local wibar = awful.wibar({
 		position = "top",
-		height = dpi(40),
+		height = beautiful.wibar_height,
 		ontop = false,
 		screen = s,
 		widget = {
@@ -64,9 +64,6 @@ local function init(s)
 			},
 		},
 	})
-	return wibar
-end
 
-screen.connect_signal("request::desktop_decoration", function(s)
-	s.wibox = init(s)
-end)
+	s.wibox = wibar
+end

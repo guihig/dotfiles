@@ -13,7 +13,7 @@ local icon = wibox.widget({
 	text = beautiful.icons.volume,
 	align = "center",
 	valign = "center",
-	font = beautiful.icon,
+	font = beautiful.icon .. "12",
 	widget = wibox.widget.textbox,
 })
 
@@ -22,7 +22,7 @@ local audio = lain.widget.alsabar({
 	border_width = 0,
 	ticks = true,
 	ticks_size = dpi(6),
-	notification_preset = { font = beautiful.font },
+	notification_preset = { font = beautiful.font .. "Medium 9" },
 	settings = function()
 		if volume_now.status == "off" then
 			icon:set_markup_silently(beautiful.icons.volume_mute)

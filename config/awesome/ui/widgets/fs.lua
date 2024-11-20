@@ -13,12 +13,12 @@ local function init()
 		text = beautiful.icons.fs,
 		align = "center",
 		valign = "center",
-		font = beautiful.icon,
+		font = beautiful.icon .. "12",
 		widget = wibox.widget.textbox,
 	})
 
 	local lain_fs = lain.widget.fs({
-		notification_preset = { font = beautiful.font },
+		notification_preset = { font = beautiful.font .. "Medium 9", category = "fs" },
 		settings = function()
 			widget:set_text(string.format("%s%%", fs_now["/"].percentage))
 		end,

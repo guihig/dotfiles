@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     nerdfonts
     iosevka
+    roboto
     iosevka-bin
     siji
     termsyn
