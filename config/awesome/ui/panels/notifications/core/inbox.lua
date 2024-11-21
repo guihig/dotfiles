@@ -2,7 +2,6 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local helpers = require("helpers")
-local inspect = require("inspect")
 local dpi = beautiful.xresources.apply_dpi
 
 local empty_widget = require("ui.panels.notifications.core.empty")
@@ -14,7 +13,7 @@ M.remove_empty = true
 
 M.layout = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
-	spacing = dpi(10),
+	spacing = dpi(8),
 	empty_widget,
 })
 
@@ -52,6 +51,11 @@ naughty.connect_signal("request::display", function(n)
 	end
 
 	add_notification(n, icon, color)
+end)
+
+awesome.connect_signal("notification_panel::clear", function()
+	M.reset_layout()
+	collectgarbage("collect")
 end)
 
 return M

@@ -3,7 +3,6 @@ local M = {}
 M.terminal = "kitty"
 M.discord = "vesktop"
 M.flameshot = "flameshot gui"
-M.telegram = "telegram-desktop"
 M.lockscreen = "slock"
 M.spotify = "spotify"
 M.launcher =

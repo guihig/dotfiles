@@ -26,6 +26,10 @@
       url = "github:andOrlando/color";
       flake = false;
     };
+    awesome-buttons = {
+      url = "github:streetturtle/awesome-buttons";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
