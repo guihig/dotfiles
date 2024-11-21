@@ -121,7 +121,9 @@ local generator = function(notification, icon, title, message, app, bgcolor, inb
 	--- Delete notification_box on LMB
 	notification_box:buttons(awful.util.table.join(awful.button({}, 1, function()
 		if #inbox_layout.children == 1 then
-			inbox_reset_layout()
+			-- inbox_reset_layout()
+			awesome.emit_signal("notification_panel::clear")
+			return
 		else
 			notification_delete()
 		end

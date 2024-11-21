@@ -19,14 +19,14 @@ naughty.connect_signal("request::display", function(n)
 		return
 	end
 
-	gears.timer({
-		timeout = n.timeout,
-		call_now = false,
-		autostart = true,
-		callback = function()
-			n:destroy()
-		end,
-	})
+	-- gears.timer({
+	-- 	timeout = n.timeout,
+	-- 	call_now = false,
+	-- 	autostart = true,
+	-- 	callback = function()
+	-- 		n:destroy()
+	-- 	end,
+	-- })
 end)
 
 -- Error Handling

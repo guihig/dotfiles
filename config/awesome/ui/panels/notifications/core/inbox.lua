@@ -51,6 +51,7 @@ naughty.connect_signal("request::display", function(n)
 	end
 
 	add_notification(n, icon, color)
+	awesome.emit_signal("notification_panel::added")
 end)
 
 awesome.connect_signal("notification_panel::clear", function()

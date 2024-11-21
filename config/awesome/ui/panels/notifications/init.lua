@@ -12,11 +12,14 @@ local function clear_button()
 			id = "icon",
 			font = beautiful.icon_font .. "16",
 			markup = helpers.ui.colorize_text("󰩹", beautiful.fg),
-			align = "center",
+			halign = "center",
 			valign = "center",
 			widget = wibox.widget.textbox,
 		},
-		layout = wibox.layout.fixed.horizontal,
+		halign = "center",
+		valign = "center",
+		fill_horizontal = true,
+		widget = wibox.container.place,
 	})
 
 	local clear_btn = wibox.widget({
@@ -25,14 +28,31 @@ local function clear_button()
 			margins = dpi(12),
 			widget = wibox.container.margin,
 		},
-		bg = beautiful.notification_panel_bg_alt,
+		visible = false,
+		bg = beautiful.notification_panel_bg,
 		shape = helpers.ui.rrect(beautiful.border_radius),
 		widget = wibox.container.background,
 	})
 
+	clear_btn:connect_signal("mouse::enter", function()
+		clear_btn.bg = beautiful.notification_panel_bg_alt
+	end)
+
+	clear_btn:connect_signal("mouse::leave", function()
+		clear_btn.bg = beautiful.notification_panel_bg
+	end)
+
 	clear_btn:buttons(awful.util.table.join(awful.button({}, 1, function()
 		awesome.emit_signal("notification_panel::clear")
 	end)))
+
+	awesome.connect_signal("notification_panel::clear", function()
+		clear_btn.visible = false
+	end)
+
+	awesome.connect_signal("notification_panel::added", function()
+		clear_btn.visible = true
+	end)
 
 	helpers.ui.add_hover_cursor(clear_btn, "hand2")
 
@@ -40,6 +60,8 @@ local function clear_button()
 end
 
 return function(s)
+	local notification_box = require("ui.panels.notifications.core")(s)
+
 	s.notification_panel = awful.popup({
 		type = "dock",
 		screen = s,
@@ -57,18 +79,14 @@ return function(s)
 		widget = {
 			{
 				{
-					helpers.ui.vertical_pad(dpi(20)),
 					{
-						require("ui.panels.notifications.core")(s),
+						clear_button(),
 						margins = dpi(20),
 						widget = wibox.container.margin,
 					},
-					layout = wibox.layout.fixed.vertical,
-				},
-				{
 					helpers.ui.vertical_pad(dpi(20)),
 					{
-						clear_button(),
+						notification_box,
 						margins = dpi(20),
 						widget = wibox.container.margin,
 					},

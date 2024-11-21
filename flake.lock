@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "awesome-buttons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1665709083,
+        "narHash": "sha256-3s3xz67/DorFvFe2L0p84qfDhJs0c40pgrJXtga38TE=",
+        "owner": "streetturtle",
+        "repo": "awesome-buttons",
+        "rev": "286a967a9de4bc2130356caed87f6f612070b377",
+        "type": "github"
+      },
+      "original": {
+        "owner": "streetturtle",
+        "repo": "awesome-buttons",
+        "type": "github"
+      }
+    },
     "bling": {
       "flake": false,
       "locked": {
@@ -406,6 +422,7 @@
     },
     "root": {
       "inputs": {
+        "awesome-buttons": "awesome-buttons",
         "bling": "bling",
         "color": "color",
         "home-manager": "home-manager",
