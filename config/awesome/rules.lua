@@ -40,6 +40,7 @@ ruled.client.connect_signal("request::rules", function()
 				"Slack",
 				"Rocket.Chat",
 				"gnome-calendar",
+				"tsmapplication.exe",
 			},
 			name = {
 				"Steam - Self Updater",
@@ -48,9 +49,25 @@ ruled.client.connect_signal("request::rules", function()
 				"Discord Updater",
 				"splash",
 				"Telegram",
+				"TSM Login*",
+				"TradeSkillMaster Application*",
 			},
 			role = { "pop-up" },
 		},
 		properties = { floating = true, placement = helpers.ui.placement.centered },
+	})
+
+	ruled.client.append_rule({
+		rule = { class = "steam_app_0" },
+		except_any = {
+			name = {
+				"TSM Login*",
+			},
+		},
+		properties = {
+			tag = screen[1].tags[5],
+			switch_to_tags = false,
+			opacity = 1,
+		},
 	})
 end)
