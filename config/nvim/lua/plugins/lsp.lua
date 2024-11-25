@@ -36,7 +36,6 @@ return {
 				sqlls = true,
 				lua_ls = true,
 				nil_ls = true,
-				unocss = true,
 				ts_ls = function()
 					return {
 						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
