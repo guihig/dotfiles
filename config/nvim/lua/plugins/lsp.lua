@@ -28,6 +28,7 @@ return {
 			servers = {
 				dockerls = true,
 				elixirls = true,
+				emmet_ls = true,
 				erlangls = true,
 				eslint = true,
 				html = true,
@@ -36,6 +37,7 @@ return {
 				sqlls = true,
 				lua_ls = true,
 				nil_ls = true,
+				volar = true,
 				ts_ls = function()
 					return {
 						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
