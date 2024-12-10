@@ -28,7 +28,7 @@ return {
 			servers = {
 				dockerls = true,
 				elixirls = true,
-				emmet_ls = true,
+				-- emmet_ls = true,
 				erlangls = true,
 				eslint = true,
 				html = true,

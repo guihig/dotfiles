@@ -32,5 +32,6 @@
     nano
     vscode
     jetbrains.pycharm-professional
+    github-desktop
   ];
 }
