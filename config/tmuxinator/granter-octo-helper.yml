@@ -1,0 +1,17 @@
+name: granter-octo-helper
+root: ~/dev/misc/granter_octo_helper/
+windows:
+  - editor:
+      root: ~/dev/misc/granter_octo_helper/
+      panes:
+        - editor:
+            - nix develop
+            - nvim .
+  - term:
+      root: ~/dev/misc/granter_octo_helper/
+      layout: even-horizontal
+      panes:
+        - yarn:
+            - nix develop
+        - git:
+            - nix develop
