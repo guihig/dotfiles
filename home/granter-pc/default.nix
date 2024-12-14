@@ -8,14 +8,13 @@
     outputs.homeManagerModules.helpers
     ../commons/pkgs/default.nix
     ../commons/pkgs/xorg.nix
+    ../commons/picom.nix
+    ../commons/awesome.nix
     ../commons/ui.nix
     ../commons/git.nix
     ../commons/ssh.nix
     ../commons/fish.nix
     ../commons/rofi.nix
-    ../commons/dunst.nix
-    ../commons/picom.nix
-    ../commons/awesome.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
   ];

@@ -3,5 +3,6 @@
     xcowsay
     xclip
     arandr
+    xlayoutdisplay
   ];
 }
