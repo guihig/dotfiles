@@ -26,9 +26,6 @@
     networkmanager.enable = true;
   };
 
-  # Enable sound
-  sound.enable = true;
-
   # Env config
   environment = {
     variables = {
@@ -43,8 +40,8 @@
       neovim
       home-manager
       polkit_gnome
-      gnome.gnome-keyring
-      gnome.file-roller
+      gnome-keyring
+      file-roller
       kitty
       lxqt.lxqt-policykit
     ];

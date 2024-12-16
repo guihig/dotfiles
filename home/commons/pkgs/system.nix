@@ -18,12 +18,12 @@
     pulseaudio
     fzf
     eza
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     sl
     neofetch
     cmatrix
     libnotify
-    gnome.seahorse
+    seahorse
     gparted
     flameshot
     gzip

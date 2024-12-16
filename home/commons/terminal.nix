@@ -8,7 +8,7 @@
       package = pkgs.jetbrains-mono;
       size = 10;
     };
-    theme = "Earthsong";
+    themeFile = "Earthsong";
     settings = {
       background_opacity = "0.75";
       enable_audio_bell = false;

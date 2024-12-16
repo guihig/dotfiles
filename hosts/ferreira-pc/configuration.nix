@@ -16,6 +16,7 @@
     ../commons/boot.nix
     ../commons/security.nix
     ../commons/hardware.nix
+    ../commons/nvidia.nix
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
@@ -106,5 +107,5 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

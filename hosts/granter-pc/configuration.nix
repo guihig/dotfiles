@@ -12,6 +12,7 @@
     ../commons/boot.nix
     ../commons/security.nix
     ../commons/hardware.nix
+    ../commons/nvidia.nix
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
@@ -43,7 +44,19 @@
 
   networking.hostName = "granter-pc";
 
-  services.xserver.videoDrivers = ["nvidia" "intel"];
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware = {
+    nvidia = {
+      prime = {
+        offload = {
+          enable = lib.mkForce false;
+        };
+        sync.enable = true;
+        nvidiaBusId = "PCI:2:0:0";
+        intelBusId = "PCI:0:2:0";
+      };
+    };
+  };
   services.displayManager = {
     autoLogin.user = "ferreira";
   };
@@ -70,5 +83,5 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

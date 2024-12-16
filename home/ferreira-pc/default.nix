@@ -58,7 +58,7 @@
       BROWSER = "firefox";
     };
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = lib.mkDefault "24.05";
+    stateVersion = lib.mkDefault "24.11";
   };
 
   # Enable home-manager

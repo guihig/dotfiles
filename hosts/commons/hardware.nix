@@ -1,15 +1,8 @@
-{config, ...}: {
+{...}: {
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-    nvidia = {
-      modesetting.enable = true;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      enable32Bit = true;
     };
     bluetooth = {
       enable = true;
