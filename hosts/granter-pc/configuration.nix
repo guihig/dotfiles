@@ -44,8 +44,13 @@
 
   networking.hostName = "granter-pc";
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["modesetting"];
   hardware = {
+    graphics = {
+      extraPackages = with pkgs; [
+        intel-media-sdk
+      ];
+    };
     nvidia = {
       prime = {
         offload = {
