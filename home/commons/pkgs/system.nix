@@ -37,5 +37,7 @@
     kazam
     bootiso
     mangohud
+    lm_sensors
+    hddtemp
   ];
 }
