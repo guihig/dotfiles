@@ -36,5 +36,6 @@
     bluez-tools
     kazam
     bootiso
+    mangohud
   ];
 }
