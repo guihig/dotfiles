@@ -30,6 +30,7 @@
   environment = {
     variables = {
       SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS = 0;
+      SHELL = "fish";
     };
     systemPackages = with pkgs; [
       firefox
