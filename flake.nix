@@ -26,10 +26,6 @@
       url = "github:andOrlando/color";
       flake = false;
     };
-    awesome-buttons = {
-      url = "github:streetturtle/awesome-buttons";
-      flake = false;
-    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
@@ -40,7 +36,7 @@
 
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {

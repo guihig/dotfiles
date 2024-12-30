@@ -23,10 +23,6 @@
     source = inputs.color.outPath;
     recursive = true;
   };
-  home.file.".config/awesome/modules/awesome-buttons" = {
-    source = inputs.awesome-buttons.outPath;
-    recursive = true;
-  };
   home.file.".config/awesome/lain" = {
     source = inputs.lain.outPath;
     recursive = true;

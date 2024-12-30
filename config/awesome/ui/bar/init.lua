@@ -35,7 +35,6 @@ return function(s)
 					},
 				},
 				{
-
 					widget = wibox.container.margin,
 					right = dpi(10),
 					left = dpi(10),

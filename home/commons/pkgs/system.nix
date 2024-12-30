@@ -37,6 +37,8 @@
     kazam
     bootiso
     mangohud
+    goverlay
+    mangojuice
     lm_sensors
     hddtemp
   ];
