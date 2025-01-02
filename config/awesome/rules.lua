@@ -58,7 +58,7 @@ ruled.client.connect_signal("request::rules", function()
 	})
 
 	ruled.client.append_rule({
-		rule = { class = "steam_app_0" },
+		rule_any = { class = { "steam_app_0", "steam", "steamwebhelper" } },
 		except_any = {
 			name = {
 				"TSM Login*",
