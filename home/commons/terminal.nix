@@ -25,20 +25,18 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      general = [
-        pkgs.alacritty-theme.gruvbox_material
-      ];
+      general = {
+        import = ["${pkgs.alacritty-theme}/gruvbox_material_medium_dark.toml"];
+      };
       env = {
         TERM = "xterm-256color";
       };
-      shell.program = "${pkgs.fish}/bin/fish";
+      terminal = {
+        shell.program = "${pkgs.fish}/bin/fish";
+      };
       window = {
         opacity = 0.75;
         decorations = "None";
-        padding = {
-          x = 0;
-          y = 0;
-        };
         class = {
           instance = "Alacritty";
           general = "Alacritty";
