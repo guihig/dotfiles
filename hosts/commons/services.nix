@@ -21,6 +21,19 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+
+      wireplumber.configPackages = [
+        (pkgs.writeTextDir "share/wireplumber/main.lua.d/99-stop-microphone-auto-adjust.lua" ''
+          table.insert (default_access.rules,{
+              matches = {
+                  {
+                      { "application.process.binary", "=", "vesktop" }
+                  }
+              },
+              default_permissions = "rx",
+          })
+        '')
+      ];
     };
   };
 }
