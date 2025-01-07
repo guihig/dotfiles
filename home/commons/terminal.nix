@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    alacritty-theme
+  ];
+
   # ---- Kitty Configuration ---- #
   programs.kitty = {
     enable = true;
@@ -21,12 +25,16 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      general = [
+        pkgs.alacritty-theme.gruvbox_material
+      ];
       env = {
         TERM = "xterm-256color";
       };
       shell.program = "${pkgs.fish}/bin/fish";
       window = {
-        opacity = 0.85;
+        opacity = 0.75;
+        decorations = "None";
         padding = {
           x = 0;
           y = 0;
@@ -37,16 +45,9 @@
         };
       };
       font = {
-        size = 10;
         normal = {
-          font = "JetBrainsMono Nerd Font";
+          family = "JetBrainsMono Nerd Font";
           style = "Regular";
-        };
-      };
-      colors = {
-        primary = {
-          background = "0x000000";
-          foreground = "0xB3B1AD";
         };
       };
     };

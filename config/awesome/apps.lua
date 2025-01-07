@@ -1,6 +1,6 @@
 local M = {}
 
-M.terminal = "kitty"
+M.terminal = "alacritty"
 M.discord = "vesktop"
 M.flameshot = "flameshot gui"
 M.lockscreen = "slock"
