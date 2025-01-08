@@ -22,6 +22,7 @@
     ../commons/pkgs/fun.nix
     ../commons/picom.nix
     ../commons/awesome.nix
+    ../commons/dunst.nix
     ../commons/ui.nix
     ../commons/git.nix
     ../commons/ssh.nix

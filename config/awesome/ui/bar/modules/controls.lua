@@ -3,7 +3,6 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 
-local notifications = require("ui.widgets").notifications
 local volume = require("ui.widgets").volume
 local clock = require("ui.widgets").clock
 local cpu = require("ui.widgets").cpu
@@ -25,7 +24,6 @@ local widget = wibox.widget({
 			cpu(),
 			volume(),
 			clock(),
-			notifications(),
 		},
 	},
 })
