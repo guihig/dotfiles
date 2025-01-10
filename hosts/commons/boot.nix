@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   # Bootloader.
   boot.loader = {
+    kernelParams = ["pcie_port_pm=off" "pcie_aspm.policy=performance"];
     efi.canTouchEfiVariables = true;
     # systemd-boot.enable = true;
     grub = {
