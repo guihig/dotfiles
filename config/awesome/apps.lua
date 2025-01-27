@@ -1,6 +1,6 @@
 local M = {}
 
-M.terminal = "alacritty"
+M.terminal = "kitty"
 M.discord = "vesktop --disable-features=WebRtcAllowInputVolumeAdjustment"
 M.flameshot = "flameshot gui"
 M.lockscreen = "slock"
