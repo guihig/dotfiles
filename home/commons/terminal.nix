@@ -94,6 +94,13 @@
       set-option -ga terminal-overrides ",*256col*:Tc:RGB"
       set -g base-index 1
       setw -g pane-base-index 1
+
+      # Vi mappings for copy-mode: https://unix.stackexchange.com/a/585672/410321
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X copy-selection
+      bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+      # Also copy to system clipboard
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -sel clip -i'
     '';
   };
 
