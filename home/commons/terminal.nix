@@ -95,6 +95,8 @@
       set -g base-index 1
       setw -g pane-base-index 1
 
+      bind-key -n 'C-M-\' copy-mode
+
       # Vi mappings for copy-mode: https://unix.stackexchange.com/a/585672/410321
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi y send-keys -X copy-selection
