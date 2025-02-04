@@ -38,3 +38,4 @@ vim.o.scrolloff = 8
 vim.o.signcolumn = "yes:1"
 vim.o.foldlevelstart = 20
 vim.o.smoothscroll = true
+vim.o.shell = "fish"
