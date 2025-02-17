@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     firefox
     google-chrome
+    chromium
     spotify
     discord
     zathura
