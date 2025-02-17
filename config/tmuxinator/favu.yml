@@ -1,14 +1,14 @@
 name: favu
-root: ~/dev/granter/flowtify/
+root: ~/dev/granter/favu/
 windows:
   - frontend-editor:
-      root: ~/dev/granter/flowtify/frontend/flowtify-frontend
+      root: ~/dev/granter/favu/favu-frontend
       panes:
         - editor:
             - nix develop
             - nvim .
   - frontend-term:
-      root: ~/dev/granter/flowtify/frontend/flowtify-frontend
+      root: ~/dev/granter/favu/favu-frontend
       layout: even-horizontal
       panes:
         - yarn:
@@ -18,13 +18,13 @@ windows:
             - nix develop
             - git status
   - backend-editor:
-      root: ~/dev/granter/flowtify/backend/flowtify-backend
+      root: ~/dev/granter/favu/favu-backend
       panes:
         - editor:
             - nix develop .#test
             - nvim .
   - backend-term:
-      root: ~/dev/granter/flowtify/backend/flowtify-backend
+      root: ~/dev/granter/favu/favu-backend
       layout: even-horizontal
       panes:
         - phx_server:
