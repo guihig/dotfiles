@@ -1,14 +1,14 @@
 name: granter-vue-library
-root: ~/dev/granter/granter-vue-components/
+root: ~/dev/granter/granter-vue-library/
 windows:
   - editor:
-      root: ~/dev/granter/granter-vue-components/
+      root: ~/dev/granter/granter-vue-library/
       panes:
         - editor:
             - nix develop
             - nvim .
   - term:
-      root: ~/dev/granter/granter-vue-components/
+      root: ~/dev/granter/granter-vue-library/
       layout: even-horizontal
       panes:
         - yarn:
