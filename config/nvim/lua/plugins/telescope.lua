@@ -14,7 +14,6 @@ return {
 
 		return {
 			defaults = {
-				buffer_previewer_maker = new_maker,
 				vimgrep_arguments = {
 					"rg",
 					"--color=never",

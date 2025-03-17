@@ -73,7 +73,7 @@ return {
 					["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 					["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-					["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+					["<C-y>"] = cmp.mapping(cmp.config.disable), -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 					["<C-e>"] = cmp.mapping.abort(),
 					["<C-n>"] = cmp.mapping.select_next_item({
 						behavior = types.cmp.SelectBehavior.Insert,
@@ -97,6 +97,7 @@ return {
 					{ name = "async_path" },
 					{ name = "buffer", keyword_length = 5 },
 				}),
+				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					expandable_indicator = true,
 					format = lspkind.cmp_format({
@@ -109,19 +110,6 @@ return {
 					}),
 				},
 				experimental = { native_menu = false, ghost_text = false },
-			})
-
-			cmp.setup({
-				enabled = function()
-					-- disable completion in comments
-					local context = require("cmp.config.context")
-					-- keep command mode completion enabled when cursor is in a comment
-					if vim.api.nvim_get_mode().mode == "c" then
-						return true
-					else
-						return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-					end
-				end,
 			})
 		end,
 	},
