@@ -1,8 +1,8 @@
 local M = {}
 
 M.terminal = "kitty"
--- M.discord = "vesktop --disable-features=WebRtcAllowInputVolumeAdjustment"
-M.discord = "discord --disable-features=WebRtcAllowInputVolumeAdjustment"
+M.discord = "vesktop --disable-features=WebRtcAllowInputVolumeAdjustment"
+-- M.discord = "discord --disable-features=WebRtcAllowInputVolumeAdjustment"
 M.flameshot = "flameshot gui"
 M.lockscreen = "slock"
 M.spotify = "spotify"
