@@ -36,6 +36,8 @@ ruled.client.connect_signal("request::rules", function()
 				"Spotify",
 				"spotify",
 				"vesktop",
+				"discord",
+				"Discord",
 				"telegram-desktop",
 				"Slack",
 				"Rocket.Chat",

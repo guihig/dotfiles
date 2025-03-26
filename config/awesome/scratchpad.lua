@@ -7,7 +7,8 @@ local M = {}
 -- Discord
 M.discord_scratch = bling.module.scratchpad({
 	command = apps.discord,
-	rule = { class = "vesktop" },
+	-- rule = { class = "vesktop" },
+	rule = { class = "discord" },
 	sticky = false,
 	autoclose = false,
 	floating = true,

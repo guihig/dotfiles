@@ -5,6 +5,7 @@
     chromium
     spotify
     discord
+    discord-canary
     zathura
     libreoffice
     gimp

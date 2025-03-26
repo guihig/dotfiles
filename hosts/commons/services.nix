@@ -27,7 +27,8 @@
           table.insert (default_access.rules,{
               matches = {
                   {
-                      { "application.process.binary", "=", "vesktop" }
+                      { "application.process.binary", "=", "vesktop" },
+                      { "application.process.binary", "=", "discord" }
                   }
               },
               default_permissions = "rx",

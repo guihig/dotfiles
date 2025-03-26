@@ -30,6 +30,7 @@
     ../commons/rofi.nix
     ../commons/terminal.nix
     ../commons/nvim.nix
+    ../commons/sound.nix
   ];
 
   nixpkgs = {
