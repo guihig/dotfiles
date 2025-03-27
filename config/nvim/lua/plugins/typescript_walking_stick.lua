@@ -8,11 +8,6 @@ return {
 		end,
 	},
 	{ "catgoose/vue-goto-definition.nvim" },
-	-- {
-	-- 	"dmmulroy/ts-error-translator.nvim",
-	-- 	config = true,
-	-- 	ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-	-- },
 	{
 		"OlegGulevskyy/better-ts-errors.nvim",
 		config = {
