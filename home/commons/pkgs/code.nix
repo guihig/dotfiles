@@ -26,6 +26,7 @@
     insomnia
     code-minimap
     zrok
+    nodePackages.localtunnel
 
     # Editors
     vim

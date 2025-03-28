@@ -21,9 +21,12 @@
     };
   };
 
-  # Networking
   networking = {
     networkmanager.enable = true;
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [3000];
+    };
   };
 
   # Env config
