@@ -9,14 +9,9 @@ return {
 	},
 	{ "catgoose/vue-goto-definition.nvim" },
 	{
-		"OlegGulevskyy/better-ts-errors.nvim",
-		config = {
-			keymaps = {
-				toggle = "<leader>dte",
-				go_to_definition = "<leader>dx",
-			},
-		},
+		"youyoumu/pretty-ts-errors.nvim",
 	},
+	{ "dmmulroy/ts-error-translator.nvim" },
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		config = function()
