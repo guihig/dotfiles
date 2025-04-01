@@ -93,9 +93,9 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 				}, {
 					{ name = "async_path" },
-					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 5 },
 				}),
 				---@diagnostic disable-next-line: missing-fields
