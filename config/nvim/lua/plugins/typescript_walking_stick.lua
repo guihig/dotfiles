@@ -13,6 +13,12 @@ return {
 	},
 	{ "dmmulroy/ts-error-translator.nvim" },
 	{
+		"windwp/nvim-ts-autotag",
+		config = function(_, _)
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		config = function()
 			require("ts_context_commentstring").setup({

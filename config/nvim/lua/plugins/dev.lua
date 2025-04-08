@@ -39,6 +39,18 @@ return {
 		},
 		version = "1.*",
 		opts = {
+			enabled = function()
+				return not vim.tbl_contains({
+					"clap_input",
+					"guihua",
+					"guihia_rust",
+					"sagadiagnostic",
+					"sagafinder",
+					"sagarename",
+					"diff",
+					"saga_unitest",
+				}, vim.bo.filetype) and vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+			end,
 			keymap = {
 				preset = "none",
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
