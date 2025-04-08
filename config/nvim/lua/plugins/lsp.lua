@@ -22,7 +22,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
+			{ "saghen/blink.cmp" },
+			{ "b0o/schemastore.nvim" },
 		},
 		opts = {
 			servers = {
@@ -56,13 +57,7 @@ return {
 					return {
 						settings = {
 							json = {
-								schemas = require("schemastore").json.schemas({
-									select = {
-										"package.json",
-										".eslintrc",
-										"tsconfig.json",
-									},
-								}),
+								schemas = require("schemastore").json.schemas(),
 								validate = { enable = true },
 							},
 						},
@@ -102,36 +97,36 @@ return {
 			},
 		},
 		config = function(_, opts)
-			local lsp_zero = require("lsp-zero")
 			local lspconfig = require("lspconfig")
 
-			local lsp_attach = function(_, bufnr)
-				local keymap_opts = { buffer = bufnr, remap = false }
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local bufnr = args.buf
+					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
-				-- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
-				keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
-				keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", keymap_opts)
-				keymap.set("n", "gi", "<cmd>Lspsaga peek_definition<cr>", keymap_opts)
-				keymap.set("n", "gs", "<cmd>Lspsaga peek_type_definition<cr>", keymap_opts)
-				keymap.set({ "n", "v" }, "<leader>a", "<cmd>Lspsaga code_action<cr>", keymap_opts)
-				keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", keymap_opts)
-				keymap.set("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<cr>", keymap_opts)
-				keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", keymap_opts)
-				keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", keymap_opts)
-				keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", keymap_opts)
-				keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", keymap_opts)
-			end
+					local keymap_opts = { buffer = bufnr, remap = false }
 
-			lsp_zero.extend_lspconfig({
-				sign_text = true,
-				lsp_attach = lsp_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+					keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+					keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", keymap_opts)
+					keymap.set("n", "gi", "<cmd>Lspsaga peek_definition<cr>", keymap_opts)
+					keymap.set("n", "gs", "<cmd>Lspsaga peek_type_definition<cr>", keymap_opts)
+					keymap.set({ "n", "v" }, "<leader>a", "<cmd>Lspsaga code_action<cr>", keymap_opts)
+					keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", keymap_opts)
+					keymap.set("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<cr>", keymap_opts)
+					keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", keymap_opts)
+					keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", keymap_opts)
+					keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", keymap_opts)
+					keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>", keymap_opts)
+				end,
 			})
 
 			local function setup_server(lsp_name, server_opts)
 				if server_opts == nil then
 					server_opts = {}
 				end
+
+				server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
 
 				if lsp_location[lsp_name] then
 					server_opts.cmd = lsp_location[lsp_name]

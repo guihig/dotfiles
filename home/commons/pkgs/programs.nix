@@ -9,6 +9,7 @@
     zathura
     libreoffice
     gimp
+    audacity
     vesktop
     ventoy-full
     bitwarden

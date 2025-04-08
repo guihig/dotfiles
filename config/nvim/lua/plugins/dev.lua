@@ -32,99 +32,49 @@ return {
 			bg_padding = 0,
 		},
 	},
-	{ "b0o/schemastore.nvim" },
 	{
-
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "FelipeLema/cmp-async-path" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "onsails/lspkind-nvim" },
-			{ "lukas-reineke/cmp-under-comparator" },
-			{
-				"L3MON4D3/LuaSnip",
-				version = "v2.*",
-				build = "make install_jsregexp",
-				dependencies = { "rafamadriz/friendly-snippets" },
-			},
+			{ "rafamadriz/friendly-snippets" },
 		},
-		opts = {},
-		config = function(_, opts)
-			local cmp = require("cmp")
-			local types = require("cmp.types")
-			local lspkind = require("lspkind")
-			require("luasnip.loaders.from_vscode").lazy_load()
+		version = "1.*",
+		opts = {
+			keymap = {
+				preset = "none",
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-e>"] = { "hide" },
+				["<CR>"] = { "select_and_accept", "fallback" },
 
-			if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft == "guihua_rust" then
-				cmp.setup.buffer({ completion = { enable = false } })
-			end
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+				["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+				["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
-			-- https://www.youtube.com/watch?v=_DnmphIwnjo&t=1514s
-			-- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+				["<C-K>"] = {
+					function(cmp)
+						cmp.show({ providers = { "snippets" } })
 					end,
 				},
-				mapping = {
-					["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-					["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-					["<C-y>"] = cmp.mapping(cmp.config.disable), -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-					["<C-e>"] = cmp.mapping.abort(),
-					["<C-n>"] = cmp.mapping.select_next_item({
-						behavior = types.cmp.SelectBehavior.Insert,
-					}),
-					["<C-p>"] = cmp.mapping.select_prev_item({
-						behavior = types.cmp.SelectBehavior.Insert,
-					}),
-					["<CR>"] = cmp.mapping(
-						cmp.mapping.confirm({
-							behavior = cmp.ConfirmBehavior.Insert,
-							select = true,
-						}),
-						{ "i", "c" }
-					),
-				},
-				sources = cmp.config.sources({
-					{ name = "nvim_lua" },
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-				}, {
-					{ name = "async_path" },
-					{ name = "buffer", keyword_length = 5 },
-				}),
-				---@diagnostic disable-next-line: missing-fields
-				formatting = {
-					expandable_indicator = true,
-					format = lspkind.cmp_format({
-						with_text = false,
-						maxwidth = 50,
-						menu = {
-							buffer = "[Buf]",
-							luasnip = "[Snip]",
-						},
-					}),
-				},
-				---@diagnostic disable-next-line: missing-fields
-				sorting = {
-					comparators = {
-						cmp.config.compare.offset,
-						cmp.config.compare.exact,
-						cmp.config.compare.score,
-						require("cmp-under-comparator").under,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
-					},
-				},
-				experimental = { native_menu = false, ghost_text = false },
-			})
-		end,
+
+				["<Tab>"] = { "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+			},
+			signature = { enabled = true },
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = { documentation = { auto_show = false } },
+			snippets = { preset = "default" },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
 	},
 }
