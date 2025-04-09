@@ -39,20 +39,6 @@ return {
 				lua_ls = true,
 				nil_ls = true,
 				volar = true,
-				ts_ls = function()
-					return {
-						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-						init_options = {
-							plugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = lsp_location["vue_ts_plugin"],
-									languages = { "javascript", "typescript", "vue" },
-								},
-							},
-						},
-					}
-				end,
 				jsonls = function()
 					return {
 						settings = {
@@ -102,8 +88,6 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local bufnr = args.buf
-					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
-
 					local keymap_opts = { buffer = bufnr, remap = false }
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
