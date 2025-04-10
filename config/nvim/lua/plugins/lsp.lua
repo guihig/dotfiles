@@ -49,6 +49,20 @@ return {
 						},
 					}
 				end,
+				ts_ls = function()
+					return {
+						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = lsp_location["vue_ts_plugin"],
+									languages = { "javascript", "typescript", "vue" },
+								},
+							},
+						},
+					}
+				end,
 				cssls = function()
 					local capabilities = vim.lsp.protocol.make_client_capabilities()
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
