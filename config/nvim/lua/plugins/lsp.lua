@@ -12,7 +12,7 @@ return {
 			rename = { keys = { quit = "<ESC>" } },
 			lightbulb = {
 				sign = false,
-				virtual_text = true,
+				virtual_text = false,
 			},
 		},
 		config = function(_, opts)
@@ -90,7 +90,9 @@ return {
 					local bufnr = args.buf
 					local keymap_opts = { buffer = bufnr, remap = false }
 
-					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+					-- vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+					vim.bo[args.buf].formatexpr = nil
+					vim.bo[args.buf].omnifunc = nil
 					keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
 					keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", keymap_opts)
 					keymap.set("n", "gi", "<cmd>Lspsaga peek_definition<cr>", keymap_opts)
