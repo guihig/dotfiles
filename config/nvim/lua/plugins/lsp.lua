@@ -4,6 +4,8 @@ local lsp_location = require("lsp_location")
 return {
 	{
 		"nvimdev/lspsaga.nvim",
+		-- dir = "~/dev/nvim/lspsaga.nvim/",
+		-- dev = true,
 		opts = {
 			symbol_in_winbar = { folder_level = 4 },
 			code_action = { show_server_name = true, keys = { quit = "<ESC>" } },
