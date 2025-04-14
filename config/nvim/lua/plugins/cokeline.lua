@@ -6,6 +6,9 @@ return {
 		local get_hex = require("cokeline/hlgroups").get_hl_attr
 		local hl_group = "DiffChange"
 		return {
+			tabs = {
+				placement = "left",
+			},
 			default_hl = {
 				fg = function(buffer)
 					return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
@@ -14,7 +17,6 @@ return {
 					return buffer.is_focused and get_hex(hl_group, "bg") or get_hex("ColorColumn", "bg")
 				end,
 			},
-
 			components = {
 				{ text = " ", bg = "none" },
 				{
