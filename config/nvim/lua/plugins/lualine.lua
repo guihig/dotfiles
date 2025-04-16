@@ -1,5 +1,5 @@
 local function get_active_lsp()
-	local msg = "No Active Lsp"
+	local msg = "[NO LSP]"
 	local buf_ft = vim.api.nvim_get_option_value("filetype", {
 		buf = 0,
 	})
@@ -17,6 +17,26 @@ local function get_active_lsp()
 	return msg
 end
 
+local MODE_MAP = {
+	["NORMAL"] = "N",
+	["O-PENDING"] = "N?",
+	["INSERT"] = "I",
+	["VISUAL"] = "V",
+	["V-BLOCK"] = "VB",
+	["V-LINE"] = "VL",
+	["V-REPLACE"] = "VR",
+	["REPLACE"] = "R",
+	["COMMAND"] = "!",
+	["SHELL"] = "SH",
+	["TERMINAL"] = "T",
+	["EX"] = "X",
+	["S-BLOCK"] = "SB",
+	["S-LINE"] = "SL",
+	["SELECT"] = "S",
+	["CONFIRM"] = "Y?",
+	["MORE"] = "M",
+}
+
 return {
 	"hoob3rt/lualine.nvim",
 	opts = function()
@@ -31,14 +51,21 @@ return {
 				globalstatus = false,
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(s)
+							return MODE_MAP[s] or s
+						end,
+						color = { gui = "bold" },
+					},
+				},
 				lualine_b = {
 					"branch",
 					"diff",
 					"diagnostics",
 					{
 						get_active_lsp,
-						icon = "󰒋 ",
 						color = { fg = "#ffffff", gui = "bold" },
 					},
 				},
@@ -47,7 +74,7 @@ return {
 					"encoding",
 					"fileformat",
 				},
-				lualine_y = { "progress" },
+				lualine_y = {},
 				lualine_z = { "location" },
 			},
 			inactive_sections = {

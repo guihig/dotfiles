@@ -7,7 +7,7 @@ return {
 		-- dir = "~/dev/nvim/lspsaga.nvim/",
 		-- dev = true,
 		opts = {
-			symbol_in_winbar = { folder_level = 4 },
+			symbol_in_winbar = { folder_level = 3 },
 			code_action = { show_server_name = true, keys = { quit = "<ESC>" } },
 			definition = { keys = { quit = "<ESC>" } },
 			diagnostic = { max_height = 0.8, keys = { quit = "<ESC>" } },
