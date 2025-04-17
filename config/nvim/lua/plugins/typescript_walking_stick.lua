@@ -1,6 +1,3 @@
-local keymap = vim.keymap
-local lsp_location = require("lsp_location")
-
 return {
 	{
 		"dmmulroy/tsc.nvim",
@@ -11,10 +8,10 @@ return {
 		end,
 	},
 	{ "catgoose/vue-goto-definition.nvim" },
-	{
-		"youyoumu/pretty-ts-errors.nvim",
-	},
-	{ "dmmulroy/ts-error-translator.nvim" },
+	-- {
+	-- 	"youyoumu/pretty-ts-errors.nvim",
+	-- },
+	-- { "dmmulroy/ts-error-translator.nvim" },
 	{
 		"windwp/nvim-ts-autotag",
 		config = function(_, _)
@@ -36,21 +33,4 @@ return {
 			end
 		end,
 	},
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	opts = {
-	-- 		on_attach = function(_, bufnr)
-	-- 			local keymap_opts = { noremap = true, buffer = bufnr }
-	-- 			keymap.set("n", "<C-A-o>", "<cmd>TSToolsOrganizeImports<CR>", keymap_opts)
-	-- 		end,
-	-- 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-	-- 		settings = {
-	-- 			expose_as_code_action = { "organize_imports" },
-	-- 			tsserver_plugins = {
-	-- 				"@vue/typescript-plugin",
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 }

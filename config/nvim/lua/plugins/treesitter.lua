@@ -6,6 +6,9 @@ return {
 			highlight = { enable = true },
 			incremental_selection = { enable = true },
 			indent = { enable = true },
+			sync_install = false,
+			auto_install = true,
+			ignore_install = {},
 			ensure_installed = {
 				"haskell",
 				"lua",
@@ -23,6 +26,7 @@ return {
 				"markdown",
 				"markdown_inline",
 				"regex",
+				"bash",
 				"vimdoc",
 			},
 		})

@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 
 return {
+	{ "simeji/winresizer" },
 	{ "tpope/vim-repeat" },
 	{ "psliwka/vim-smoothie" },
 	{

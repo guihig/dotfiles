@@ -76,5 +76,4 @@ return {
 			require("noice").setup(opts)
 		end,
 	},
-	{ "simeji/winresizer" },
 }

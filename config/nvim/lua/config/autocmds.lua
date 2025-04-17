@@ -30,3 +30,7 @@ vim.cmd([[
   filetype plugin on
   syntax on
 ]])
+
+vim.cmd([[
+  hi Normal ctermbg=NONE
+]])
