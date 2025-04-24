@@ -18,7 +18,7 @@ return {
 				"vue",
 				"http",
 				"typescript",
-				"latex",
+				-- "latex",
 				"fish",
 				"vim",
 				"elixir",

@@ -13,5 +13,6 @@
     vesktop
     ventoy-full
     bitwarden
+    obs-studio
   ];
 }
