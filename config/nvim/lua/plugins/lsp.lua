@@ -65,52 +65,18 @@ return {
 				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 			},
 			signature = { enabled = true },
-			-- appearance = {
-			-- 	nerd_font_variant = "mono",
-			-- 	appearance = {
-			-- 		-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
-			-- 		kind_icons = {
-			-- 			Copilot = "",
-			-- 			Text = "󰉿",
-			-- 			Method = "󰊕",
-			-- 			Function = "󰊕",
-			-- 			Constructor = "󰒓",
-			--
-			-- 			Field = "󰜢",
-			-- 			Variable = "󰆦",
-			-- 			Property = "󰖷",
-			--
-			-- 			Class = "󱡠",
-			-- 			Interface = "󱡠",
-			-- 			Struct = "󱡠",
-			-- 			Module = "󰅩",
-			--
-			-- 			Unit = "󰪚",
-			-- 			Value = "󰦨",
-			-- 			Enum = "󰦨",
-			-- 			EnumMember = "󰦨",
-			--
-			-- 			Keyword = "󰻾",
-			-- 			Constant = "󰏿",
-			--
-			-- 			Snippet = "󱄽",
-			-- 			Color = "󰏘",
-			-- 			File = "󰈔",
-			-- 			Reference = "󰬲",
-			-- 			Folder = "󰉋",
-			-- 			Event = "󱐋",
-			-- 			Operator = "󰪚",
-			-- 			TypeParameter = "󰬛",
-			-- 		},
-			-- 	},
-			-- },
 			completion = {
+				accept = {
+					auto_brackets = {
+						enabled = false,
+					},
+				},
 				documentation = { auto_show = true },
 				menu = {
 					draw = {
 						columns = {
 							{ "label", "label_description", gap = 1 },
-							{ "kind_icon", "source_name" },
+							{ "kind_icon", "kind" },
 						},
 					},
 				},
@@ -118,6 +84,15 @@ return {
 			snippets = { preset = "default" },
 			sources = {
 				default = { "avante", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					avante = {
+						module = "blink-cmp-avante",
+						name = "Avante",
+						opts = {
+							-- options for blink-cmp-avante
+						},
+					},
+				},
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
