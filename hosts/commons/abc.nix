@@ -48,6 +48,8 @@
       file-roller
       kitty
       lxqt.lxqt-policykit
+      clamav
+      chkrootkit
     ];
     etc."ppp/options".text = "ipcp-accept-remote";
   };
