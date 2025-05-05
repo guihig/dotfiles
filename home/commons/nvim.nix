@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     unstable.elixir-ls
     unstable.emmet-ls
@@ -19,6 +15,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    # package = pkgs.unstable.neovim-unwrapped;
   };
 
   home.file.".config/nvim" = {
