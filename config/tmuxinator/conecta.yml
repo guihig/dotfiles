@@ -29,6 +29,7 @@ windows:
       panes:
         - phx_server:
             - nix develop
+            - export LOCAL_EMAIL=1
             - MIX_ENV=dev mix phx.server
         - git:
             - nix develop
