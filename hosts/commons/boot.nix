@@ -7,7 +7,7 @@
   boot.kernelParams = ["pcie_port_pm=off" "pcie_aspm.policy=performance"];
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    # systemd-boot.enable = true;
+    systemd-boot.enable = false;
     grub = {
       enable = true;
       efiSupport = true;
