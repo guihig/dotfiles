@@ -1,12 +1,6 @@
 return {
 	{
 		"xiyaowong/transparent.nvim",
-		opts = function()
-			return {}
-		end,
-		config = function(_, opts)
-			require("transparent").setup(opts)
-		end,
 	},
 	-- Good ol Gruvbox Baby
 	{
