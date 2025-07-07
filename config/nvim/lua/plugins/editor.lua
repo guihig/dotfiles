@@ -93,8 +93,4 @@ return {
 			npairs.add_rules(require("nvim-autopairs.rules.endwise-ruby"))
 		end,
 	},
-	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
-	},
 }
