@@ -15,7 +15,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    # package = pkgs.unstable.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
   };
 
   home.file.".config/nvim" = {
