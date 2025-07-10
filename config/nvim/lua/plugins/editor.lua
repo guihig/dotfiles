@@ -4,15 +4,15 @@ return {
 	{ "simeji/winresizer" },
 	{ "tpope/vim-repeat" },
 	{ "psliwka/vim-smoothie" },
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {
-			max_count = 10,
-			disable_mouse = false,
-			allow_different_key = true,
-		},
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {
+	-- 		max_count = 10,
+	-- 		disable_mouse = false,
+	-- 		allow_different_key = true,
+	-- 	},
+	-- },
 	{
 		"ggandor/leap.nvim",
 		config = function()
