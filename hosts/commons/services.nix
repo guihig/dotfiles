@@ -15,11 +15,11 @@
       };
     };
 
-    ollama = {
-      enable = true;
-      acceleration = "cuda";
-      loadModels = ["deepseek-r1:8b" "qwq" "llama3"];
-    };
+    # ollama = {
+    #   enable = true;
+    #   acceleration = "cuda";
+    #   loadModels = ["deepseek-r1:8b" "qwq" "llama3"];
+    # };
 
     # Audio with pipewire
     pipewire = {
