@@ -16,16 +16,21 @@ return {
 	{
 		"ggandor/leap.nvim",
 		config = function()
+			require("leap").opts.preview_filter = function(ch0, ch1, ch2)
+				return not (ch1:match("%s") or ch0:match("%a") and ch1:match("%a") and ch2:match("%a"))
+			end
+			require("leap").opts.equivalence_classes = { " \t\r\n", "([{", ")]}", "'\"`" }
+
 			vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
 			vim.api.nvim_set_hl(0, "LeapMatch", {
 				fg = "white",
 				bold = true,
 				nocombine = true,
 			})
-			-- vim.api.nvim_set_hl(0, "LeapLabelPrimary", { bg = "green" })
-			-- vim.api.nvim_set_hl(0, "LeapLabelSecondary", { bg = "blue" })
+
 			keymap.set({ "n", "x", "o", "v" }, "<leader>s", "<Plug>(leap)")
 			keymap.set({ "n", "x", "o", "v" }, "<leader>S", "<Plug>(leap-from-window)")
+
 			-- Hide the (real) cursor when leaping, and restore it afterwards.
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "LeapEnter",

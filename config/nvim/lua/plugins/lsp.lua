@@ -20,6 +20,11 @@ return {
 		},
 	},
 	{
+		"zeioth/garbage-day.nvim",
+		dependencies = "neovim/nvim-lspconfig",
+		event = "VeryLazy",
+	},
+	{
 		"saghen/blink.cmp",
 		dependencies = {
 			{ "rafamadriz/friendly-snippets" },
