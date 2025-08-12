@@ -47,6 +47,8 @@
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
+
+      permittedInsecurePackages = ["ventoy-1.1.05"];
     };
   };
 
@@ -60,7 +62,7 @@
       BROWSER = "firefox";
     };
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = lib.mkDefault "24.11";
+    stateVersion = lib.mkDefault "25.05";
   };
 
   # Enable home-manager

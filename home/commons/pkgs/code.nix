@@ -22,7 +22,7 @@
     in
       python3-with-packages)
     docker-compose
-    postgresql_13
+    postgresql
     insomnia
     code-minimap
     zrok

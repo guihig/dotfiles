@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.terminess-ttf
+    nerd-fonts.hack
+
     iosevka
     roboto
     iosevka-bin
@@ -10,7 +13,6 @@
     material-icons
     material-design-icons
     terminus_font
-    terminus-nerdfont
     font-awesome
     noto-fonts
     liberation_ttf
