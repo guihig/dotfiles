@@ -7,7 +7,6 @@
     bluetooth = {
       enable = true;
     };
-    pulseaudio.enable = false;
     keyboard.qmk.enable = true;
   };
 
