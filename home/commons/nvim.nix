@@ -34,7 +34,7 @@
         jsonls = { "${unstable.vscode-langservers-extracted}/bin/vscode-json-language-server", "--stdio" },
         cssls = { "${unstable.vscode-langservers-extracted}/bin/vscode-css-language-server", "--stdio" },
         ts_ls = { "${unstable.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio" },
-        volar = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
+        vue_ls = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
         nil_ls = { "${unstable.nil}/bin/nil" },
         lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },
         emmet_ls = { "${unstable.emmet-ls}/bin/emmet-ls", "--stdio" },

@@ -132,7 +132,7 @@ return {
 				sqlls = true,
 				lua_ls = true,
 				nil_ls = true,
-				volar = true,
+				vue_ls = true,
 				jsonls = function()
 					return {
 						settings = {
