@@ -191,8 +191,6 @@ return {
 			},
 		},
 		config = function(_, opts)
-			local lspconfig = require("lspconfig")
-
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local bufnr = args.buf
@@ -226,10 +224,14 @@ return {
 					server_opts.cmd = lsp_location[lsp_name]
 				end
 
-				lspconfig[lsp_name].setup(server_opts)
+				vim.lsp.config(lsp_name, server_opts)
+				vim.lsp.enable(lsp_name)
 			end
 
 			for server, server_opts in pairs(opts.servers) do
+				if server_opts == false then
+					break
+				end
 				opts = server_opts == true and {} or server_opts()
 				setup_server(server, opts)
 			end
