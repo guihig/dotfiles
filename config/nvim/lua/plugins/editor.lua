@@ -14,44 +14,32 @@ return {
 	-- 	},
 	-- },
 	{
-		"ggandor/leap.nvim",
-		config = function()
-			require("leap").opts.preview_filter = function(ch0, ch1, ch2)
-				return not (ch1:match("%s") or ch0:match("%a") and ch1:match("%a") and ch2:match("%a"))
-			end
-			require("leap").opts.equivalence_classes = { " \t\r\n", "([{", ")]}", "'\"`" }
+		"smoka7/hop.nvim",
+		version = "*",
+		opts = {
+			jump_on_sole_occurrence = false,
+		},
+		config = function(_, opts)
+			require("hop").setup(opts)
+			local hop = require("hop")
+			local directions = require("hop.hint").HintDirection
 
-			vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
-			vim.api.nvim_set_hl(0, "LeapMatch", {
-				fg = "white",
-				bold = true,
-				nocombine = true,
-			})
+			keymap.set({ "n", "x", "o", "v" }, "<leader>g", hop.hint_anywhere, { remap = true })
+			keymap.set({ "n", "x", "o", "v" }, "<leader>s", hop.hint_patterns, { remap = true })
+			keymap.set({ "n", "x", "o", "v" }, "<leader>w", hop.hint_words, { remap = true })
 
-			keymap.set({ "n", "x", "o", "v" }, "<leader>s", "<Plug>(leap)")
-			keymap.set({ "n", "x", "o", "v" }, "<leader>S", "<Plug>(leap-from-window)")
-
-			-- Hide the (real) cursor when leaping, and restore it afterwards.
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "LeapEnter",
-				callback = function()
-					vim.cmd.hi("Cursor", "blend=100")
-					vim.opt.guicursor:append({ "a:Cursor/lCursor" })
-				end,
-			})
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "LeapLeave",
-				callback = function()
-					vim.cmd.hi("Cursor", "blend=0")
-					vim.opt.guicursor:remove({ "a:Cursor/lCursor" })
-				end,
-			})
-		end,
-	},
-	{
-		"ggandor/flit.nvim",
-		config = function()
-			require("flit").setup()
+			keymap.set("", "f", function()
+				hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+			end, { remap = true })
+			keymap.set("", "F", function()
+				hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+			end, { remap = true })
+			keymap.set("", "t", function()
+				hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+			end, { remap = true })
+			keymap.set("", "T", function()
+				hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+			end, { remap = true })
 		end,
 	},
 	{
