@@ -14,6 +14,10 @@ return {
 	-- 	},
 	-- },
 	{
+		"y3owk1n/undo-glow.nvim",
+		version = "*",
+	},
+	{
 		"smoka7/hop.nvim",
 		version = "*",
 		opts = {
