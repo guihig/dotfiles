@@ -12,6 +12,7 @@
     audacity
     vesktop
     ventoy-full
+    figma-linux
     bitwarden
     obs-studio
   ];

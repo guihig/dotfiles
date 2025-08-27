@@ -40,6 +40,7 @@ ruled.client.connect_signal("request::rules", function()
 				"Discord",
 				"telegram-desktop",
 				"Slack",
+				"figma-linux",
 				"Rocket.Chat",
 				"gnome-calendar",
 				"tsmapplication.exe",

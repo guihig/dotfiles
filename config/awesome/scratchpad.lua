@@ -51,4 +51,27 @@ M.spotify_scratch:connect_signal("turn_on", function(c)
 	})
 end)
 
+-- Figma
+M.figma_scratch = bling.module.scratchpad({
+	command = apps.figma,
+	rule = { class = "figma-linux" },
+	sticky = false,
+	autoclose = false,
+	floating = true,
+	geometry = { x = 0, y = 0 },
+	dont_focus_before_close = true,
+})
+M.figma_scratch:connect_signal("turn_on", function(c)
+	local s = awful.screen.focused()
+	local width = s.geometry.width * 0.95
+	local height = s.geometry.height * 0.95
+	c.client.floating = true
+	c.client:geometry({
+		x = s.geometry.x + (s.geometry.width - width) / 2,
+		y = s.geometry.y + (s.geometry.height - height) / 2,
+		width = width,
+		height = height,
+	})
+end)
+
 return M
