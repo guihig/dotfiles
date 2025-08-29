@@ -34,8 +34,9 @@
     # Sops
     sops-nix.url = "github:Mic92/sops-nix";
 
-    # Nvim nightly
+    # Nvim coisas
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # expert.url = "github:elixir-lang/expert";
 
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
