@@ -122,9 +122,9 @@ return {
 		opts = {
 			servers = {
 				dockerls = true,
-				-- elixirls = true,
+				elixirls = true,
 				-- emmet_ls = true,
-				expert = true,
+				-- expert = true,
 				erlangls = true,
 				eslint = true,
 				html = true,

@@ -39,7 +39,6 @@
         nil_ls = { "${unstable.nil}/bin/nil" },
         lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },
         emmet_ls = { "${unstable.emmet-ls}/bin/emmet-ls", "--stdio" },
-        expert = { "/home/ferreira/dev/misc/expert/apps/expert/burrito_out/expert_linux_amd64" },
         vue_ts_plugin = "${unstable.vue-language-server}/lib/node_modules/@vue/language-server",
         vtsls = { "${unstable.vtsls}/bin/vtsls", "--stdio" },
         awesomewm_lib = "${pkgs.awesome-git}/share/awesome/lib"
