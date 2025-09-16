@@ -133,23 +133,25 @@ return {
 				sqlls = true,
 				lua_ls = true,
 				nil_ls = true,
-				vtsls = {
-					settings = {
-						vtsls = {
-							tsserver = {
-								globalPlugins = {
-									{
-										name = "@vue/typescript-plugin",
-										location = lsp_location["vue_ts_plugin"],
-										languages = { "javascript", "typescript", "vue" },
-										configNamespace = "typescript",
+				vtsls = function()
+					return {
+						settings = {
+							vtsls = {
+								tsserver = {
+									globalPlugins = {
+										{
+											name = "@vue/typescript-plugin",
+											location = lsp_location["vue_ts_plugin"],
+											languages = { "javascript", "typescript", "vue" },
+											configNamespace = "typescript",
+										},
 									},
 								},
 							},
 						},
-					},
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-				},
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+					}
+				end,
 				vue_ls = true,
 				jsonls = function()
 					return {
