@@ -4,11 +4,12 @@
     unstable.emmet-ls
     unstable.nodePackages.bash-language-server
     unstable.nodePackages.typescript-language-server
-    unstable.dockerfile-language-server-nodejs
+    unstable.dockerfile-language-server
     unstable.vscode-langservers-extracted
     unstable.vue-language-server
     unstable.nil
     unstable.lua-language-server
+    unstable.vtsls
     texlab
   ];
 
@@ -27,7 +28,7 @@
     text = ''
       return {
         bashls = { "${unstable.nodePackages.bash-language-server}/bin/bash-language-server", "start" },
-        dockerls = { "${unstable.dockerfile-language-server-nodejs}/bin/docker-langserver", "--stdio" },
+        dockerls = { "${unstable.dockerfile-language-server}/bin/docker-langserver", "--stdio" },
         elixirls = { "${unstable.elixir-ls}/bin/elixir-ls" },
         eslint = { "${unstable.vscode-langservers-extracted}/bin/vscode-eslint-language-server", "--stdio" },
         html = { "${unstable.vscode-langservers-extracted}/bin/vscode-html-language-server", "--stdio" },
@@ -40,6 +41,7 @@
         emmet_ls = { "${unstable.emmet-ls}/bin/emmet-ls", "--stdio" },
         expert = { "/home/ferreira/dev/misc/expert/apps/expert/burrito_out/expert_linux_amd64" },
         vue_ts_plugin = "${unstable.vue-language-server}/lib/node_modules/@vue/language-server",
+        vtsls = { "${unstable.vtsls}/bin/vtsls", "--stdio" },
         awesomewm_lib = "${pkgs.awesome-git}/share/awesome/lib"
       }
     '';
