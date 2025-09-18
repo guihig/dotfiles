@@ -122,15 +122,16 @@ return {
 		opts = {
 			servers = {
 				dockerls = true,
-				elixirls = true,
-				-- emmet_ls = true,
-				-- expert = true,
-				erlangls = true,
+				expert = function()
+					return {
+						cmd_env = {
+							RELEASE_DISTRIBUTION = "sname",
+						},
+					}
+				end,
 				eslint = true,
 				html = true,
 				pyright = true,
-				rust_analyzer = true,
-				sqlls = true,
 				lua_ls = true,
 				nil_ls = true,
 				vtsls = function()
@@ -241,6 +242,7 @@ return {
 				server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
 
 				if lsp_location[lsp_name] then
+					vim.inspect(lsp_location[lsp_name])
 					server_opts.cmd = lsp_location[lsp_name]
 				end
 

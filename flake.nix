@@ -41,6 +41,9 @@
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
     # hyprland.url = "github:hyprwm/Hyprland";
+
+    # Expert
+    expert.url = "github:elixir-lang/expert";
   };
 
   outputs = {
@@ -48,6 +51,7 @@
     nixpkgs,
     home-manager,
     sops-nix,
+    expert,
     ...
   } @ inputs: let
     inherit (self) outputs;
