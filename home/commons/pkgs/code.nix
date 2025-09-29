@@ -8,6 +8,7 @@
     gnumake
     lua51Packages.lua
     lua51Packages.luarocks
+    kdePackages.qtdeclarative
     nodejs
     tree-sitter
     (let
