@@ -4,10 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # AwesomeWM Libs
     bling = {
@@ -36,14 +33,13 @@
 
     # Nvim coisas
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # expert.url = "github:elixir-lang/expert";
+    expert = {
+      url = "github:elixir-lang/expert/5dacce456cb111b75c3f1aeeba95b66e1bc07b04";
+    };
 
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
     # hyprland.url = "github:hyprwm/Hyprland";
-
-    # Expert
-    expert.url = "github:elixir-lang/expert";
   };
 
   outputs = {
