@@ -88,7 +88,6 @@
       description = "CABECA";
       extraGroups = ["networkmanager" "wheel" "docker"];
       packages = with pkgs; [
-        firefox
         git
         wget
         curl

@@ -36,7 +36,7 @@
       SHELL = "fish";
     };
     systemPackages = with pkgs; [
-      firefox
+      firefox-bin
       git
       wget
       curl
