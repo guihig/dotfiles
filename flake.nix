@@ -33,9 +33,10 @@
 
     # Nvim coisas
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    expert = {
-      url = "github:elixir-lang/expert/5dacce456cb111b75c3f1aeeba95b66e1bc07b04";
-    };
+    # expert = {
+    #   url = "github:elixir-lang/expert/5dacce456cb111b75c3f1aeeba95b66e1bc07b04";
+    # };
+    expert.url = "github:elixir-lang/expert";
 
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
