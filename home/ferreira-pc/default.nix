@@ -48,7 +48,7 @@
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
 
-      permittedInsecurePackages = ["ventoy-1.1.05"];
+      permittedInsecurePackages = ["ventoy-1.1.05" "mbedtls-2.28.10"];
     };
   };
 
