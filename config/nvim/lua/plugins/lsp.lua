@@ -20,6 +20,33 @@ return {
 		},
 	},
 	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>tx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>tX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>tl",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>tq",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
+	{
 		"zeioth/garbage-day.nvim",
 		dependencies = "neovim/nvim-lspconfig",
 		event = "VeryLazy",
@@ -122,13 +149,14 @@ return {
 		opts = {
 			servers = {
 				dockerls = true,
-				expert = function()
-					return {
-						cmd_env = {
-							RELEASE_DISTRIBUTION = "sname",
-						},
-					}
-				end,
+				elixirls = true,
+				-- expert = function()
+				-- 	return {
+				-- 		cmd_env = {
+				-- 			RELEASE_DISTRIBUTION = "sname",
+				-- 		},
+				-- 	}
+				-- end,
 				eslint = true,
 				html = true,
 				pyright = true,
