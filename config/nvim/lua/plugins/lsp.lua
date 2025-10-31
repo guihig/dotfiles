@@ -149,7 +149,17 @@ return {
 		opts = {
 			servers = {
 				dockerls = true,
-				elixirls = true,
+				elixirls = function()
+					return {
+						settings = {
+							elixirLS = {
+								dialyzerEnabled = false,
+								mixEnv = "test",
+								fetchDeps = false,
+							},
+						},
+					}
+				end,
 				-- expert = function()
 				-- 	return {
 				-- 		cmd_env = {
