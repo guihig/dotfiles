@@ -3,6 +3,7 @@
     steam
     stremio
     wineWowPackages.stable
+    protonplus
     winetricks
     unstable.wowup-cf
     protonup-qt
