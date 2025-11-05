@@ -73,4 +73,14 @@ ruled.client.connect_signal("request::rules", function()
 			opacity = 1,
 		},
 	})
+
+	ruled.client.append_rule({
+		rule_any = { name = { "World of Warcraft" } },
+		properties = {
+			fullscreen = true,
+			tag = screen[1].tags[5],
+			switch_to_tags = false,
+			opacity = 1,
+		},
+	})
 end)
