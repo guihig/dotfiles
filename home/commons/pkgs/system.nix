@@ -27,6 +27,7 @@
     gparted
     flameshot
     gzip
+    p7zip
     ntfs3g
     ueberzug
     nix-your-shell
