@@ -149,24 +149,28 @@ return {
 		opts = {
 			servers = {
 				dockerls = true,
-				elixirls = function()
-					return {
-						settings = {
-							elixirLS = {
-								dialyzerEnabled = false,
-								mixEnv = "test",
-								fetchDeps = false,
-							},
-						},
-					}
-				end,
-				-- expert = function()
+				-- elixirls = function()
 				-- 	return {
-				-- 		cmd_env = {
-				-- 			RELEASE_DISTRIBUTION = "sname",
+				-- 		settings = {
+				-- 			elixirLS = {
+				-- 				dialyzerEnabled = false,
+				-- 				mixEnv = "test",
+				-- 				fetchDeps = false,
+				-- 			},
 				-- 		},
 				-- 	}
 				-- end,
+				expert = function()
+					return {
+						cmd_env = {
+							RELEASE_DISTRIBUTION = "sname",
+						},
+						settings = {
+							dialyzerEnabled = false,
+							mixEnv = "test",
+						},
+					}
+				end,
 				eslint = true,
 				html = true,
 				pyright = true,
