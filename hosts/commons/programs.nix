@@ -31,6 +31,8 @@
       startAgent = true;
     };
 
+    openvpn3.enable = true;
+
     # Noise supression
     noisetorch.enable = true;
   };
