@@ -5,7 +5,7 @@
     qogir-theme
     bibata-cursors
     graphite-gtk-theme
-    # tela-icon-theme
+    tela-icon-theme
     orchis-theme
     lxappearance
   ];
@@ -27,10 +27,10 @@
       name = "Orchis-Orange-Dark";
       package = pkgs.orchis-theme;
     };
-    # iconTheme = {
-    #   name = "Tela-orange-dark";
-    #   package = pkgs.tela-icon-theme;
-    # };
+    iconTheme = {
+      name = "Tela-orange-dark";
+      package = pkgs.tela-icon-theme;
+    };
   };
 
   qt = {

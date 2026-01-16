@@ -3,17 +3,13 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    settings = {
-      user = {
-        name = "guihig";
-        email = "guiih.ig@gmail.com";
-      };
-      alias = {
-        s = "status";
-        a = "add";
-        p = "push";
-        c = "commit";
-      };
+    userName = "guihig";
+    userEmail = "guiih.ig@gmail.com";
+    aliases = {
+      s = "status";
+      a = "add";
+      p = "push";
+      c = "commit";
     };
   };
 }

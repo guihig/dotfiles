@@ -48,7 +48,7 @@
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
 
-      permittedInsecurePackages = ["ventoy-1.1.07" "mbedtls-2.28.10" "qtwebengine-5.15.19"];
+      permittedInsecurePackages = ["ventoy-1.1.05" "mbedtls-2.28.10"];
     };
   };
 
@@ -62,7 +62,7 @@
       BROWSER = "firefox";
     };
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = lib.mkDefault "25.11";
+    stateVersion = lib.mkDefault "25.05";
   };
 
   # Enable home-manager

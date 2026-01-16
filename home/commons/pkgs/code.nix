@@ -33,7 +33,7 @@
     vim
     nano
     vscode
-    jetbrains.pycharm
+    jetbrains.pycharm-professional
     github-desktop
   ];
 }

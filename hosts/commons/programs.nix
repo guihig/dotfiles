@@ -27,9 +27,9 @@
       lockerCommand = "${pkgs.slock}/bin/slock";
     };
 
-    # ssh = {
-    #   startAgent = true;
-    # };
+    ssh = {
+      startAgent = true;
+    };
 
     openvpn3.enable = true;
 
