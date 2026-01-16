@@ -12,7 +12,7 @@
     vesktop
     ventoy-full
     figma-linux
-    bitwarden
+    bitwarden-desktop
     obs-studio
   ];
 }

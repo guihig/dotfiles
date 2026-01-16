@@ -49,7 +49,6 @@
       kitty
       lxqt.lxqt-policykit
       clamav
-      chkrootkit
       SDL2
     ];
     etc."ppp/options".text = "ipcp-accept-remote";
