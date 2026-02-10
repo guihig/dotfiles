@@ -102,6 +102,8 @@
 
     env = [
       "XDG_SESSION_TYPE,wayland"
+      "LIBVA_DRIVER_NAME,nvidia"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "WLR_NO_HARDWARE_CURSORS,1"
     ];
 
@@ -310,7 +312,9 @@
       "size 71% 71%,class:^(discord)$"
       "move 12 14.5%,class:^(discord)$"
 
-      "workspace 5 silent,class:^(steam_app_0)$"
+      "workspace 5 silent,class:^(steam|steamwebhelper|steam_app_.*|Steam)$"
+      "fullscreen,class:^(steam_app_.*)$"
+      "float,title:^(Steam - Self Updater)$"
     ];
   };
 
