@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    papirus-icon-theme
+    # papirus-icon-theme
     qogir-icon-theme
     qogir-theme
     bibata-cursors

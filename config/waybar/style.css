@@ -24,7 +24,7 @@
   font-family: "SF Pro Text", sans-serif;
   font-weight: bold;
   font-size: 11px;
-  border-radius: 50px;
+  border-radius: 20px;
 }
 
 window#waybar {
@@ -96,14 +96,11 @@ window#waybar.empty {
 #battery,
 #tray,
 #pulseaudio,
-#backlight {
-  color: @light-blue;
-  background-color: @bg;
-  margin: 0 6px 0 6px;
-  padding: 0 15px 0 15px; /* top, right, bottom, left */
-}
-
-#network {
+#backlight,
+#network,
+#disk,
+#memory,
+#cpu {
   color: @light-blue;
   background-color: @bg;
   margin: 0 6px 0 6px;
@@ -115,7 +112,6 @@ window#waybar.empty {
   background-color: @bg;
   margin: 0 0 0 6px;
   padding: 0 15px 0 15px;
-
   transition: all 0.3s ease-in-out;
 }
 

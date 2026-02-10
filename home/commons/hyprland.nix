@@ -78,36 +78,44 @@
     };
   };
 
+  services.wpaperd = {
+    enable = true;
+    settings = {
+      DP-3 = {
+        path = "~/.config/wallpapers/forest_house.jpg";
+      };
+      DP-4 = {
+        path = "~/.config/wallpapers/2024_Into_the_Light_Press_Kit_Cinematics_COMPRESSED_003.jpg";
+      };
+      DP-2 = {
+        path = "~/.config/wallpapers/2024_Into_the_Light_Press_Kit_Cinematics_COMPRESSED_003.jpg";
+      };
+    };
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.package = pkgs.unstable.hyprland;
   wayland.windowManager.hyprland.settings = {
-    "$monitor_left" = "DP-2";
-    "$monitor_center" = "DP-3";
-    "$monitor_right" = "DP-1";
+    "$monitor_left" = "DP-3";
+    "$monitor_center" = "DP-4";
+    "$monitor_top" = "DP-2";
 
     env = [
       "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "WLR_NO_HARDWARE_CURSORS,1"
     ];
 
     monitor = [
       "$monitor_left, 3440x1440@144, -3440x25, 1"
       "$monitor_center, 1920x1080@240, 0x0, 1"
-      "$monitor_right, 1920x1080@60, 270x-1080, 1"
+      "$monitor_top, 1920x1080@60, 270x-1080, 1"
     ];
 
     exec-once = [
-      "swww init"
       "lxqt-policykit-agent"
-      "swww img ~/.config/wallpapers/forest_house.jpg --transition-type=grow -o DP-2"
-      "swww img ~/.config/wallpapers/2024_Into_the_Light_Press_Kit_Cinematics_COMPRESSED_003.jpg --transition-type=grow"
       "waybar"
-      "vesktop"
+      "discord"
       "spotify"
-      "wl-paste --type text --watch cliphist store # Stores only text data"
-      "wl-paste --type image --watch cliphist store # Stores only image data"
     ];
 
     input = {
@@ -177,7 +185,7 @@
       "SUPER_SHIFT, 0, movetoworkspace, 10"
 
       "SUPER, A, togglespecialworkspace, discord"
-      "SUPER, O, exec, vesktop"
+      "SUPER, O, exec, discord"
       "SUPER, O, focusworkspaceoncurrentmonitor, special:discord"
       "SUPER, S, togglespecialworkspace, spotify"
     ];
@@ -195,8 +203,9 @@
 
       "2, monitor:$monitor_center"
       "4, monitor:$monitor_center"
+      "5, monitor:$monitor_center"
 
-      "6, monitor:$monitor_right"
+      "6, monitor:$monitor_top"
     ];
 
     general = {
@@ -253,10 +262,7 @@
         "border, 1, 10, default"
         "borderangle, 1, 500, linear, loop"
         "fade, 1, 2.5, md3_decel"
-        # "workspaces, 1, 3.5, md3_decel, slide"
         "workspaces, 1, 7, fluent_decel, slide"
-        # "workspaces, 1, 7, fluent_decel, slidefade 15%"
-        # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
         "specialWorkspace, 1, 3, overshot, slidevert"
       ];
     };
@@ -264,7 +270,6 @@
     misc = {
       vfr = 1;
       vrr = 1;
-      # layers_hog_mouse_focus = true;
       focus_on_activate = true;
       animate_manual_resizes = false;
       animate_mouse_windowdragging = false;
@@ -289,7 +294,7 @@
     ];
 
     windowrulev2 = [
-      "opacity 1 override 1 override,class:^(vesktop)$"
+      "opacity 1 override 1 override,class:^(discord)$"
       "opacity 1 override 1 override,class:^(firefox)$"
       "float,title:^(.*)(Extension:)(.*)(- Bitwarden)(.*)$"
 
@@ -299,11 +304,13 @@
       "size 71% 71%,class:^(Spotify)$"
       "center 1,class:^(Spotify)$"
 
-      "workspace special:discord silent,class:^(vesktop)$"
-      "float,class:^(vesktop)$"
-      "noanim,class:^(vesktop)$"
-      "size 71% 71%,class:^(vesktop)$"
-      "move 12 14.5%,class:^(vesktop)$"
+      "workspace special:discord silent,class:^(discord)$"
+      "float,class:^(discord)$"
+      "noanim,class:^(discord)$"
+      "size 71% 71%,class:^(discord)$"
+      "move 12 14.5%,class:^(discord)$"
+
+      "workspace 5 silent,class:^(steam_app_0)$"
     ];
   };
 

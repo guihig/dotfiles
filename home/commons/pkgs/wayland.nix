@@ -13,7 +13,5 @@
     imagemagick
     swww
     cliphist
-    xwaylandvideobridge
-    xdg-desktop-portal-hyprland
   ];
 }

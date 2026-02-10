@@ -20,9 +20,9 @@
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
-    ../commons/xorg.nix
+    ../commons/wayland.nix
     ../commons/xpad.nix
-    ../commons/window-manager/awesome.nix
+    # ../commons/window-manager/awesome.nix
     inputs.sops-nix.nixosModules.sops
   ];
 
@@ -69,16 +69,16 @@
     autoLogin.user = "ferreira";
   };
 
-  services.xserver.displayManager.setupCommands = ''
-    LEFT='DP-2'
-    CENTER='DP-4'
-    TOP='DP-0'
-
-    ${pkgs.xorg.xrandr}/bin/xrandr \
-      --output $LEFT --mode 3440x1440 --rate 144 --pos -3440x25 --rotate normal  \
-      --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 0x0 --rotate normal \
-      --output $TOP --mode 1920x1080 --pos 270x-1080 --rotate normal
-  '';
+  # services.xserver.displayManager.setupCommands = ''
+  #   LEFT='DP-2'
+  #   CENTER='DP-4'
+  #   TOP='DP-0'
+  #
+  #   ${pkgs.xorg.xrandr}/bin/xrandr \
+  #     --output $LEFT --mode 3440x1440 --rate 144 --pos -3440x25 --rotate normal  \
+  #     --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 0x0 --rotate normal \
+  #     --output $TOP --mode 1920x1080 --pos 270x-1080 --rotate normal
+  # '';
 
   users.users = {
     ferreira = {
@@ -105,8 +105,8 @@
   };
 
   # Kernel
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
