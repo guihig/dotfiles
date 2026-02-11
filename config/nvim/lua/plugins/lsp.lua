@@ -173,6 +173,7 @@ return {
 				end,
 				eslint = true,
 				html = true,
+				qmlls = true,
 				pyright = true,
 				lua_ls = true,
 				nil_ls = true,

@@ -64,11 +64,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1770739743,
-        "narHash": "sha256-xbwOjZnjm5QCqYyfFwPMppMZAcbqQ1DhK9KN/fUJLPI=",
+        "lastModified": 1770812377,
+        "narHash": "sha256-DJazLgV7j+c4f9rCxv0LMPFrLxwjJLFM9b5hGwGZfsM=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "d8c81cd5c686e770d35bcd10ede3980a733e1471",
+        "rev": "865d99c4b8835e74da5da09417d84fcef59f19de",
         "type": "github"
       },
       "original": {
@@ -211,6 +211,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770693276,
+        "narHash": "sha256-ngXnN5YXu+f45+QGYNN/VEBMQmcBCYGRCqwaK8cxY1s=",
+        "ref": "refs/heads/master",
+        "rev": "dacfa9de829ac7cb173825f593236bf2c21f637e",
+        "revCount": 735,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
     "root": {
       "inputs": {
         "bling": "bling",
@@ -220,6 +240,7 @@
         "lain": "lain",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "quickshell": "quickshell",
         "rubato": "rubato",
         "sops-nix": "sops-nix"
       }

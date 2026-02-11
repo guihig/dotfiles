@@ -1,11 +1,27 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    waybar
+    wl-gammactl
+    wl-clipboard
+    wf-recorder
+    wlprop
+    hyprpicker
+    wayshot
+    swappy
+    grim
+    slurp
+    imagemagick
+    swww
+    cliphist
+  ];
+
   home.file.".config/waybar" = {
-    source = ../../config/waybar;
+    source = ../../../config/waybar;
     recursive = true;
   };
 
   home.file.".config/wallpapers" = {
-    source = ../../wallpapers;
+    source = ../../../wallpapers;
     recursive = true;
   };
 
@@ -17,7 +33,6 @@
       "$entry_border_color" = "rgba(3B3B3B55)";
       "$entry_color" = "rgba(FFFFFFFF)";
       "$font_family" = "Jetbrains Mono";
-      "$font_family_clock" = "Jetbrains Mono";
 
       general = {
         disable_loading_bar = true;
@@ -56,7 +71,7 @@
           shadow_boost = "0.5";
           color = "$text_color";
           font_size = "65";
-          font_family = "$font_family_clock";
+          font_family = "$font_family";
 
           position = "0, 300";
           halign = "center";
@@ -101,7 +116,9 @@
     "$monitor_top" = "DP-2";
 
     env = [
+      "XDG_CURRENT_DESKTOP,Hyprland"
       "XDG_SESSION_TYPE,wayland"
+      "XDG_SESSION_DESKTOP,Hyprland"
       "LIBVA_DRIVER_NAME,nvidia"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "WLR_NO_HARDWARE_CURSORS,1"
@@ -277,10 +294,8 @@
       animate_mouse_windowdragging = false;
       enable_swallow = false;
       swallow_regex = "(foot|kitty|allacritty|Alacritty)";
-
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
-      new_window_takes_over_fullscreen = 2;
     };
 
     windowrule = [

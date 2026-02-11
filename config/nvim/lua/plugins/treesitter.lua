@@ -18,6 +18,7 @@ return {
 				"vue",
 				"http",
 				"typescript",
+				"qmljs",
 				-- "latex",
 				"fish",
 				"vim",

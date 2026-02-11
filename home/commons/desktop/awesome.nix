@@ -1,14 +1,29 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./picom.nix
+  ];
+
+  home.packages = with pkgs; [
+    xcowsay
+    xclip
+    arandr
+    xlayoutdisplay
+  ];
+
   # ---- Awesome Configuration ---- #
   xsession.windowManager.awesome = {
     enable = true;
   };
   home.file.".config/wallpapers" = {
-    source = ../../wallpapers;
+    source = ../../../wallpapers;
     recursive = true;
   };
   home.file.".config/awesome" = {
-    source = ../../config/awesome;
+    source = ../../../config/awesome;
     recursive = true;
   };
   home.file.".config/awesome/modules/bling" = {

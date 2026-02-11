@@ -20,9 +20,7 @@
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
-    ../commons/wayland.nix
-    ../commons/xpad.nix
-    # ../commons/window-manager/awesome.nix
+    ../commons/desktop/hyprland.nix
     inputs.sops-nix.nixosModules.sops
   ];
 

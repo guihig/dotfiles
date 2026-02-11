@@ -9,7 +9,6 @@
     ../commons/pkgs/default.nix
     ../commons/pkgs/xorg.nix
     ../commons/pkgs/fun.nix
-    # ../commons/picom.nix
     ../commons/awesome.nix
     ../commons/ui.nix
     ../commons/git.nix
