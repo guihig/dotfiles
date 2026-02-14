@@ -133,7 +133,7 @@
     exec-once = [
       "lxqt-policykit-agent"
       "waybar"
-      "discord"
+      "vesktop"
       "spotify"
     ];
 
@@ -203,9 +203,9 @@
       "SUPER_SHIFT, 9, movetoworkspace, 9"
       "SUPER_SHIFT, 0, movetoworkspace, 10"
 
-      "SUPER, A, togglespecialworkspace, discord"
-      "SUPER, O, exec, discord"
-      "SUPER, O, focusworkspaceoncurrentmonitor, special:discord"
+      "SUPER, A, togglespecialworkspace, vesktop"
+      "SUPER, O, exec, vesktop"
+      "SUPER, O, focusworkspaceoncurrentmonitor, special:vesktop"
       "SUPER, S, togglespecialworkspace, spotify"
     ];
 
@@ -311,7 +311,7 @@
     ];
 
     windowrulev2 = [
-      "opacity 1 override 1 override,class:^(discord)$"
+      "opacity 1 override 1 override,class:^(vesktop)$"
       "opacity 1 override 1 override,class:^(firefox)$"
       "float,title:^(.*)(Extension:)(.*)(- Bitwarden)(.*)$"
 
@@ -321,11 +321,11 @@
       "size 71% 71%,class:^(Spotify)$"
       "center 1,class:^(Spotify)$"
 
-      "workspace special:discord silent,class:^(discord)$"
-      "float,class:^(discord)$"
-      "noanim,class:^(discord)$"
-      "size 71% 71%,class:^(discord)$"
-      "move 12 14.5%,class:^(discord)$"
+      "workspace special:vesktop silent,class:^(vesktop)$"
+      "float,class:^(vesktop)$"
+      "noanim,class:^(vesktop)$"
+      "size 71% 71%,class:^(vesktop)$"
+      "move 12 14.5%,class:^(vesktop)$"
 
       "workspace 5 silent,class:^(steam|steamwebhelper|steam_app_.*|Steam)$"
       "fullscreen,class:^(steam_app_.*)$"
