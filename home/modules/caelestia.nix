@@ -21,9 +21,6 @@
       };
       bar = {
         status.showBattery = false;
-        workspaces = {
-          perMonitorWorkspaces = false;
-        };
       };
     };
     cli = {

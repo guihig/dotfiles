@@ -43,6 +43,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    };
+
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
     # hyprland.url = "github:hyprwm/Hyprland";
@@ -54,6 +60,7 @@
     home-manager,
     sops-nix,
     expert,
+    split-monitor-workspaces,
     ...
   } @ inputs: let
     inherit (self) outputs;

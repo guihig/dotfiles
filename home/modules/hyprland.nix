@@ -10,6 +10,7 @@
     swappy
     grim
     slurp
+
     imagemagick
     swww
     cliphist
@@ -108,6 +109,10 @@
     };
   };
 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.package = pkgs.unstable.hyprland;
   wayland.windowManager.hyprland.settings = {
@@ -116,12 +121,27 @@
     "$monitor_top" = "DP-2";
 
     env = [
+      # XDG
       "XDG_CURRENT_DESKTOP,Hyprland"
       "XDG_SESSION_TYPE,wayland"
       "XDG_SESSION_DESKTOP,Hyprland"
-      "LIBVA_DRIVER_NAME,nvidia"
+
+      # Toolkit
+      "GDK_BACKEND,wayland,x11"
+      "SDL_VIDEODRIVER,wayland"
+      "CLUTTER_BACKEND,wayland"
+
+      # QT
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "QT_QPA_PLATFORM,wayland;xcb"
+
+      # Nvidia
+      "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "WLR_NO_HARDWARE_CURSORS,1"
+      "LIBVA_DRIVER_NAME,nvidia"
+
+      # Electron
+      "ELECTRON_OZONE_PLATFORM_HINT,auto"
     ];
 
     monitor = [
@@ -132,7 +152,7 @@
 
     exec-once = [
       "lxqt-policykit-agent"
-      "caelestia-shell"
+      "caelestia shell -d"
       "vesktop"
       "spotify"
     ];
@@ -207,6 +227,9 @@
       "SUPER, O, exec, vesktop"
       "SUPER, O, focusworkspaceoncurrentmonitor, special:vesktop"
       "SUPER, S, togglespecialworkspace, spotify"
+
+      # Important
+      "SUPER, Period, exec, caelestia emoji -p"
     ];
 
     bindm = [
@@ -232,10 +255,16 @@
       gaps_out = 12;
       border_size = 2;
 
+      allow_tearing = false;
+
       "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
       "col.inactive_border" = "rgba(595959aa)";
 
       layout = "dwindle";
+    };
+
+    cursor = {
+      no_hardware_cursors = 0;
     };
 
     decoration = {
@@ -299,37 +328,43 @@
     };
 
     windowrule = [
-      # "noblur,.*"
-
       # Dialogs
-      "float,title:^(Open File)(.*)$"
-      "float,title:^(Select a File)(.*)$"
-      "float,title:^(Choose wallpaper)(.*)$"
-      "float,title:^(Open Folder)(.*)$"
-      "float,title:^(Save As)(.*)$"
-      "float,title:^(Library)(.*)$"
-    ];
+      "match:title (Select|Open)( a)? (File|Folder)(s)?, float on"
+      "match:title File (Operation|Upload)( Progress)?, float on"
+      "match:title .* Properties, float on"
+      "match:title Save As, float on"
+      "match:title Library, float on"
+      "match:title ^(.*)(Extension:)(.*)(- Bitwarden)(.*)$, float on"
 
-    windowrulev2 = [
-      "opacity 1 override 1 override,class:^(vesktop)$"
-      "opacity 1 override 1 override,class:^(firefox)$"
-      "float,title:^(.*)(Extension:)(.*)(- Bitwarden)(.*)$"
+      # Picture in picture (resize and move done via script)
+      "move 100%-w-2% 100%-w-3%, match:title Picture(-| )in(-| )[Pp]icture"
+      "keep_aspect_ratio on, match:title Picture(-| )in(-| )[Pp]icture"
+      "float on, match:title Picture(-| )in(-| )[Pp]icture"
+      "pin on, match:title Picture(-| )in(-| )[Pp]icture"
 
-      "workspace special:spotify silent,class:^(Spotify)$"
-      "float,class:^(Spotify)$"
-      "noanim,class:^(Spotify)$"
-      "size 71% 71%,class:^(Spotify)$"
-      "center 1,class:^(Spotify)$"
+      #------------- Games
+      "opaque on, match:class (steam_app_(default|[0-9]+)|gamescope"
+      "immediate on, match:class (steam_app_(default|[0-9]+)|gamescope"
+      "idle_inhibit always, match:class (steam_app_(default|[0-9]+)|gamescope"
+      "workspace 5 silent, match:class ^(steam|steamwebhelper|steam_app_.*|Steam|steam_app_(default|[0-9]+)|gamescope)$"
+      "fullscreen on, match:class ^(steam_app_(default|[0-9]+))$"
+      "float on, match:title ^(Steam - Self Updater)$"
+      "float on, match:title Friends List, match:class steam"
 
-      "workspace special:vesktop silent,class:^(vesktop)$"
-      "float,class:^(vesktop)$"
-      "noanim,class:^(vesktop)$"
-      "size 71% 71%,class:^(vesktop)$"
-      "center 1,class:^(vesktop)$"
+      #------------- Special Workspaces
+      # -- Spotify
+      "workspace special:spotify silent, match:class ^(Spotify)$"
+      "float on, match:class ^(Spotify)$"
+      "no_anim on, match:class ^(Spotify)$"
+      "size monitor_w*0.71 monitor_h*0.71, match:class ^(Spotify)$"
+      "center on, match:class ^(Spotify)$"
 
-      "workspace 5 silent,class:^(steam|steamwebhelper|steam_app_.*|Steam)$"
-      "fullscreen,class:^(steam_app_.*)$"
-      "float,title:^(Steam - Self Updater)$"
+      # -- Discord
+      "workspace special:vesktop silent, match:class (vesktop|discord)"
+      "float on, match:class (vesktop|discord)"
+      "no_anim on, match:class (vesktop|discord)"
+      "size monitor_w*0.71 monitor_h*0.71, match:class (vesktop|discord)"
+      "center on, match:class (vesktop|discord)"
     ];
   };
 

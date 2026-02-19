@@ -24,7 +24,7 @@ in {
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.unstable.hyprland}/bin/Hyprland";
           user = cfg.loginUser;
         };
 
