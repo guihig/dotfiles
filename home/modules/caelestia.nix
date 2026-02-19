@@ -22,6 +22,11 @@
       bar = {
         status.showBattery = false;
       };
+      general = {
+        lockBeforeSleep = false;
+        inhibitWhenAudio = true;
+        timeouts = [];
+      };
     };
     cli = {
       enable = true;
