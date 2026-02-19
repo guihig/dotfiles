@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     alacritty-theme
+    pkgs.unstable.tmuxinator
   ];
 
   # ---- Kitty Configuration ---- #
@@ -71,7 +72,8 @@
     escapeTime = 10;
     mouse = true;
     shell = "${pkgs.fish}/bin/fish";
-    tmuxinator.enable = true;
+    package = pkgs.unstable.tmux;
+    # tmuxinator.enable = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.tilish;

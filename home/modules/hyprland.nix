@@ -325,7 +325,7 @@
       "float,class:^(vesktop)$"
       "noanim,class:^(vesktop)$"
       "size 71% 71%,class:^(vesktop)$"
-      "move 12 14.5%,class:^(vesktop)$"
+      "center 1,class:^(vesktop)$"
 
       "workspace 5 silent,class:^(steam|steamwebhelper|steam_app_.*|Steam)$"
       "fullscreen,class:^(steam_app_.*)$"
