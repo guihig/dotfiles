@@ -16,7 +16,7 @@
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
-    ../commons/desktop/awesome.nix
+    ../../modules/nixos/awesome.nix
     inputs.sops-nix.nixosModules.sops
   ];
 

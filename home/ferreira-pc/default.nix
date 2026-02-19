@@ -1,51 +1,33 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
-  inputs,
   outputs,
   lib,
   config,
-  pkgs,
   ...
 }: {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
     outputs.homeManagerModules.helpers
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    ../commons/pkgs/default.nix
-    ../commons/pkgs/fun.nix
-    ../commons/desktop/hyprland.nix
-    ../commons/dunst.nix
-    ../commons/ui.nix
-    ../commons/git.nix
-    ../commons/ssh.nix
-    ../commons/fish.nix
-    ../commons/rofi.nix
-    ../commons/terminal.nix
-    ../commons/nvim.nix
-    ../commons/sound.nix
+    ../modules/packages.nix
+    ../modules/hyprland.nix
+    ../modules/caelestia.nix
+    ../modules/dunst.nix
+    ../modules/ui.nix
+    ../modules/git.nix
+    ../modules/ssh.nix
+    ../modules/fish.nix
+    ../modules/rofi.nix
+    ../modules/terminal.nix
+    ../modules/nvim.nix
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
-
       permittedInsecurePackages = ["ventoy-1.1.07" "mbedtls-2.28.10" "qtwebengine-5.15.19"];
     };
   };
@@ -63,9 +45,7 @@
     stateVersion = lib.mkDefault "25.11";
   };
 
-  # Enable home-manager
   programs.home-manager.enable = true;
 
-  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }

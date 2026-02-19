@@ -16,12 +16,12 @@
   ];
 
   home.file.".config/waybar" = {
-    source = ../../../config/waybar;
+    source = ../../config/waybar;
     recursive = true;
   };
 
   home.file.".config/wallpapers" = {
-    source = ../../../wallpapers;
+    source = ../../wallpapers;
     recursive = true;
   };
 
@@ -132,7 +132,7 @@
 
     exec-once = [
       "lxqt-policykit-agent"
-      "waybar"
+      "caelestia-shell"
       "vesktop"
       "spotify"
     ];

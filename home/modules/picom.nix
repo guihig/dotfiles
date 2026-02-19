@@ -7,7 +7,7 @@
     unstable.picom
   ];
 
-  xdg.configFile."picom/picom.conf".source = ../../../config/picom/picom.conf;
+  xdg.configFile."picom/picom.conf".source = ../../config/picom/picom.conf;
 
   systemd.user.services.picom = {
     Unit = {

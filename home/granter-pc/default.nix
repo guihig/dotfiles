@@ -6,18 +6,15 @@
 }: {
   imports = [
     outputs.homeManagerModules.helpers
-    ../commons/pkgs/default.nix
-    ../commons/pkgs/xorg.nix
-    ../commons/pkgs/fun.nix
-    ../commons/awesome.nix
-    ../commons/ui.nix
-    ../commons/git.nix
-    ../commons/ssh.nix
-    ../commons/fish.nix
-    ../commons/rofi.nix
-    ../commons/terminal.nix
-    ../commons/nvim.nix
-    ../commons/sound.nix
+    ../modules/packages.nix
+    ../modules/awesome.nix
+    ../modules/ui.nix
+    ../modules/git.nix
+    ../modules/ssh.nix
+    ../modules/fish.nix
+    ../modules/rofi.nix
+    ../modules/terminal.nix
+    ../modules/nvim.nix
   ];
 
   nixpkgs = {
@@ -42,13 +39,10 @@
       BROWSER = "firefox";
     };
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = lib.mkDefault "25.11";
   };
 
-  # Enable home-manager
   programs.home-manager.enable = true;
 
-  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }

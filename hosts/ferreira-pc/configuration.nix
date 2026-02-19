@@ -20,7 +20,8 @@
     ../commons/sops.nix
     ../commons/programs.nix
     ../commons/services.nix
-    ../commons/desktop/hyprland.nix
+    ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/awesome.nix
     inputs.sops-nix.nixosModules.sops
   ];
 
@@ -67,16 +68,25 @@
     autoLogin.user = "ferreira";
   };
 
-  # services.xserver.displayManager.setupCommands = ''
-  #   LEFT='DP-2'
-  #   CENTER='DP-4'
-  #   TOP='DP-0'
-  #
-  #   ${pkgs.xorg.xrandr}/bin/xrandr \
-  #     --output $LEFT --mode 3440x1440 --rate 144 --pos -3440x25 --rotate normal  \
-  #     --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 0x0 --rotate normal \
-  #     --output $TOP --mode 1920x1080 --pos 270x-1080 --rotate normal
-  # '';
+  services.myhypr = {
+    enable = true;
+    loginUser = "ferreira";
+  };
+
+  services.myawesome = {
+    enable = false;
+    loginUser = "ferreira";
+    setupCommands = ''
+      LEFT='DP-2'
+      CENTER='DP-4'
+      TOP='DP-0'
+
+      ${pkgs.xorg.xrandr}/bin/xrandr \
+        --output $LEFT --mode 3440x1440 --rate 144 --pos -3440x25 --rotate normal  \
+        --output $CENTER --primary --mode 1920x1080 --rate 240 --pos 0x0 --rotate normal \
+        --output $TOP --mode 1920x1080 --pos 270x-1080 --rotate normal
+    '';
+  };
 
   users.users = {
     ferreira = {
