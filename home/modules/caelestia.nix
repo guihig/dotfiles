@@ -11,11 +11,19 @@
     };
     settings = {
       appearance.transparency.enabled = true;
-      bar.status.showBattery = false;
-      services.useFahrenheit = false;
+      services = {
+        weatherLocation = "-27.59730,-48.54961";
+        useFahrenheit = false;
+      };
       notifs.actionOnClick = true;
       paths = {
         wallpaperDir = "~/.config/wallpapers";
+      };
+      bar = {
+        status.showBattery = false;
+        workspaces = {
+          perMonitorWorkspaces = false;
+        };
       };
     };
     cli = {
