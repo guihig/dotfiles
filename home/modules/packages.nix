@@ -128,7 +128,7 @@
     libnotify
     seahorse
     gparted
-    (unstable.flameshot.override {enableWlrSupport = true;})
+    # (unstable.flameshot.override {enableWlrSupport = true;})
     gzip
     p7zip
     ntfs3g

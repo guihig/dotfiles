@@ -16,6 +16,16 @@
     cliphist
   ];
 
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        useGrimAdapter = true;
+        disabledGrimWarning = true;
+      };
+    };
+  };
+
   home.file.".config/waybar" = {
     source = ../../config/waybar;
     recursive = true;
