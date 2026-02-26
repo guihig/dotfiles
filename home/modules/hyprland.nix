@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     waybar
     wl-gammactl
@@ -124,7 +128,12 @@
   };
 
   wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.package = pkgs.unstable.hyprland;
+  wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  wayland.windowManager.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+  wayland.windowManager.hyprland.plugins = [
+    inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+  ];
   wayland.windowManager.hyprland.settings = {
     "$monitor_left" = "DP-3";
     "$monitor_center" = "DP-4";
@@ -210,7 +219,7 @@
       "SUPER_SHIFT, j, movewindow, d"
 
       # Switch workspaces with mainMod + [0-9]
-      "SUPER, 1, workspace, 1"
+      "SUPER, 1, split-workspace, 1"
       "SUPER, 2, workspace, 2"
       "SUPER, 3, workspace, 3"
       "SUPER, 4, workspace, 4"
@@ -379,6 +388,16 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
+    debug {
+      disable_logs=false
+    }
+
+    plugin {
+      split-monitor-workspaces {
+        count = 5
+      }
+    }
+
     # window resize
     bind = SUPER, R, submap, resize
 
