@@ -366,7 +366,7 @@
 
     misc = {
       vfr = 1;
-      vrr = 1;
+      vrr = 0;
       focus_on_activate = true;
       animate_manual_resizes = false;
       animate_mouse_windowdragging = false;
