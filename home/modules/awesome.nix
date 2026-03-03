@@ -42,4 +42,8 @@
     source = inputs.lain.outPath;
     recursive = true;
   };
+  home.file.".config/awesome/awesome-wm-widgets" = {
+    source = inputs.awesome-wm-widgets.outPath;
+    recursive = true;
+  };
 }

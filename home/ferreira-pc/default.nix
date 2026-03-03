@@ -8,7 +8,7 @@
     outputs.homeManagerModules.helpers
     ../modules/packages.nix
     ../modules/hyprland.nix
-    ../modules/caelestia.nix
+    # ../modules/awesome.nix
     ../modules/dunst.nix
     ../modules/ui.nix
     ../modules/git.nix
@@ -28,7 +28,7 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      permittedInsecurePackages = ["ventoy-1.1.07" "mbedtls-2.28.10" "qtwebengine-5.15.19"];
+      permittedInsecurePackages = ["ventoy-1.1.10" "mbedtls-2.28.10" "qtwebengine-5.15.19"];
     };
   };
 

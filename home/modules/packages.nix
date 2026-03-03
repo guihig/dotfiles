@@ -31,8 +31,8 @@
     go
     gcc
     gnumake
-    lua51Packages.lua
-    lua51Packages.luarocks
+    lua
+    luajitPackages.luarocks
     kdePackages.qtdeclarative
     nodejs
     tree-sitter

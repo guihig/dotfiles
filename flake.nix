@@ -19,6 +19,10 @@
       url = "github:lcpz/lain";
       flake = false;
     };
+    awesome-wm-widgets = {
+      url = "github:streetturtle/awesome-wm-widgets";
+      flake = false;
+    };
     color = {
       url = "github:andOrlando/color";
       flake = false;

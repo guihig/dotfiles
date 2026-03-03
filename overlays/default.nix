@@ -10,15 +10,15 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    awesome-git = prev.awesome.overrideAttrs (oldAttrs: {
-      pname = "awesome-git";
-      version = "cab3e81dc6071e3c1c4bd15cf8fab91236c7f2bd";
+    awesome = prev.awesome.overrideAttrs (oldAttrs: {
+      version = "39143f036e10c34c0a4a2eb604399fd20cf8376e";
       src = prev.fetchFromGitHub {
         owner = "awesomeWM";
         repo = "awesome";
-        rev = "cab3e81dc6071e3c1c4bd15cf8fab91236c7f2bd";
-        sha256 = "sha256-DGAImB4u8sRP9PEoZ4YXAxopa8eaJ7YJxSiBh36yfaE=";
+        rev = "39143f036e10c34c0a4a2eb604399fd20cf8376e";
+        sha256 = "sha256-M9EQV5kwiTeSqZLXQ6uAtMyvOhCQXM9ctgiu2ZRI+QQ=";
       };
+      cmakeFlags = (oldAttrs.cmakeFlags or []) ++ ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"];
       patches = [];
       postPatch = ''
         patchShebangs tests/examples/_postprocess.lua

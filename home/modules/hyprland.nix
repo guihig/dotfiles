@@ -3,6 +3,42 @@
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.caelestia-shell.homeManagerModules.default
+  ];
+
+  programs.caelestia = {
+    enable = true;
+    systemd = {
+      enable = false;
+      target = "graphical-session.target";
+      environment = [];
+    };
+    settings = {
+      appearance.transparency.enabled = true;
+      services = {
+        weatherLocation = "-27.59730,-48.54961";
+        useFahrenheit = false;
+      };
+      notifs.actionOnClick = true;
+      paths = {
+        wallpaperDir = "~/.config/wallpapers";
+      };
+      bar = {
+        status.showBattery = false;
+      };
+      general = {
+        lockBeforeSleep = false;
+        inhibitWhenAudio = true;
+        timeouts = [];
+      };
+    };
+    cli = {
+      enable = true;
+      settings.theme.enableGtk = false;
+    };
+  };
+
   home.packages = with pkgs; [
     waybar
     wl-gammactl
@@ -123,13 +159,13 @@
     };
   };
 
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
-  };
+  # home.sessionVariables = {
+  #   NIXOS_OZONE_WL = 1;
+  # };
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.plugins = [
-    inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+    # inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
   ];
   wayland.windowManager.hyprland.settings = {
     "$monitor_left" = "DP-3";
@@ -168,7 +204,7 @@
 
     exec-once = [
       "lxqt-policykit-agent"
-      "caelestia shell -d"
+      "waybar"
       "vesktop"
       "spotify"
     ];
@@ -216,36 +252,33 @@
       "SUPER_SHIFT, j, movewindow, mon:d"
 
       # Switch workspaces with mainMod + [0-9]
-      "SUPER, 1, split-workspace, 1"
-      "SUPER, 2, split-workspace, 2"
-      "SUPER, 3, split-workspace, 3"
-      "SUPER, 4, split-workspace, 4"
-      "SUPER, 5, split-workspace, 5"
-      "SUPER, 6, split-workspace, 6"
-      "SUPER, 7, split-workspace, 7"
-      "SUPER, 8, split-workspace, 8"
-      "SUPER, 9, split-workspace, 9"
-      "SUPER, 0, split-workspace, 10"
+      "SUPER, 1, workspace, 1"
+      "SUPER, 2, workspace, 2"
+      "SUPER, 3, workspace, 3"
+      "SUPER, 4, workspace, 4"
+      "SUPER, 5, workspace, 5"
+      "SUPER, 6, workspace, 6"
+      "SUPER, 7, workspace, 7"
+      "SUPER, 8, workspace, 8"
+      "SUPER, 9, workspace, 9"
+      "SUPER, 0, workspace, 10"
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      "SUPER_SHIFT, 1, split-movetoworkspace, 1"
-      "SUPER_SHIFT, 2, split-movetoworkspace, 2"
-      "SUPER_SHIFT, 3, split-movetoworkspace, 3"
-      "SUPER_SHIFT, 4, split-movetoworkspace, 4"
-      "SUPER_SHIFT, 5, split-movetoworkspace, 5"
-      "SUPER_SHIFT, 6, split-movetoworkspace, 6"
-      "SUPER_SHIFT, 7, split-movetoworkspace, 7"
-      "SUPER_SHIFT, 8, split-movetoworkspace, 8"
-      "SUPER_SHIFT, 9, split-movetoworkspace, 9"
-      "SUPER_SHIFT, 0, split-movetoworkspace, 10"
+      "SUPER_SHIFT, 1, movetoworkspace, 1"
+      "SUPER_SHIFT, 2, movetoworkspace, 2"
+      "SUPER_SHIFT, 3, movetoworkspace, 3"
+      "SUPER_SHIFT, 4, movetoworkspace, 4"
+      "SUPER_SHIFT, 5, movetoworkspace, 5"
+      "SUPER_SHIFT, 6, movetoworkspace, 6"
+      "SUPER_SHIFT, 7, movetoworkspace, 7"
+      "SUPER_SHIFT, 8, movetoworkspace, 8"
+      "SUPER_SHIFT, 9, movetoworkspace, 9"
+      "SUPER_SHIFT, 0, movetoworkspace, 10"
 
       "SUPER, A, togglespecialworkspace, vesktop"
       "SUPER, O, exec, vesktop"
       "SUPER, O, focusworkspaceoncurrentmonitor, special:vesktop"
       "SUPER, S, togglespecialworkspace, spotify"
-
-      # Important
-      "SUPER, Period, exec, caelestia emoji -p"
     ];
 
     bindm = [
@@ -254,17 +287,17 @@
       "SUPER, mouse:273, resizewindow"
     ];
 
-    # workspace = [
-    #   # Set stick workspaces to the monitors
-    #   "1, monitor:$monitor_left"
-    #   "3, monitor:$monitor_left"
-    #
-    #   "2, monitor:$monitor_center"
-    #   "4, monitor:$monitor_center"
-    #   "5, monitor:$monitor_center"
-    #
-    #   "6, monitor:$monitor_top"
-    # ];
+    workspace = [
+      # Set stick workspaces to the monitors
+      "1, monitor:$monitor_left"
+      "3, monitor:$monitor_left"
+
+      "2, monitor:$monitor_center"
+      "4, monitor:$monitor_center"
+      "5, monitor:$monitor_center"
+
+      "6, monitor:$monitor_top"
+    ];
 
     general = {
       gaps_in = 6;
@@ -362,9 +395,9 @@
       "opaque on, match:class (steam_app_(default|[0-9]+)|gamescope"
       "immediate on, match:class (steam_app_(default|[0-9]+)|gamescope"
       "idle_inhibit always, match:class (steam_app_(default|[0-9]+)|gamescope"
-      "workspace 15 silent, match:class ^(steam|steamwebhelper|steam_app_.*|Steam|steam_app_(default|[0-9]+)|gamescope)$"
-      "workspace 15 silent, match:title (World of Warcraft)"
-      "fullscreen on, match:class ^(steam_app_(default|[0-9]+))$"
+      "workspace 5 silent, match:class ^(steam|steamwebhelper|steam_app_.*|Steam|steam_app_(default|[0-9]+)|gamescope)$"
+      "workspace 5 silent, match:title (World of Warcraft)"
+      # "fullscreen on, match:class ^(steam_app_(default|[0-9]+))$"
       "fullscreen on, match:title (World of Warcraft)"
       "float on, match:title ^(Steam - Self Updater)$"
       "float on, match:title Friends List, match:class steam"
@@ -389,12 +422,6 @@
   wayland.windowManager.hyprland.extraConfig = ''
     debug {
       disable_logs=false
-    }
-
-    plugin {
-      split-monitor-workspaces {
-        count = 5
-      }
     }
 
     # window resize

@@ -34,8 +34,7 @@ in {
       exportConfiguration = true;
       windowManager.awesome = {
         enable = true;
-        package = pkgs.awesome-git;
-        luaModules = with pkgs.luaPackages; [luarocks lua-cjson inspect];
+        luaModules = with pkgs.luajitPackages; [luarocks cjson inspect lgi];
       };
     };
 
