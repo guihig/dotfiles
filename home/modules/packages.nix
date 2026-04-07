@@ -52,14 +52,14 @@
     insomnia
     code-minimap
     zrok
-    nodePackages.localtunnel
+    localtunnel
 
     # Code formatters
     stylua
     yamlfmt
     black
-    nodePackages.sql-formatter
-    nodePackages.prettier
+    sql-formatter
+    prettier
     stylish-haskell
     alejandra
     texlive.combined.scheme-full
