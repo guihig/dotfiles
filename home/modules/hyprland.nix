@@ -365,7 +365,6 @@
     };
 
     misc = {
-      vfr = 1;
       vrr = 0;
       focus_on_activate = true;
       animate_manual_resizes = false;
