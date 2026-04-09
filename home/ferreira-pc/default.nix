@@ -7,8 +7,8 @@
   imports = [
     outputs.homeManagerModules.helpers
     ../modules/packages.nix
-    ../modules/hyprland.nix
-    # ../modules/awesome.nix
+    # ../modules/hyprland.nix
+    ../modules/awesome.nix
     ../modules/dunst.nix
     ../modules/ui.nix
     ../modules/git.nix

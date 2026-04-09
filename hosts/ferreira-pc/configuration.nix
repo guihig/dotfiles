@@ -69,12 +69,12 @@
   };
 
   services.myhypr = {
-    enable = true;
+    enable = false;
     loginUser = "ferreira";
   };
 
   services.myawesome = {
-    enable = false;
+    enable = true;
     loginUser = "ferreira";
     setupCommands = ''
       LEFT='DP-2'
