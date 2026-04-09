@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./picom.nix
+    ./fastcompmgr.nix
   ];
 
   home.packages = with pkgs; [

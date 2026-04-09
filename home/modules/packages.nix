@@ -11,6 +11,7 @@
     gimp
     audacity
     vesktop
+    unstable.dorion
     ventoy-full
     figma-linux
     bitwarden-desktop
@@ -128,6 +129,7 @@
     libnotify
     seahorse
     gparted
+    flameshot
     # (unstable.flameshot.override {enableWlrSupport = true;})
     gzip
     p7zip
