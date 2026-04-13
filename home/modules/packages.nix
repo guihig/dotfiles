@@ -129,7 +129,8 @@
     libnotify
     seahorse
     gparted
-    flameshot
+    # flameshot
+    shutter
     # (unstable.flameshot.override {enableWlrSupport = true;})
     gzip
     p7zip

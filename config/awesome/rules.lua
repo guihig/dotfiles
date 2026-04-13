@@ -6,6 +6,9 @@ ruled.client.connect_signal("request::rules", function()
 	-- Global
 	ruled.client.append_rule({
 		rule = {},
+		except_any = {
+			class = { "flameshot" },
+		},
 		properties = {
 			focus = awful.client.focus.filter,
 			raise = true,

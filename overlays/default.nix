@@ -25,6 +25,17 @@
       '';
     });
 
+    flameshot = prev.flameshot.overrideAttrs (oldAttrs: {
+      # version = "42c462bb97f4df97f0b96e3e43c2a96f64be8e8d";
+      src = prev.fetchFromGitHub {
+        owner = "flameshot-org";
+        repo = "flameshot";
+        rev = "42c462bb97f4df97f0b96e3e43c2a96f64be8e8d";
+        sha256 = "sha256-SKqmyMMtvj1GxaK2usoF3SNNa6WN+ygzh+keT54PXG4=";
+      };
+      patches = [./patch_dahora.patch];
+    });
+
     # hyprland = inputs.hyprland.packages.${prev.system}.hyprland;
   };
 
