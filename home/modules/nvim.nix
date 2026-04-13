@@ -22,7 +22,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
   };
 
   home.file.".config/nvim" = {
