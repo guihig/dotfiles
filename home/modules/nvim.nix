@@ -44,7 +44,7 @@
         vue_ls = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
         nil_ls = { "${unstable.nil}/bin/nil" },
         lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },
-        vue_ts_plugin = "${unstable.vue-language-server}/lib/node_modules/@vue/language-server",
+        vue_ts_plugin = "${unstable.vue-language-server}/lib/language-tools/packages/language-server",
         vtsls = { "${unstable.vtsls}/bin/vtsls", "--stdio" },
         awesomewm_lib = "${pkgs.awesome}/share/awesome/lib"
       }
