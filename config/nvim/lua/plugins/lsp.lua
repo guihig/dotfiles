@@ -162,9 +162,9 @@ return {
 				-- end,
 				expert = function()
 					return {
-						cmd_env = {
-							RELEASE_DISTRIBUTION = "sname",
-						},
+						-- cmd_env = {
+						-- 	RELEASE_DISTRIBUTION = "sname",
+						-- },
 						settings = {
 							dialyzerEnabled = false,
 							mixEnv = "test",
