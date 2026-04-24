@@ -19,6 +19,7 @@ return {
 				"http",
 				"typescript",
 				"qmljs",
+				"heex",
 				-- "latex",
 				"fish",
 				"vim",
