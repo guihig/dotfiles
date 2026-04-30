@@ -11,7 +11,7 @@ windows:
       layout: even-horizontal
       panes:
         - yarn:
-            - nix develop --command fish -c "yarn dev; fish"
+            - nix develop --command fish -c "pnpm dev; fish"
         - git:
             - git status
   - backend-editor:
