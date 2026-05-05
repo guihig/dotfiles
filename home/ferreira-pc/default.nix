@@ -15,6 +15,7 @@
     ../modules/ssh.nix
     ../modules/fish.nix
     ../modules/rofi.nix
+    ../modules/vesktop.nix
     ../modules/terminal.nix
     ../modules/nvim.nix
   ];

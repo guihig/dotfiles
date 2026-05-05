@@ -5,13 +5,10 @@
     chromium
     spotify
     discord
-    discord-canary
     zathura
     libreoffice
     gimp
     audacity
-    vesktop
-    unstable.dorion
     ventoy-full
     figma-linux
     bitwarden-desktop
