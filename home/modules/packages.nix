@@ -124,7 +124,6 @@
     seahorse
     gparted
     ksnip
-    flameshot
     gzip
     p7zip
     ntfs3g
