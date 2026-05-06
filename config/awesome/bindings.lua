@@ -28,8 +28,8 @@ awful.keyboard.append_global_keybindings({
 		naughty.destroy_all_notifications()
 	end, { description = "clear notifications", group = "util" }),
 	awful.key({}, "Print", function()
-		awful.spawn(apps.shutter)
-	end, { description = "open the shutter selection", group = "launcher" }),
+		awful.spawn(apps.ksnip)
+	end, { description = "open the print screen selection", group = "launcher" }),
 	awful.key({}, "Scroll_Lock", function()
 		awful.spawn(apps.lockscreen)
 	end, { description = "lock screen", group = "util" }),

@@ -3,7 +3,7 @@ local M = {}
 M.terminal = "kitty"
 M.discord = "vesktop --disable-features=WebRtcAllowInputVolumeAdjustment"
 -- M.discord = "discord --disable-features=WebRtcAllowInputVolumeAdjustment"
-M.shutter = "shutter -s"
+M.ksnip = "ksnip -r"
 M.lockscreen = "slock"
 M.spotify = "spotify"
 M.figma = "figma-linux"

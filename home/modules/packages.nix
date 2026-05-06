@@ -123,7 +123,7 @@
     libnotify
     seahorse
     gparted
-    shutter
+    ksnip
     flameshot
     gzip
     p7zip
