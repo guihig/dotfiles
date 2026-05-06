@@ -13,6 +13,7 @@
     figma-linux
     bitwarden-desktop
     obs-studio
+    appimage-run
 
     # Audio
     pavucontrol
