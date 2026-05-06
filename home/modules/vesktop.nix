@@ -12,13 +12,13 @@
     };
 
     vencord = {
-      # themes.Midnight = builtins.readFile ../../config/vesktop/vesktop-theme.css;
+      themes.Midnight = builtins.readFile ../../config/vesktop/vesktop-theme.css;
 
       settings = {
         transparent = true;
         useQuickCss = true;
         themeLinks = [];
-        # enabledThemes = ["Midnight.css"];
+        enabledThemes = ["Midnight.css"];
         enableReactDevtools = false;
         plugins = {
           CommandsAPI.enabled = true;
