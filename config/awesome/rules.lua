@@ -35,6 +35,7 @@ ruled.client.connect_signal("request::rules", function()
 				"Arandr",
 				"Spotify",
 				"spotify",
+				"ksnip",
 				"vesktop",
 				"discord",
 				"Discord",
