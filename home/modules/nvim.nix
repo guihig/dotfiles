@@ -16,7 +16,6 @@
     unstable.elixir-ls
     inputs.expert.packages.x86_64-linux.default
     texlab
-    kdePackages.qtdeclarative
   ];
 
   programs.neovim = {

@@ -31,7 +31,6 @@
     gnumake
     lua
     luajitPackages.luarocks
-    kdePackages.qtdeclarative
     nodejs
     tree-sitter
     (let
@@ -75,12 +74,10 @@
 
     # FUN
     steam
-    stremio
     wineWowPackages.stable
     protonplus
     winetricks
     unstable.wowup-cf
-    protonup-qt
     gamescope
     (lutris.override {
       extraPkgs = pkgs: [
@@ -126,9 +123,8 @@
     libnotify
     seahorse
     gparted
-    # flameshot
     shutter
-    # (unstable.flameshot.override {enableWlrSupport = true;})
+    flameshot
     gzip
     p7zip
     ntfs3g

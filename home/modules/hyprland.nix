@@ -1,44 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    inputs.caelestia-shell.homeManagerModules.default
-  ];
-
-  programs.caelestia = {
-    enable = true;
-    systemd = {
-      enable = false;
-      target = "graphical-session.target";
-      environment = [];
-    };
-    settings = {
-      appearance.transparency.enabled = true;
-      services = {
-        weatherLocation = "-27.59730,-48.54961";
-        useFahrenheit = false;
-      };
-      notifs.actionOnClick = true;
-      paths = {
-        wallpaperDir = "~/.config/wallpapers";
-      };
-      bar = {
-        status.showBattery = false;
-      };
-      general = {
-        lockBeforeSleep = false;
-        inhibitWhenAudio = true;
-        timeouts = [];
-      };
-    };
-    cli = {
-      enable = true;
-      settings.theme.enableGtk = false;
-    };
-  };
-
+{pkgs, ...}: {
   home.packages = with pkgs; [
     waybar
     wl-gammactl
@@ -55,16 +15,6 @@
     swww
     cliphist
   ];
-
-  services.flameshot = {
-    enable = true;
-    settings = {
-      General = {
-        useGrimAdapter = true;
-        disabledGrimWarning = true;
-      };
-    };
-  };
 
   home.file.".config/waybar" = {
     source = ../../config/waybar;

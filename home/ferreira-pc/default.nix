@@ -29,7 +29,7 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      permittedInsecurePackages = ["ventoy-1.1.10" "mbedtls-2.28.10" "qtwebengine-5.15.19"];
+      permittedInsecurePackages = ["ventoy-1.1.10" "mbedtls-2.28.10"];
     };
   };
 
