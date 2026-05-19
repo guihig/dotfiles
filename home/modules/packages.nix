@@ -25,6 +25,7 @@
     ffmpeg
 
     # Code packages
+    unstable.claude-code
     cargo
     rustc
     go
