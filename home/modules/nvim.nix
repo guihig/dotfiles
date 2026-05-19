@@ -13,7 +13,7 @@
     unstable.nil
     unstable.lua-language-server
     unstable.vtsls
-    unstable.elixir-ls
+    # unstable.elixir-ls
     inputs.expert.packages.x86_64-linux.default
     texlab
   ];
@@ -29,12 +29,12 @@
     recursive = true;
   };
 
+  # elixirls = { "${unstable.elixir-ls}/bin/elixir-ls" },
   home.file.".config/nvim/lua/lsp_location.lua" = with pkgs; {
     text = ''
       return {
         bashls = { "${unstable.bash-language-server}/bin/bash-language-server", "start" },
         dockerls = { "${unstable.dockerfile-language-server}/bin/docker-langserver", "--stdio" },
-        elixirls = { "${unstable.elixir-ls}/bin/elixir-ls" },
         eslint = { "${unstable.vscode-langservers-extracted}/bin/vscode-eslint-language-server", "--stdio" },
         html = { "${unstable.vscode-langservers-extracted}/bin/vscode-html-language-server", "--stdio" },
         jsonls = { "${unstable.vscode-langservers-extracted}/bin/vscode-json-language-server", "--stdio" },
