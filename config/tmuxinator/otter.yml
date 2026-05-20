@@ -5,26 +5,26 @@ windows:
       root: ~/dev/granter/otter/frontend/otter/
       panes:
         - editor:
-            - nix develop --command fish -c nvim .
+            - nix develop --command fish -c "nvim .; fish"
   - frontend-term:
       root: ~/dev/granter/otter/frontend/otter/
       layout: even-horizontal
       panes:
         - server:
-            - nix develop --command fish -c "pnpm dev"
+            - nix develop --command fish -c "pnpm dev; fish"
         - misc:
             - nix develop
   - backend-editor:
       root: ~/dev/granter/otter/backend/otter/
       panes:
         - editor:
-            - nix develop .#test --command fish -c nvim .
+            - nix develop .#test --command fish -c "nvim .; fish"
   - backend-term:
       root: ~/dev/granter/otter/backend/otter/
       layout: even-horizontal
       panes:
         - server:
-            - nix develop --command fish -c "LOCAL_EMAIL=1 MIX_ENV=dev mix phx.server"
+            - nix develop --command fish -c "LOCAL_EMAIL=1 MIX_ENV=dev mix phx.server; fish"
         - misc:
             - nix develop
   - project:
