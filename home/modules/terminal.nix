@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     alacritty-theme
-    pkgs.unstable.tmuxinator
+    # pkgs.unstable.tmuxinator
   ];
 
   # ---- Kitty Configuration ---- #
@@ -73,7 +73,7 @@
     mouse = true;
     shell = "${pkgs.fish}/bin/fish";
     package = pkgs.unstable.tmux;
-    # tmuxinator.enable = true;
+    tmuxinator.enable = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.tilish;
@@ -112,6 +112,10 @@
   home.file.".config/tmuxinator" = {
     source = ../../config/tmuxinator;
     recursive = true;
+  };
+  xdg.configFile."fish/completions/tmuxinator.fish".source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.fish";
+    hash = "sha256-hgLG69P+7VBp69bsWIHK+/wz1zJZingSFavUjQNirtU";
   };
 
   # ---- Ranger Configuration ---- #
