@@ -1,0 +1,63 @@
+{
+  self,
+  inputs,
+  ...
+}: {
+  flake-file.inputs = {
+    expert.url = "github:elixir-lang/expert";
+  };
+
+  flake.modules.homeManager.nvim = {pkgs, ...}: {
+    home.packages = with pkgs; [
+      pyright
+      unstable.bash-language-server
+      unstable.typescript-language-server
+      unstable.dockerfile-language-server
+      unstable.vscode-langservers-extracted
+      unstable.vue-language-server
+      unstable.nil
+      unstable.lua-language-server
+      unstable.vtsls
+      # unstable.elixir-ls
+      inputs.expert.packages.x86_64-linux.default
+      texlab
+    ];
+
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = pkgs.neovim-unwrapped;
+    };
+
+    home.file.".config/nvim" = {
+      source = ./configs;
+      recursive = true;
+    };
+
+    home.file.".config/nvim/lua/lsp_location.lua" = with pkgs; {
+      text = ''
+        return {
+          bashls = { "${unstable.bash-language-server}/bin/bash-language-server", "start" },
+          dockerls = { "${unstable.dockerfile-language-server}/bin/docker-langserver", "--stdio" },
+          eslint = { "${unstable.vscode-langservers-extracted}/bin/vscode-eslint-language-server", "--stdio" },
+          html = { "${unstable.vscode-langservers-extracted}/bin/vscode-html-language-server", "--stdio" },
+          jsonls = { "${unstable.vscode-langservers-extracted}/bin/vscode-json-language-server", "--stdio" },
+          cssls = { "${unstable.vscode-langservers-extracted}/bin/vscode-css-language-server", "--stdio" },
+          ts_ls = { "${unstable.typescript-language-server}/bin/typescript-language-server", "--stdio" },
+          vue_ls = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
+          nil_ls = { "${unstable.nil}/bin/nil" },
+          lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },
+          vue_ts_plugin = "${unstable.vue-language-server}/lib/language-tools/packages/language-server",
+          vtsls = { "${unstable.vtsls}/bin/vtsls", "--stdio" },
+          awesomewm_lib = "${pkgs.awesome}/share/awesome/lib"
+        }
+      '';
+    };
+  };
+
+  flake.modules.nixos.nvim = {
+    home-manager.sharedModules = [
+      self.modules.homeManager.nvim
+    ];
+  };
+}

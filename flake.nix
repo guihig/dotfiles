@@ -1,127 +1,47 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "Your new nix config";
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # AwesomeWM Libs
-    bling = {
-      url = "github:BlingCorp/bling";
-      flake = false;
-    };
-    rubato = {
-      url = "github:andOrlando/rubato";
-      flake = false;
-    };
-    lain = {
-      url = "github:lcpz/lain";
-      flake = false;
-    };
     awesome-wm-widgets = {
       url = "github:streetturtle/awesome-wm-widgets";
+      flake = false;
+    };
+    bling = {
+      url = "github:BlingCorp/bling";
       flake = false;
     };
     color = {
       url = "github:andOrlando/color";
       flake = false;
     };
-
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Sops
-    sops-nix.url = "github:Mic92/sops-nix";
-
-    # Nvim coisas
-    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # expert = {
-    #   url = "github:elixir-lang/expert/5dacce456cb111b75c3f1aeeba95b66e1bc07b04";
-    # };
     expert.url = "github:elixir-lang/expert";
-
-    # Hyprland
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
-    # hyprland.url = "github:hyprwm/Hyprland";
-  };
-
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    sops-nix,
-    expert,
-    hyprland,
-    hyprland-plugins,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    # Your custom packages
-    # Acessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
-
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      ferreira-pc = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/ferreira-pc/configuration.nix
-        ];
-      };
-      granter-pc = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/granter-pc/configuration.nix
-        ];
-      };
+    import-tree.url = "github:vic/import-tree";
+    lain = {
+      url = "github:lcpz/lain";
+      flake = false;
     };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "ferreira@ferreira-pc" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home/ferreira-pc
-        ];
-      };
-      "ferreira@granter-pc" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home/granter-pc
-        ];
-      };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    rubato = {
+      url = "github:andOrlando/rubato";
+      flake = false;
     };
+    sops-nix.url = "github:mic92/sops-nix";
   };
 }

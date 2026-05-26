@@ -1,0 +1,41 @@
+{
+  flake.modules.nixos.services = {pkgs, ...}: {
+    services = {
+      flatpak.enable = true;
+      davfs2.enable = true;
+      gvfs.enable = true;
+      tumbler.enable = true;
+      blueman.enable = true;
+      spice-vdagentd.enable = true;
+
+      # ollama = {
+      #   enable = true;
+      #   acceleration = "cuda";
+      #   loadModels = ["deepseek-r1:8b" "qwq" "llama3"];
+      # };
+
+      # Audio with pipewire
+      pulseaudio.enable = false;
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+
+        wireplumber.configPackages = [
+          (pkgs.writeTextDir "share/wireplumber/main.lua.d/99-stop-microphone-auto-adjust.lua" ''
+            table.insert (default_access.rules,{
+                matches = {
+                    {
+                        { "application.process.binary", "=", "vesktop" },
+                        { "application.process.binary", "=", "discord" }
+                    }
+                },
+                default_permissions = "rx",
+            })
+          '')
+        ];
+      };
+    };
+  };
+}
