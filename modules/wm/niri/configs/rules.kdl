@@ -17,6 +17,15 @@ window-rule {
 }
 
 window-rule {
+    match title="^Bitwarden$"
+
+    open-floating true
+
+    default-column-width { fixed 440; }
+    default-window-height { fixed 690; }
+}
+
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
