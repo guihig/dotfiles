@@ -3,8 +3,19 @@
   inputs,
   ...
 }: {
-  flake.modules.homeManager.niri = {pkgs, ...}: {
+  flake-file.inputs = {
+    ns-flake = {
+      url = "github:gvolpe/niri-scratchpad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  flake.modules.homeManager.niri = {pkgs, ...}: let
+    inherit (self.inputs.ns-flake.packages.${pkgs.stdenv.hostPlatform.system}) niri-scratchpad;
+  in {
     home.packages = with pkgs; [
+      niri-scratchpad
+      wlprop
       xwayland-satellite
       unstable.quickshell
       bibata-cursors
@@ -12,7 +23,10 @@
       tela-icon-theme
     ];
 
-    xdg.configFile."niri/config.kdl".source = ./configs/config.kdl;
+    home.file.".config/niri" = {
+      source = ./configs;
+      recursive = true;
+    };
 
     home.pointerCursor = {
       gtk.enable = true;

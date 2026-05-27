@@ -1,0 +1,25 @@
+workspace "scratch"
+
+window-rule {
+    match app-id="Spotify"
+    open-on-workspace "scratch"
+    open-floating true
+    default-column-width { proportion 0.71; }
+    default-window-height { proportion 0.71; }
+}
+
+window-rule {
+    match app-id=r#"^discord|vesktop$"#
+    open-on-workspace "scratch"
+    open-floating true
+    default-column-width { proportion 0.71; }
+    default-window-height { proportion 0.71; }
+}
+
+binds {
+    // Scratchpads
+    Mod+A { spawn-sh "nscratch -id discord -m"; }
+    Mod+S { spawn-sh "nscratch -id Spotify -m"; }
+    Mod+Shift+S { move-window-to-workspace "scratch"; }
+}
+

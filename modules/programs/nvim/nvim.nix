@@ -18,7 +18,6 @@
       unstable.nil
       unstable.lua-language-server
       unstable.vtsls
-      # unstable.elixir-ls
       inputs.expert.packages.x86_64-linux.default
       texlab
     ];

@@ -28,7 +28,7 @@ windows:
         - misc:
             - nix develop
   - project:
-      root: ~/dev/granter/otter/backend/otter/
+      root: ~/dev/granter/otter/
       layout: even-horizontal
       panes:
         - misc:
