@@ -1,4 +1,6 @@
-workspace "scratch"
+workspace "scratch" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
 
 window-rule {
     match app-id="Spotify"

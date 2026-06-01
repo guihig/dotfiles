@@ -147,11 +147,21 @@ gestures {
 }
 
 // Workspaces
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "4"
-workspace "5"
+workspace "1" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
+workspace "2" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
+workspace "3" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
+workspace "4" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
+workspace "5" {
+    open-on-output "PNP(BNQ) ZOWIE XL LCD EBF2P00484SL0"
+}
 
 include "rules.kdl"
 include "binds.kdl"
