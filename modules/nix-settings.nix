@@ -14,7 +14,7 @@
       config = {
         allowUnfree = true;
         cudaSupport = true;
-        permittedInsecurePackages = ["ventoy-1.1.10" "mbedtls-2.28.10"];
+        permittedInsecurePackages = ["ventoy-1.1.10" "mbedtls-2.28.10" "docker-28.5.2" "electron-39.8.10"];
         packageOverrides = pkgs: {
           vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
         };
