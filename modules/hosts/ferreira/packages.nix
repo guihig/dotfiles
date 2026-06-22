@@ -18,6 +18,7 @@
       figma-linux
       bitwarden-desktop
       obs-studio
+      stremio-linux-shell
       appimage-run
 
       # Audio
