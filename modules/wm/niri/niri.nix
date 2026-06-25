@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{self, ...}: {
   flake-file.inputs = {
     ns-flake = {
       url = "github:gvolpe/niri-scratchpad";
