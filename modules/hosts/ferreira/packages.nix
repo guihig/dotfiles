@@ -76,19 +76,6 @@
       openfortivpn
       networkmanagerapplet
 
-      # FUN
-      steam
-      wineWow64Packages.stable
-      protonplus
-      winetricks
-      unstable.wowup-cf
-      gamescope
-      (lutris.override {
-        extraPkgs = pkgs: [
-          # List package dependencies here
-        ];
-      })
-
       # Fonts
       nerd-fonts.jetbrains-mono
       nerd-fonts.terminess-ttf
