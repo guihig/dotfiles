@@ -75,7 +75,7 @@
       shell = pkgs.fish;
     };
 
-    system.stateVersion = "25.11";
+    system.stateVersion = "26.05";
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
@@ -94,7 +94,7 @@
           BROWSER = "firefox";
         };
 
-        stateVersion = "25.11";
+        stateVersion = "26.05";
       };
 
       systemd.user.startServices = "sd-switch";

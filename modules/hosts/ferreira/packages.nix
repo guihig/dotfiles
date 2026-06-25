@@ -14,9 +14,6 @@
       libreoffice
       gimp
       audacity
-      ventoy-full
-      figma-linux
-      bitwarden-desktop
       obs-studio
       stremio-linux-shell
       appimage-run
@@ -74,7 +71,6 @@
       nano
       vscode
       jetbrains.pycharm
-      github-desktop
 
       # Network/Vpns
       openfortivpn
@@ -82,7 +78,7 @@
 
       # FUN
       steam
-      wineWowPackages.stable
+      wineWow64Packages.stable
       protonplus
       winetricks
       unstable.wowup-cf
@@ -126,7 +122,7 @@
       eza
       gnome-disk-utility
       sl
-      neofetch
+      hyfetch
       cmatrix
       libnotify
       seahorse
