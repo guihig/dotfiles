@@ -68,12 +68,6 @@
       self.modules.homeManager.niri
     ];
 
-    # imports = [
-    #   # Import the dms-shell only available in unstable right now
-    #   "${inputs.nixpkgs-unstable}/nixos/modules/programs/wayland/dms-shell.nix"
-    #   "${inputs.nixpkgs-unstable}/nixos/modules/programs/dsearch.nix"
-    # ];
-
     programs.niri.enable = true;
     programs.niri.package = pkgs.unstable.niri;
 
