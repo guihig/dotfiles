@@ -4,7 +4,9 @@
   ...
 }: {
   flake-file.inputs = {
-    expert.url = "github:elixir-lang/expert";
+    expert = {
+      url = "github:elixir-lang/expert/v0.1.5";
+    };
   };
 
   flake.modules.homeManager.nvim = {pkgs, ...}: {
