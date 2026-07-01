@@ -15,7 +15,6 @@
       gimp
       audacity
       obs-studio
-      stremio-linux-shell
       appimage-run
 
       # Audio
