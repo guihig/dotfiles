@@ -33,7 +33,6 @@ return {
 				end
 
 				--------------------[ treesitter folds ]-------------------------------
-
 				if ft == "javascriptreact" or ft == "typescriptreact" then
 					vim.opt_local.foldmethod = "indent"
 				else
