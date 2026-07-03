@@ -160,6 +160,7 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
+    Mod+F8 { spawn-sh "~/.config/niri/scripts/wtype-f-loop.sh"; }
 
     // Scratchpads
     Mod+A { spawn-sh "nscratch -id discord -m"; }

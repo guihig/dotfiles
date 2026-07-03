@@ -12,6 +12,9 @@
     home.packages = with pkgs; [
       niri-scratchpad
       wlprop
+      wtype
+      wev
+      xdotool
       xwayland-satellite
       unstable.quickshell
       bibata-cursors
