@@ -12,8 +12,7 @@
       escapeTime = 10;
       mouse = true;
       shell = "${pkgs.fish}/bin/fish";
-      package = pkgs.unstable.tmux;
-      # tmuxinator.enable = true;
+      tmuxinator.enable = true;
       plugins = with pkgs; [
         {
           plugin = tmuxPlugins.tilish;

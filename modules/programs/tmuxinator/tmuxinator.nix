@@ -1,6 +1,5 @@
 {
   flake.modules.homeManager.tmuxinator = {pkgs, ...}: {
-    home.packages = with pkgs; [unstable.tmuxinator];
     home.file.".config/tmuxinator" = {
       source = ./configs;
       recursive = true;
