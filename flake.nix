@@ -16,7 +16,7 @@
       url = "github:andOrlando/color";
       flake = false;
     };
-    expert.url = "github:elixir-lang/expert/v0.1.5";
+    expert.url = "github:elixir-lang/expert/v0.1";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
