@@ -16,6 +16,7 @@
       audacity
       obs-studio
       appimage-run
+      kronometer
 
       # Audio
       pavucontrol
