@@ -14,7 +14,9 @@
       config = {
         allowUnfree = true;
         cudaSupport = true;
-        permittedInsecurePackages = [];
+        permittedInsecurePackages = [
+          "pnpm-9.15.9"
+        ];
         packageOverrides = pkgs: {
           vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
         };
