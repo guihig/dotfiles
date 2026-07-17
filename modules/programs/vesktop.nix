@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.modules.homeManager.vesktop = {pkgs, ...}: {
     programs.vesktop = {
-      enable = true;
+      enable = false;
       package = pkgs.unstable.vesktop;
 
       settings = {

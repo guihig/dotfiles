@@ -61,7 +61,7 @@
       yamlfmt
       black
       sql-formatter
-      prettier
+      # prettier
       stylish-haskell
       alejandra
       texlive.combined.scheme-full
