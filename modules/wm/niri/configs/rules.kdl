@@ -47,5 +47,5 @@ window-rule {
     match app-id=r#"^exiled-exchange-2$"#
     open-floating true
     open-focused false
-    open-on-workspace "5"
+    open-on-workspace "top-2"
 }
