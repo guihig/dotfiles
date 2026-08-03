@@ -6,5 +6,7 @@
         size = 8 * 1024;
       }
     ];
+
+    boot.kernel.sysctl."vm.swappiness" = 10;
   };
 }

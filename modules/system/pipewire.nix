@@ -1,6 +1,7 @@
 {
   flake.modules.nixos.pipewire = {pkgs, ...}: {
     security.rtkit.enable = true;
+    programs.noisetorch.enable = true;
     services = {
       # Audio with pipewire
       pulseaudio.enable = false;
