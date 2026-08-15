@@ -9,7 +9,7 @@
       google-chrome
       chromium
       spotify
-      unstable.discord
+      discord
       zathura
       libreoffice
       gimp
