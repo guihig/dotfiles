@@ -11,7 +11,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^discord|vesktop$"#
+    match app-id=r#"^discord|vesktop|teamspeak-client$"#
     open-on-workspace "scratch"
     open-floating true
     default-column-width { proportion 0.71; }
@@ -22,6 +22,7 @@ binds {
     // Scratchpads
     Mod+A { spawn-sh "nscratch -id discord -m"; }
     Mod+S { spawn-sh "nscratch -id Spotify -m"; }
+    Mod+T { spawn-sh "nscratch -id teamspeak-client -m"; }
     Mod+Shift+S { move-window-to-workspace "scratch"; }
 }
 

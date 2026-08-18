@@ -37,5 +37,30 @@
         ];
       };
     };
+
+    virtualisation.oci-containers = {
+      backend = "docker";
+      containers.teamspeak6-server = {
+        image = "teamspeaksystems/teamspeak6-server:latest";
+        autoStart = true;
+        ports = [
+          "9987:9987/udp" # voice
+          "30033:30033/tcp" # file transfer
+        ];
+        environment = {
+          TSSERVER_LICENSE_ACCEPTED = "accept";
+          TSSERVER_DEFAULT_PORT = "9987";
+          TSSERVER_VOICE_IP = "0.0.0.0";
+          TSSERVER_FILE_TRANSFER_PORT = "30033";
+          TSSERVER_FILE_TRANSFER_IP = "0.0.0.0";
+        };
+        volumes = ["teamspeak6-data:/var/tsserver"];
+      };
+    };
+
+    networking.firewall = {
+      allowedUDPPorts = [9987];
+      allowedTCPPorts = [30033];
+    };
   };
 }

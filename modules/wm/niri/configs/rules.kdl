@@ -36,16 +36,3 @@ window-rule {
     match app-id=r#"^steam_app_(default|[0-9]+)|gamescope|steam|steamwebhelper$"#
     open-on-workspace "5"
 }
-
-// Exiled Exchange 2's PoE overlay expects to float on top of the game as a
-// transparent, click-through window - niri tiles it like any other window
-// by default, which also steals focus from the game on open. Pinned to the
-// same workspace as PoE2 (see the steam_app rule above) since it otherwise
-// opens on whatever workspace was active at launch, not necessarily where
-// the game lives.
-window-rule {
-    match app-id=r#"^exiled-exchange-2$"#
-    open-floating true
-    open-focused false
-    open-on-workspace "top-2"
-}

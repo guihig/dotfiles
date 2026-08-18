@@ -10,6 +10,8 @@
       chromium
       spotify
       discord
+      teamspeak6-client
+      teamspeak_server
       zathura
       libreoffice
       gimp
