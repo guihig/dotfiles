@@ -7,6 +7,10 @@
       tumbler.enable = true;
       blueman.enable = true;
       spice-vdagentd.enable = true;
+      printing = {
+        enable = true;
+        drivers = [pkgs.hplip];
+      };
 
       # ollama = {
       #   enable = true;
@@ -36,6 +40,12 @@
           '')
         ];
       };
+    };
+
+    services.ipp-usb.enable = true;
+
+    services.openvpn.servers = {
+      ciasc = {config = "config /home/ferreira/dev/vpns/granter_gferreira@vpn.ciasc.gov.br.ovpn";};
     };
 
     # TSServer local

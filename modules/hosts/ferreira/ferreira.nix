@@ -21,6 +21,7 @@
       self.modules.nixos.swapfile
       self.modules.nixos.services
       self.modules.nixos.pipewire
+      self.modules.nixos.vpn
     ];
 
     hardware = {
