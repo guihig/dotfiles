@@ -162,6 +162,10 @@ binds {
 
     Mod+F8 { spawn-sh "~/.config/niri/scripts/wtype-f-loop.sh"; }
 
+    Mod+V hotkey-overlay-title="Connect CIASC VPN" {
+        spawn "kitty" "--hold" "sh" "-c" "~/.config/niri/scripts/vpn-ciasc.sh";
+    }
+
     // Scratchpads
     Mod+A { spawn-sh "nscratch -id discord -m"; }
     Mod+S { spawn-sh "nscratch -id Spotify -m"; }
