@@ -73,7 +73,7 @@
       isNormalUser = true;
       initialPassword = "1234";
       description = "CABECA";
-      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "i2c"];
+      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "i2c" "scanner" "lp"];
       shell = pkgs.fish;
     };
 

@@ -13,7 +13,6 @@
 
       config = {
         allowUnfree = true;
-        cudaSupport = true;
         permittedInsecurePackages = [];
         packageOverrides = pkgs: {
           vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};

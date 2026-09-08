@@ -109,6 +109,7 @@
       fzf
       eza
       gnome-disk-utility
+      simple-scan
       sl
       hyfetch
       cmatrix

@@ -12,8 +12,22 @@
       printing = {
         enable = true;
         drivers = [pkgs.hplip];
+        listenAddresses = ["*:631"];
+        allowFrom = ["all"];
+        browsing = true;
+        defaultShared = true;
       };
       ipp-usb.enable = true;
+
+      # Scanning + network printer/scanner discovery & advertising
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        publish = {
+          enable = true;
+          userServices = true;
+        };
+      };
 
       # ollama = {
       #   enable = true;
@@ -43,6 +57,12 @@
           '')
         ];
       };
+    };
+
+    # Scanning (SANE, needed for the printer's panel scan-to-PC button)
+    hardware.sane = {
+      enable = true;
+      extraBackends = [pkgs.hplipWithPlugin];
     };
 
     services.openvpn.servers = {
