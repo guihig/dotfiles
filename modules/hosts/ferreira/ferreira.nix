@@ -77,6 +77,24 @@
       shell = pkgs.fish;
     };
 
+    users.users.sinhozecas = {
+      isNormalUser = true;
+      shell = "/run/current-system/sw/bin/nologin";
+      hashedPassword = "!";
+      home = "/srv/sftp/sinhozecas/uploads";
+      createHome = false;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLB2dHr3FDgRpronMTnV/iOTutrkUN0Pb9FzbBhFTC4 rodrigo.ce.moretto@gmail.com"
+      ];
+    };
+
+    # sshd requires the chroot root to be root-owned and non-writable by the
+    # user, so the actual writable area lives one level below it.
+    systemd.tmpfiles.rules = [
+      "d /srv/sftp/sinhozecas 0755 root root -"
+      "d /srv/sftp/sinhozecas/uploads 0700 sinhozecas users -"
+    ];
+
     system.stateVersion = "26.05";
 
     home-manager.useGlobalPkgs = true;

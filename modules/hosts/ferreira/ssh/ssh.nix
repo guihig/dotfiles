@@ -63,6 +63,18 @@
     services.openssh = {
       enable = true;
       settings.PermitRootLogin = "no";
+      # Global-only directives; keeps sshd from writing a banner onto the
+      # sftp subsystem's stdout for the sinhozecas Match block below, which
+      # corrupts the binary SFTP protocol handshake.
+      settings.PrintLastLog = false;
+      extraConfig = ''
+        Match User sinhozecas
+          ForceCommand internal-sftp
+          ChrootDirectory /srv/sftp/sinhozecas
+          AllowTcpForwarding no
+          X11Forwarding no
+          PermitTunnel no
+      '';
     };
   };
 }
