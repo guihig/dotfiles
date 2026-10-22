@@ -1,0 +1,34 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p bash
+
+# Frees disk space by trimming old NixOS generations, running the Nix
+# garbage collector, optimizing the Nix store, and pruning unused Docker data.
+
+set -euo pipefail
+
+echo "==> Disk usage before cleanup"
+df -h /
+
+echo "==> Removing old NixOS system generations (keeping current)"
+sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
+
+echo "==> Removing old user generations (keeping current)"
+nix-env --delete-generations old
+
+echo "==> Running Nix garbage collector"
+sudo nix-collect-garbage -d
+
+echo "==> Optimizing the Nix store (deduplicating hardlinks)"
+sudo nix-store --optimise
+
+if command -v docker >/dev/null 2>&1; then
+    echo "==> Pruning unused Docker data (containers, images, networks, build cache)"
+    docker system prune -af
+    echo "==> Pruning unused Docker volumes"
+    docker volume prune -f
+else
+    echo "==> Docker not found, skipping Docker cleanup"
+fi
+
+echo "==> Disk usage after cleanup"
+df -h /
