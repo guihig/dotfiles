@@ -18,11 +18,20 @@ window-rule {
     default-window-height { proportion 0.71; }
 }
 
+window-rule {
+    match app-id=r#"^fluxer|app.fluxer.FluxerDesktop$"#
+    open-on-workspace "scratch"
+    open-floating true
+    default-column-width { proportion 0.71; }
+    default-window-height { proportion 0.71; }
+}
+
 binds {
     // Scratchpads
     Mod+A { spawn-sh "nscratch -id discord -m"; }
     Mod+S { spawn-sh "nscratch -id Spotify -m"; }
     Mod+T { spawn-sh "nscratch -id teamspeak-client -m"; }
+    Mod+G { spawn-sh "nscratch -id app.fluxer.FluxerDesktop -m"; }
     Mod+Shift+S { move-window-to-workspace "scratch"; }
 }
 
