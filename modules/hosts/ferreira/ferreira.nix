@@ -42,6 +42,7 @@
       self.modules.nixos.ssh
 
       self.modules.nixos.vesktop
+      self.modules.nixos.fluxer
       self.modules.nixos.ranger
       self.modules.nixos.nvim
       self.modules.nixos.fish
