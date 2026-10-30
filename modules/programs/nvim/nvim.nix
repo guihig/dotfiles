@@ -5,7 +5,7 @@
 }: {
   flake-file.inputs = {
     expert = {
-      url = "github:elixir-lang/expert/v0.1";
+      url = "github:elixir-lang/expert/v0.2";
     };
   };
 

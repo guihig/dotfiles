@@ -1,4 +1,4 @@
-# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# DO-NOT-EDIT. This file was auto-generated using github:denful/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
@@ -16,8 +16,8 @@
       url = "github:andOrlando/color";
       flake = false;
     };
-    expert.url = "github:elixir-lang/expert/v0.1";
-    flake-file.url = "github:vic/flake-file";
+    expert.url = "github:elixir-lang/expert/v0.2";
+    flake-file.url = "github:denful/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
