@@ -28,7 +28,7 @@ window-rule {
 
 binds {
     // Scratchpads
-    Mod+A { spawn-sh "nscratch -id discord -m"; }
+    Mod+A { spawn-sh "nscratch -id vesktop -m"; }
     Mod+S { spawn-sh "nscratch -id Spotify -m"; }
     Mod+T { spawn-sh "nscratch -id teamspeak-client -m"; }
     Mod+G { spawn-sh "nscratch -id app.fluxer.FluxerDesktop -m"; }

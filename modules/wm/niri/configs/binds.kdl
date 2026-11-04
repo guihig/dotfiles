@@ -167,7 +167,7 @@ binds {
     }
 
     // Scratchpads
-    Mod+A { spawn-sh "nscratch -id discord -m"; }
+    Mod+A { spawn-sh "nscratch -id vesktop -m"; }
     Mod+S { spawn-sh "nscratch -id Spotify -m"; }
     Mod+Shift+A { move-window-to-workspace "scratch"; }
 }
