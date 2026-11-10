@@ -83,7 +83,7 @@
       enableSystemMonitoring = false;
     };
 
-    environment.systemPackages = with pkgs; [unstable.dgop];
+    environment.systemPackages = with pkgs; [unstable.dux-gop];
 
     systemd.user.services.niri.enableDefaultPath = false;
 

@@ -70,7 +70,7 @@
       # Editors
       vim
       nano
-      vscode
+      # vscode # broken upstream: nixpkgs vscode postPatch targets old ripgrep path, 1.144.0 moved to ripgrep-universal
       jetbrains.pycharm
 
       # Network/Vpns
