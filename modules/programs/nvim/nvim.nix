@@ -13,7 +13,6 @@
     home.packages = with pkgs; [
       pyright
       unstable.bash-language-server
-      unstable.typescript-language-server
       unstable.dockerfile-language-server
       unstable.vscode-langservers-extracted
       unstable.vue-language-server
@@ -44,7 +43,6 @@
           html = { "${unstable.vscode-langservers-extracted}/bin/vscode-html-language-server", "--stdio" },
           jsonls = { "${unstable.vscode-langservers-extracted}/bin/vscode-json-language-server", "--stdio" },
           cssls = { "${unstable.vscode-langservers-extracted}/bin/vscode-css-language-server", "--stdio" },
-          ts_ls = { "${unstable.typescript-language-server}/bin/typescript-language-server", "--stdio" },
           vue_ls = { "${unstable.vue-language-server}/bin/vue-language-server", "--stdio" },
           nil_ls = { "${unstable.nil}/bin/nil" },
           lua_ls = { "${unstable.lua-language-server}/bin/lua-language-server" },

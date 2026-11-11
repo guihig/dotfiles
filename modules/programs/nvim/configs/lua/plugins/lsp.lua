@@ -1,6 +1,13 @@
 local keymap = vim.keymap
 local lsp_location = require("lsp_location")
 
+local vue_plugin = {
+	name = "@vue/typescript-plugin",
+	location = lsp_location.vue_ts_plugin,
+	languages = { "vue" },
+	configNamespace = "typescript",
+}
+
 return {
 	{
 		"folke/lazydev.nvim",
@@ -177,46 +184,30 @@ return {
 				pyright = true,
 				lua_ls = true,
 				nil_ls = true,
-				-- vtsls = function()
-				-- 	return {
-				-- 		settings = {
-				-- 			vtsls = {
-				-- 				tsserver = {
-				-- 					globalPlugins = {
-				-- 						{
-				-- 							name = "@vue/typescript-plugin",
-				-- 							location = lsp_location["vue_ts_plugin"],
-				-- 							languages = { "javascript", "typescript", "vue" },
-				-- 							configNamespace = "typescript",
-				-- 						},
-				-- 					},
-				-- 				},
-				-- 			},
-				-- 		},
-				-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-				-- 	}
-				-- end,
-				vue_ls = true,
+				vtsls = function()
+					return {
+						cmd_env = { NODE_OPTIONS = "--max-old-space-size=8192" },
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+						settings = {
+							vtsls = {
+								tsserver = {
+									globalPlugins = { vue_plugin },
+								},
+							},
+						},
+					}
+				end,
+				vue_ls = function()
+					return {
+						cmd_env = { NODE_OPTIONS = "--max-old-space-size=8192" },
+					}
+				end,
 				jsonls = function()
 					return {
 						settings = {
 							json = {
 								schemas = require("schemastore").json.schemas(),
 								validate = { enable = true },
-							},
-						},
-					}
-				end,
-				ts_ls = function()
-					return {
-						filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-						init_options = {
-							plugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = lsp_location["vue_ts_plugin"],
-									languages = { "javascript", "typescript", "vue" },
-								},
 							},
 						},
 					}
