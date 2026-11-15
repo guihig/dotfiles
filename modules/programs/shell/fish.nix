@@ -38,6 +38,12 @@
             TERM=xterm-256color command ssh $argv
           '';
         };
+        claude-personal = {
+          description = "Claude Code using the personal account config dir";
+          body = ''
+            CLAUDE_CONFIG_DIR="$HOME/.claude-personal" command claude $argv
+          '';
+        };
       };
       interactiveShellInit = ''
         set fish_greeting
