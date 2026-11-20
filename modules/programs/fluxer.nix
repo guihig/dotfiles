@@ -5,11 +5,11 @@
     ...
   }: let
     pname = "fluxer";
-    version = "2026.1018.223338";
+    version = "2026.1120.30521";
 
     src = pkgs.fetchurl {
       url = "https://pkgs.fluxer.com/desktop/stable/linux/x64/${version}/appimage";
-      hash = "sha256-G6aJZK6de60C0XDsolj/XIaWyBEeS8D6tTVAp2VV4Cw=";
+      hash = "sha256-z5jaOxANMWEMY37sjVW6mEdOQNNdRfOctZ2252ia66o=";
     };
 
     appimageContents = pkgs.appimageTools.extractType2 {inherit pname version src;};
